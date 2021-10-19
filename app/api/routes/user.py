@@ -1,0 +1,249 @@
+from fastapi import APIRouter, Depends, HTTPException
+from fastapi_jwt_auth import AuthJWT
+from pydantic import EmailStr
+from sqlalchemy.orm import Session
+
+from typing import List, Optional
+from app.db.database import get_db
+from app.helper.authentication import Authorize_user
+from app.models.schemas.user import UserViewModel, UserPostViewModel, adminUserPostViewModel, UserPatchInfoModel, \
+    UserPatchPasswordViewModel, UserChangeSettingModel
+from app.server.authentication import Authority_Level, verify_password, checkLevel
+from app.server.department.crud import get_All_departments
+from app.server.device.crud import get_All_devices
+from app.server.device_model.crud import get_All_device_models
+from app.server.face.crud import get_All_faces
+from app.server.fasteyes_device.crud import get_All_fasteyes_devices
+from app.server.fasteyes_observation.crud import get_All_fasteyes_observations
+from app.server.fasteyes_output.crud import get_All_fasteyes_outputs
+from app.server.fasteyes_uuid.crud import get_All_fasteyes_uuids
+from app.server.group.crud import get_All_groups, create_group, get_group_by_name
+from app.server.observation.crud import get_All_observations
+from app.server.role.crud import get_All_roles
+from app.server.staff.crud import get_All_staffs
+from app.server.user.crud import Create_User, get_user_by_email, get_user_by_name, get_All_users, check_Email_Exist, \
+    modefy_User, get_user_by_name_in_group, modefy_User_Password, change_user_setting, change_user_verify_code_enable, \
+    get_users_in_group, get_user_by_id, delete_group_by_group_id, check_user_owner, delete_user_by_user_id
+
+router = APIRouter()
+
+
+# 取得所有User (RD)
+@router.get("/users/GetAllUsers", response_model=List[UserViewModel])
+def GetAllUsers(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+
+    if not checkLevel(current_user, Authority_Level.RD.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    return get_All_users(db)
+
+
+# 取得所有User (Admin)
+@router.get("/users", response_model=List[UserViewModel])
+def GetAllUsers(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+
+    if not checkLevel(current_user, Authority_Level.Admin.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    return get_users_in_group(db, current_user.group_id)
+
+
+# check Email
+@router.get("/users/email/exists")
+def UserExists(email: str, db: Session = Depends(get_db)):
+    if check_Email_Exist(db, email):
+        return "Email is exist"
+
+
+# user id 修改 User Info(HRAccess)
+@router.patch("/users/info", response_model=UserViewModel)
+def PatchUserInfo(userPatch: UserPatchInfoModel,
+                  db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+    if get_user_by_name_in_group(db, userPatch.name, current_user.group_id):
+        raise HTTPException(status_code=400, detail="Name already exist in this group")
+
+    return modefy_User(db, current_user, userPatch)
+
+
+# user id 修改 密碼 (HRAccess)
+@router.patch("/users/password", response_model=UserViewModel)
+def PatchUserPassword(userPatch: UserPatchPasswordViewModel, db: Session = Depends(get_db),
+                      Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+
+    if not verify_password(userPatch.old_password, current_user.password):
+        raise HTTPException(status_code=401, detail="舊密碼錯誤")
+
+    return modefy_User_Password(db, current_user.id, userPatch)
+
+
+# user id 修改 User setting (HRAccess)
+@router.patch("/users/setting", response_model=UserViewModel)
+def PatchUserSetting(userPatch: UserChangeSettingModel,
+                     db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+
+    return change_user_setting(db, current_user.id, userPatch)
+
+
+# user id 修改 User verify_code_enable (HRAccess)
+@router.patch("/users/verify_code_enable", response_model=UserViewModel)
+def PatchUserVerify_code_enable(verify_code_enable: bool, db: Session = Depends(get_db),
+                                Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+    return change_user_verify_code_enable(db, current_user.id, verify_code_enable)
+
+
+# 創建 HR User (Admin)
+@router.post("/users/HR", response_model=UserViewModel)
+def CreateHRUser(user_create: UserPostViewModel, db: Session = Depends(get_db),
+                 Authorize: AuthJWT = Depends()):
+    if get_user_by_email(db, email=user_create.email):
+        raise HTTPException(status_code=400, detail="Email already registered")
+
+    current_user = Authorize_user(Authorize, db)
+    if get_user_by_name_in_group(db, user_create.name, current_user.group_id):
+        raise HTTPException(status_code=400, detail="Name already exist in this group")
+
+    user_db = Create_User(db, user_create, current_user.group_id, level=Authority_Level.HRAccess.value)
+    return user_db
+
+
+# 創建 一般 User (Admin)
+@router.post("/users/Normal", response_model=UserViewModel)
+def CreateNormalUser(user_create: UserPostViewModel, db: Session = Depends(get_db),
+                     Authorize: AuthJWT = Depends()):
+    if get_user_by_email(db, email=user_create.email):
+        raise HTTPException(status_code=400, detail="Email already registered")
+
+    current_user = Authorize_user(Authorize, db)
+    if get_user_by_name_in_group(db, user_create.name, current_user.group_id):
+        raise HTTPException(status_code=400, detail="Name already exist in this group")
+
+    user_db = Create_User(db, user_create, current_user.group_id, level=Authority_Level.HRAccess.value)
+    return user_db
+
+
+# 刪除 user ＆ group (Admin)
+@router.delete("/users/{user_id}", response_model=UserViewModel)
+def DeleteUser(user_id: int, transfer_user_id: Optional[int],
+               db: Session = Depends(get_db),
+               Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+    if not checkLevel(current_user, Authority_Level.Admin.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    if user_id == transfer_user_id:
+        raise HTTPException(status_code=400, detail="user_id can not equal to transfer_user_id")
+
+    delete_user = get_user_by_id(db, user_id)
+
+    if not delete_user:
+        raise HTTPException(status_code=400, detail="user 不存在")
+
+    check_user_owner(db, user_id, current_user.group_id)
+
+    # 不可以刪除跟你同等或比你高的權限
+    if delete_user.level <= current_user.level:
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    if transfer_user_id:
+        if not get_user_by_id(db, user_id):
+            raise HTTPException(status_code=400, detail="user 不存在")
+
+        check_user_owner(db, transfer_user_id, current_user.group_id)
+    else:
+        transfer_user_id = current_user.id
+
+    return delete_user_by_user_id(db, delete_user.id, transfer_user_id)
+
+
+########################################################################################################################
+# 創建 admin User (RD)
+@router.post("/users/admin", response_model=UserViewModel)
+def CreateAdminUser(user_create: adminUserPostViewModel, db: Session = Depends(get_db)):
+    if get_user_by_email(db, email=user_create.email):
+        raise HTTPException(status_code=400, detail="Email already registered")
+
+    if get_group_by_name(db, group_name=user_create.group.name):
+        raise HTTPException(status_code=400, detail="Group name already exist")
+
+    group_db = create_group(db, user_create.group)
+    user_db = Create_User(db, user_create, group_db.id, level=Authority_Level.Admin.value)
+    return user_db
+
+
+# 創建 RD User (RD)
+@router.post("/users/RD", response_model=UserViewModel)
+def CreateAdminUser(user_create: adminUserPostViewModel, db: Session = Depends(get_db)):
+    if get_user_by_email(db, email=user_create.email):
+        raise HTTPException(status_code=400, detail="Email already registered")
+
+    if get_user_by_name(db, name=user_create.name):
+        raise HTTPException(status_code=400, detail="Name already exist")
+
+    if get_group_by_name(db, group_name=user_create.group.name):
+        raise HTTPException(status_code=400, detail="Group name already exist")
+
+    group_db = create_group(db, user_create.group)
+    user_db = Create_User(db, user_create, group_db.id, level=Authority_Level.RD.value, is_enable=True)
+    return user_db
+
+
+# 刪除Admin user ＆ group (RD)
+@router.delete("/users/admin/{user_id}")
+def DeleteAdminUser(user_id: int, db: Session = Depends(get_db),
+                    Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+
+    if not checkLevel(current_user, Authority_Level.RD.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    delete_user = get_user_by_id(db, user_id)
+
+    if delete_user.level != Authority_Level.Admin.value:
+        raise HTTPException(status_code=400, detail="此user 不是 Admin user")
+
+    if not delete_user:
+        raise HTTPException(status_code=400, detail="user 不存在")
+
+    # 不可以刪除跟你同等或比你高的權限
+    if delete_user.level <= current_user.level:
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    return delete_group_by_group_id(db, delete_user.group_id)
+
+
+#################################################################################################
+# TEST
+@router.post("/Test")
+def Test_get_ALL(db: Session = Depends(get_db)):
+    get_All_roles(db)
+    get_All_groups(db)
+    get_All_users(db)
+    get_All_staffs(db)
+    get_All_devices(db)
+    get_All_departments(db)
+    get_All_observations(db)
+    get_All_faces(db)
+    get_All_device_models(db)
+    get_All_fasteyes_devices(db)
+    get_All_fasteyes_observations(db)
+    get_All_fasteyes_uuids(db)
+    get_All_fasteyes_outputs(db)
+    return "Done"
+
+
+# 取得User by id (RD)
+@router.get("/users/{users_id}", response_model=UserViewModel)
+def GetAllUsers(users_id: int, db: Session = Depends(get_db),
+                Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+
+    if not checkLevel(current_user, Authority_Level.RD.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    return get_user_by_id(db, users_id)
