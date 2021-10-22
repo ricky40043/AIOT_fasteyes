@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>User Create</title>
+        <link href="{{ url_for('static', path='/styles.css')}}" rel="stylesheet">
+        <script type = "text/javascript">
+            let URL = "http://127.0.0.1:8000"
+            function myfunction() {
+            name = document.getElementById('name').value,
+            password = document.getElementById('password').value,
+            email = document.getElementById('email').value,
+            address = document.getElementById('address').value,
+            telephone_number = document.getElementById('telephone_number').value,
+            usage = document.getElementById('usage').value,
+            country = document.getElementById('country').value,
+            company_scale = document.getElementById('company_scale').value,
+            industry = document.getElementById('industry').value,
+            email_alert = document.getElementById('email_alert').value,
+            language = document.getElementById('language').value
+            token = document.getElementById('token').value
+            let data = {
+                          "name": name,
+                          "password": password,
+                          "email": email,
+                          "info": {
+                            "address": address,
+                            "telephone_number": telephone_number,
+                            "usage": usage,
+                            "country": country,
+                            "company_scale": company_scale,
+                            "industry": industry,
+                            "email_alert": email_alert,
+                            "language": language
+                          }
+                        }
+            fetch(URL+'/users/create/'+token, {
+                            method: 'POST',
+                            headers: {
+                              'Accept': 'application/json',
+                              'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(data)
+                          }).then(function(response) {
+                            console.log(response.json());
+                            if(response.status){
+                                alert("創建成功");
+                                window.location.replace("https://www.fasteyes.net");
+                            }
+                            else{
+                                alert(response.json());
+                            }
+                          });
+
+            }
+        </script>
+    </head>
+    <body>
+        <input type="label" id="token" value={{token}} hidden>
+        <h1>Email:{{email}}</h1>
+        <form method="post">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>用户名</td>
+                        <td><input type="text" id="name"></td>
+                    </tr>
+                    <tr>
+                        <td>密碼</td>
+                        <td><input type="text" id="password"></td>
+                    </tr>
+                    <tr>
+                        <td>email</td>
+                        <td><input type="text" id="email"></td>
+                    </tr>
+                    <tr>
+                        <td>地址</td>
+                        <td><input type="text" id="address"></td>
+                    </tr>
+                    <tr>
+                        <td>電話</td>
+                        <td><input type="text" id="telephone_number"></td>
+                    </tr>
+                    <tr>
+                        <td>使用環境</td>
+                        <td><input type="text" id="usage"></td>
+                    </tr>
+                    <tr>
+                        <td>國家</td>
+                        <td><input type="text" id="country"></td>
+                    </tr>
+                    <tr>
+                        <td>公司規模(EX:10~50人)</td>
+                        <td><input type="text" id="company_scale"></td>
+                    </tr>
+                    <tr>
+                        <td>產業別</td>
+                        <td><input type="text" id="industry"></td>
+                    </tr>
+                    <tr>
+                        <td>Email 發警報</td>
+                        <td>
+                            <select id="email_alert">
+                                <option value=0 selected>不啟用</option>
+                                <option value="1">啟用</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>語言</td>
+                        <td>
+                            <select id="language">
+                                <option value=0 selected>中文</option>
+                                <option value="1">English</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="button" value="Create User" onclick="myfunction()">
+        </form>
+    </body>
+</html>
+
