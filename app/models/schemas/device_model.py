@@ -48,6 +48,8 @@ class DeviceViewModel(Base):
     group_id: int
     device_model_id: int
     name: str
+    area: str
+    serial_number: str
     info: dict
     created_at: datetime
     updated_at: datetime
@@ -55,6 +57,8 @@ class DeviceViewModel(Base):
 
 class DevicePostModel(Base):
     name: str
+    area: str
+    serial_number: str
     info: dict
 
     # class Config:

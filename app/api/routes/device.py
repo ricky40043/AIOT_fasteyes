@@ -53,16 +53,16 @@ def CreateDevices(device_model_id: int, device_create: DevicePostModel,
         raise HTTPException(status_code=401, detail="權限不夠")
     if device_model_id == DeviceType.temperature_humidity.value:
         device = create_temperature_humidity_devices(db, current_user.group_id, current_user.id,
-                                                     device_create.name, device_create.serail_number, device_create.area, device_create.info)
+                                                     device_create.name, device_create.serial_number, device_create.area, device_create.info)
     elif device_model_id == DeviceType.ip_cam.value:
         device = create_ip_cam_devices(db, current_user.group_id, current_user.id,
-                                       device_create.name, device_create.serail_number, device_create.area, device_create.info)
+                                       device_create.name, device_create.serial_number, device_create.area, device_create.info)
     elif device_model_id == DeviceType.electrostatic.value:
         device = create_electrostatic_devices(db, current_user.group_id, current_user.id,
-                                              device_create.name, device_create.serail_number, device_create.area, device_create)
+                                              device_create.name, device_create.serial_number, device_create.area, device_create.info)
     elif device_model_id == DeviceType.Nitrogen.value:
         device = create_Nitrogen_devices(db, current_user.group_id, current_user.id,
-                                         device_create.name, device_create.serail_number, device_create.area, device_create)
+                                         device_create.name, device_create.serial_number, device_create.area, device_create.info)
 
     return device
 

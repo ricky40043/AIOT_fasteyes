@@ -59,9 +59,8 @@ class MyUDPProtocol(asyncio.DatagramProtocol):
         device_db = get_temperature_humidity_devices_by_serial_number(name)
 
         if not device_db:
-            return ""
+            return name+"不存在"
 
         observation_in = {"temperature": THTL, "humidity": HHTL, "index": Index, "alarm_temperature": True,
                           "alarm_humidity": False, "battery": Battery, "status": Status}
-
         Create_temperature_humidity_Observation(observation_in, device_db.group_id, device_db.id)

@@ -17,6 +17,8 @@ from app.models.schemas.observation import ObservationPostModel
 from app.models.schemas.temperature_humidity_observation import temperature_humidity_ObservationPostModel
 from app.models.schemas.Nitrogen_observation import Nitrogen_ObservationPostModel
 from app.models.schemas.electrostatic_observation import electrostatic_ObservationPostModel
+from app.server.device_model import DeviceType
+
 
 def get_All_observations(db: Session):
     return db.query(observation).all()
@@ -37,7 +39,7 @@ def Create_temperature_humidity_Observation(observation_in: dict, group_id: int,
         observation_db = observation(info=observation_in,
                                      group_id=group_id,
                                      device_id=device_id,
-                                     device_model_id=1)
+                                     device_model_id=DeviceType.temperature_humidity.value)
         db.add(observation_db)
         db.commit()
         db.refresh(observation_db)
@@ -57,7 +59,7 @@ def Ceate_Nitrogen_Observation(db: Session,
         observation_db = observation(**observation_in.dict(),
                                      group_id=group_id,
                                      device_id=device_id,
-                                     device_model_id=4)
+                                     device_model_id=DeviceType.Nitrogen.value)
         db.add(observation_db)
         db.commit()
         db.refresh(observation_db)
@@ -77,27 +79,7 @@ def Ceate_electrostatic_Observation(db: Session,
         observation_db = observation(**observation_in.dict(),
                                      group_id=group_id,
                                      device_id=device_id,
-                                     device_model_id=1)
-        db.add(observation_db)
-        db.commit()
-        db.refresh(observation_db)
-    except Exception as e:
-        db.rollback()
-        print(str(e))
-        raise UnicornException(name=Ceate_electrostatic_Observation.__name__, description=str(e),
-                               status_code=500)
-    return observation_db
-
-
-def Ceate_electrostatic_Observation(db: Session,
-                                    observation_in: electrostatic_ObservationPostModel,
-                                    group_id: int, device_id: int):
-    db.begin()
-    try:
-        observation_db = observation(**observation_in.dict(),
-                                     group_id=group_id,
-                                     device_id=device_id,
-                                     device_model_id=1)
+                                     device_model_id=DeviceType.electrostatic.value)
         db.add(observation_db)
         db.commit()
         db.refresh(observation_db)

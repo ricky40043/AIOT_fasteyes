@@ -18,7 +18,7 @@ def get_temperature_humidity_devices(db: Session, group_id: int):
 
 def get_temperature_humidity_devices_by_serial_number(serial_number: str):
     db = next(get_db())
-    return db.query(device).filter(device.device_model_id == 1, device.serial_number == serial_number).first()
+    return db.query(device).filter(device.device_model_id == DeviceType.temperature_humidity.value, device.serial_number == serial_number).first()
 
 
 def create_temperature_humidity_devices(db: Session, group_id: int, user_id: int, name: str, serial_number: str,
