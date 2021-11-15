@@ -24,22 +24,20 @@ class fasteyes_output(Base):
     output_time = Column(DateTime, index=True)
     updated_at = Column(DateTime, index=True)
 
-    def __init__(self, user_id, group_id, time, department, name, observation_ID,
-                 wear_mask, temperature, threshold_temperature, compensate_temperature,
-                 device_ID, result, output_time, updated_at, **kwargs):
-        self.user_id = user_id
+    def __init__(self, user_id, group_id, **kwargs):
+        # self.user_id = user_id
         self.group_id = group_id
-        self.time = time
-        self.name = name
-        self.department = department
-        self.observation_ID = observation_ID
-        self.wear_mask = wear_mask
-        self.temperature = temperature
-        self.threshold_temperature = threshold_temperature
-        self.compensate_temperature = compensate_temperature
-        self.device_ID = device_ID
-        self.result = result
-        self.output_time = output_time
+        self.time = True
+        self.name = True
+        self.department = True
+        self.observation_ID = True
+        self.wear_mask = True
+        self.temperature = True
+        self.threshold_temperature = False
+        self.compensate_temperature = False
+        self.device_ID = False
+        self.result = True
+        self.output_time = datetime.now()
         self.updated_at = datetime.now()
 
     # def __repr__(self):

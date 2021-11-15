@@ -16,7 +16,7 @@ from app.server.device_model.crud import get_All_device_models
 from app.server.face.crud import get_All_faces
 from app.server.fasteyes_device.crud import get_All_fasteyes_devices
 from app.server.fasteyes_observation.crud import get_All_fasteyes_observations
-from app.server.fasteyes_output.crud import get_All_fasteyes_outputs
+from app.server.fasteyes_output.crud import get_All_fasteyes_outputs, create_fasteyes_output
 from app.server.fasteyes_uuid.crud import get_All_fasteyes_uuids
 from app.server.group.crud import get_All_groups, create_group, get_group_by_name
 from app.server.observation.crud import get_All_observations
@@ -104,36 +104,6 @@ def PatchUserVerify_code_enable(verify_code_enable: bool, db: Session = Depends(
     return change_user_verify_code_enable(db, current_user.id, verify_code_enable)
 
 
-# # 創建 HR User (Admin)
-# @router.post("/users/HR", response_model=UserViewModel)
-# def CreateHRUser(user_create: UserPostViewModel, db: Session = Depends(get_db),
-#                  Authorize: AuthJWT = Depends()):
-#     if get_user_by_email(db, email=user_create.email):
-#         raise HTTPException(status_code=400, detail="Email already registered")
-#
-#     current_user = Authorize_user(Authorize, db)
-#     if get_user_by_name_in_group(db, user_create.name, current_user.group_id):
-#         raise HTTPException(status_code=400, detail="Name already exist in this group")
-#
-#     user_db = Create_User(db, user_create, current_user.group_id, level=Authority_Level.HRAccess.value)
-#     return user_db
-#
-#
-# # 創建 一般 User (Admin)
-# @router.post("/users/Normal", response_model=UserViewModel)
-# def CreateNormalUser(user_create: UserPostViewModel, db: Session = Depends(get_db),
-#                      Authorize: AuthJWT = Depends()):
-#     if get_user_by_email(db, email=user_create.email):
-#         raise HTTPException(status_code=400, detail="Email already registered")
-#
-#     current_user = Authorize_user(Authorize, db)
-#     if get_user_by_name_in_group(db, user_create.name, current_user.group_id):
-#         raise HTTPException(status_code=400, detail="Name already exist in this group")
-#
-#     user_db = Create_User(db, user_create, current_user.group_id, level=Authority_Level.HRAccess.value)
-#     return user_db
-
-
 # 刪除 user (Admin)
 @router.delete("/users/{user_id}", response_model=UserViewModel)
 def DeleteUser(user_id: int,
@@ -174,7 +144,7 @@ def InivteUser(user_invite: UserInviteViewModel, background_tasks: BackgroundTas
 
 # User verify
 @router.get("/users/verify/{token}")
-def InivteUser(token: str, request: Request, db: Session = Depends(get_db)):
+def InivteUserVerify(token: str, request: Request, db: Session = Depends(get_db)):
     data = get_email_token(token)
 
     if get_user_by_email(db, email=data["email"]):
@@ -211,6 +181,7 @@ def CreateAdminUser(user_create: adminUserPostViewModel, db: Session = Depends(g
 
     group_db = create_group(db, user_create.group)
     user_db = Create_User(db, user_create, group_db.id, level=Authority_Level.Admin.value, is_enable=True)
+    create_fasteyes_output(db, user_db.id, group_db.id)
     return user_db
 
 
@@ -228,6 +199,7 @@ def CreateAdminUser(user_create: adminUserPostViewModel, db: Session = Depends(g
 
     group_db = create_group(db, user_create.group)
     user_db = Create_User(db, user_create, group_db.id, level=Authority_Level.RD.value, is_enable=True)
+    create_fasteyes_output(db, user_db.id, group_db.id)
     return user_db
 
 
@@ -256,23 +228,23 @@ def DeleteAdminUser(user_id: int, db: Session = Depends(get_db),
 
 
 #################################################################################################
-# TEST
-@router.post("/Test")
-def Test_get_ALL(db: Session = Depends(get_db)):
-    get_All_roles(db)
-    get_All_groups(db)
-    get_All_users(db)
-    get_All_staffs(db)
-    get_All_devices(db)
-    get_All_departments(db)
-    get_All_observations(db)
-    get_All_faces(db)
-    get_All_device_models(db)
-    get_All_fasteyes_devices(db)
-    get_All_fasteyes_observations(db)
-    get_All_fasteyes_uuids(db)
-    get_All_fasteyes_outputs(db)
-    return "Done"
+# # TEST
+# @router.post("/Test")
+# def Test_get_ALL(db: Session = Depends(get_db)):
+#     get_All_roles(db)
+#     get_All_groups(db)
+#     get_All_users(db)
+#     get_All_staffs(db)
+#     get_All_devices(db)
+#     get_All_departments(db)
+#     get_All_observations(db)
+#     get_All_faces(db)
+#     get_All_device_models(db)
+#     get_All_fasteyes_devices(db)
+#     get_All_fasteyes_observations(db)
+#     get_All_fasteyes_uuids(db)
+#     get_All_fasteyes_outputs(db)
+#     return "Done"
 
 
 # 取得User by id (RD)

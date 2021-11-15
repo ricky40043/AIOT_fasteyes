@@ -28,15 +28,15 @@ PAGE_SIZE = 5
 
 FILE_PATH = os.getcwd() +"/db_image/"
 DEFAULT_USER = "400430012"
-HOST_IP = "127.0.0.1"
+HOST_IP = "192.168.45.78"
 PORT = "8000"
-HOST_NAME = "http://192.168.45.51:8000"
+HOST_NAME = "http://"+HOST_IP+":"+PORT
 SQLALCHEMY_DATABASE_URL = "sqlite:///sql_app_20210924.db"
 # SQLALCHEMY_DATABASE_URL = "postgresql://postgres:88888888@192.168.45.51/fastapi_db_20210924"
 
 
 DEFAULT_USER = os.getenv('DEFAULT_USER')
-HOST_IP = os.getenv('HOST_IP')
-PORT = os.getenv('PORT')
+# HOST_IP = os.getenv('HOST_IP')
+# PORT = os.getenv('PORT')
 HOST_NAME = os.getenv('HOST_NAME')
 SQLALCHEMY_DATABASE_URL = os.getenv('SQLALCHEMY_DATABASE_URL')

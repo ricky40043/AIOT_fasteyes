@@ -12,22 +12,24 @@ class Base(BaseModel):
 
 
 class ElectrostaticDeviceInfoModel(Base):
-    description: str
     left_alarm: float
     right_alarm: float
     head_alarm: float
 
 
 class ElectrostaticDevicePostModel(Base):
-    name: str
     info: ElectrostaticDeviceInfoModel
+    name: str
+    serial_number: str
+    area: str
 
     class Config:
         schema_extra = {
             "example": {
                 "name": "ElectrostaticDevice1",
+                "serial_number": "jfswsad123",
+                "area": "room",
                 "info": {
-                    "description": "str",
                     "left_alarm": "60.3",
                     "right_alarm": "60.5",
                     "head_alarm": "12.8"
@@ -37,31 +39,17 @@ class ElectrostaticDevicePostModel(Base):
 
 
 class ElectrostaticDevicePatchModel(Base):
-    id: int
-    name: str
     info: ElectrostaticDeviceInfoModel
-
+    name: str
+    area: str
     class Config:
         schema_extra = {
             "example": {
-                "id": "1",
-                "name": "ElectrostaticDevice1",
                 "info": {
-                    "serial_number": "str",
-                    "ip": "192.168.1.1",
-                    "username": "sumi",
-                    "password": "12345678"
+                    "description": "str",
+                    "left_alarm": "60.3",
+                    "right_alarm": "60.5",
+                    "head_alarm": "12.8"
                 }
             }
         }
-
-
-class ElectrostaticDeviceViewModel(Base):
-    id: int
-    user_id: int
-    group_id: int
-    devicemodel_id: int
-    name: str
-    info: ElectrostaticDeviceInfoModel
-    created_at: datetime
-    updated_at: datetime

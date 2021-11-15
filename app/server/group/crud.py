@@ -3,15 +3,19 @@ from sqlalchemy.orm import Session
 
 from app.models.domain.Error_handler import UnicornException
 from app.models.domain.group import group
-from app.models.schemas.group import GroupPostModel
+from app.models.schemas.group import GroupPostModel, GroupPatchModel
 
 
 def get_All_groups(db: Session):
     return db.query(group).all()
 
 
-def get_group_by_name(db: Session, group_name):
+def get_group_by_name(db: Session, group_name: str):
     return db.query(group).filter(group.name == group_name).first()
+
+
+def get_group_by_id(db: Session, group_id: int):
+    return db.query(group).filter(group.id == group_id).first()
 
 
 def create_group(db: Session, group_create: GroupPostModel):
@@ -26,3 +30,21 @@ def create_group(db: Session, group_create: GroupPostModel):
         print(str(e))
         raise UnicornException(name=create_group.__name__, description=str(e), status_code=500)
     return db_group
+
+
+def group_modify_name(db: Session, group_id: int, group_patch: GroupPatchModel):
+    group_db = db.query(group).filter(group.id == group_id).first()
+    db.begin()
+    try:
+        group_db.name = group_patch.name
+        db.commit()
+        db.refresh(group_db)
+    except Exception as e:
+        db.rollback()
+        print(str(e))
+        raise UnicornException(name=create_group.__name__, description=str(e), status_code=500)
+    return group_db
+
+
+def delete_group_by_id(db: Session, group_id: int):
+    pass

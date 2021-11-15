@@ -12,56 +12,71 @@ class Base(BaseModel):
 
 
 class Ip_CamInfoModel(Base):
-    serial_number: str
     ip: str
+    port: str
     username: str
     password: str
-
-
-class Ip_CamPostModel(Base):
-    name: str
-    info: Ip_CamInfoModel
+    stream_name: str
 
     class Config:
         schema_extra = {
             "example": {
-                "name": "NitrogenDevice1",
+                "stream_name": "live1s1.sdp",
+                "ip": "192.168.45.64",
+                "port": "554",
+                "username": "root",
+                "password": "a1234567"
+            }
+        }
+
+
+class Ip_CamPostModel(Base):
+    info: Ip_CamInfoModel
+    name: str
+    area: str
+    serial_number: str
+
+    class Config:
+        schema_extra = {
+            "example": {
                 "info": {
-                    "serial_number": "str",
-                    "ip": "192.168.1.1",
-                    "username": "sumi",
-                    "password": "12345678"
+                    "stream_name": "live1s1.sdp",
+                    "ip": "192.168.45.64",
+                    "port": "554",
+                    "username": "root",
+                    "password": "a1234567"
                 }
             }
         }
 
 
 class Ip_CamDevicePatchModel(Base):
-    id: int
     name: str
+    area: str
     info: Ip_CamInfoModel
 
     class Config:
         schema_extra = {
             "example": {
-                "id": "1",
-                "name": "Temperature_humidityDevice1",
+                "name": "ip_cam1",
                 "info": {
-                    "serial_number": "str",
-                    "ip": "192.168.1.1",
-                    "username": "sumi",
-                    "password": "12345678"
+                    "serial_number": "ip_cam1",
+                    "stream_name": "live1s1.sdp",
+                    "ip": "192.168.45.64",
+                    "port": "554",
+                    "username": "root",
+                    "password": "a1234567"
                 }
             }
         }
 
 
-class Ip_CamDeviceViewModel(Base):
-    id: int
-    user_id: int
-    group_id: int
-    devicemodel_id: int
-    name: str
-    info: Ip_CamInfoModel
-    created_at: datetime
-    updated_at: datetime
+# class Ip_CamDeviceViewModel(Base):
+#     id: int
+#     user_id: int
+#     group_id: int
+#     devicemodel_id: int
+#     name: str
+#     info: Ip_CamInfoModel
+#     created_at: datetime
+#     updated_at: datetime

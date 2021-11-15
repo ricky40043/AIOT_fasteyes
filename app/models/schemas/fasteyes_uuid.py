@@ -55,4 +55,4 @@ class FasteysesUuidViewModel(Base):
 
 # class HardwareUuid_and_DeviceViewModel(Base):
 #     Hardware: HardwareUuidViewModel
-#     Device: Optional[DeviceViewModel]
+#     device: Optional[DeviceViewModel]

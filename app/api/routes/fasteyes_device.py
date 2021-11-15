@@ -10,8 +10,8 @@ from app.models.schemas.fasteyes_device import FasteyesDeviceViewModel, Fasteyes
     FasteyesDeviceSettingChangeModel, FasteyesDevicePatchModel
 from app.server.authentication import Authority_Level, verify_password, checkLevel
 from app.server.fasteyes_device.crud import get_All_fasteyes_devices, get_group_fasteyes_devices, \
-    check_device_exist_by_deviceuuid, regist_device, \
-    change_fasteyes_device_setting, change_fasteyes_device_data, check_device_owner, get_fasteyes_device_by_uuid
+    check_device_exist_by_deviceuuid, regist_device, check_fasteyes_device_owner, \
+    change_fasteyes_device_setting, change_fasteyes_device_data, get_fasteyes_device_by_uuid
 from app.server.fasteyes_uuid.crud import check_deviceuuid_exist
 
 router = APIRouter()
@@ -19,7 +19,7 @@ router = APIRouter()
 
 # 取得所有device (RD)
 @router.get("/fasteyes_device/all", response_model=List[FasteyesDeviceViewModel])
-def GetAllfasteyes_devices(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+def GetAllFasteyesDevices(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
 
     if not checkLevel(current_user, Authority_Level.RD.value):
@@ -30,7 +30,7 @@ def GetAllfasteyes_devices(db: Session = Depends(get_db), Authorize: AuthJWT = D
 
 # 取得所有device (Admin)
 @router.get("/fasteyes_device", response_model=List[FasteyesDeviceViewModel])
-def Getgroup_fasteyes_devices(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+def GetGroupFasteyesDevices(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
 
     return get_group_fasteyes_devices(db, current_user.group_id)
@@ -53,21 +53,21 @@ def RegistDevice(device_in: FasteyesDevicePostViewModel,
     return device_db
 
 
-# device_id 修改 Device info (HRAccess)
+# device_id 修改 device info (HRAccess)
 @router.patch("/fasteyes_device/{fasteyes_device_id}", response_model=FasteyesDeviceViewModel)
-def PatchUserSetting(fasteyes_device_id: int, DevicePatch: FasteyesDevicePatchModel,
+def PatchDeviceSetting(fasteyes_device_id: int, DevicePatch: FasteyesDevicePatchModel,
                      db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-    check_device_owner(db, fasteyes_device_id, current_user.id)
+    check_fasteyes_device_owner(db, fasteyes_device_id, current_user.id)
     return change_fasteyes_device_data(db, fasteyes_device_id, DevicePatch)
 
 
-# device_id 修改 Device setting (HRAccess)
+# device_id 修改 device setting (HRAccess)
 @router.patch("/fasteyes_device/{fasteyes_device_id}/setting", response_model=FasteyesDeviceViewModel)
-def PatchUserSetting(fasteyes_device_id: int, DevicePatch: FasteyesDeviceSettingChangeModel,
+def PatchDeviceSetting(fasteyes_device_id: int, DevicePatch: FasteyesDeviceSettingChangeModel,
                      db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-    check_device_owner(db, fasteyes_device_id, current_user.id)
+    check_fasteyes_device_owner(db, fasteyes_device_id, current_user.id)
     return change_fasteyes_device_setting(db, fasteyes_device_id, DevicePatch)
 
 

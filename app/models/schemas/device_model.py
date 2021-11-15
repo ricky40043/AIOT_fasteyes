@@ -13,7 +13,7 @@ class Base(BaseModel):
         arbitrary_types_allowed = True
 
 
-class DevicePostModel(Base):
+class DeviceModelPostModel(Base):
     name: str
 
     class Config:
@@ -24,21 +24,53 @@ class DevicePostModel(Base):
         }
 
 
-class DevicePatchModel(Base):
-    id: int
+class DeviceModelPatchModel(Base):
     name: str
 
     class Config:
         schema_extra = {
             "example": {
-                "id": "1",
                 "name": "ricky"
             }
         }
 
 
-class DeviceViewModel(Base):
+class DeviceModelViewModel(Base):
     id: int
     name: str
     created_at: datetime
     updated_at: datetime
+
+
+class DeviceViewModel(Base):
+    id: int
+    user_id: int
+    group_id: int
+    device_model_id: int
+    name: str
+    info: dict
+    created_at: datetime
+    updated_at: datetime
+
+
+class DevicePostModel(Base):
+    name: str
+    info: dict
+
+    # class Config:
+    #     schema_extra = {
+    #         "example": {
+    #             "name": "1705EF",
+    #             "info": {
+    #                 "serial_number": "Temperature_humidityDevice1",
+    #                 "interval_time": "10",
+    #                 "alarm_temperature": "67.9",
+    #                 "alarm_humidity": "45.2",
+    #                 "battery_alarm": "10"
+    #             }
+    #         }
+    #     }
+
+
+class DevicePatchModel(Base):
+    info: dict

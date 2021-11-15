@@ -11,7 +11,8 @@ from sqlalchemy.orm import Session
 from app.core.config import FILE_PATH
 from app.models.domain.Error_handler import UnicornException
 from app.models.domain.staff import staff
-from app.models.schemas.fasteyes_observation import ObservationPostModel, ObservationPatchViewModel, attendancePostModel
+from app.models.schemas.fasteyes_observation import FasteyesObservationInfoModel, FasteyesObservationPostModel, \
+    FasteyesObservationViewModel, FasteyesObservationPatchViewModel, attendancePostModel
 from starlette.responses import StreamingResponse
 from fastapi import UploadFile, File
 from app.server.staff.crud import get_default_staff_id
@@ -25,7 +26,7 @@ def get_observation_by_id(db: Session, observation_id: int):
     return db.query(fasteyes_observation).filter(fasteyes_observation.id == observation_id).first()
 
 
-def CeateFasteyesObservation(db: Session, observation_in: ObservationPostModel, group_id: int, fasteyes_device_id: int):
+def CeateFasteyesObservation(db: Session, observation_in: FasteyesObservationPostModel, group_id: int, fasteyes_device_id: int):
     db.begin()
     try:
         if observation_in.staff_id == -1:
@@ -93,6 +94,12 @@ def download_observation_image_by_id(db: Session, observation_id: int):
     return StreamingResponse(io.BytesIO(im_png.tobytes()), media_type="image/png")
 
 
+def get_Observations_by_group_id_and_timespan(db: Session, group_id: int, start_timestamp: datetime,
+                                              end_timestamp: datetime):
+    return db.query(fasteyes_observation).filter(fasteyes_observation.group_id == group_id).filter(
+        fasteyes_observation.updated_at >= start_timestamp, fasteyes_observation.updated_at <= end_timestamp).all()
+
+
 def get_Observations_by_device_id_and_staff_id(db: Session, device_id: int, staff_id: int):
     return db.query(fasteyes_observation).filter(fasteyes_observation.device_id == device_id,
                                                  fasteyes_observation.staff_id == staff_id).all()
@@ -100,6 +107,10 @@ def get_Observations_by_device_id_and_staff_id(db: Session, device_id: int, staf
 
 def get_Observations_by_staff_id(db: Session, staff_id: int):
     return db.query(fasteyes_observation).filter(fasteyes_observation.staff_id == staff_id).all()
+
+
+def get_Observations_by_group_id(db: Session, group_id: int):
+    return db.query(fasteyes_observation).filter(fasteyes_observation.group_id == group_id).all()
 
 
 def get_Observations_by_department_id(db: Session, department_id: int):
@@ -122,7 +133,7 @@ def get_All_fasteyes_observations(db: Session):
     return db.query(fasteyes_observation).all()
 
 
-def update_observation(db: Session, observation_id: int, obsPatch: ObservationPatchViewModel):
+def update_observation(db: Session, observation_id: int, obsPatch: FasteyesObservationPatchViewModel):
     db.begin()
     try:
         observation_db = db.query(fasteyes_observation).filter(fasteyes_observation.id == observation_id).first()
@@ -233,3 +244,5 @@ def delete_observation_by_id(db: Session, observation_id: int):
         print(str(e))
         raise UnicornException(name=delete_observation_by_id.__name__, description=str(e), status_code=500)
     return fasteyes_observation
+
+

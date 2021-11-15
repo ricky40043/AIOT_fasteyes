@@ -7,7 +7,7 @@ from datetime import datetime
 
 # from app.models.schemas.Company import CompanyViewModel
 # from app.models.schemas.Department import DepartmentViewModel
-# from app.models.schemas.Device import DeviceViewModel
+# from app.models.schemas.device import DeviceViewModel
 from app.models.schemas.group import GroupPostModel
 
 

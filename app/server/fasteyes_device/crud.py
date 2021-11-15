@@ -55,7 +55,7 @@ def regist_device(db: Session, device_in: FasteyesDeviceViewModel, user_id: int,
     return fasteyes_device_db
 
 
-def check_device_owner(db: Session, fasteyes_device_id: int, user_id: int):
+def check_fasteyes_device_owner(db: Session, fasteyes_device_id: int, user_id: int):
     return db.query(fasteyes_device).filter(fasteyes_device.id == fasteyes_device_id,
                                             fasteyes_device.user_id == user_id).first()
 

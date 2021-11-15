@@ -32,13 +32,15 @@ class Bulletin_boardPatchModel(Base):
     text: str
     picture_name: str
     picture_or_text: bool
+    is_used: bool
 
     class Config:
         schema_extra = {
             "example": {
                 "text": "ricky",
                 "picture_name": "picture_name",
-                "picture_or_text": False
+                "picture_or_text": False,
+                "is_used": True
             }
         }
 

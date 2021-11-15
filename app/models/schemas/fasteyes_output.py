@@ -61,7 +61,7 @@ class FasteyesOutputViewModel(Base):
     output_time: bool
 
 
-class ObservationPatchViewModel(Base):
+class FasteyesOutputPatchViewModel(Base):
     time: Optional[bool] = True
     name: Optional[bool] = True
     department: Optional[bool] = True

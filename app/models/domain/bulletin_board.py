@@ -14,11 +14,12 @@ class bulletin_board(Base):
     created_at = Column(DateTime, index=True)
     updated_at = Column(DateTime, index=True)
 
-    def __init__(self, device_id, group_id, device_model_id, info):
-        self.device_id = device_id
+    def __init__(self, text, group_id, picture_name, picture_or_text, **kwargs):
         self.group_id = group_id
-        self.device_model_id = device_model_id
-        self.info = info
+        self.text = text
+        self.picture_name = picture_name
+        self.picture_or_text = picture_or_text
+        self.is_used = True
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 

@@ -162,7 +162,7 @@ def update_User_Verify_code_enable(db: Session, user_id: int, verify_code_enable
 
 
 def Create_User(db: Session, user_create: UserPostViewModel, group_id: int,
-                level: int = Authority_Level.HRAccess.value, is_enable: bool = False):
+                level: int = Authority_Level.HRAccess.value, is_enable: bool = True):
     db.begin()
     try:
         hashed_password = get_password_hash(user_create.password)

@@ -92,5 +92,5 @@ class FasteyesDeviceViewModel(Base):
     info: FasteyesDeviceSettingChangeModel
 
 # class Device_and_Setting_ViewModel(UserBase):
-#     Device: DeviceViewModel
+#     device: DeviceViewModel
 #     Setting: DeviceSettingViewModel

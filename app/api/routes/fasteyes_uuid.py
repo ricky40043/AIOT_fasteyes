@@ -68,7 +68,7 @@ def ResetHardwareUuid(hardwareUuid: str,
     if not hardware_uuid_db.is_registered:
         raise HTTPException(status_code=400, detail="hardware_uuid is not registered")
 
-    # Delete Device
+    # Delete device
     device_db = get_fasteyes_device_by_uuid(db, hardware_uuid_db.uuid)
     if device_db:
         delete_observation_by_device_id(db, device_db.id)

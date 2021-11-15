@@ -12,22 +12,24 @@ class Base(BaseModel):
 
 
 class NitrogenDevice_InfoModel(Base):
-    serial_number: str
     interval_time: int
     Nitrogen_alarm: float
     Oxygen_alarm: float
 
 
 class NitrogenDevicePostModel(Base):
-    name: str
     info: NitrogenDevice_InfoModel
+    name: str
+    area: str
+    serial_number: str
 
     class Config:
         schema_extra = {
             "example": {
                 "name": "NitrogenDevice1",
+                "area": "room",
+                "serial_number": "Erw34512",
                 "info": {
-                    "serial_number": "str",
                     "interval_time": "10",
                     "Nitrogen_alarm": "67.9",
                     "Oxygen_alarm": "45.2"
@@ -37,15 +39,15 @@ class NitrogenDevicePostModel(Base):
 
 
 class NitrogenDevicePatchModel(Base):
-    id: int
-    name: str
     info: NitrogenDevice_InfoModel
+    name: str
+    area: str
 
     class Config:
         schema_extra = {
             "example": {
-                "id": "1",
-                "name": "Temperature_humidityDevice1",
+                "name": "NitrogenDevice1",
+                "area": "room",
                 "info": {
                     "serial_number": "str",
                     "interval_time": "10",
@@ -56,13 +58,13 @@ class NitrogenDevicePatchModel(Base):
         }
 
 
-class NitrogenDeviceViewModel(Base):
-    id: int
-    user_id: int
-    group_id: int
-    devicemodel_id: int
-    name: str
-    info: NitrogenDevice_InfoModel
-    created_at: datetime
-    updated_at: datetime
+# class NitrogenDeviceViewModel(Base):
+#     id: int
+#     user_id: int
+#     group_id: int
+#     devicemodel_id: int
+#     name: str
+#     info: NitrogenDevice_InfoModel
+#     created_at: datetime
+#     updated_at: datetime
 

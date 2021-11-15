@@ -36,7 +36,7 @@ class Authority_Level(Enum):
     Admin = 2
     HRAccess = 3
     User = 4
-    # Device = 5
+    # device = 5
 
 
 class Settings(BaseModel):

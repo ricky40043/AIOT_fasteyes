@@ -13,17 +13,17 @@ class Base(BaseModel):
         arbitrary_types_allowed = True
 
 
-class ObservationInfoModel(Base):
+class FasteyesObservationInfoModel(Base):
     wear_mask: int
     temperature: float
     threshold_temperature: float
     compensate_temperature: float
 
 
-class ObservationPostModel(Base):
+class FasteyesObservationPostModel(Base):
     phenomenon_time: datetime
     result: bool
-    info: ObservationInfoModel
+    info: FasteyesObservationInfoModel
     image_name: str
     staff_id: Optional[int]
 
@@ -45,19 +45,19 @@ class ObservationPostModel(Base):
         }
 
 
-class ObservationViewModel(Base):
+class FasteyesObservationViewModel(Base):
     id: int
     group_id: int
     fasteyes_device_id: int
     phenomenon_time: datetime
     result: bool
-    info: ObservationInfoModel
+    info: FasteyesObservationInfoModel
     image_name: str
     created_at: datetime
     updated_at: datetime
 
 
-class ObservationPatchViewModel(Base):
+class FasteyesObservationPatchViewModel(Base):
     staff_id: int
 
     class Config:

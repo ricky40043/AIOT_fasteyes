@@ -7,6 +7,8 @@ class device(Base):
     __tablename__ = "devices"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
+    serial_number = Column(String, index=True)
+    area = Column(String, index=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     group_id = Column(Integer, ForeignKey("groups.id"))
     # 1. 溫濕度感應器 2. ip cam 3. 靜電環 4. 氮氣機
@@ -15,10 +17,12 @@ class device(Base):
     created_at = Column(DateTime, index=True)
     updated_at = Column(DateTime, index=True)
 
-    def __init__(self, name, users_id, groups_id, device_model_id, info):
+    def __init__(self, name, user_id, group_id, device_model_id, info, serial_number, area):
         self.name = name
-        self.users_id = users_id
-        self.groups_id = groups_id
+        self.serial_number = serial_number
+        self.area = area
+        self.user_id = user_id
+        self.group_id = group_id
         self.device_model_id = device_model_id
         self.info = info
         self.created_at = datetime.now()
