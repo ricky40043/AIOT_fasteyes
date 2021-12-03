@@ -152,6 +152,7 @@ class UserViewModel(UserBase):
     email: str
     name: str
     info: UserInfoModel
+    level: int
     created_at: datetime
     updated_at: datetime
 

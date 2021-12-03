@@ -14,10 +14,10 @@ def check_FasteyesDevice_Authority(db: Session, current_user: user, device_id: i
     if get_fasteyes_device_by_id(db, device_id) is None:
         raise HTTPException(status_code=404, detail="fasteyes device is not exist")
 
-    device = check_fasteyes_device_owner(db, device_id, current_user.id)
+    device = check_fasteyes_device_owner(db, device_id, current_user.group_id)
     if device is None:
-        if checkLevel(current_user, Authority_Level.Admin.value):
-            device = get_fasteyes_device_by_id(db,device_id)
+        if checkLevel(current_user, Authority_Level.RD.value):
+            device = get_fasteyes_device_by_id(db, device_id)
         else:
             raise HTTPException(status_code=401, detail="你不是裝置的使用者")
 

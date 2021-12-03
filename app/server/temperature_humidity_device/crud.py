@@ -13,7 +13,7 @@ from app.server.device_model import DeviceType
 
 def get_temperature_humidity_devices(db: Session, group_id: int):
     return db.query(device).filter(device.device_model_id == DeviceType.temperature_humidity.value,
-                                   device.group_id == group_id).all()
+                                   device.group_id == group_id).order_by(device.id).all()
 
 
 def get_temperature_humidity_devices_by_serial_number(serial_number: str):

@@ -1,9 +1,10 @@
 # crud
 from datetime import datetime
+from typing import Optional
 
 from sqlalchemy.orm import Session
 
-from app.core.config import FILE_PATH
+from app.core.config import FILE_PATH, DEFAULT_USER
 from app.models.domain.Error_handler import UnicornException
 from app.models.domain.staff import staff
 from app.models.schemas.staff import StaffPostModel, StaffPatchModel
@@ -25,8 +26,20 @@ def get_staff_by_SerialNumber(db: Session, SerialNumber: str, group_id: int):
     return db.query(staff).filter(staff.group_id == group_id, staff.serial_number == SerialNumber).first()
 
 
-def get_staff_by_group(db: Session, group_id: int):
-    return db.query(staff).filter(staff.group_id == group_id).all()
+def get_staff_by_group(db: Session, group_id: int, status: Optional[int] = -1, department_id: Optional[int] = -1):
+    if status == -1 and department_id == -1:
+        return db.query(staff).filter(staff.group_id == group_id).order_by(staff.id).all()
+    elif status != -1 and department_id != -1:
+        return db.query(staff).filter(staff.group_id == group_id).filter(staff.status == status,
+                                                                         staff.department_id == department_id).order_by(
+            staff.id).all()
+    else:
+        if status != -1:
+            return db.query(staff).filter(staff.group_id == group_id).filter(staff.status == status).order_by(
+                staff.id).all()
+        else:
+            return db.query(staff).filter(staff.group_id == group_id).filter(
+                staff.department_id == department_id).order_by(staff.id).all()
 
 
 def get_user_by_serveral_number_in_group(db: Session, serial_number: str, group_id: int):
@@ -37,6 +50,8 @@ def create_staff(db: Session, StaffIn: StaffPostModel, user_id: int, group_id: i
     db.begin()
     try:
         StaffIn.info.birthday = str(StaffIn.info.birthday)
+        # temp_info = StaffIn.info.copy()
+        # temp_info["face_detect"] =
         db_staff = staff(**StaffIn.dict(), user_id=user_id, group_id=group_id)
         db.add(db_staff)
         db.commit()
@@ -98,4 +113,4 @@ def delete_Staff_by_Staff_id(db: Session, staff_id: int):
 
 
 def get_default_staff_id(db: Session):
-    return db.query(staff).filter(staff.serial_number == FILE_PATH).first()
+    return db.query(staff).filter(staff.serial_number == DEFAULT_USER).first()

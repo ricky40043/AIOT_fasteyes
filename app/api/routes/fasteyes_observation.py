@@ -24,7 +24,8 @@ from app.server.fasteyes_observation.crud import upload_observation_image, downl
     get_Observations_by_device_id_and_staff_id, get_Observations_by_staff_id, get_Observations_by_department_id, \
     get_Observations_by_staff_id_and_timespan, get_Observations_by_department_id_and_timespan, \
     download_observation_image_by_id, CeateFasteyesObservation, update_observation, get_attendence_by_time_interval, \
-    delete_observation_by_id, delete_observation_by_device_id, get_Observations_by_group_id_and_timespan
+    delete_observation_by_id, delete_observation_by_device_id, get_Observations_by_group_id_and_timespan, \
+    get_Observations_by_group_id
 from app.server.fasteyes_output.crud import get_fasteyes_outputs_by_id, fasteyes_output_modify
 from app.server.send_email import send_email_async, send_email_temperature_alert
 from app.server.staff.crud import get_staff_by_id
@@ -96,16 +97,17 @@ def DownloadObservationImage(observation_id: int,
 
 # 取得所有觀測 (HRAccess)
 @router.get("/fasteyes_observations", response_model=Page[FasteyesObservationViewModel])
-def GetObservations(start_timestamp: Optional[datetime] = None,
+def GetObservations(status: int,
+                    start_timestamp: Optional[datetime] = None,
                     end_timestamp: Optional[datetime] = None,
                     db: Session = Depends(get_db),
                     Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     if start_timestamp and end_timestamp:
         return paginate(
-            get_Observations_by_group_id_and_timespan(db, current_user.group_id, start_timestamp, end_timestamp))
+            get_Observations_by_group_id_and_timespan(db, current_user.group_id, start_timestamp, end_timestamp, status))
     else:
-        return paginate(get_Observations_by_staff_id(db, current_user.group_id))
+        return paginate(get_Observations_by_group_id(db, current_user.group_id, status))
 
 
 # 員工ID 取得所有觀測 (HRAccess)
@@ -126,6 +128,7 @@ def GetObservationsByStaffId(staff_id: int,
 # 部門ID 取得所有觀測 (HRAccess)
 @router.get("/fasteyes_observations/department/{department_id}", response_model=Page[FasteyesObservationViewModel])
 def GetObservationsByDepartmentId(department_id: int,
+                                  status: int,
                                   start_timestamp: Optional[datetime] = None,
                                   end_timestamp: Optional[datetime] = None,
                                   db: Session = Depends(get_db),
@@ -134,9 +137,9 @@ def GetObservationsByDepartmentId(department_id: int,
     check_department_Authority(db, current_user, department_id)
     if start_timestamp and end_timestamp:
         return paginate(
-            get_Observations_by_department_id_and_timespan(db, department_id, start_timestamp, end_timestamp))
+            get_Observations_by_department_id_and_timespan(db, department_id, start_timestamp, end_timestamp, status))
     else:
-        return paginate(get_Observations_by_department_id(db, department_id))
+        return paginate(get_Observations_by_department_id(db, department_id, status))
 
 
 # 觀測ID 修改觀測 (HRAccess)
@@ -155,8 +158,9 @@ def UpdateObservation(observation_id: int, obsPatch: FasteyesObservationPatchVie
 
 
 # 取得考勤紀錄 (HRAccess)
-@router.get("/attendance", response_model=Page[attendanceViewModel])
+@router.post("/attendance", response_model=Page[attendanceViewModel])
 def GetObservationsByDeviceId_And_StaffId(attendance_in: attendancePostModel,
+                                          status: int,
                                           start_timestamp: Optional[datetime] = None,
                                           end_timestamp: Optional[datetime] = None,
                                           db: Session = Depends(get_db),
@@ -166,7 +170,7 @@ def GetObservationsByDeviceId_And_StaffId(attendance_in: attendancePostModel,
         raise HTTPException(status_code=401, detail="權限不夠")
 
     return paginate(
-        get_attendence_by_time_interval(db, current_user.group_id, start_timestamp, end_timestamp, attendance_in))
+        get_attendence_by_time_interval(db, current_user.group_id, start_timestamp, end_timestamp, attendance_in, status))
 
 
 # 觀測ID 刪除觀測 (HRAccess)
@@ -190,7 +194,7 @@ def DeleteDeviceObservation(device_id: int,
     if not checkLevel(current_user, Authority_Level.Admin.value):
         raise HTTPException(status_code=401, detail="權限不夠")
 
-    check_fasteyes_device_owner(db, device_id, current_user.id)
+    check_fasteyes_device_owner(db, device_id, current_user.group_id)
 
     return delete_observation_by_device_id(db, device_id)
 

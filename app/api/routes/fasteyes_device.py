@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from app.db.database import get_db
 from app.helper.authentication import Authorize_user
+from app.helper.fasteyes_device import check_FasteyesDevice_Authority
 from app.models.schemas.fasteyes_device import FasteyesDeviceViewModel, FasteyesDevicePostViewModel, \
     FasteyesDeviceSettingChangeModel, FasteyesDevicePatchModel
 from app.server.authentication import Authority_Level, verify_password, checkLevel
@@ -32,7 +33,6 @@ def GetAllFasteyesDevices(db: Session = Depends(get_db), Authorize: AuthJWT = De
 @router.get("/fasteyes_device", response_model=List[FasteyesDeviceViewModel])
 def GetGroupFasteyesDevices(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-
     return get_group_fasteyes_devices(db, current_user.group_id)
 
 
@@ -56,18 +56,18 @@ def RegistDevice(device_in: FasteyesDevicePostViewModel,
 # device_id 修改 device info (HRAccess)
 @router.patch("/fasteyes_device/{fasteyes_device_id}", response_model=FasteyesDeviceViewModel)
 def PatchDeviceSetting(fasteyes_device_id: int, DevicePatch: FasteyesDevicePatchModel,
-                     db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+                       db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-    check_fasteyes_device_owner(db, fasteyes_device_id, current_user.id)
+    check_fasteyes_device_owner(db, fasteyes_device_id, current_user.group_id)
     return change_fasteyes_device_data(db, fasteyes_device_id, DevicePatch)
 
 
 # device_id 修改 device setting (HRAccess)
 @router.patch("/fasteyes_device/{fasteyes_device_id}/setting", response_model=FasteyesDeviceViewModel)
 def PatchDeviceSetting(fasteyes_device_id: int, DevicePatch: FasteyesDeviceSettingChangeModel,
-                     db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+                       db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-    check_fasteyes_device_owner(db, fasteyes_device_id, current_user.id)
+    check_fasteyes_device_owner(db, fasteyes_device_id, current_user.group_id)
     return change_fasteyes_device_setting(db, fasteyes_device_id, DevicePatch)
 
 
@@ -76,8 +76,10 @@ def PatchDeviceSetting(fasteyes_device_id: int, DevicePatch: FasteyesDeviceSetti
 def GetFasteyesDevice(fasteyes_uuid: str, db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
 
-    fasteyes_device = get_fasteyes_device_by_uuid(db,fasteyes_uuid)
+    fasteyes_device = get_fasteyes_device_by_uuid(db, fasteyes_uuid)
     if fasteyes_device is None:
         raise HTTPException(status_code=404, detail="fasteyes_device is not exist")
 
+    # 已在其他group使用
+    fasteyes_device = check_FasteyesDevice_Authority(db, current_user, fasteyes_device.id)
     return fasteyes_device

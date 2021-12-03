@@ -3,6 +3,7 @@ from app.db.database import Base
 from datetime import datetime
 
 
+# from sqlalchemy.dialects.postgresql import JSON
 class observation(Base):
     __tablename__ = "observations"
     id = Column(Integer, primary_key=True, index=True)

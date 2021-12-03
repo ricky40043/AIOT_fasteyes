@@ -22,30 +22,32 @@ from app.server.authentication import Authority_Level, checkLevel
 from app.server.device.crud import check_device_owner, get_device_by_id
 from app.server.ip_cam_device import ip_cam_video_stream, ip_cam_face_detect_stream
 from app.server.observation.crud import delete_observation_by_device_id, \
-    get_Observations_by_device_id_and_timespan, get_Observations_by_device_id, delete_observation_by_id
+    get_Observations_by_device_id_and_timespan, get_Observations_by_device_id, delete_observation_by_id, \
+    get_Lastest_Observation_by_device_id, get_Observations_by_group_and_device_model_id_and_timespan, \
+    Create_temperature_humidity_Observation
 from app.server.send_email import send_email_async, send_email_temperature_alert
 from fastapi_pagination import Page, paginate
 
 router = APIRouter()
 
 
-# # 裝置ID 上傳觀測 打Socket & 寄信 (User)
-# @router.post("/devices/{device_id}/observation", response_model=ObservationViewModel)
-# def UploadObservation(device_id: int,
-#                       observation_in: ObservationPostModel,
-#                       background_tasks: BackgroundTasks,
-#                       db: Session = Depends(get_db),
-#                       Authorize: AuthJWT = Depends()):
-#     current_user = Authorize_user(Authorize, db)
-#     device = check_Device_Upload_Authority(db, current_user, device_id)
-#
-#     if device.device_model_id == 1:
-#         observation_db = Ceate_temperature_humidity_Observation(db, observation_in, current_user.group_id, device_id)
-#
-#     if current_user.info["email_alert"] and not observation_db.result:  # 寄信
-#         send_email_temperature_alert(background_tasks=background_tasks, db=db,
-#                                      email=current_user.email, observation_db=observation_db)
-#     return observation_db
+# 裝置ID 上傳觀測 打Socket & 寄信 (User)
+@router.post("/devices/{device_id}/observation", response_model=ObservationViewModel)
+def UploadObservation(device_id: int,
+                      observation_in: dict,
+                      background_tasks: BackgroundTasks,
+                      db: Session = Depends(get_db),
+                      Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+    device = check_Device_Upload_Authority(db, current_user, device_id)
+
+    if device.device_model_id == 1:
+        observation_db = Create_temperature_humidity_Observation(observation_in, current_user.group_id, device_id)
+
+    if current_user.info["email_alert"] and not observation_db.result:  # 寄信
+        send_email_temperature_alert(background_tasks=background_tasks, db=db,
+                                     email=current_user.email, observation_db=observation_db)
+    return observation_db
 
 
 # Device ID 取得所有觀測 (User)
@@ -61,6 +63,29 @@ def GetObservationsByDeviceId(device_id: int,
         return paginate(get_Observations_by_device_id_and_timespan(db, device_id, start_timestamp, end_timestamp))
     else:
         return paginate(get_Observations_by_device_id(db, device_id))
+
+
+# Device ID 最新所有觀測 (User)
+@router.get("/observations/device/observation/latest", response_model=List[ObservationViewModel])
+def GetObservationsByDeviceId(db: Session = Depends(get_db),
+                              Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+    data = get_Lastest_Observation_by_device_id(db, current_user.group_id)
+    return data
+
+
+# Device ID 取得所有觀測 (User)
+@router.get("/observations/device_model/{device_model_id}", response_model=Page[ObservationViewModel])
+def GetObservationsByDeviceId(device_model_id: int,
+                              status: int,
+                              start_timestamp: datetime,
+                              end_timestamp: datetime,
+                              db: Session = Depends(get_db),
+                              Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+    return paginate(
+        get_Observations_by_group_and_device_model_id_and_timespan(db, current_user.group_id, device_model_id,
+                                                                   status, start_timestamp, end_timestamp))
 
 
 # 觀測ID 刪除觀測 (HRAccess)
@@ -93,7 +118,7 @@ def DeleteDeviceObservation(device_id: int,
 # 取得IP Cam video (User)
 @router.get("/ip_cam/device/{device_id}/video")
 def GetIp_CamVideoByDeviceId(device_id: int,
-                         db: Session = Depends(get_db)):
+                             db: Session = Depends(get_db)):
     #                     Authorize: AuthJWT = Depends()):
     # current_user = Authorize_user(Authorize, db)
     # device_db = check_Device_Authority(db, current_user, device_id)
@@ -111,7 +136,7 @@ def GetIp_CamVideoByDeviceId(device_id: int,
 # 取得IP Cam Face detect (User)
 @router.get("/ip_cam/device/{device_id}/face_detect")
 def Get_Ip_CamFaceDetectByDeviceId(device_id: int,
-                         db: Session = Depends(get_db)):
+                                   db: Session = Depends(get_db)):
     #                     Authorize: AuthJWT = Depends()):
     # current_user = Authorize_user(Authorize, db)
     # device_db = check_Device_Authority(db, current_user, device_id)

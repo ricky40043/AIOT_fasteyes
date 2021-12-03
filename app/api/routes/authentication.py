@@ -13,7 +13,8 @@ from app.models.schemas.user import UserLoginViewModel, UserViewModel, DeviceLog
     LoginResultUserViewModel
 from app.server.authentication import get_tocken, authenticate_user, create_random_verify_code, \
     save_verify_code_to_token, ACCESS_TOKEN_EXPIRE_MINUTES, check_verify_code, checkLevel, Authority_Level
-from app.server.authentication.crud import set_user_enable, check_user_email_enable, create_and_set_user_password
+from app.server.authentication.crud import set_user_enable, check_user_email_enable, create_and_set_user_password, \
+    clear_all_data
 from app.server.send_email import SendEmailVerficationEmail, SendForgetPasswordEmail, send_Verfiy_code_email_async
 from app.server.user.crud import check_Email_Exist, check_user_owner, change_user_level
 
@@ -174,14 +175,19 @@ def refresh(Authorize: AuthJWT = Depends()):
     new_access_token = Authorize.create_access_token(subject=current_user)
     return {"access_token": new_access_token}
 
-#
-# @router.delete('/auth/clear_all_data')
-# def ClearAllData(db: Session = Depends(get_db),
-#                  Authorize: AuthJWT = Depends()):
-#     current_user = Authorize_user(Authorize, db)
-#     if not checkLevel(current_user, Authority_Level.RD.value):
-#         raise HTTPException(status_code=401, detail="權限不夠")
-#
-#     clear_all_data(db)
-#
-#     return "Clear Done"
+
+@router.delete('/auth/clear_all_data')
+def ClearAllData(db: Session = Depends(get_db),
+                 Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+    if not checkLevel(current_user, Authority_Level.RD.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    clear_all_data(db)
+
+    return "Clear Done"
+
+@router.delete('/auth/clear_all_data_no_auth')
+def ClearAllData(db: Session = Depends(get_db)):
+    clear_all_data(db)
+    return "Clear Done"

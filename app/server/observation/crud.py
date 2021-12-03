@@ -6,9 +6,11 @@ from datetime import datetime
 
 import cv2
 from sqlalchemy.orm import Session
+from sqlalchemy import or_
 from app.core.config import FILE_PATH
 from app.db.database import get_db
 from app.models.domain.Error_handler import UnicornException
+from app.models.domain.device import device
 from app.models.domain.observation import observation
 from starlette.responses import StreamingResponse
 from fastapi import UploadFile, File
@@ -127,3 +129,45 @@ def get_Observations_by_device_id_and_timespan(db: Session, device_id: int, star
 
 def get_Observations_by_device_id(db: Session, device_id: int):
     return db.query(observation).filter(observation.device_id == device_id).all()
+
+
+# def get_Lastest_Observation_by_device_id(db: Session, device_id: int):
+#     return db.query(observation).filter(observation.device_id == device_id).order_by(-observation.id).first()
+def get_Lastest_Observation_by_device_id(db: Session, group_id: int):
+    temperature_humidity_device_list = db.query(device).filter(device.device_model_id == DeviceType.temperature_humidity.value,
+                                   device.group_id == group_id).order_by(device.id).all()
+    temperature_humidity_observation_list = []
+    for temperature_humidity_device in temperature_humidity_device_list:
+        observation_db = db.query(observation).filter(observation.device_id == temperature_humidity_device.id).order_by(-observation.id).first()
+        temperature_humidity_observation_list.append(observation_db)
+    return temperature_humidity_observation_list
+
+
+def get_Observations_by_group_and_device_model_id_and_timespan(db: Session, group_id: int, device_model_id: int,
+                                                               status_in: int,
+                                                               start_timestamp: datetime,
+                                                               end_timestamp: datetime):
+    if status_in == -1:
+        return db.query(observation).filter(observation.group_id == group_id,
+                                            observation.device_model_id == device_model_id).filter(
+            observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
+            order_by(-observation.id).all()
+    # filter(observation.name.like("search_text%")).\
+
+    elif status_in == 0:
+        return db.query(observation).filter(observation.group_id == group_id,
+                                            observation.device_model_id == device_model_id).filter(
+            observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
+            filter(observation.info["status"] == "0",
+                   observation.info["alarm_temperature"] == "0",
+                   observation.info["alarm_humidity"] == "0"). \
+            order_by(-observation.id).all()
+    else:
+        data_list = db.query(observation).filter(observation.group_id == group_id,
+                                                 observation.device_model_id == device_model_id).filter(
+            observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
+            filter(or_(observation.info["status"] != "0",
+                       observation.info["alarm_temperature"] == "1",
+                       observation.info["alarm_humidity"] == "1")). \
+            order_by(-observation.id).all()
+        return data_list

@@ -14,16 +14,11 @@ class Base(BaseModel):
 
 
 class ObservationPostModel(Base):
-    devicemodel_id: int
-    device_id: int
     info: dict
-    group_id: int
 
     class Config:
         schema_extra = {
             "example": {
-                "devicemodel_id": 1,
-                "staff_id": 5,
                 "info": {
                 }
             }

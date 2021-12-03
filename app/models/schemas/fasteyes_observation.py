@@ -4,7 +4,7 @@ from typing import Optional, List
 from pydantic import BaseModel, EmailStr, Json
 
 # from app.models.domain.item import item
-from datetime import datetime, time , date as Date
+from datetime import datetime, time, date as Date
 
 
 class Base(BaseModel):
@@ -18,6 +18,17 @@ class FasteyesObservationInfoModel(Base):
     temperature: float
     threshold_temperature: float
     compensate_temperature: float
+
+
+class FasteyesObservationInfoViewModel(Base):
+    wear_mask: int
+    temperature: float
+    threshold_temperature: float
+    compensate_temperature: float
+    device_name: str
+    department_name: str
+    staff_name: str
+    staff_serial_number: str
 
 
 class FasteyesObservationPostModel(Base):
@@ -51,7 +62,7 @@ class FasteyesObservationViewModel(Base):
     fasteyes_device_id: int
     phenomenon_time: datetime
     result: bool
-    info: FasteyesObservationInfoModel
+    info: FasteyesObservationInfoViewModel
     image_name: str
     created_at: datetime
     updated_at: datetime
@@ -79,8 +90,9 @@ class attendance_dateModel(Base):
     staff_id: int
     punch_in: Optional[datetime]
     punch_out: Optional[datetime]
-    # staff_name: str
-    # staff_serial_number: str
+    staff_name: str
+    staff_serial_number: str
+    department_name: str
     punch_in_temperature: Optional[float]
     punch_out_temperature: Optional[float]
     punch_in_temperature_result: Optional[bool]

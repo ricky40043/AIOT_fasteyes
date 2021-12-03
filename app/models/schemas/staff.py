@@ -22,6 +22,7 @@ class StaffInfoModel(Base):
     gender: int
     telephone_number: str = ""
     birthday: datetime
+    face_detect: Optional[bool] = False
 
 
 class StaffPostModel(Base):

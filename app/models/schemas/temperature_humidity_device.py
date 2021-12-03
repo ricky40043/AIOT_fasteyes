@@ -13,8 +13,10 @@ class Base(BaseModel):
 
 class Temperature_humidityDevice_InfoModel(Base):
     interval_time: int
-    alarm_temperature: float
-    alarm_humidity: float
+    alarm_temperature_upper_limit: float
+    alarm_temperature_lower_limit: float
+    alarm_humidity_upper_limit: float
+    alarm_humidity_lower_limit: float
     battery_alarm: int
 
 

@@ -1,3 +1,5 @@
+import os
+
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi_jwt_auth import AuthJWT
 from pydantic import EmailStr
@@ -138,7 +140,10 @@ def InivteUser(user_invite: UserInviteViewModel, background_tasks: BackgroundTas
     if user_invite.level < 2 or user_invite.level > 4:
         raise HTTPException(status_code=400, detail="權限 level 請輸入 2~4")
     # 寄信
-    send_invite_mail(user_invite.email, user_invite.level, current_user.group_id, background_tasks=background_tasks)
+    token_data = send_invite_mail(user_invite.email, user_invite.level, current_user.group_id,
+                                  background_tasks=background_tasks)
+    with open(os.getcwd() + '/Auto/Default/User_data/invite_token.txt', 'w') as token:
+        token.write(token_data)
     return "send invite mail"
 
 

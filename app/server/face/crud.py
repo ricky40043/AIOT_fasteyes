@@ -45,9 +45,11 @@ def get_staff_face_image_file(db: Session, staff_id: int):
 
 def upload_face_file(db: Session, staff_id: int, image: UploadFile = File(...)):
     db_staff = db.query(staff).filter(staff.id == staff_id).first()
-
     db.begin()
     try:
+        temp_info = db_staff.info.copy()
+        temp_info["face_detect"] = True
+        db_staff.info = temp_info
         face_uuid = uuid.uuid4()
         while True:
             if db.query(face).filter(face.face_uuid == str(face_uuid)).first():

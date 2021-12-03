@@ -3,7 +3,21 @@ import shutil
 from datetime import datetime
 from random import random
 
+from app.core.config import FILE_PATH
 from app.models.domain.Error_handler import UnicornException
+from app.models.domain.bulletin_board import bulletin_board
+from app.models.domain.department import department
+from app.models.domain.device import device
+from app.models.domain.device_model import device_model
+from app.models.domain.face import face
+from app.models.domain.fasteyes_device import fasteyes_device
+from app.models.domain.fasteyes_observation import fasteyes_observation
+from app.models.domain.fasteyes_output import fasteyes_output
+from app.models.domain.fasteyes_uuid import fasteyes_uuid
+from app.models.domain.group import group
+from app.models.domain.observation import observation
+from app.models.domain.role import role
+from app.models.domain.staff import staff
 from app.models.domain.user import user
 from app.server.authentication import create_random_password
 from app.server.user.crud import get_password_hash
@@ -69,31 +83,39 @@ def create_and_set_user_password(db: Session, user_email: str):
         raise UnicornException(name=create_and_set_user_password.__name__, description=str(e), status_code=500)
     return password
 
-# def clear_all_data(db: Session):
-#     db.begin()
-#     try:
-#         db.query(observation).delete()
-#         # db.query(face_feature).delete()
-#         db.query(face).delete()
-#         db.query(deviceSetting).delete()
-#         db.query(device).delete()
-#         db.query(hardwareUuid).delete()
-#         db.query(deviceUuid).delete()
-#         db.query(staff).delete()
-#         db.query(department).delete()
-#         db.query(company).delete()
-#         db.query(user).delete()
-#
-#         if os.path.exists(FILE_PATH):
-#             if os.path.exists(FILE_PATH + "observation"):
-#                 shutil.rmtree(FILE_PATH + "observation")
-#
-#             if os.path.exists(FILE_PATH + "face"):
-#                 shutil.rmtree(FILE_PATH + "face")
-#
-#         db.commit()
-#     except Exception as e:
-#         db.rollback()
-#         print(str(e))
-#         raise UnicornException(name=clear_all_data.__name__, description=str(e), status_code=500)
-#     return "Done"
+
+def clear_all_data(db: Session):
+    db.begin()
+    try:
+        # db.query(Error_handler).delete()
+
+        db.query(face).delete()
+        db.query(fasteyes_observation).delete()
+        db.query(fasteyes_uuid).delete()
+        db.query(observation).delete()
+        db.query(bulletin_board).delete()
+        db.query(fasteyes_output).delete()
+
+        db.query(staff).delete()
+        db.query(department).delete()
+        db.query(fasteyes_device).delete()
+        db.query(device).delete()
+        db.query(device_model).delete()
+
+        db.query(role).delete()
+        db.query(user).delete()
+        db.query(group).delete()
+
+        if os.path.exists(FILE_PATH):
+            if os.path.exists(FILE_PATH + "observation"):
+                shutil.rmtree(FILE_PATH + "observation")
+
+            if os.path.exists(FILE_PATH + "face"):
+                shutil.rmtree(FILE_PATH + "face")
+
+        db.commit()
+    except Exception as e:
+        db.rollback()
+        print(str(e))
+        raise UnicornException(name=clear_all_data.__name__, description=str(e), status_code=500)
+    return "Done"

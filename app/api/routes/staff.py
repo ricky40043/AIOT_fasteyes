@@ -3,7 +3,7 @@ from fastapi_jwt_auth import AuthJWT
 from pydantic import EmailStr
 from sqlalchemy.orm import Session
 
-from typing import List
+from typing import List, Optional
 from app.db.database import get_db
 from app.helper.authentication import Authorize_user
 from app.helper.staff import check_Staff_Authority, Check_Staff_Authority_SerialNumber
@@ -32,12 +32,12 @@ def GetAllStaffs(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
 
 # 取得所有員工 (HRAccess)
 @router.get("/staffs", response_model=List[StaffViewModel])
-def GetStaffs(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+def GetStaffs(status: Optional[int] = -1, department_id: Optional[int] = -1, db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     if not checkLevel(current_user, Authority_Level.HRAccess.value):
         raise HTTPException(status_code=401, detail="權限不夠")
 
-    return get_staff_by_group(db, current_user.group_id)
+    return get_staff_by_group(db, current_user.group_id, status, department_id)
 
 
 # 員工ID 取得員工 (HRAccess)
@@ -60,7 +60,7 @@ def GetStaffBySerialNumber(SerialNumber: str, db: Session = Depends(get_db),
 
 # 員工ID 取得員工臉列表DB (HRAccess)
 @router.get("/staffs/{staff_id}/face", response_model=FaceViewModel)
-def GetStaffFaceImageList(staff_id: int, db: Session = Depends(get_db),
+def GetStaffFaceImageDB(staff_id: int, db: Session = Depends(get_db),
                           Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     check_Staff_Authority(db, current_user, staff_id)

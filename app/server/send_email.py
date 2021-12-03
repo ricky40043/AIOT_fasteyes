@@ -110,6 +110,8 @@ def send_Verfiy_code_email_async(email: str, verify_code: str, background_tasks:
     background_tasks.add_task(
         fm.send_message, message)
 
+    return verify_code
+
 
 def SendEmailVerficationEmail(email: str, background_tasks: BackgroundTasks):
     token_data = {
@@ -136,6 +138,8 @@ def SendEmailVerficationEmail(email: str, background_tasks: BackgroundTasks):
     fm = FastMail(conf)
     background_tasks.add_task(
         fm.send_message, message)
+
+    return token
 
 
 def SendForgetPasswordEmail(email: str, password: str, background_tasks: BackgroundTasks):
@@ -236,3 +240,5 @@ def send_invite_mail(email: str, level: int, group_id : int, background_tasks: B
     fm = FastMail(conf)
     background_tasks.add_task(
         fm.send_message, message)
+
+    return token
