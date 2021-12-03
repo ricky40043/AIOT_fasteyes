@@ -1,0 +1,9 @@
+{
+  "name": "name",
+  "card_number": "postalcode",
+  "email": "email",
+  "gender": "postalcode",
+  "national_id_number": "credit_card_number",
+  "birthday": "iso8601",
+  "telephone_number": "phone_number"
+}

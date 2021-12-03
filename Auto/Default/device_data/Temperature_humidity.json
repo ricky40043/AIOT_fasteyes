@@ -1,0 +1,21 @@
+{"Temperature_humidity": {
+      "interval_time": "10",
+      "alarm_temperature": "67.9",
+      "alarm_humidity": "45.2",
+      "battery_alarm": "10"
+  },
+  "ip_cam": {
+      "serial_number": "ip_cam1",
+      "stream_name": "live1s1.sdp",
+      "ip": "192.168.45.64",
+      "port": "554",
+      "username": "root",
+      "password": "a1234567"
+  },
+  "electrostatic":{
+
+  },
+  "Nitrogen": {
+
+  }
+}

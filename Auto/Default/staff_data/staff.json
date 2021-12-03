@@ -1,0 +1,47 @@
+{
+  "Dave": {
+  "department_id": 1,
+  "serial_number": 1,
+  "info": {
+    "name": "Dave",
+    "card_number": "254383204",
+    "email": "test_staff@fastwise.net",
+    "gender": 2,
+    "national_id_number": "string",
+    "birthday": "1993-01-01T00:00",
+    "telephone_number": "0987654321"
+  },
+  "start_date": "2002-12-25T00:00",
+  "status": "1"
+},
+  "Ricky": {
+  "department_id": 2,
+  "serial_number": 2,
+  "info": {
+    "name": "Ricky",
+    "card_number": "254383204",
+    "email": "test_2_staff@fastwise.net",
+    "gender": 2,
+    "national_id_number": "string",
+    "birthday": "1993-01-01T00:00",
+    "telephone_number": "0987654321"
+  },
+  "start_date": "2002-12-25T00:00",
+  "status": "1"
+},
+  "Unknow": {
+  "department_id": 2,
+  "serial_number": 400430012,
+  "info": {
+    "name": "Unknow",
+    "card_number": "9999999999",
+    "email": "test_default_staff@fastwise.net",
+    "gender": 2,
+    "national_id_number": "string",
+    "birthday": "1993-01-01T00:00",
+    "telephone_number": "9999999999"
+  },
+  "start_date": "2002-12-25T00:00",
+  "status": "1"
+}
+}

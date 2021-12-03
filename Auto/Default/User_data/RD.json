@@ -1,0 +1,18 @@
+{
+  "name": "Test_RD",
+  "password": "test",
+  "email": "Test_RD@fastwise.net",
+  "info": {
+    "address": "台北市中山區民權東路一段",
+    "telephone_number": "0987654321",
+    "usage": "商用",
+    "country": "Taiwan",
+    "company_scale": "10~50",
+    "industry": "軟體業",
+    "email_alert": "False",
+    "language": "0"
+  },
+  "group": {
+    "name": "Test_RD_Group"
+  }
+}
