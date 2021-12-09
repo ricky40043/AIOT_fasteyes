@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from pydantic import BaseModel, EmailStr
 from sqlalchemy.orm import Session
 
-from app.core.config import HOST_IP
+from app.core.config import HOST_IP, PORT, HOST_NAME
 from app.models.domain.fasteyes_observation import fasteyes_observation
 from app.server.authentication import SECRET_KEY, create_access_token
 from app.server.staff.crud import get_staff_by_id
@@ -74,7 +74,7 @@ async def send_email_async(subject: str, email_to: str, body: dict):
 #                      <h2>
 #                         員工觀測結果:{body["observation"]["id"]}
 #                      </h2>
-#                     <a href="{HOST_IP}/Files/download/image/device/2/file_name/{body["observation"]["image_name"]}" />
+#                     <a href="HOST_NAME/Files/download/image/device/2/file_name/{body["observation"]["image_name"]}" />
 #             </body>
 #            </html>
 #        """
@@ -123,7 +123,7 @@ def SendEmailVerficationEmail(email: str, background_tasks: BackgroundTasks):
     template = f"""
         <html>
             <body">
-                  <a href="{HOST_IP}/auth/verify_email?token={token}">
+                  <a href="HOST_NAME/auth/verify_email?token={token}">
                   啟用帳號
                   </a>
             </body>
@@ -194,7 +194,7 @@ def send_email_temperature_alert(background_tasks: BackgroundTasks, db: Session,
                      <h2>
                         員工觀測結果:{observation_db.id}
                      </h2>
-                    <a href="{HOST_IP}/Files/download/image/device/{observation_db.fasteyes_device_id}/file_name/{observation_db.image_name}">
+                    <a href="{HOST_NAME}/Files/download/image/device/{observation_db.fasteyes_device_id}/file_name/{observation_db.image_name}">
                     觀測結果圖片
                     </a>
             </body>
@@ -226,7 +226,7 @@ def send_invite_mail(email: str, level: int, group_id : int, background_tasks: B
                      <h1>
                         認證信
                      </h1>
-                     <a href="{HOST_IP}/users/verify/{token}">
+                     <a href="{HOST_NAME}/users/verify/{token}">
                     點此連結完成認證
                     </a>
                </body>

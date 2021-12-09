@@ -48,13 +48,13 @@ def GetAllUsers(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     return get_All_users(db)
 
 
-# 取得所有User (Admin)
+# 取得所有User
 @router.get("/users", response_model=List[UserViewModel])
 def GetAllUsers(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
 
-    if not checkLevel(current_user, Authority_Level.Admin.value):
-        raise HTTPException(status_code=401, detail="權限不夠")
+    # if not checkLevel(current_user, Authority_Level.Admin.value):
+    #     raise HTTPException(status_code=401, detail="權限不夠")
 
     return get_users_in_group(db, current_user.group_id)
 

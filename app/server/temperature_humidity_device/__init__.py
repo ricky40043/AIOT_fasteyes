@@ -12,7 +12,7 @@ class MyUDPProtocol(asyncio.DatagramProtocol):
         self.transport = transport
 
     def datagram_received(self, data: bytes, addr: Tuple[str, int]) -> None:
-        # print("讀取原始資料:", data)
+        print("讀取原始資料:", data)
         data_to_int_list = list(bytes(data))
         data_to_hex_list = [hex(number) for number in data_to_int_list]
         byte_lst = [(bytes([data_to_int])).decode("utf-8", "replace") for data_to_int in data_to_int_list]
@@ -70,7 +70,7 @@ class MyUDPProtocol(asyncio.DatagramProtocol):
         # print("Status:", Status)
         # print("Battery:", Battery)
         name = Barcode.lstrip("0")
-        # print("temperature_humidity device ID:", name + " Get data")
+        print("tempera ture_humidity device ID:", name + " Get data")
 
         # 資料存入
         device_db = get_temperature_humidity_devices_by_serial_number(name)

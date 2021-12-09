@@ -139,7 +139,8 @@ def get_Lastest_Observation_by_device_id(db: Session, group_id: int):
     temperature_humidity_observation_list = []
     for temperature_humidity_device in temperature_humidity_device_list:
         observation_db = db.query(observation).filter(observation.device_id == temperature_humidity_device.id).order_by(-observation.id).first()
-        temperature_humidity_observation_list.append(observation_db)
+        if observation_db:
+            temperature_humidity_observation_list.append(observation_db)
     return temperature_humidity_observation_list
 
 

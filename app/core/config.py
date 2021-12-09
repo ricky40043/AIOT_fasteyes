@@ -22,21 +22,21 @@
 #   default=f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER}:{POSTGRES_PORT}/{POSTGRES_DB}"
 # )
 import os
-
+from dotenv import load_dotenv
 PAGE_SIZE = 5
 
-
+load_dotenv('.env')
 FILE_PATH = os.getcwd() +"/db_image/"
-DEFAULT_USER = "400430012"
-HOST_IP = "192.168.45.38"
-PORT = "8000"
-HOST_NAME = "http://"+HOST_IP+":"+PORT
-SQLALCHEMY_DATABASE_URL = "sqlite:///sql_app_20210924.db"
+# DEFAULT_USER = "400430012"
+# HOST_IP = "192.168.45.35"
+# PORT = "8000"
+# HOST_NAME = "http://"+HOST_IP+":"+PORT
+# SQLALCHEMY_DATABASE_URL = "sqlite:///sql_app_20210924.db"
 # SQLALCHEMY_DATABASE_URL = "postgresql://postgres:88888888@192.168.45.51/fastapi_db_20210924"
 
 
-# DEFAULT_USER = os.getenv('DEFAULT_USER')
-# HOST_IP = os.getenv('HOST_IP')
-# PORT = os.getenv('PORT')
-# HOST_NAME = os.getenv('HOST_NAME')
-# SQLALCHEMY_DATABASE_URL = os.getenv('SQLALCHEMY_DATABASE_URL')
+DEFAULT_USER = os.getenv('DEFAULT_USER')
+HOST_IP = os.getenv('HOST_IP')
+PORT = os.getenv('PORT')
+HOST_NAME = os.getenv('HOST_NAME')
+SQLALCHEMY_DATABASE_URL = os.getenv('SQLALCHEMY_DATABASE_URL')

@@ -15,7 +15,7 @@ router = APIRouter()
 
 
 # 取得所有Group (RD)
-@router.get("/group", response_model=List[GroupViewModel])
+@router.get("/group/all", response_model=List[GroupViewModel])
 def GetAllGroup(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
 
@@ -25,13 +25,13 @@ def GetAllGroup(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     return get_All_groups(db)
 
 
-# 取得Group (Admin)
+# 取得Group
 @router.get("/group", response_model=GroupViewModel)
 def GetGroupById(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
 
-    if not checkLevel(current_user, Authority_Level.Admin.value):
-        raise HTTPException(status_code=401, detail="權限不夠")
+    # if not checkLevel(current_user, Authority_Level.Admin.value):
+    #     raise HTTPException(status_code=401, detail="權限不夠")
 
     return get_group_by_id(db, current_user.group_id)
 
