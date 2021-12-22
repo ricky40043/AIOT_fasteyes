@@ -1,6 +1,7 @@
 import logging
 
-from fastapi import FastAPI
+from fastapi import FastAPI, BackgroundTasks
+background_tasks = BackgroundTasks()
 
 from app.api.routes.api import router as api_router
 from app.db.database import engine, Base

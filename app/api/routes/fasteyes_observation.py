@@ -1,5 +1,6 @@
 import time
 from datetime import datetime
+import json
 
 from fastapi import APIRouter, Depends, HTTPException, File, UploadFile
 from fastapi_jwt_auth import AuthJWT
@@ -14,21 +15,22 @@ from app.helper.fasteyes_device import check_FasteyesDevice_Authority
 from app.helper.fasteyes_observation import check_observation_Authority
 from app.helper.staff import check_Staff_Authority
 from app.models.schemas.fasteyes_observation import FasteyesObservationViewModel, FasteyesObservationPostModel, \
-    FasteyesObservationPatchViewModel, attendanceViewModel, attendancePostModel
+    FasteyesObservationPatchViewModel, attendanceViewModel, attendancePostModel, attendancePieViewModel, \
+    attendanceTime_intervalViewModel
 from starlette.background import BackgroundTasks
 
 from app.models.schemas.fasteyes_output import FasteyesOutputPatchViewModel
 from app.server.authentication import Authority_Level, checkLevel
 from app.server.fasteyes_device.crud import check_fasteyes_device_owner
 from app.server.fasteyes_observation.crud import upload_observation_image, download_observation_image, \
-    get_Observations_by_device_id_and_staff_id, get_Observations_by_staff_id, get_Observations_by_department_id, \
+    get_Observations_by_department_id, \
     get_Observations_by_staff_id_and_timespan, get_Observations_by_department_id_and_timespan, \
     download_observation_image_by_id, CeateFasteyesObservation, update_observation, get_attendence_by_time_interval, \
     delete_observation_by_id, delete_observation_by_device_id, get_Observations_by_group_id_and_timespan, \
-    get_Observations_by_group_id
+    get_attendence_by_time_interval_data
 from app.server.fasteyes_output.crud import get_fasteyes_outputs_by_id, fasteyes_output_modify
 from app.server.send_email import send_email_async, send_email_temperature_alert
-from app.server.staff.crud import get_staff_by_id
+from app.server.staff.crud import get_staff_by_id, get_staff_by_group
 from fastapi_pagination import Page, paginate
 
 router = APIRouter()
@@ -45,10 +47,8 @@ def UploadObservation(device_id: int,
     check_FasteyesDevice_Authority(db, current_user, device_id)
     observation_db = CeateFasteyesObservation(db, observation_in, current_user.group_id, device_id)
 
-    # send_data("uploadobservation", observation_db.to_dict())
-
     # time_start = time.time()
-    if current_user.info["email_alert"] and not observation_db.result:  # 寄信
+    if current_user.info["email_alert"] and observation_db.result:  # 寄信
         send_email_temperature_alert(background_tasks=background_tasks, db=db,
                                      email=current_user.email, observation_db=observation_db)
     # time_end = time.time()  # 結束計時
@@ -98,31 +98,29 @@ def DownloadObservationImage(observation_id: int,
 # 取得所有觀測 (HRAccess)
 @router.get("/fasteyes_observations", response_model=Page[FasteyesObservationViewModel])
 def GetObservations(status: int,
-                    start_timestamp: Optional[datetime] = None,
-                    end_timestamp: Optional[datetime] = None,
+                    start_timestamp: datetime,
+                    end_timestamp: datetime,
+                    select_device_id: Optional[int] = -1,
                     db: Session = Depends(get_db),
                     Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-    if start_timestamp and end_timestamp:
-        return paginate(
-            get_Observations_by_group_id_and_timespan(db, current_user.group_id, start_timestamp, end_timestamp, status))
-    else:
-        return paginate(get_Observations_by_group_id(db, current_user.group_id, status))
+    return paginate(get_Observations_by_group_id_and_timespan(db, current_user.group_id, start_timestamp, end_timestamp,
+                                                              status, select_device_id))
 
 
 # 員工ID 取得所有觀測 (HRAccess)
 @router.get("/fasteyes_observations/staff/{staff_id}", response_model=Page[FasteyesObservationViewModel])
 def GetObservationsByStaffId(staff_id: int,
-                             start_timestamp: Optional[datetime] = None,
-                             end_timestamp: Optional[datetime] = None,
+                             start_timestamp: datetime,
+                             end_timestamp: datetime,
+                             select_device_id: Optional[int] = -1,
                              db: Session = Depends(get_db),
                              Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     check_Staff_Authority(db, current_user, staff_id)
     if start_timestamp and end_timestamp:
-        return paginate(get_Observations_by_staff_id_and_timespan(db, staff_id, start_timestamp, end_timestamp))
-    else:
-        return paginate(get_Observations_by_staff_id(db, staff_id))
+        return paginate(
+            get_Observations_by_staff_id_and_timespan(db, staff_id, start_timestamp, end_timestamp, select_device_id))
 
 
 # 部門ID 取得所有觀測 (HRAccess)
@@ -159,18 +157,103 @@ def UpdateObservation(observation_id: int, obsPatch: FasteyesObservationPatchVie
 
 # 取得考勤紀錄 (HRAccess)
 @router.post("/attendance", response_model=Page[attendanceViewModel])
-def GetObservationsByDeviceId_And_StaffId(attendance_in: attendancePostModel,
-                                          status: int,
-                                          start_timestamp: Optional[datetime] = None,
-                                          end_timestamp: Optional[datetime] = None,
-                                          db: Session = Depends(get_db),
-                                          Authorize: AuthJWT = Depends()):
+def GetAttendance(attendance_in: attendancePostModel,
+                  status: int,
+                  start_timestamp: datetime,
+                  end_timestamp: datetime,
+                  select_device_id: Optional[int] = -1,
+                  db: Session = Depends(get_db),
+                  Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     if not checkLevel(current_user, Authority_Level.HRAccess.value):
         raise HTTPException(status_code=401, detail="權限不夠")
 
-    return paginate(
-        get_attendence_by_time_interval(db, current_user.group_id, start_timestamp, end_timestamp, attendance_in, status))
+    return paginate(get_attendence_by_time_interval(db, current_user.group_id, start_timestamp,
+                                                    end_timestamp, attendance_in, status, select_device_id))
+
+
+# 取得考勤紀錄Pie (HRAccess)
+@router.post("/attendance/pie", response_model=attendancePieViewModel)
+def GetAttendancePie(attendance_in: attendancePostModel,
+                     start_timestamp: datetime,
+                     end_timestamp: datetime,
+                     select_device_id: Optional[int] = -1,
+                     db: Session = Depends(get_db),
+                     Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+    if not checkLevel(current_user, Authority_Level.HRAccess.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+    attendence_data_list = get_attendence_by_time_interval(db, current_user.group_id, start_timestamp, end_timestamp,
+                                                           attendance_in, -1, select_device_id)
+    # 取得在職員工
+    staff_db_list = get_staff_by_group(db, current_user.group_id, 1, -1)
+    staff_id_list = [each_staff.id for each_staff in staff_db_list]
+    staff_total = len(staff_db_list)
+
+    # 計算出勤
+    temp = attendancePieViewModel()
+    for attendence_data in attendence_data_list:
+        day_attendence_data = attendence_data["attendance"]
+        for each_data in day_attendence_data:
+            # print(each_data)
+            if each_data["staff_id"] not in staff_id_list:
+                # print("員工已被離職")
+                continue
+
+            if "punch_in" in each_data and "punch_out" in each_data:
+                temp.ontime += 1
+            elif "punch_in" not in each_data and "punch_out" in each_data:
+                temp.late += 1
+            elif "punch_in" in each_data and "punch_out" not in each_data:
+                temp.leaveEarly += 1
+
+    temp.notArrived = len(attendence_data_list) * staff_total - temp.ontime - temp.late - temp.leaveEarly
+
+    return temp
+
+
+# 取得考勤紀錄 時間表(HRAccess)
+@router.post("/attendance/line_chart", response_model=attendanceTime_intervalViewModel)
+def GetAttendance(attendance_in: attendancePostModel,
+                  page: int,
+                  start_timestamp: datetime,
+                  end_timestamp: datetime,
+                  select_device_id: int,
+                  db: Session = Depends(get_db),
+                  Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+    if not checkLevel(current_user, Authority_Level.HRAccess.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+    work_time_interval_data = get_attendence_by_time_interval_data(db, current_user.group_id, start_timestamp,
+                                                                   end_timestamp,
+                                                                   attendance_in, -1, select_device_id)
+
+    temp = attendanceTime_intervalViewModel()
+
+    # 取得在職員工
+    staff_total = len(get_staff_by_group(db, current_user.group_id, 1, -1))
+    # 計算出勤
+
+    working_time = int(attendance_in.working_time_1.strftime("%-H"))
+    working_time_off = int(attendance_in.working_time_off_2.strftime("%-H")) + 1
+    day_attendence_data = work_time_interval_data[page - 1]["attendance"]
+    time_interval = [x for x in range(working_time, working_time_off)]
+    work_staff = [0 for i in range(working_time, working_time_off)]
+    for each_data in day_attendence_data:
+        # print(each_data)
+        if "punch_in" in each_data and "punch_out" in each_data:
+            punch_in_time = int(each_data["punch_in"].strftime("%-H")) + 1
+            punch_out_time = int(each_data["punch_out"].strftime("%-H"))
+
+            for i in range(working_time, working_time_off):
+                if punch_in_time <= i <= punch_out_time:
+                    work_staff[i - working_time] += 1
+    temp.time_interval = [str(each_time) + ":00" for each_time in time_interval]
+    # temp.time_interval = time_interval
+    temp.work_staff = work_staff
+    temp.total_staff = staff_total
+
+    return temp
 
 
 # 觀測ID 刪除觀測 (HRAccess)
@@ -199,27 +282,27 @@ def DeleteDeviceObservation(device_id: int,
     return delete_observation_by_device_id(db, device_id)
 
 
-# 取得資料輸出格式 (Admin)
-@router.get("/fasteyes_observations/output_format")
-def GetFasteyesOutput(db: Session = Depends(get_db),
-                      Authorize: AuthJWT = Depends()):
-    current_user = Authorize_user(Authorize, db)
-    if not checkLevel(current_user, Authority_Level.Admin.value):
-        raise HTTPException(status_code=401, detail="權限不夠")
-
-    return get_fasteyes_outputs_by_id(db, current_user.group_id)
-
-
-# 取得資料輸出格式 (Admin)
-@router.patch("/fasteyes_observations/output_format")
-def ModifyFasteyesOutput(fasteyes_output: FasteyesOutputPatchViewModel,
-                         db: Session = Depends(get_db),
-                         Authorize: AuthJWT = Depends()):
-    current_user = Authorize_user(Authorize, db)
-    if not checkLevel(current_user, Authority_Level.Admin.value):
-        raise HTTPException(status_code=401, detail="權限不夠")
-
-    return fasteyes_output_modify(db, current_user.group_id, fasteyes_output)
+# # 取得資料輸出格式 (Admin)
+# @router.get("/fasteyes_observations/output_format")
+# def GetFasteyesOutput(db: Session = Depends(get_db),
+#                       Authorize: AuthJWT = Depends()):
+#     current_user = Authorize_user(Authorize, db)
+#     if not checkLevel(current_user, Authority_Level.Admin.value):
+#         raise HTTPException(status_code=401, detail="權限不夠")
+#
+#     return get_fasteyes_outputs_by_id(db, current_user.group_id)
+#
+#
+# # 取得資料輸出格式 (Admin)
+# @router.patch("/fasteyes_observations/output_format")
+# def ModifyFasteyesOutput(fasteyes_output: FasteyesOutputPatchViewModel,
+#                          db: Session = Depends(get_db),
+#                          Authorize: AuthJWT = Depends()):
+#     current_user = Authorize_user(Authorize, db)
+#     if not checkLevel(current_user, Authority_Level.Admin.value):
+#         raise HTTPException(status_code=401, detail="權限不夠")
+#
+#     return fasteyes_output_modify(db, current_user.group_id, fasteyes_output)
 
 
 # 取得資料輸出 (Admin)
@@ -240,5 +323,34 @@ def ModifyFasteyesOutput(start_timestamp: Optional[datetime] = None,
 
     # step4 利用pandas 和 Numpy 把資料整理成輸出檔案csv檔案
 
-    return "Done" # step5"回傳結果"
+    return "Done"  # step5"回傳結果"
+
+
+@router.get("/fasteyes_observations/output_form", response_model=FasteyesOutputPatchViewModel)
+def getFasteyeObservationOutputForm(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+    if not checkLevel(current_user, Authority_Level.Admin.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    # Opening JSON file
+    f = open('fasteyes_observation_output_from.json')
+    # returns JSON object as
+    # a dictionary
+    data = json.load(f)
+    # Closing file
+    f.close()
+    return data
+
+
+@router.patch("/fasteyes_observations/output_form/test", response_model=FasteyesOutputPatchViewModel)
+def getFasteyeObservationOutputForm(output_form: FasteyesOutputPatchViewModel,
+                                    db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+    if not checkLevel(current_user, Authority_Level.Admin.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    with open("fasteyes_observation_output_from.json", "w") as outfile:
+        json.dump(output_form.__dict__, outfile)
+
+    return output_form
 ########################################################################################################################

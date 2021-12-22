@@ -7,8 +7,10 @@ from requests import Request
 from starlette.responses import JSONResponse, FileResponse
 from fastapi_jwt_auth.exceptions import AuthJWTException
 import asyncio
-
 from app.server.temperature_humidity_device import MyUDPProtocol
+
+
+
 
 app = create_app()
 
@@ -68,3 +70,6 @@ async def on_shutdown() -> None:
     # coros = [pc.close() for pc in pcs]
     # await asyncio.gather(*coros)
     # pcs.clear()
+
+
+

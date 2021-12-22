@@ -7,7 +7,7 @@ from app.models.domain.Error_handler import UnicornException
 from app.models.domain.device import device
 from app.models.schemas.temperature_humidity_device import Temperature_humidityDevicePostModel, \
     Temperature_humidityDevicePatchModel, Temperature_humidityDevice_InfoModel
-from app.server.device.crud import check_name_repeate, check_serial_number_repeate
+from app.server.device.crud import check_name_repeate, check_serial_number_repeate, get_device_by_name
 from app.server.device_model import DeviceType
 
 
@@ -52,13 +52,18 @@ def modify_temperature_humidity_devices(db: Session, group_id: int, device_id: i
                                         device.device_model_id == DeviceType.temperature_humidity.value,
                                         device.id == device_id).first()
 
-    check_name_repeate(db, device_patch.name, DeviceType.temperature_humidity.value)
+    device_by_name =  get_device_by_name(db, device_patch.name, DeviceType.temperature_humidity.value)
+    if device_by_name:
+        if device_by_name.id != device_db.id:
+            raise HTTPException(status_code=400, detail="device name is exist")
 
     db.begin()
     try:
         temp_info = device_db.info.copy()  # dict 是 call by Ref. 所以一定要複製一份
-        temp_info["alarm_humidity"] = device_patch.info["alarm_humidity"]
-        temp_info["alarm_temperature"] = device_patch.info["alarm_temperature"]
+        temp_info["alarm_humidity_lower_limit"] = device_patch.info["alarm_humidity_lower_limit"]
+        temp_info["alarm_humidity_upper_limit"] = device_patch.info["alarm_humidity_upper_limit"]
+        temp_info["alarm_temperature_lower_limit"] = device_patch.info["alarm_temperature_lower_limit"]
+        temp_info["alarm_temperature_upper_limit"] = device_patch.info["alarm_temperature_upper_limit"]
         temp_info["battery_alarm"] = device_patch.info["battery_alarm"]
         temp_info["interval_time"] = device_patch.info["interval_time"]
         device_db.info = temp_info

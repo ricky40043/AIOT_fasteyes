@@ -10,7 +10,10 @@ from pydantic import BaseModel, EmailStr
 from sqlalchemy.orm import Session
 
 from app.core.config import HOST_IP, PORT, HOST_NAME
+from app.db.database import get_db
+from app.models.domain.device import device
 from app.models.domain.fasteyes_observation import fasteyes_observation
+from app.models.domain.observation import observation
 from app.server.authentication import SECRET_KEY, create_access_token
 from app.server.staff.crud import get_staff_by_id
 
@@ -40,21 +43,61 @@ conf = ConnectionConfig(
 )
 
 
-async def send_email_async(subject: str, email_to: str, body: dict):
-    print(subject)
-    print(email_to)
-    print(body)
-    verify_code = body["verify_code"]
+# async def send_email_async(subject: str, email_to: str, body: dict):
+#     print(subject)
+#     print(email_to)
+#     print(body)
+#     verify_code = body["verify_code"]
+#
+#     message = MessageSchema(
+#         subject=subject,
+#         recipients=[email_to],
+#         body=verify_code
+#     )
+#
+#     fm = FastMail(conf)
+#     await fm.send_message(message)
 
+
+async def send_email_async(email: str, verify_code: str):
+    title = "fasteyes verify Code"
+    template = f"""
+           <html>
+               <body>
+                     <h1>
+                        認證碼：{verify_code}
+                     </h1>
+               </body>
+           </html>
+       """
     message = MessageSchema(
-        subject=subject,
-        recipients=[email_to],
-        subtype="html",
-        body=verify_code
+        subject=title,
+        recipients=[email],
+        html=template
     )
-
     fm = FastMail(conf)
-    await fm.send_message(message, template_name='email.html')
+    await fm.send_message(message)
+
+
+def send_email(email: str, verify_code: str, background_tasks: BackgroundTasks):
+    title = "fasteyes verify Code"
+    template = f"""
+           <html>
+               <body>
+                     <h1>
+                        認證碼：{verify_code}
+                     </h1>
+               </body>
+           </html>
+       """
+    message = MessageSchema(
+        subject=title,
+        recipients=[email],
+        html=template
+    )
+    fm = FastMail(conf)
+    background_tasks.add_task(
+        fm.send_message, message)
 
 
 #
@@ -210,14 +253,59 @@ def send_email_temperature_alert(background_tasks: BackgroundTasks, db: Session,
         fm.send_message, message)
 
 
-def send_invite_mail(email: str, level: int, group_id : int, background_tasks: BackgroundTasks):
+def send_email_device_alert(background_tasks: BackgroundTasks, email: str,
+                            observation_db: observation, device_db: device):
+    title = "Device異常"
+    template = f"""
+           <html>
+               <body>
+                     <h1>
+                        裝置名稱: {device_db.name}
+                     </h1>
+                     <h2>
+                        裝置編號: {device_db.serial_number}
+                     </h2>
+                     <h2>
+                        裝置位置: {device_db.area}
+                     </h2>
+                     <h2>
+                        溫度:{observation_db.info["temperature"]}
+                     </h2>
+           
+                     <h2>
+                        濕度:{observation_db.info["humidity"]}
+                     </h2>
+            </body>
+           </html>
+       """
+    #     < h4 >
+    #     溫度正常範圍: {observation_db.info["alarm_temperature_lower_limit"]}～{
+    #         observation_db.info["alarm_temperature_upper_limit"]}
+    #
+    # < / h4 >
+    # < h4 >
+    # 濕度正常範圍: {observation_db.info["alarm_humidity_lower_limit"]}～{observation_db.info["alarm_humidity_upper_limit"]}
+    # < / h4 >
+    # print(background_tasks)
+    message = MessageSchema(
+        subject=title,
+        recipients=[email],
+        html=template
+    )
+    fm = FastMail(conf)
+    background_tasks.add_task(
+        fm.send_message, message)
+    # print(background_tasks.tasks)
+
+
+def send_invite_mail(email: str, level: int, group_id: int, background_tasks: BackgroundTasks):
     token_data = {
         "email": email,
         "level": level,
         "group_id": group_id
     }
 
-    token = create_access_token(token_data,expires_delta=timedelta(minutes=999999999))
+    token = create_access_token(token_data, expires_delta=timedelta(minutes=999999999))
 
     title = "fasteyes user 認證信"
     template = f"""

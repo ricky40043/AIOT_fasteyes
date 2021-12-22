@@ -93,9 +93,10 @@ def delete_feature(db: Session, staff_id: int):
     try:
         staff_db = db.query(staff).filter(staff.id == staff_id).first()
         face_db = db.query(face).filter(face.staff_id == staff_id).first()
-        face_db.updated_at = datetime.now()
-        if os.path.exists(file_path + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id)):
-            os.remove(file_path + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id) + "/" + "face_feature" + ".txt")
+        if face_db:
+            face_db.updated_at = datetime.now()
+            if os.path.exists(FILE_PATH + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id)):
+                os.remove(FILE_PATH + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id) + "/" + "face_feature" + ".txt")
         db.commit()
     except Exception as e:
         db.rollback()

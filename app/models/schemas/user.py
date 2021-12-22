@@ -25,6 +25,7 @@ class UserInfoModel(UserBase):
     usage: str = ""
     industry: str = ""
     email_alert: bool = False
+    device_email_alert: bool = False
     language: int = 0
 
 
@@ -99,12 +100,14 @@ class UserPatchInfoModel(UserBase):
 
 class UserChangeSettingModel(UserBase):
     email_alert: Optional[bool] = -1
+    device_email_alert: Optional[bool] = -1
     language: Optional[int] = -1
 
     class Config:
         schema_extra = {
             "example": {
                 "email_alert": False,
+                "device_email_alert": True,
                 "language": 0,
             }
         }

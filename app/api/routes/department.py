@@ -33,7 +33,7 @@ def Get_department(db: Session = Depends(get_db),
 def Get_department_staff(db: Session = Depends(get_db),
                          Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-    return get_department_staff_by_group_id(db,current_user.group_id)
+    return get_department_staff_by_group_id(db, current_user.group_id)
 
 
 # 公司ID 新增部門 (HRAccess)
@@ -63,7 +63,8 @@ def Modify_department(department_id: int,
 
     department_db = get_department_by_name(db, current_user.group_id, department.name)
     if department_db:
-        raise HTTPException(status_code=400, detail="department name is exist")
+        if department_db.id != department_id:
+            raise HTTPException(status_code=400, detail="department name is exist")
 
     return modify_department(db, department_id, department)
 

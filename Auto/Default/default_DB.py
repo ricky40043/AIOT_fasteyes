@@ -357,9 +357,9 @@ def test_create_fasteyes_observation():
         few_days_ago = str(datetime.datetime.date(now) + datetime.timedelta(days=-few_day_ago))
         #休息幾次
         for i in range(1, 5):
-            staff_id = list(range(2, staff + 4))
+            staff_id = list(range(2, staff+3))
             #總共幾人
-            for j in range(1, staff + 3):
+            for j in range(1, staff +2):
                 #上下班時間
                 random_sec = str(random.randrange(1, 59))
                 start_work_on_time = few_days_ago + " 08:" + str(random.randrange(30, 59)) + ":" + random_sec

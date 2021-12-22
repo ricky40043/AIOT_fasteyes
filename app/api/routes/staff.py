@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 from app.db.database import get_db
 from app.helper.authentication import Authorize_user
+from app.helper.department import check_department_Authority
 from app.helper.staff import check_Staff_Authority, Check_Staff_Authority_SerialNumber
 from app.models.schemas.face import FaceViewModel, FaceFeatureViewModel
 from app.models.schemas.staff import StaffViewModel, StaffPostModel, StaffPatchModel
@@ -32,7 +33,8 @@ def GetAllStaffs(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
 
 # 取得所有員工 (HRAccess)
 @router.get("/staffs", response_model=List[StaffViewModel])
-def GetStaffs(status: Optional[int] = -1, department_id: Optional[int] = -1, db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+def GetStaffs(status: Optional[int] = -1, department_id: Optional[int] = -1, db: Session = Depends(get_db),
+              Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     if not checkLevel(current_user, Authority_Level.HRAccess.value):
         raise HTTPException(status_code=401, detail="權限不夠")
@@ -61,7 +63,7 @@ def GetStaffBySerialNumber(SerialNumber: str, db: Session = Depends(get_db),
 # 員工ID 取得員工臉列表DB (HRAccess)
 @router.get("/staffs/{staff_id}/face", response_model=FaceViewModel)
 def GetStaffFaceImageDB(staff_id: int, db: Session = Depends(get_db),
-                          Authorize: AuthJWT = Depends()):
+                        Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     check_Staff_Authority(db, current_user, staff_id)
     return get_staff_face_images(db, staff_id)
@@ -116,9 +118,14 @@ def CreateStaff(staff_create: StaffPostModel, db: Session = Depends(get_db),
 def DeleteStaff(staff_id: int, db: Session = Depends(get_db),
                 Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
+    print("1")
     check_Staff_Authority(db, current_user, staff_id)
+    print("2")
+
     delete_staff_all_image(db, staff_id)
+    print("3")
     delete_feature(db, staff_id)
+    print("4")
     return delete_Staff_by_Staff_id(db, staff_id)
 
 

@@ -78,3 +78,5 @@ class DevicePostModel(Base):
 
 class DevicePatchModel(Base):
     info: dict
+    area: str
+    name: str

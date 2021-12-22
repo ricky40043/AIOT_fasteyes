@@ -102,3 +102,16 @@ class attendance_dateModel(Base):
 class attendanceViewModel(Base):
     date: Date
     attendance: List[attendance_dateModel]
+
+
+class attendancePieViewModel(Base):
+    ontime: int = 0
+    late: int = 0
+    leaveEarly: int = 0
+    notArrived: int = 0
+
+
+class attendanceTime_intervalViewModel(Base):
+    total_staff: int = 10
+    time_interval: list = [8, 9, 10, 11, 12]
+    work_staff: list = [0,5,6,6,0]

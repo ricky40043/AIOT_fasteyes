@@ -82,7 +82,7 @@ class FasteyesDeviceSettingChangeModel(Base):
 
 class FasteyesDeviceViewModel(Base):
     id: int
-    group_id : int
+    group_id: int
     device_uuid: str
     name: str
     description: str = ""

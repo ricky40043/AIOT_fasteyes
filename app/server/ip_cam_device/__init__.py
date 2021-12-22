@@ -36,7 +36,7 @@ def ip_cam_video_stream(ip: str,
         # cap = cv2.VideoCapture(0)
         connect_url = "rtsp://" + username + ":" + password + "@" + ip + ":" + port + "/" + stream_name
         connect_url = "rtsp://syno:8a5f6849df7afcc21decc4f6a14253a7@192.168.45.211:554/Sms=1.unicast"
-        connect_url = "rtsp://syno:750345c82f060ce8d6662dcc1ec6c86c@192.168.45.211:554/Sms=2.unicast"
+        # connect_url = "rtsp://syno:750345c82f060ce8d6662dcc1ec6c86c@192.168.45.211:554/Sms=2.unicast"
         cap = cv2.VideoCapture(connect_url)
         # cap = cv2.VideoCapture("C:/Users/ricky/Desktop/videoplayback.mp4")
         pTime = 0

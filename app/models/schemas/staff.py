@@ -16,12 +16,12 @@ class Base(BaseModel):
 
 class StaffInfoModel(Base):
     name: str
-    email: EmailStr
-    card_number: int
-    national_id_number: str
     gender: int
-    telephone_number: str = ""
-    birthday: datetime
+    email: Optional[EmailStr]
+    card_number: Optional[int]
+    national_id_number: Optional[str]
+    telephone_number: Optional[str]
+    birthday: Optional[datetime] = "1000-01-01T00:00"
     face_detect: Optional[bool] = False
 
 
@@ -57,7 +57,7 @@ class StaffPatchModel(Base):
     serial_number: Optional[str]
     card_number: Optional[int]
     email: Optional[EmailStr]
-    gender: Optional[str]
+    gender: Optional[int]
     national_id_number: Optional[str]
     birthday: Optional[datetime]
     department_id: Optional[int]

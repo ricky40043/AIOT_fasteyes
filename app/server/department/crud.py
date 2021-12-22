@@ -57,6 +57,7 @@ def get_department_staff_by_group_id(db: Session, group_id: int):
     return department_list
 
 
+
 def modify_department(db: Session,department_id: int, departmentIn: DepartmentPatchModel):
     Department_db = db.query(department).filter(department.id == department_id).first()
 

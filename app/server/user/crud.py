@@ -6,6 +6,7 @@ from fastapi import HTTPException
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 
+from app.db.database import get_db
 from app.models.domain.department import department
 from app.models.domain.face import face
 from app.models.domain.fasteyes_device import fasteyes_device
@@ -36,6 +37,11 @@ def get_users_in_group(db: Session, group_id: int):
 
 
 def get_user_by_id(db: Session, user_id: int):
+    return db.query(user).filter(user.id == user_id).first()
+
+
+def get_user_by_id_no_db(user_id: int):
+    db = next(get_db())
     return db.query(user).filter(user.id == user_id).first()
 
 
@@ -74,7 +80,8 @@ def change_user_setting(db: Session, user_id: int, userPatch: UserChangeSettingM
             temp_info["language"] = userPatch.language
         if userPatch.email_alert != -1:
             temp_info["email_alert"] = userPatch.email_alert
-
+        if userPatch.device_email_alert != -1:
+            temp_info["device_email_alert"] = userPatch.device_email_alert
         user_db.updated_at = datetime.now()
         user_db.info = temp_info
         db.commit()
@@ -265,7 +272,7 @@ def delete_user_by_user_id(db: Session, user_id: int, transfer_user_id: int):
     try:
         staff_db_list = db.query(staff).filter(staff.user_id == user_id).all()
         for each_staff_db in staff_db_list:
-            staff_db = get_staff_by_id(db,each_staff_db.id)
+            staff_db = get_staff_by_id(db, each_staff_db.id)
             staff_db.user_id = transfer_user_id
         user_db = db.query(user).filter(user.id == user_id).first()
         db.delete(user_db)

@@ -3,6 +3,7 @@ import io
 import os
 import shutil
 from datetime import datetime
+from typing import Optional
 
 import cv2
 from sqlalchemy.orm import Session
@@ -147,28 +148,56 @@ def get_Lastest_Observation_by_device_id(db: Session, group_id: int):
 def get_Observations_by_group_and_device_model_id_and_timespan(db: Session, group_id: int, device_model_id: int,
                                                                status_in: int,
                                                                start_timestamp: datetime,
-                                                               end_timestamp: datetime):
+                                                               end_timestamp: datetime,
+                                                               select_device_id: Optional[int]=-1):
     if status_in == -1:
-        return db.query(observation).filter(observation.group_id == group_id,
-                                            observation.device_model_id == device_model_id).filter(
-            observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
-            order_by(-observation.id).all()
-    # filter(observation.name.like("search_text%")).\
-
+        if select_device_id == -1:
+            return db.query(observation).filter(observation.group_id == group_id,
+                                                observation.device_model_id == device_model_id).filter(
+                observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
+                order_by(-observation.id).all()
+        else:
+            return db.query(observation).filter(observation.group_id == group_id,
+                                                observation.device_model_id == device_model_id,
+                                                observation.device_id == select_device_id).filter(
+                observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
+                order_by(-observation.id).all()
     elif status_in == 0:
-        return db.query(observation).filter(observation.group_id == group_id,
-                                            observation.device_model_id == device_model_id).filter(
-            observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
-            filter(observation.info["status"] == "0",
-                   observation.info["alarm_temperature"] == "0",
-                   observation.info["alarm_humidity"] == "0"). \
-            order_by(-observation.id).all()
+        if select_device_id == -1:
+            return db.query(observation).filter(observation.group_id == group_id,
+                                                observation.device_model_id == device_model_id).filter(
+                observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
+                filter(observation.info["status"] == "0",
+                       observation.info["alarm_temperature"] == "0",
+                       observation.info["alarm_humidity"] == "0"). \
+                order_by(-observation.id).all()
+        else:
+            return db.query(observation).filter(observation.group_id == group_id,
+                                                observation.device_model_id == device_model_id,
+                                                observation.device_id == select_device_id).filter(
+                observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
+                filter(observation.info["status"] == "0",
+                       observation.info["alarm_temperature"] == "0",
+                       observation.info["alarm_humidity"] == "0"). \
+                order_by(-observation.id).all()
+
     else:
-        data_list = db.query(observation).filter(observation.group_id == group_id,
-                                                 observation.device_model_id == device_model_id).filter(
-            observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
-            filter(or_(observation.info["status"] != "0",
-                       observation.info["alarm_temperature"] == "1",
-                       observation.info["alarm_humidity"] == "1")). \
-            order_by(-observation.id).all()
-        return data_list
+        if select_device_id == -1:
+            data_list = db.query(observation).filter(observation.group_id == group_id,
+                                                     observation.device_model_id == device_model_id).filter(
+                observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
+                filter(or_(observation.info["status"] != "0",
+                           observation.info["alarm_temperature"] == "1",
+                           observation.info["alarm_humidity"] == "1")). \
+                order_by(-observation.id).all()
+            return data_list
+        else:
+            data_list = db.query(observation).filter(observation.group_id == group_id,
+                                                     observation.device_model_id == device_model_id,
+                                                     observation.device_id == select_device_id).filter(
+                observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
+                filter(or_(observation.info["status"] != "0",
+                           observation.info["alarm_temperature"] == "1",
+                           observation.info["alarm_humidity"] == "1")). \
+                order_by(-observation.id).all()
+            return data_list

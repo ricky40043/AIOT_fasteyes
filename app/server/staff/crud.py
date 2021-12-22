@@ -22,7 +22,7 @@ def check_staff_id_by_group_id(db: Session, staff_id: int, group_id: int):
     return db.query(staff).filter(staff.group_id == group_id, staff.id == staff_id).first()
 
 
-def get_staff_by_SerialNumber(db: Session, SerialNumber: str, group_id: int):
+def get_staff_by_SerialNumber(db: Session, SerialNumber: str, group_id: int) -> object:
     return db.query(staff).filter(staff.group_id == group_id, staff.serial_number == SerialNumber).first()
 
 
@@ -68,8 +68,11 @@ def modefy_Staff_Info(db: Session, staff_id: int, staffPatch: StaffPatchModel):
     db.begin()
     try:
         temp_info = Staff_db.info.copy()  # dict 是 call by Ref. 所以一定要複製一份
+        print(staffPatch.dict())
         if staffPatch.name:
             temp_info["name"] = staffPatch.name
+        if staffPatch.gender:
+            temp_info["gender"] = staffPatch.gender
         if staffPatch.card_number:
             temp_info["card_number"] = staffPatch.card_number
         if staffPatch.telephone_number:
@@ -87,7 +90,6 @@ def modefy_Staff_Info(db: Session, staff_id: int, staffPatch: StaffPatchModel):
         if staffPatch.end_date:
             Staff_db.end_date = staffPatch.end_date
         Staff_db.status = staffPatch.status
-        Staff_db.gender = staffPatch.gender
         Staff_db.updated_at = datetime.now()
         Staff_db.info = temp_info
         db.commit()
