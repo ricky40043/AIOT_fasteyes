@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException, File, UploadFile
 from fastapi_jwt_auth import AuthJWT
 from pydantic import EmailStr
 from sqlalchemy.orm import Session
-
+import os
 from typing import List, Optional
 from app.db.database import get_db
 from app.helper.authentication import Authorize_user
@@ -27,11 +27,13 @@ from app.server.fasteyes_observation.crud import upload_observation_image, downl
     get_Observations_by_staff_id_and_timespan, get_Observations_by_department_id_and_timespan, \
     download_observation_image_by_id, CeateFasteyesObservation, update_observation, get_attendence_by_time_interval, \
     delete_observation_by_id, delete_observation_by_device_id, get_Observations_by_group_id_and_timespan, \
-    get_attendence_by_time_interval_data
+    get_attendence_by_time_interval_data, output_observations_by_group
 from app.server.fasteyes_output.crud import get_fasteyes_outputs_by_id, fasteyes_output_modify
 from app.server.send_email import send_email_async, send_email_temperature_alert
 from app.server.staff.crud import get_staff_by_id, get_staff_by_group
 from fastapi_pagination import Page, paginate
+from starlette.responses import FileResponse
+import csv
 
 router = APIRouter()
 
@@ -353,4 +355,62 @@ def getFasteyeObservationOutputForm(output_form: FasteyesOutputPatchViewModel,
         json.dump(output_form.__dict__, outfile)
 
     return output_form
+
+
+@router.get("/fasteyes_observations/output_interval_data_csv")
+def FasteyesOutputCSV(start_timestamp: Optional[datetime] = None,
+                         end_timestamp: Optional[datetime] = None,
+                         db: Session = Depends(get_db),
+                         Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+    if not checkLevel(current_user, Authority_Level.Admin.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    # Opening JSON file
+    f = open('fasteyes_observation_output_from.json')
+    # returns JSON object as
+    # a dictionary
+    data = json.load(f)
+    # Closing file
+    f.close()
+
+    output_fasteyes = data["output_fasteyes"]
+    output_sequence = data["output_sequence"]
+    resign_staff_output = data["resign_staff_output"]
+    name_list = [sequence["english_name"] for sequence in output_sequence]
+    output_fasteyes_list = [each_fasteyes["id"] for each_fasteyes in output_fasteyes]
+    title = [sequence["name"] for sequence in output_sequence]
+
+    observation_model_list = output_observations_by_group(db, current_user.group_id, start_timestamp, end_timestamp,
+                                                          resign_staff_output, output_fasteyes_list)
+
+    observation_list = []
+    observation_list.append(title)
+    for observation_model in observation_model_list:
+        observation_dict = observation_model.__dict__
+        # pop_key = ['_sa_instance_state', ]  # + pop_name_list
+        # for key in pop_key:
+        #     observation_dict.pop(key, None)
+        each_data = []
+        for each_item in name_list:
+            if each_item in observation_dict.keys():
+                each_data.append(observation_dict[each_item])
+            elif each_item in observation_dict["info"].keys():
+                each_data.append(observation_dict["info"][each_item])
+
+        observation_list.append(each_data)
+
+    file_location = 'fasteyes_observation_data.csv'
+    with open(file_location, 'w') as f:
+        w = csv.writer(f)
+        for eachdata in observation_list:
+            w.writerow(eachdata)
+
+    return FileResponse(file_location, media_type='text/csv', filename=file_location)
+
+    # observation_df = pandas.json_normalize(observation_list)
+    # observation_df.to_csv(os.getcwd() + "/11_22.csv")
+    # observation_csv = observation_df.to_csv()
+    #
+    # return observation_csv
 ########################################################################################################################

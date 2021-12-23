@@ -9,9 +9,6 @@ from fastapi_jwt_auth.exceptions import AuthJWTException
 import asyncio
 from app.server.temperature_humidity_device import MyUDPProtocol
 
-
-
-
 app = create_app()
 
 

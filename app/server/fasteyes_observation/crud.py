@@ -418,3 +418,25 @@ def delete_observation_by_id(db: Session, observation_id: int):
         print(str(e))
         raise UnicornException(name=delete_observation_by_id.__name__, description=str(e), status_code=500)
     return fasteyes_observation
+
+
+def output_observations_by_group(db: Session, group_id: int, start_timestamp: datetime, end_timestamp: datetime,
+                                 resign_staff_output: bool, output_fasteyes_list: list):
+    if start_timestamp is None:
+        start_timestamp = datetime.now()-timedelta(days=1)
+    if end_timestamp is None:
+        end_timestamp = datetime.now()
+
+    if resign_staff_output:
+        output_db = db.query(fasteyes_observation).filter(fasteyes_observation.group_id == group_id,
+                                                          fasteyes_observation.fasteyes_device_id.in_(output_fasteyes_list)).filter(
+            fasteyes_observation.phenomenon_time >= start_timestamp,
+            fasteyes_observation.phenomenon_time <= end_timestamp).filter(
+            staff.id == fasteyes_observation.staff_id,).all()
+    else:
+        output_db = db.query(fasteyes_observation).filter(fasteyes_observation.group_id == group_id,
+                                                          fasteyes_observation.fasteyes_device_id.in_(output_fasteyes_list)).filter(
+            fasteyes_observation.phenomenon_time >= start_timestamp,
+            fasteyes_observation.phenomenon_time <= end_timestamp).filter(
+            staff.status == 1 , staff.id == fasteyes_observation.staff_id).all()
+    return output_db
