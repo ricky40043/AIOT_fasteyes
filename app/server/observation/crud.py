@@ -2,7 +2,7 @@
 import io
 import os
 import shutil
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Optional
 
 import cv2
@@ -132,16 +132,22 @@ def get_Observations_by_device_id(db: Session, device_id: int):
     return db.query(observation).filter(observation.device_id == device_id).all()
 
 
-# def get_Lastest_Observation_by_device_id(db: Session, device_id: int):
-#     return db.query(observation).filter(observation.device_id == device_id).order_by(-observation.id).first()
 def get_Lastest_Observation_by_device_id(db: Session, group_id: int):
     temperature_humidity_device_list = db.query(device).filter(device.device_model_id == DeviceType.temperature_humidity.value,
                                    device.group_id == group_id).order_by(device.id).all()
+
     temperature_humidity_observation_list = []
     for temperature_humidity_device in temperature_humidity_device_list:
-        observation_db = db.query(observation).filter(observation.device_id == temperature_humidity_device.id).order_by(-observation.id).first()
+        interval_time = temperature_humidity_device.info["interval_time"]
+        start_time = datetime.now() - timedelta(seconds=int(interval_time)*3)
+        end_time = datetime.now()
+        observation_db = db.query(observation).filter(observation.device_id == temperature_humidity_device.id,
+                                                      observation.created_at > start_time,
+                                                      observation.created_at < end_time,
+                                                      ).order_by(-observation.id).first()
         if observation_db:
             temperature_humidity_observation_list.append(observation_db)
+
     return temperature_humidity_observation_list
 
 

@@ -130,7 +130,7 @@ def GetObservationsByDeviceId(device_model_id: int,
             outputdata.append(temp)
 
     file_location = 'observation_data.csv'
-    with open(file_location, 'w') as f:
+    with open(file_location, 'w', newline="", encoding='utf-8-sig') as f:
         w = csv.writer(f)
         for eachdata in outputdata:
             w.writerow(eachdata)
