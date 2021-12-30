@@ -12,6 +12,7 @@ from app.helper.authentication import Authorize_user
 from app.models.schemas.user import UserViewModel, UserPostViewModel, adminUserPostViewModel, UserPatchInfoModel, \
     UserPatchPasswordViewModel, UserChangeSettingModel, UserInviteViewModel
 from app.server.authentication import Authority_Level, verify_password, checkLevel, get_tocken, get_email_token
+from app.server.bulletin_board.crud import create_bulletin_board
 from app.server.department.crud import get_All_departments
 from app.server.device.crud import get_All_devices
 from app.server.device_model.crud import get_All_device_models
@@ -71,8 +72,10 @@ def UserExists(email: str, db: Session = Depends(get_db)):
 def PatchUserInfo(userPatch: UserPatchInfoModel,
                   db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-    if get_user_by_name_in_group(db, userPatch.name, current_user.group_id):
-        raise HTTPException(status_code=400, detail="Name already exist in this group")
+    user_db = get_user_by_name_in_group(db, userPatch.name, current_user.group_id)
+    if user_db:
+        if user_db.id != current_user.id:
+            raise HTTPException(status_code=400, detail="Name already exist in this group")
 
     return modefy_User(db, current_user, userPatch)
 
@@ -116,7 +119,6 @@ def DeleteUser(user_id: int,
         raise HTTPException(status_code=401, detail="權限不夠")
 
     delete_user = get_user_by_id(db, user_id)
-
     if not delete_user:
         raise HTTPException(status_code=400, detail="user 不存在")
 
@@ -166,7 +168,7 @@ def CreateUser(user_create: UserPostViewModel, token: str,
         raise HTTPException(status_code=400, detail="Email already registered")
 
     data = get_email_token(token)
-
+    print(data["level"])
     if data["email"] != user_create.email:
         raise HTTPException(status_code=400, detail="Email and regist_email are different")
 
@@ -187,6 +189,7 @@ def CreateAdminUser(user_create: adminUserPostViewModel, db: Session = Depends(g
     group_db = create_group(db, user_create.group)
     user_db = Create_User(db, user_create, group_db.id, level=Authority_Level.Admin.value, is_enable=True)
     create_fasteyes_output(db, user_db.id, group_db.id)
+    create_bulletin_board(db, user_db.group_id)
     return user_db
 
 

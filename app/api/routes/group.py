@@ -44,8 +44,10 @@ def ModifyGroupName(group_patch: GroupPatchModel, db: Session = Depends(get_db),
     if not checkLevel(current_user, Authority_Level.Admin.value):
         raise HTTPException(status_code=401, detail="權限不夠")
 
-    if get_group_by_name(db, group_patch.name):
-        raise HTTPException(status_code=400, detail="group name is exist")
+    group_db = get_group_by_name(db, group_patch.name)
+    if group_db:
+        if group_db.id != current_user.group_id:
+            raise HTTPException(status_code=400, detail="group name is exist")
 
     return group_modify_name(db, current_user.group_id, group_patch)
 

@@ -267,13 +267,13 @@ def delete_group_by_group_id(db: Session, group_id: int):
     return "delete Done"
 
 
-def delete_user_by_user_id(db: Session, user_id: int, transfer_user_id: int):
+def delete_user_by_user_id(db: Session, user_id: int):
     db.begin()
     try:
-        staff_db_list = db.query(staff).filter(staff.user_id == user_id).all()
-        for each_staff_db in staff_db_list:
-            staff_db = get_staff_by_id(db, each_staff_db.id)
-            staff_db.user_id = transfer_user_id
+        # staff_db_list = db.query(staff).filter(staff.user_id == user_id).all()
+        # for each_staff_db in staff_db_list:
+        #     staff_db = get_staff_by_id(db, each_staff_db.id)
+        #     staff_db.user_id = transfer_user_id
         user_db = db.query(user).filter(user.id == user_id).first()
         db.delete(user_db)
         db.commit()

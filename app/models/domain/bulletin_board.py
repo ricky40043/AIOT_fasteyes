@@ -19,7 +19,7 @@ class bulletin_board(Base):
         self.text = text
         self.picture_name = picture_name
         self.picture_or_text = picture_or_text
-        self.is_used = True
+        self.is_used = False
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 

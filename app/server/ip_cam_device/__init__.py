@@ -41,7 +41,7 @@ def ip_cam_video_stream(ip: str,
         pTime = 0
         while True:
             success, img = cap.read()
-            imgRGB = cv2.flip(img, 1, dst=None)
+            imgRGB = img
             cTime = time.time()
             fps = 1 / (cTime - pTime)
             pTime = cTime
@@ -83,7 +83,8 @@ def ip_cam_face_detect_stream(ip: str,
         try:
 
             success, img = cap.read()
-            imgRGB = cv2.flip(img, 1, dst=None)
+            # imgRGB = cv2.flip(img, 1, dst=None)
+            imgRGB = img
             faces = det.forward(imgRGB)
 
             for bbox in faces:

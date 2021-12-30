@@ -22,6 +22,7 @@ from starlette.background import BackgroundTasks
 from app.models.schemas.fasteyes_output import FasteyesOutputPatchViewModel
 from app.server.authentication import Authority_Level, checkLevel
 from app.server.fasteyes_device.crud import check_fasteyes_device_owner
+from app.server.fasteyes_observation import output_interval_data_csv, get_output_data_form, modify_output_data_form
 from app.server.fasteyes_observation.crud import upload_observation_image, download_observation_image, \
     get_Observations_by_department_id, \
     get_Observations_by_staff_id_and_timespan, get_Observations_by_department_id_and_timespan, \
@@ -334,13 +335,7 @@ def getFasteyeObservationOutputForm(db: Session = Depends(get_db), Authorize: Au
     if not checkLevel(current_user, Authority_Level.Admin.value):
         raise HTTPException(status_code=401, detail="權限不夠")
 
-    # Opening JSON file
-    f = open('fasteyes_observation_output_from.json')
-    # returns JSON object as
-    # a dictionary
-    data = json.load(f)
-    # Closing file
-    f.close()
+    data = get_output_data_form(current_user.group_id)
     return data
 
 
@@ -351,66 +346,22 @@ def getFasteyeObservationOutputForm(output_form: FasteyesOutputPatchViewModel,
     if not checkLevel(current_user, Authority_Level.Admin.value):
         raise HTTPException(status_code=401, detail="權限不夠")
 
-    with open("fasteyes_observation_output_from.json", "w") as outfile:
-        json.dump(output_form.__dict__, outfile)
+    output_form_out = modify_output_data_form(current_user.group_id, output_form)
 
-    return output_form
+    return output_form_out
 
 
 @router.get("/fasteyes_observations/output_interval_data_csv")
 def FasteyesOutputCSV(start_timestamp: Optional[datetime] = None,
-                         end_timestamp: Optional[datetime] = None,
-                         db: Session = Depends(get_db),
-                         Authorize: AuthJWT = Depends()):
+                      end_timestamp: Optional[datetime] = None,
+                      db: Session = Depends(get_db),
+                      Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     if not checkLevel(current_user, Authority_Level.Admin.value):
         raise HTTPException(status_code=401, detail="權限不夠")
 
-    # Opening JSON file
-    f = open('fasteyes_observation_output_from.json')
-    # returns JSON object as
-    # a dictionary
-    data = json.load(f)
-    # Closing file
-    f.close()
+    csv_file = output_interval_data_csv(db, current_user.group_id, start_timestamp, end_timestamp)
+    print(csv_file)
 
-    output_fasteyes = data["output_fasteyes"]
-    output_sequence = data["output_sequence"]
-    resign_staff_output = data["resign_staff_output"]
-    name_list = [sequence["english_name"] for sequence in output_sequence]
-    output_fasteyes_list = [each_fasteyes["id"] for each_fasteyes in output_fasteyes]
-    title = [sequence["name"] for sequence in output_sequence]
-
-    observation_model_list = output_observations_by_group(db, current_user.group_id, start_timestamp, end_timestamp,
-                                                          resign_staff_output, output_fasteyes_list)
-
-    observation_list = []
-    observation_list.append(title)
-    for observation_model in observation_model_list:
-        observation_dict = observation_model.__dict__
-        # pop_key = ['_sa_instance_state', ]  # + pop_name_list
-        # for key in pop_key:
-        #     observation_dict.pop(key, None)
-        each_data = []
-        for each_item in name_list:
-            if each_item in observation_dict.keys():
-                each_data.append(observation_dict[each_item])
-            elif each_item in observation_dict["info"].keys():
-                each_data.append(observation_dict["info"][each_item])
-
-        observation_list.append(each_data)
-
-    file_location = 'fasteyes_observation_data.csv'
-    with open(file_location, 'w') as f:
-        w = csv.writer(f)
-        for eachdata in observation_list:
-            w.writerow(eachdata)
-
-    return FileResponse(file_location, media_type='text/csv', filename=file_location)
-
-    # observation_df = pandas.json_normalize(observation_list)
-    # observation_df.to_csv(os.getcwd() + "/11_22.csv")
-    # observation_csv = observation_df.to_csv()
-    #
-    # return observation_csv
+    return FileResponse(csv_file, media_type='text/csv', filename=csv_file)
 ########################################################################################################################

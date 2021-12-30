@@ -14,9 +14,9 @@ class Base(BaseModel):
 
 
 class Bulletin_boardPostModel(Base):
-    text: str
-    picture_name: str
-    picture_or_text: bool
+    text: str = ""
+    picture_name: str = ""
+    picture_or_text: bool = True
 
     class Config:
         schema_extra = {

@@ -119,7 +119,7 @@ class MyUDPProtocol(asyncio.DatagramProtocol):
 
         current_user = get_user_by_id_no_db(device_db.user_id)
 
-        if current_user.info["device_email_alert"] and (alarm_temperature or alarm_humidity or Battery<90):  # 寄信
+        if current_user.info["device_email_alert"] and (alarm_temperature or alarm_humidity or Battery<10):  # 寄信
             data = {
                 "email": current_user.email,
                 "title": "溫濕度裝置異常",

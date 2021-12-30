@@ -34,9 +34,9 @@ FILE_PATH = os.getcwd() +"/db_image/"
 # SQLALCHEMY_DATABASE_URL = "sqlite:///sql_app_20210924.db"
 # SQLALCHEMY_DATABASE_URL = "postgresql://postgres:88888888@192.168.45.51/fastapi_db_20210924"
 
-
 DEFAULT_USER = os.getenv('DEFAULT_USER')
 HOST_IP = os.getenv('HOST_IP')
 PORT = os.getenv('PORT')
 HOST_NAME = os.getenv('HOST_NAME')
 SQLALCHEMY_DATABASE_URL = os.getenv('SQLALCHEMY_DATABASE_URL')
+FASTEYES_OUTPUT_PATH = os.getenv('FASTEYES_OUTPUT_PATH')
