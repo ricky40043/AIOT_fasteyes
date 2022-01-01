@@ -285,50 +285,6 @@ def DeleteDeviceObservation(device_id: int,
     return delete_observation_by_device_id(db, device_id)
 
 
-# # 取得資料輸出格式 (Admin)
-# @router.get("/fasteyes_observations/output_format")
-# def GetFasteyesOutput(db: Session = Depends(get_db),
-#                       Authorize: AuthJWT = Depends()):
-#     current_user = Authorize_user(Authorize, db)
-#     if not checkLevel(current_user, Authority_Level.Admin.value):
-#         raise HTTPException(status_code=401, detail="權限不夠")
-#
-#     return get_fasteyes_outputs_by_id(db, current_user.group_id)
-#
-#
-# # 取得資料輸出格式 (Admin)
-# @router.patch("/fasteyes_observations/output_format")
-# def ModifyFasteyesOutput(fasteyes_output: FasteyesOutputPatchViewModel,
-#                          db: Session = Depends(get_db),
-#                          Authorize: AuthJWT = Depends()):
-#     current_user = Authorize_user(Authorize, db)
-#     if not checkLevel(current_user, Authority_Level.Admin.value):
-#         raise HTTPException(status_code=401, detail="權限不夠")
-#
-#     return fasteyes_output_modify(db, current_user.group_id, fasteyes_output)
-
-
-# 取得資料輸出 (Admin)
-@router.get("/fasteyes_observations/output_data")
-def ModifyFasteyesOutput(start_timestamp: Optional[datetime] = None,
-                         end_timestamp: Optional[datetime] = None,
-                         db: Session = Depends(get_db),
-                         Authorize: AuthJWT = Depends()):
-    current_user = Authorize_user(Authorize, db)
-    if not checkLevel(current_user, Authority_Level.Admin.value):
-        raise HTTPException(status_code=401, detail="權限不夠")
-
-    # step1 取得時間區間內資料
-
-    # step2 把staff id中離職員工的資料拿掉
-
-    # step3 排版輸出資料
-
-    # step4 利用pandas 和 Numpy 把資料整理成輸出檔案csv檔案
-
-    return "Done"  # step5"回傳結果"
-
-
 @router.get("/fasteyes_observations/output_form", response_model=FasteyesOutputPatchViewModel)
 def getFasteyeObservationOutputForm(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
@@ -339,11 +295,11 @@ def getFasteyeObservationOutputForm(db: Session = Depends(get_db), Authorize: Au
     return data
 
 
-@router.patch("/fasteyes_observations/output_form/test", response_model=FasteyesOutputPatchViewModel)
+@router.patch("/fasteyes_observations/output_form/modify", response_model=FasteyesOutputPatchViewModel)
 def getFasteyeObservationOutputForm(output_form: FasteyesOutputPatchViewModel,
                                     db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-    if not checkLevel(current_user, Authority_Level.Admin.value):
+    if not checkLevel(current_user, Authority_Level.HRAccess.value):
         raise HTTPException(status_code=401, detail="權限不夠")
 
     output_form_out = modify_output_data_form(current_user.group_id, output_form)

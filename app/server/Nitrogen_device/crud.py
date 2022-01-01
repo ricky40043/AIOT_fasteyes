@@ -1,4 +1,6 @@
 # crud
+import csv
+
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
@@ -6,17 +8,19 @@ from app.models.domain.Error_handler import UnicornException
 from app.models.domain.device import device
 from app.models.schemas.Nitrogen_device import NitrogenDevicePostModel, \
     NitrogenDevicePatchModel, NitrogenDevice_InfoModel
-from app.server.device.crud import check_name_repeate, check_serial_number_repeate
+from app.server.device.crud import check_name_repeate, check_serial_number_repeate, \
+    get_device_by_group_id_and_device_model_id
 from app.server.device_model import DeviceType
+from app.server.observation.crud import get_Observations_by_group_and_device_model_id_and_timespan
 
 
 def get_Nitrogen_devices(db: Session, group_id: int):
-    return db.query(device).filter(device.device_model_id == DeviceType.Nitrogen.value, device.group_id == group_id).all()
+    return db.query(device).filter(device.device_model_id == DeviceType.Nitrogen.value,
+                                   device.group_id == group_id).all()
 
 
 def create_Nitrogen_devices(db: Session, group_id: int, user_id: int,
                             name: str, serial_number: str, area: str, NitrogenDevice_create: NitrogenDevice_InfoModel):
-
     check_name_repeate(db, name, DeviceType.Nitrogen.value)
     check_serial_number_repeate(db, name, DeviceType.Nitrogen.value)
 
@@ -41,8 +45,9 @@ def create_Nitrogen_devices(db: Session, group_id: int, user_id: int,
 
 
 def modify_Nitrogen_devices(db: Session, group_id: int, device_id: int,
-                                        device_patch: NitrogenDevicePatchModel):
-    device_db = db.query(device).filter(device.group_id == group_id, device.device_model_id == DeviceType.Nitrogen.value,
+                            device_patch: NitrogenDevicePatchModel):
+    device_db = db.query(device).filter(device.group_id == group_id,
+                                        device.device_model_id == DeviceType.Nitrogen.value,
                                         device.id == device_id).first()
     check_name_repeate(db, device_patch.name, DeviceType.Nitrogen.value)
 
@@ -65,7 +70,8 @@ def modify_Nitrogen_devices(db: Session, group_id: int, device_id: int,
 
 
 def delete_Nitrogen_devices(db: Session, group_id: int, device_id: int):
-    device_db = db.query(device).filter(device.group_id == group_id, device.device_model_id == DeviceType.Nitrogen.value,
+    device_db = db.query(device).filter(device.group_id == group_id,
+                                        device.device_model_id == DeviceType.Nitrogen.value,
                                         device.id == device_id).first()
     if device_db is None:
         raise HTTPException(status_code=404, detail="device is not exist or is not in this group.")
@@ -81,3 +87,37 @@ def delete_Nitrogen_devices(db: Session, group_id: int, device_id: int):
     return device_db
 
 
+def get_Nitrogen_observation_csv(db: Session, group_id, device_model_id, status, start_timestamp, end_timestamp):
+    observation_data_list = get_Observations_by_group_and_device_model_id_and_timespan(db, group_id,
+                                                                                       device_model_id,
+                                                                                       status, start_timestamp,
+                                                                                       end_timestamp)
+
+    device_db_list = get_device_by_group_id_and_device_model_id(db, group_id, device_model_id)
+    device_name_dict = {device_db.__dict__["id"]: device_db.__dict__["name"] for device_db in device_db_list}
+    device_area_dict = {device_db.__dict__["id"]: device_db.__dict__["area"] for device_db in device_db_list}
+    device_serial_number_dict = {device_db.__dict__["id"]: device_db.__dict__["serial_number"] for device_db in
+                                 device_db_list}
+    outputdata = [["裝置名稱", "裝置編號", "裝置位置", "測量時間", "氮氣壓力", "氮氣壓力異常", "氧氣濃度", "氧氣異常"]]
+
+    for each_data in observation_data_list:
+        each_data_dict = each_data.__dict__
+        temp = []
+        if device_model_id == DeviceType.temperature_humidity.value:
+            temp.append(device_name_dict[each_data_dict["device_id"]])
+            temp.append(device_serial_number_dict[each_data_dict["device_id"]])
+            temp.append(device_area_dict[each_data_dict["device_id"]])
+            temp.append(each_data_dict["created_at"].strftime("%m/%d/%Y, %H:%M:%S"))
+            temp.append(each_data_dict["info"]["Nitrogen"])
+            temp.append("異常" if each_data_dict["info"]["alarm_Nitrogen"] else "正常")
+            temp.append(each_data_dict["info"]["Oxygen"] + "%")
+            temp.append("異常" if each_data_dict["info"]["alarm_Oxygen"] else "正常")
+            outputdata.append(temp)
+
+    file_location = 'observation_data.csv'
+    with open(file_location, 'w', newline="", encoding='utf-8-sig') as f:
+        w = csv.writer(f)
+        for eachdata in outputdata:
+            w.writerow(eachdata)
+
+    return file_location

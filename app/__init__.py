@@ -9,10 +9,7 @@ from starlette.middleware.cors import CORSMiddleware
 from fastapi_pagination import add_pagination
 
 from starlette.staticfiles import StaticFiles
-from starlette.requests import Request
-from starlette.responses import HTMLResponse
 from starlette.templating import Jinja2Templates
-import cv2
 Base.metadata.create_all(bind=engine)
 
 origins = [

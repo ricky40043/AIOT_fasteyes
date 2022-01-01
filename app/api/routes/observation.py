@@ -17,6 +17,7 @@ from app.helper.authentication import Authorize_user
 from app.helper.observation import check_observation_Authority
 from app.models.schemas.observation import ObservationViewModel, ObservationPostModel, \
     ObservationPatchViewModel
+from app.server.Nitrogen_device.crud import get_Nitrogen_observation_csv
 from app.server.authentication import Authority_Level, checkLevel
 from app.server.device.crud import check_device_owner, get_device_by_id, get_device_by_id_and_group_id, \
     get_device_by_group_id_and_device_model_id
@@ -30,6 +31,8 @@ from app.server.send_email import send_email_async, send_email_temperature_alert
 from fastapi_pagination import Page, paginate
 import csv
 from starlette.responses import FileResponse
+
+from app.server.temperature_humidity_device.crud import get_TH_observation_csv
 
 router = APIRouter()
 
@@ -90,7 +93,8 @@ def GetObservationsByDeviceId(device_model_id: int,
     current_user = Authorize_user(Authorize, db)
     return paginate(
         get_Observations_by_group_and_device_model_id_and_timespan(db, current_user.group_id, device_model_id,
-                                                                   status, start_timestamp, end_timestamp, select_device))
+                                                                   status, start_timestamp, end_timestamp,
+                                                                   select_device))
 
 
 # Device ID 取得所有觀測 (User)
@@ -102,38 +106,10 @@ def GetObservationsByDeviceId(device_model_id: int,
                               db: Session = Depends(get_db),
                               Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-    observation_data_list = get_Observations_by_group_and_device_model_id_and_timespan(db, current_user.group_id,
-                                                                                       device_model_id,
-                                                                                       status, start_timestamp,
-                                                                                       end_timestamp)
-
-    device_db_list = get_device_by_group_id_and_device_model_id(db, current_user.group_id, device_model_id)
-    device_name_dict = {device_db.__dict__["id"]: device_db.__dict__["name"] for device_db in device_db_list}
-    device_area_dict = {device_db.__dict__["id"]: device_db.__dict__["area"] for device_db in device_db_list}
-    device_serial_number_dict = {device_db.__dict__["id"]: device_db.__dict__["serial_number"] for device_db in
-                                 device_db_list}
-    outputdata = [["裝置名稱", "裝置編號", "裝置位置", "測量時間", "溫度", "溫度異常", "濕度", "濕度異常", "電池電量"]]
-
-    for each_data in observation_data_list:
-        each_data_dict = each_data.__dict__
-        temp = []
-        if device_model_id == DeviceType.temperature_humidity.value:
-            temp.append(device_name_dict[each_data_dict["device_id"]])
-            temp.append(device_serial_number_dict[each_data_dict["device_id"]])
-            temp.append(device_area_dict[each_data_dict["device_id"]])
-            temp.append(each_data_dict["created_at"].strftime("%m/%d/%Y, %H:%M:%S"))
-            temp.append(each_data_dict["info"]["temperature"])
-            temp.append("異常" if each_data_dict["info"]["alarm_temperature"] else "正常")
-            temp.append(each_data_dict["info"]["humidity"])
-            temp.append("異常" if each_data_dict["info"]["alarm_humidity"] else "正常")
-            temp.append(str(each_data_dict["info"]["battery"]) + "%")
-            outputdata.append(temp)
-
-    file_location = 'observation_data.csv'
-    with open(file_location, 'w', newline="", encoding='utf-8-sig') as f:
-        w = csv.writer(f)
-        for eachdata in outputdata:
-            w.writerow(eachdata)
+    if device_model_id == 1:
+        file_location = get_TH_observation_csv(db, current_user.group_id, 1, status, start_timestamp, end_timestamp)
+    elif device_model_id == 4:
+        file_location = get_Nitrogen_observation_csv(db, current_user.group_id, 1, status, start_timestamp, end_timestamp)
 
     return FileResponse(file_location, media_type='text/csv', filename=file_location)
 
