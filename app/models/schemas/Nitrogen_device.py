@@ -12,9 +12,10 @@ class Base(BaseModel):
 
 
 class NitrogenDevice_InfoModel(Base):
-    interval_time: int
-    Nitrogen_alarm: float
-    Oxygen_alarm: float
+    alarm_Nitrogen_lower_limit: int
+    alarm_Nitrogen_upper_limit: int
+    alarm_Oxygen_lower_limit: int
+    alarm_Oxygen_upper_limit: int
 
 
 class NitrogenDevicePostModel(Base):
@@ -30,9 +31,10 @@ class NitrogenDevicePostModel(Base):
                 "area": "room",
                 "serial_number": "Erw34512",
                 "info": {
-                    "interval_time": "10",
-                    "Nitrogen_alarm": "67.9",
-                    "Oxygen_alarm": "45.2"
+                    "alarm_Nitrogen_lower_limit": 1,
+                    "alarm_Nitrogen_upper_limit": 2,
+                    "alarm_Oxygen_lower_limit": 1,
+                    "alarm_Oxygen_upper_limit": 2
                 }
             }
         }
@@ -49,22 +51,10 @@ class NitrogenDevicePatchModel(Base):
                 "name": "NitrogenDevice1",
                 "area": "room",
                 "info": {
-                    "serial_number": "str",
-                    "interval_time": "10",
-                    "Nitrogen_alarm": "67.9",
-                    "Oxygen_alarm": "45.2"
+                    "alarm_Nitrogen_lower_limit": 1,
+                    "alarm_Nitrogen_upper_limit": 2,
+                    "alarm_Oxygen_lower_limit": 1,
+                    "alarm_Oxygen_upper_limit": 2
                 }
             }
         }
-
-
-# class NitrogenDeviceViewModel(Base):
-#     id: int
-#     user_id: int
-#     group_id: int
-#     devicemodel_id: int
-#     name: str
-#     info: NitrogenDevice_InfoModel
-#     created_at: datetime
-#     updated_at: datetime
-

@@ -35,9 +35,24 @@ def output_interval_data_csv(db, group_id, start_timestamp, end_timestamp):
         each_data = []
         for each_item in name_list:
             if each_item in observation_dict.keys():
-                each_data.append(observation_dict[each_item])
+                if each_item == "result":
+                    if observation_dict[each_item] == 1:
+                        each_data.append("異常")
+                    else:
+                        each_data.append("正常")
+                else:
+                    each_data.append(observation_dict[each_item])
             elif each_item in observation_dict["info"].keys():
-                each_data.append(observation_dict["info"][each_item])
+                if each_item == "wear_mask":
+                    if observation_dict["info"][each_item] == 1:
+                        each_data.append("有戴口罩")
+                    else:
+                        each_data.append("未戴口罩")
+                elif each_item == "temperature" or each_item == "threshold_temperature" or each_item == "compensate_temperature":
+                    each_data.append(str(observation_dict["info"][each_item]) + "°C")
+                else:
+                    each_data.append(observation_dict["info"][each_item])
+
 
         observation_list.append(each_data)
 

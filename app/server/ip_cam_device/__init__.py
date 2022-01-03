@@ -37,12 +37,12 @@ def ip_cam_video_stream(ip: str,
         connect_url = "rtsp://" + username + ":" + password + "@" + ip + ":" + port + "/" + stream_name
         # connect_url = "rtsp://syno:8a5f6849df7afcc21decc4f6a14253a7@192.168.45.211:554/Sms=1.unicast"
         # connect_url = "rtsp://syno:750345c82f060ce8d6662dcc1ec6c86c@192.168.45.211:554/Sms=2.unicast"
-        cap = cv2.VideoCapture(0)
+        cap = cv2.VideoCapture(connect_url)
         pTime = 0
         while True:
             success, img = cap.read()
-            # imgRGB = img
-            imgRGB = cv2.flip(img, 1, dst=None)
+            imgRGB = img
+            # imgRGB = cv2.flip(img, 1, dst=None)
             cTime = time.time()
             fps = 1 / (cTime - pTime)
             pTime = cTime
@@ -61,8 +61,8 @@ def ip_cam_face_detect_stream(ip: str,
                               password: str,
                               stream_name: str):
     connect_url = "rtsp://" + username + ":" + password + "@" + ip + ":" + port + "/" + stream_name
-    # cap = cv2.VideoCapture(connect_url)
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(connect_url)
+    # cap = cv2.VideoCapture(0)
     # cap = cv2.VideoCapture("C:/Users/ricky/Desktop/videoplayback.mp4")
     pTime = 0
     count = 0
@@ -84,8 +84,8 @@ def ip_cam_face_detect_stream(ip: str,
         try:
 
             success, img = cap.read()
-            imgRGB = cv2.flip(img, 1, dst=None)
-            # imgRGB = img
+            # imgRGB = cv2.flip(img, 1, dst=None)
+            imgRGB = img
             faces = det.forward(imgRGB)
 
             for bbox in faces:

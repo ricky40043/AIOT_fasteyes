@@ -9,7 +9,7 @@ from app.models.domain.device import device
 from app.models.schemas.Nitrogen_device import NitrogenDevicePostModel, \
     NitrogenDevicePatchModel, NitrogenDevice_InfoModel
 from app.server.device.crud import check_name_repeate, check_serial_number_repeate, \
-    get_device_by_group_id_and_device_model_id
+    get_device_by_group_id_and_device_model_id, get_device_by_name
 from app.server.device_model import DeviceType
 from app.server.observation.crud import get_Observations_by_group_and_device_model_id_and_timespan
 
@@ -49,14 +49,19 @@ def modify_Nitrogen_devices(db: Session, group_id: int, device_id: int,
     device_db = db.query(device).filter(device.group_id == group_id,
                                         device.device_model_id == DeviceType.Nitrogen.value,
                                         device.id == device_id).first()
-    check_name_repeate(db, device_patch.name, DeviceType.Nitrogen.value)
+
+    device_by_name = get_device_by_name(db, device_patch.name, DeviceType.Nitrogen.value)
+    if device_by_name:
+        if device_by_name.id != device_db.id:
+            raise HTTPException(status_code=400, detail="device name is exist")
 
     db.begin()
     try:
         temp_info = device_db.info.copy()  # dict 是 call by Ref. 所以一定要複製一份
-        temp_info["interval_time"] = device_patch.info["interval_time"]
-        temp_info["Nitrogen_alarm"] = device_patch.info["Nitrogen_alarm"]
-        temp_info["Oxygen_alarm"] = device_patch.info["Oxygen_alarm"]
+        temp_info["alarm_Nitrogen_lower_limit"] = device_patch.info["alarm_Nitrogen_lower_limit"]
+        temp_info["alarm_Nitrogen_upper_limit"] = device_patch.info["alarm_Nitrogen_upper_limit"]
+        temp_info["alarm_Oxygen_lower_limit"] = device_patch.info["alarm_Oxygen_lower_limit"]
+        temp_info["alarm_Oxygen_upper_limit"] = device_patch.info["alarm_Oxygen_upper_limit"]
         device_db.info = temp_info
         device_db.name = device_patch.name
         device_db.area = device_patch.area

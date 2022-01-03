@@ -1,0 +1,1578 @@
+名稱,部門,觀測時間,戴口罩,觀測結果,裝置名稱,溫度
+Mike Riley,manager,2021-11-17 08:30:05,0,False,裝置1,36.4
+Adam Harris,Sales,2021-11-17 08:31:25,0,False,裝置1,36.1
+Scott Smith,Sales,2021-11-17 08:34:13,1,False,裝置1,36.3
+Dave,manager,2021-11-17 08:40:03,0,False,裝置1,37.0
+Matthew Martin,General_Affairs,2021-11-17 08:40:38,0,False,裝置1,36.1
+Kirsten Williamson,General_Affairs,2021-11-17 08:40:57,0,False,裝置1,36.5
+Cory Richardson,Sales,2021-11-17 08:43:52,1,False,裝置1,35.9
+James Nelson,Human_Resources,2021-11-17 08:44:32,1,False,裝置1,36.6
+Jerry Wang,Human_Resources,2021-11-17 08:48:46,0,False,裝置1,35.8
+Christina Hayes,Human_Resources,2021-11-17 08:51:38,1,False,裝置1,37.3
+Ricky,Human_Resources,2021-11-17 08:51:56,0,False,裝置1,38.0
+Mike Riley,manager,2021-11-17 10:12:16,0,False,裝置1,37.6
+Christina Hayes,Human_Resources,2021-11-17 10:18:39,0,False,裝置1,37.9
+Ricky,Human_Resources,2021-11-17 10:34:33,0,False,裝置1,37.0
+Adam Harris,Sales,2021-11-17 10:38:06,0,False,裝置1,37.5
+Adam Harris,Sales,2021-11-17 10:46:49,0,False,裝置1,36.2
+Dave,manager,2021-11-17 11:16:51,0,False,裝置1,36.6
+Jerry Wang,Human_Resources,2021-11-17 11:18:47,1,False,裝置1,36.7
+Ricky,Human_Resources,2021-11-17 11:22:15,1,False,裝置1,35.9
+Cory Richardson,Sales,2021-11-17 12:31:53,1,False,裝置1,35.8
+Scott Smith,Sales,2021-11-17 12:39:30,0,False,裝置1,37.9
+Scott Smith,Sales,2021-11-17 12:41:48,1,False,裝置1,36.2
+Jerry Wang,Human_Resources,2021-11-17 13:01:04,0,False,裝置1,35.7
+Dave,manager,2021-11-17 13:05:46,1,False,裝置1,36.3
+Matthew Martin,General_Affairs,2021-11-17 13:33:41,0,False,裝置1,36.7
+Mike Riley,manager,2021-11-17 13:36:11,1,False,裝置1,36.5
+Cory Richardson,Sales,2021-11-17 14:02:43,0,False,裝置1,37.1
+James Nelson,Human_Resources,2021-11-17 14:33:32,0,False,裝置1,36.8
+Christina Hayes,Human_Resources,2021-11-17 14:45:43,0,False,裝置1,36.9
+Kirsten Williamson,General_Affairs,2021-11-17 15:07:57,0,False,裝置1,37.3
+James Nelson,Human_Resources,2021-11-17 16:21:54,1,False,裝置1,36.4
+Kirsten Williamson,General_Affairs,2021-11-17 16:41:12,1,False,裝置1,36.7
+Matthew Martin,General_Affairs,2021-11-17 16:49:01,0,False,裝置1,36.5
+Kirsten Williamson,General_Affairs,2021-11-17 17:02:37,1,False,裝置1,37.1
+Ricky,Human_Resources,2021-11-17 17:03:01,1,False,裝置1,36.6
+Mike Riley,manager,2021-11-17 17:07:04,0,False,裝置1,36.8
+Jerry Wang,Human_Resources,2021-11-17 17:07:48,0,False,裝置1,37.8
+Cory Richardson,Sales,2021-11-17 17:09:31,0,False,裝置1,36.7
+Christina Hayes,Human_Resources,2021-11-17 17:11:48,1,False,裝置1,37.6
+Dave,manager,2021-11-17 17:13:09,1,False,裝置1,37.8
+Scott Smith,Sales,2021-11-17 17:16:36,0,False,裝置1,36.1
+Adam Harris,Sales,2021-11-17 17:17:07,1,False,裝置1,37.7
+James Nelson,Human_Resources,2021-11-17 17:22:46,1,False,裝置1,37.5
+Matthew Martin,General_Affairs,2021-11-17 17:26:57,1,False,裝置1,37.3
+Kirsten Williamson,General_Affairs,2021-11-18 08:30:22,0,False,裝置1,37.7
+Mike Riley,manager,2021-11-18 08:30:45,0,False,裝置1,37.2
+Matthew Martin,General_Affairs,2021-11-18 08:34:58,0,False,裝置1,36.3
+Dave,manager,2021-11-18 08:35:17,0,False,裝置1,37.8
+Jerry Wang,Human_Resources,2021-11-18 08:39:35,0,False,裝置1,37.5
+Ricky,Human_Resources,2021-11-18 08:44:02,0,False,裝置1,37.2
+Cory Richardson,Sales,2021-11-18 08:44:45,1,False,裝置1,37.9
+Adam Harris,Sales,2021-11-18 08:54:26,0,False,裝置1,37.3
+James Nelson,Human_Resources,2021-11-18 08:54:28,0,False,裝置1,35.9
+Scott Smith,Sales,2021-11-18 08:55:49,0,False,裝置1,35.9
+Christina Hayes,Human_Resources,2021-11-18 09:06:01,0,False,裝置1,36.3
+Jerry Wang,Human_Resources,2021-11-18 10:26:47,0,False,裝置1,37.6
+Mike Riley,manager,2021-11-18 10:40:23,0,False,裝置1,37.0
+Matthew Martin,General_Affairs,2021-11-18 11:02:11,0,False,裝置1,37.1
+Christina Hayes,Human_Resources,2021-11-18 11:20:54,0,False,裝置1,36.6
+Cory Richardson,Sales,2021-11-18 12:08:33,1,False,裝置1,37.6
+Ricky,Human_Resources,2021-11-18 12:34:45,1,False,裝置1,36.9
+Kirsten Williamson,General_Affairs,2021-11-18 12:35:26,1,False,裝置1,37.0
+James Nelson,Human_Resources,2021-11-18 12:39:30,1,False,裝置1,36.1
+Matthew Martin,General_Affairs,2021-11-18 12:47:49,1,False,裝置1,36.6
+Kirsten Williamson,General_Affairs,2021-11-18 13:03:23,0,False,裝置1,37.8
+James Nelson,Human_Resources,2021-11-18 13:32:26,1,False,裝置1,35.8
+Dave,manager,2021-11-18 13:35:17,1,False,裝置1,36.4
+Cory Richardson,Sales,2021-11-18 13:41:13,1,False,裝置1,36.5
+Adam Harris,Sales,2021-11-18 14:06:14,0,False,裝置1,37.4
+Scott Smith,Sales,2021-11-18 14:14:24,1,False,裝置1,37.1
+Christina Hayes,Human_Resources,2021-11-18 14:42:13,1,False,裝置1,37.3
+Ricky,Human_Resources,2021-11-18 15:07:13,0,False,裝置1,36.3
+Dave,manager,2021-11-18 15:13:49,1,False,裝置1,37.3
+Adam Harris,Sales,2021-11-18 15:45:54,1,False,裝置1,35.7
+Jerry Wang,Human_Resources,2021-11-18 16:16:43,1,False,裝置1,36.2
+Scott Smith,Sales,2021-11-18 16:33:56,0,False,裝置1,36.4
+Mike Riley,manager,2021-11-18 16:51:48,0,False,裝置1,36.6
+James Nelson,Human_Resources,2021-11-18 17:01:01,1,False,裝置1,36.5
+Matthew Martin,General_Affairs,2021-11-18 17:01:08,1,False,裝置1,37.2
+Scott Smith,Sales,2021-11-18 17:01:08,1,False,裝置1,38.0
+Christina Hayes,Human_Resources,2021-11-18 17:01:12,1,False,裝置1,36.0
+Cory Richardson,Sales,2021-11-18 17:04:04,1,False,裝置1,37.5
+Dave,manager,2021-11-18 17:06:18,0,False,裝置1,36.5
+Jerry Wang,Human_Resources,2021-11-18 17:10:56,0,False,裝置1,36.0
+Kirsten Williamson,General_Affairs,2021-11-18 17:12:52,0,False,裝置1,35.8
+Ricky,Human_Resources,2021-11-18 17:14:52,0,False,裝置1,35.8
+Mike Riley,manager,2021-11-18 17:24:18,1,False,裝置1,35.9
+Adam Harris,Sales,2021-11-18 17:27:35,0,False,裝置1,37.5
+Scott Smith,Sales,2021-11-19 08:35:40,0,False,裝置1,36.9
+Christina Hayes,Human_Resources,2021-11-19 08:36:15,1,False,裝置1,36.5
+Mike Riley,manager,2021-11-19 08:36:17,1,False,裝置1,37.0
+Cory Richardson,Sales,2021-11-19 08:44:35,1,False,裝置1,37.6
+Kirsten Williamson,General_Affairs,2021-11-19 08:47:02,0,False,裝置1,36.4
+Adam Harris,Sales,2021-11-19 08:47:11,0,False,裝置1,35.8
+Ricky,Human_Resources,2021-11-19 08:49:52,1,False,裝置1,36.6
+James Nelson,Human_Resources,2021-11-19 08:49:52,1,False,裝置1,36.6
+Matthew Martin,General_Affairs,2021-11-19 08:53:20,0,False,裝置1,37.0
+Dave,manager,2021-11-19 08:58:33,1,False,裝置1,37.4
+Jerry Wang,Human_Resources,2021-11-19 09:03:03,0,False,裝置1,35.9
+Christina Hayes,Human_Resources,2021-11-19 11:22:38,1,False,裝置1,37.9
+Matthew Martin,General_Affairs,2021-11-19 11:44:22,0,False,裝置1,35.8
+James Nelson,Human_Resources,2021-11-19 11:45:17,0,False,裝置1,35.9
+Scott Smith,Sales,2021-11-19 12:05:58,1,False,裝置1,36.7
+Dave,manager,2021-11-19 12:20:21,1,False,裝置1,37.7
+Adam Harris,Sales,2021-11-19 12:44:15,0,False,裝置1,35.9
+Ricky,Human_Resources,2021-11-19 12:48:30,1,False,裝置1,36.3
+Scott Smith,Sales,2021-11-19 13:35:18,0,False,裝置1,37.7
+Cory Richardson,Sales,2021-11-19 13:38:34,1,False,裝置1,36.7
+Jerry Wang,Human_Resources,2021-11-19 13:46:44,1,False,裝置1,37.1
+Ricky,Human_Resources,2021-11-19 13:53:27,0,False,裝置1,35.9
+James Nelson,Human_Resources,2021-11-19 13:55:46,0,False,裝置1,37.2
+Mike Riley,manager,2021-11-19 14:08:56,1,False,裝置1,37.6
+Christina Hayes,Human_Resources,2021-11-19 14:12:21,1,False,裝置1,37.9
+Mike Riley,manager,2021-11-19 14:13:58,1,False,裝置1,37.2
+Cory Richardson,Sales,2021-11-19 14:53:42,0,False,裝置1,37.1
+Matthew Martin,General_Affairs,2021-11-19 15:12:15,1,False,裝置1,36.2
+Kirsten Williamson,General_Affairs,2021-11-19 15:30:34,1,False,裝置1,37.7
+Kirsten Williamson,General_Affairs,2021-11-19 16:12:23,0,False,裝置1,35.7
+Jerry Wang,Human_Resources,2021-11-19 16:14:11,1,False,裝置1,37.1
+Dave,manager,2021-11-19 16:24:37,1,False,裝置1,37.0
+Adam Harris,Sales,2021-11-19 16:35:46,0,False,裝置1,35.9
+Jerry Wang,Human_Resources,2021-11-19 17:01:34,0,False,裝置1,37.1
+Christina Hayes,Human_Resources,2021-11-19 17:02:30,0,False,裝置1,37.9
+Mike Riley,manager,2021-11-19 17:03:08,0,False,裝置1,37.8
+Matthew Martin,General_Affairs,2021-11-19 17:04:54,1,False,裝置1,37.7
+James Nelson,Human_Resources,2021-11-19 17:07:25,0,False,裝置1,37.9
+Cory Richardson,Sales,2021-11-19 17:11:35,1,False,裝置1,38.0
+Dave,manager,2021-11-19 17:13:20,1,False,裝置1,38.0
+Scott Smith,Sales,2021-11-19 17:14:49,1,False,裝置1,36.6
+Ricky,Human_Resources,2021-11-19 17:14:52,1,False,裝置1,37.8
+Kirsten Williamson,General_Affairs,2021-11-19 17:19:21,0,False,裝置1,36.6
+Adam Harris,Sales,2021-11-19 17:29:32,1,False,裝置1,37.4
+James Nelson,Human_Resources,2021-11-20 08:36:30,0,False,裝置1,37.6
+Adam Harris,Sales,2021-11-20 08:39:06,0,False,裝置1,36.7
+Cory Richardson,Sales,2021-11-20 08:41:37,1,False,裝置1,37.7
+Christina Hayes,Human_Resources,2021-11-20 08:44:50,1,False,裝置1,36.3
+Scott Smith,Sales,2021-11-20 08:48:20,0,False,裝置1,35.9
+Kirsten Williamson,General_Affairs,2021-11-20 08:51:23,0,False,裝置1,38.0
+Mike Riley,manager,2021-11-20 08:53:08,1,False,裝置1,36.8
+Dave,manager,2021-11-20 08:54:33,1,False,裝置1,37.7
+Jerry Wang,Human_Resources,2021-11-20 08:55:01,0,False,裝置1,36.5
+Ricky,Human_Resources,2021-11-20 08:55:37,1,False,裝置1,37.5
+Matthew Martin,General_Affairs,2021-11-20 08:57:53,1,False,裝置1,37.0
+Matthew Martin,General_Affairs,2021-11-20 10:34:49,0,False,裝置1,36.0
+Scott Smith,Sales,2021-11-20 10:46:36,1,False,裝置1,37.6
+Cory Richardson,Sales,2021-11-20 10:48:53,0,False,裝置1,37.3
+Mike Riley,manager,2021-11-20 10:52:41,0,False,裝置1,37.5
+Cory Richardson,Sales,2021-11-20 10:53:07,1,False,裝置1,37.8
+Christina Hayes,Human_Resources,2021-11-20 11:22:17,1,False,裝置1,36.0
+Kirsten Williamson,General_Affairs,2021-11-20 11:52:32,1,False,裝置1,37.9
+Jerry Wang,Human_Resources,2021-11-20 12:05:40,1,False,裝置1,37.7
+Adam Harris,Sales,2021-11-20 12:22:38,0,False,裝置1,37.6
+Matthew Martin,General_Affairs,2021-11-20 12:56:28,0,False,裝置1,37.4
+Ricky,Human_Resources,2021-11-20 13:07:22,1,False,裝置1,36.0
+Kirsten Williamson,General_Affairs,2021-11-20 13:12:56,0,False,裝置1,35.8
+James Nelson,Human_Resources,2021-11-20 13:22:29,0,False,裝置1,36.0
+Mike Riley,manager,2021-11-20 13:48:45,1,False,裝置1,36.1
+Jerry Wang,Human_Resources,2021-11-20 14:13:36,1,False,裝置1,37.5
+James Nelson,Human_Resources,2021-11-20 14:47:47,0,False,裝置1,37.1
+Christina Hayes,Human_Resources,2021-11-20 15:24:35,0,False,裝置1,36.0
+Ricky,Human_Resources,2021-11-20 15:36:05,1,False,裝置1,37.7
+Dave,manager,2021-11-20 15:56:45,0,False,裝置1,36.2
+Dave,manager,2021-11-20 16:02:05,1,False,裝置1,37.8
+Adam Harris,Sales,2021-11-20 16:02:43,0,False,裝置1,36.3
+Scott Smith,Sales,2021-11-20 16:36:32,0,False,裝置1,35.9
+Matthew Martin,General_Affairs,2021-11-20 17:01:38,1,False,裝置1,36.0
+Mike Riley,manager,2021-11-20 17:03:18,0,False,裝置1,38.0
+Jerry Wang,Human_Resources,2021-11-20 17:03:28,0,False,裝置1,37.6
+Kirsten Williamson,General_Affairs,2021-11-20 17:05:07,0,False,裝置1,35.9
+Adam Harris,Sales,2021-11-20 17:06:04,1,False,裝置1,36.7
+Ricky,Human_Resources,2021-11-20 17:07:44,0,False,裝置1,37.1
+Dave,manager,2021-11-20 17:11:51,1,False,裝置1,36.5
+Scott Smith,Sales,2021-11-20 17:12:28,0,False,裝置1,36.8
+James Nelson,Human_Resources,2021-11-20 17:13:11,1,False,裝置1,36.7
+Christina Hayes,Human_Resources,2021-11-20 17:18:41,1,False,裝置1,36.1
+Cory Richardson,Sales,2021-11-20 17:21:46,1,False,裝置1,36.1
+Cory Richardson,Sales,2021-11-21 08:32:38,0,False,裝置1,37.3
+Christina Hayes,Human_Resources,2021-11-21 08:35:25,1,False,裝置1,36.3
+Adam Harris,Sales,2021-11-21 08:36:12,1,False,裝置1,37.7
+Dave,manager,2021-11-21 08:38:27,0,False,裝置1,36.9
+Jerry Wang,Human_Resources,2021-11-21 08:39:12,1,False,裝置1,36.9
+Matthew Martin,General_Affairs,2021-11-21 08:48:58,0,False,裝置1,37.2
+Scott Smith,Sales,2021-11-21 08:50:55,0,False,裝置1,37.2
+Ricky,Human_Resources,2021-11-21 08:53:39,1,False,裝置1,36.0
+Mike Riley,manager,2021-11-21 08:54:23,0,False,裝置1,35.7
+James Nelson,Human_Resources,2021-11-21 08:55:28,1,False,裝置1,37.7
+Kirsten Williamson,General_Affairs,2021-11-21 09:18:49,0,False,裝置1,36.6
+James Nelson,Human_Resources,2021-11-21 10:44:56,1,False,裝置1,36.2
+Dave,manager,2021-11-21 11:06:03,0,False,裝置1,36.7
+Mike Riley,manager,2021-11-21 11:18:10,1,False,裝置1,35.7
+Christina Hayes,Human_Resources,2021-11-21 11:18:12,0,False,裝置1,37.1
+Ricky,Human_Resources,2021-11-21 12:16:46,0,False,裝置1,37.4
+Matthew Martin,General_Affairs,2021-11-21 12:43:54,0,False,裝置1,36.5
+Jerry Wang,Human_Resources,2021-11-21 12:53:56,1,False,裝置1,36.5
+Scott Smith,Sales,2021-11-21 13:03:08,0,False,裝置1,37.4
+Adam Harris,Sales,2021-11-21 13:29:30,0,False,裝置1,36.8
+Adam Harris,Sales,2021-11-21 13:57:47,0,False,裝置1,37.8
+Kirsten Williamson,General_Affairs,2021-11-21 14:17:42,1,False,裝置1,36.5
+Ricky,Human_Resources,2021-11-21 14:30:22,0,False,裝置1,36.9
+Cory Richardson,Sales,2021-11-21 14:31:54,1,False,裝置1,36.8
+James Nelson,Human_Resources,2021-11-21 14:51:15,1,False,裝置1,37.3
+Matthew Martin,General_Affairs,2021-11-21 15:01:04,1,False,裝置1,37.2
+Scott Smith,Sales,2021-11-21 15:40:57,1,False,裝置1,37.8
+Christina Hayes,Human_Resources,2021-11-21 15:45:15,0,False,裝置1,37.0
+Mike Riley,manager,2021-11-21 15:57:02,1,False,裝置1,36.0
+Kirsten Williamson,General_Affairs,2021-11-21 16:28:47,0,False,裝置1,36.3
+Jerry Wang,Human_Resources,2021-11-21 16:36:16,0,False,裝置1,37.8
+Cory Richardson,Sales,2021-11-21 16:50:27,0,False,裝置1,37.5
+Dave,manager,2021-11-21 16:53:47,0,False,裝置1,36.6
+Kirsten Williamson,General_Affairs,2021-11-21 17:03:45,1,False,裝置1,36.5
+Jerry Wang,Human_Resources,2021-11-21 17:04:08,1,False,裝置1,37.1
+Scott Smith,Sales,2021-11-21 17:05:05,0,False,裝置1,37.6
+Adam Harris,Sales,2021-11-21 17:06:25,1,False,裝置1,37.8
+Mike Riley,manager,2021-11-21 17:16:23,1,False,裝置1,37.3
+Dave,manager,2021-11-21 17:18:19,0,False,裝置1,35.9
+James Nelson,Human_Resources,2021-11-21 17:20:16,0,False,裝置1,35.8
+Christina Hayes,Human_Resources,2021-11-21 17:22:49,0,False,裝置1,36.1
+Cory Richardson,Sales,2021-11-21 17:27:22,0,False,裝置1,37.4
+Ricky,Human_Resources,2021-11-21 17:28:42,1,False,裝置1,36.7
+Matthew Martin,General_Affairs,2021-11-21 17:28:42,1,False,裝置1,37.0
+Dave,manager,2021-11-22 08:34:54,1,False,裝置1,36.8
+Jerry Wang,Human_Resources,2021-11-22 08:44:09,1,False,裝置1,36.4
+Cory Richardson,Sales,2021-11-22 08:45:14,0,False,裝置1,36.5
+James Nelson,Human_Resources,2021-11-22 08:48:15,1,False,裝置1,36.3
+Ricky,Human_Resources,2021-11-22 08:48:28,1,False,裝置1,37.2
+Mike Riley,manager,2021-11-22 08:48:54,1,False,裝置1,36.0
+Scott Smith,Sales,2021-11-22 08:51:48,0,False,裝置1,36.1
+Adam Harris,Sales,2021-11-22 08:54:33,0,False,裝置1,38.0
+Christina Hayes,Human_Resources,2021-11-22 08:56:47,1,False,裝置1,37.7
+Matthew Martin,General_Affairs,2021-11-22 08:58:08,1,False,裝置1,35.7
+Kirsten Williamson,General_Affairs,2021-11-22 08:58:28,0,False,裝置1,36.1
+Cory Richardson,Sales,2021-11-22 10:01:20,0,False,裝置1,37.3
+Dave,manager,2021-11-22 10:16:39,1,False,裝置1,36.2
+Christina Hayes,Human_Resources,2021-11-22 10:32:52,1,False,裝置1,37.9
+Ricky,Human_Resources,2021-11-22 10:42:13,0,False,裝置1,37.5
+Scott Smith,Sales,2021-11-22 10:49:44,1,False,裝置1,37.4
+James Nelson,Human_Resources,2021-11-22 11:27:36,0,False,裝置1,37.0
+James Nelson,Human_Resources,2021-11-22 11:34:41,1,False,裝置1,37.6
+Jerry Wang,Human_Resources,2021-11-22 12:03:34,1,False,裝置1,37.4
+Dave,manager,2021-11-22 12:17:20,0,False,裝置1,37.4
+Adam Harris,Sales,2021-11-22 12:22:51,1,False,裝置1,37.1
+Kirsten Williamson,General_Affairs,2021-11-22 14:09:56,0,False,裝置1,37.0
+Kirsten Williamson,General_Affairs,2021-11-22 14:13:08,1,False,裝置1,37.0
+Matthew Martin,General_Affairs,2021-11-22 14:45:32,1,False,裝置1,35.8
+Cory Richardson,Sales,2021-11-22 15:05:03,0,False,裝置1,35.9
+Ricky,Human_Resources,2021-11-22 15:13:03,0,False,裝置1,37.7
+Christina Hayes,Human_Resources,2021-11-22 15:36:07,1,False,裝置1,36.9
+Scott Smith,Sales,2021-11-22 15:37:37,1,False,裝置1,35.7
+Mike Riley,manager,2021-11-22 15:38:15,1,False,裝置1,37.4
+Mike Riley,manager,2021-11-22 15:43:11,1,False,裝置1,37.1
+Matthew Martin,General_Affairs,2021-11-22 16:06:22,1,False,裝置1,36.6
+Jerry Wang,Human_Resources,2021-11-22 16:35:20,0,False,裝置1,35.9
+Adam Harris,Sales,2021-11-22 16:44:41,0,False,裝置1,37.1
+Ricky,Human_Resources,2021-11-22 17:01:56,1,False,裝置1,37.6
+Kirsten Williamson,General_Affairs,2021-11-22 17:11:30,0,False,裝置1,35.8
+James Nelson,Human_Resources,2021-11-22 17:12:57,1,False,裝置1,36.6
+Dave,manager,2021-11-22 17:13:51,1,False,裝置1,37.8
+Matthew Martin,General_Affairs,2021-11-22 17:18:08,1,False,裝置1,35.7
+Adam Harris,Sales,2021-11-22 17:18:18,1,False,裝置1,37.5
+Mike Riley,manager,2021-11-22 17:21:47,1,False,裝置1,37.0
+Scott Smith,Sales,2021-11-22 17:22:46,0,False,裝置1,37.2
+Cory Richardson,Sales,2021-11-22 17:23:49,1,False,裝置1,37.4
+Christina Hayes,Human_Resources,2021-11-22 17:25:01,1,False,裝置1,36.7
+Jerry Wang,Human_Resources,2021-11-22 17:28:57,1,False,裝置1,36.7
+Cory Richardson,Sales,2021-11-23 08:32:46,0,False,裝置1,37.2
+Christina Hayes,Human_Resources,2021-11-23 08:43:26,1,False,裝置1,36.5
+Scott Smith,Sales,2021-11-23 08:45:52,1,False,裝置1,36.0
+Matthew Martin,General_Affairs,2021-11-23 08:46:51,1,False,裝置1,36.5
+Ricky,Human_Resources,2021-11-23 08:49:03,1,False,裝置1,37.5
+Adam Harris,Sales,2021-11-23 08:52:02,1,False,裝置1,36.1
+Jerry Wang,Human_Resources,2021-11-23 08:53:16,0,False,裝置1,37.1
+Dave,manager,2021-11-23 08:53:54,0,False,裝置1,36.7
+James Nelson,Human_Resources,2021-11-23 08:54:28,1,False,裝置1,37.5
+Mike Riley,manager,2021-11-23 09:19:23,1,False,裝置1,36.3
+Kirsten Williamson,General_Affairs,2021-11-23 09:20:35,0,False,裝置1,36.8
+Kirsten Williamson,General_Affairs,2021-11-23 10:13:09,1,False,裝置1,36.8
+Scott Smith,Sales,2021-11-23 10:14:57,1,False,裝置1,37.7
+Cory Richardson,Sales,2021-11-23 11:27:18,1,False,裝置1,36.2
+Adam Harris,Sales,2021-11-23 11:51:34,1,False,裝置1,37.9
+Christina Hayes,Human_Resources,2021-11-23 12:12:53,1,False,裝置1,37.0
+Mike Riley,manager,2021-11-23 12:54:02,0,False,裝置1,36.6
+Matthew Martin,General_Affairs,2021-11-23 13:03:31,0,False,裝置1,36.5
+Mike Riley,manager,2021-11-23 13:08:08,0,False,裝置1,37.3
+Cory Richardson,Sales,2021-11-23 13:24:36,1,False,裝置1,36.5
+Ricky,Human_Resources,2021-11-23 13:26:38,0,False,裝置1,36.7
+Ricky,Human_Resources,2021-11-23 13:50:51,1,False,裝置1,35.9
+Christina Hayes,Human_Resources,2021-11-23 13:58:41,1,False,裝置1,36.5
+Adam Harris,Sales,2021-11-23 14:04:05,0,False,裝置1,36.1
+Dave,manager,2021-11-23 14:04:51,1,False,裝置1,36.4
+James Nelson,Human_Resources,2021-11-23 14:24:06,0,False,裝置1,36.3
+Jerry Wang,Human_Resources,2021-11-23 14:47:37,1,False,裝置1,37.4
+Jerry Wang,Human_Resources,2021-11-23 14:51:51,1,False,裝置1,36.3
+Scott Smith,Sales,2021-11-23 14:54:22,0,False,裝置1,37.2
+James Nelson,Human_Resources,2021-11-23 15:15:54,0,False,裝置1,37.8
+Dave,manager,2021-11-23 15:54:24,1,False,裝置1,36.2
+Matthew Martin,General_Affairs,2021-11-23 16:10:55,1,False,裝置1,37.9
+Kirsten Williamson,General_Affairs,2021-11-23 16:21:30,0,False,裝置1,36.9
+Kirsten Williamson,General_Affairs,2021-11-23 17:09:37,0,False,裝置1,36.3
+Cory Richardson,Sales,2021-11-23 17:15:39,0,False,裝置1,37.9
+Adam Harris,Sales,2021-11-23 17:16:32,1,False,裝置1,36.3
+Ricky,Human_Resources,2021-11-23 17:18:49,1,False,裝置1,35.9
+Mike Riley,manager,2021-11-23 17:20:15,1,False,裝置1,37.5
+Scott Smith,Sales,2021-11-23 17:21:33,0,False,裝置1,37.3
+Matthew Martin,General_Affairs,2021-11-23 17:22:08,0,False,裝置1,35.9
+Christina Hayes,Human_Resources,2021-11-23 17:23:01,1,False,裝置1,36.4
+Dave,manager,2021-11-23 17:27:36,0,False,裝置1,37.2
+Jerry Wang,Human_Resources,2021-11-23 17:28:40,0,False,裝置1,37.6
+James Nelson,Human_Resources,2021-11-23 17:29:39,1,False,裝置1,36.7
+Ricky,Human_Resources,2021-11-24 08:31:38,1,False,裝置1,36.1
+Matthew Martin,General_Affairs,2021-11-24 08:33:30,1,False,裝置1,37.9
+Cory Richardson,Sales,2021-11-24 08:33:58,0,False,裝置1,37.0
+Kirsten Williamson,General_Affairs,2021-11-24 08:34:11,0,False,裝置1,37.5
+Dave,manager,2021-11-24 08:36:23,1,False,裝置1,36.5
+Jerry Wang,Human_Resources,2021-11-24 08:38:43,0,False,裝置1,36.3
+Christina Hayes,Human_Resources,2021-11-24 08:41:57,1,False,裝置1,37.0
+Scott Smith,Sales,2021-11-24 08:54:11,1,False,裝置1,37.3
+James Nelson,Human_Resources,2021-11-24 08:55:39,0,False,裝置1,36.1
+Adam Harris,Sales,2021-11-24 08:57:58,1,False,裝置1,37.1
+Mike Riley,manager,2021-11-24 09:29:10,1,False,裝置1,36.5
+Kirsten Williamson,General_Affairs,2021-11-24 10:01:10,1,False,裝置1,35.8
+Matthew Martin,General_Affairs,2021-11-24 10:24:26,0,False,裝置1,36.9
+Jerry Wang,Human_Resources,2021-11-24 10:25:29,0,False,裝置1,36.6
+Cory Richardson,Sales,2021-11-24 10:38:39,1,False,裝置1,35.8
+Matthew Martin,General_Affairs,2021-11-24 10:39:50,1,False,裝置1,36.5
+Kirsten Williamson,General_Affairs,2021-11-24 11:03:34,0,False,裝置1,36.5
+Ricky,Human_Resources,2021-11-24 11:04:09,1,False,裝置1,36.9
+Christina Hayes,Human_Resources,2021-11-24 11:27:55,0,False,裝置1,36.2
+Dave,manager,2021-11-24 12:15:42,0,False,裝置1,36.4
+Mike Riley,manager,2021-11-24 12:35:26,1,False,裝置1,37.4
+Adam Harris,Sales,2021-11-24 13:02:24,1,False,裝置1,37.3
+Dave,manager,2021-11-24 13:16:18,1,False,裝置1,36.4
+James Nelson,Human_Resources,2021-11-24 14:11:28,0,False,裝置1,37.8
+Scott Smith,Sales,2021-11-24 14:37:05,0,False,裝置1,38.0
+Scott Smith,Sales,2021-11-24 14:46:32,0,False,裝置1,36.0
+Jerry Wang,Human_Resources,2021-11-24 14:57:56,0,False,裝置1,35.9
+Adam Harris,Sales,2021-11-24 15:01:46,1,False,裝置1,35.7
+Mike Riley,manager,2021-11-24 15:22:04,0,False,裝置1,36.3
+Christina Hayes,Human_Resources,2021-11-24 15:44:52,1,False,裝置1,37.1
+Cory Richardson,Sales,2021-11-24 15:52:42,1,False,裝置1,36.2
+James Nelson,Human_Resources,2021-11-24 16:11:57,1,False,裝置1,36.8
+Ricky,Human_Resources,2021-11-24 16:44:17,0,False,裝置1,36.0
+Christina Hayes,Human_Resources,2021-11-24 17:09:15,1,False,裝置1,36.9
+James Nelson,Human_Resources,2021-11-24 17:11:10,1,False,裝置1,37.7
+Scott Smith,Sales,2021-11-24 17:12:02,0,False,裝置1,36.9
+Mike Riley,manager,2021-11-24 17:14:16,1,False,裝置1,36.4
+Adam Harris,Sales,2021-11-24 17:18:28,1,False,裝置1,37.5
+Matthew Martin,General_Affairs,2021-11-24 17:18:49,0,False,裝置1,37.2
+Ricky,Human_Resources,2021-11-24 17:19:08,0,False,裝置1,37.5
+Cory Richardson,Sales,2021-11-24 17:20:21,0,False,裝置1,37.5
+Kirsten Williamson,General_Affairs,2021-11-24 17:27:10,1,False,裝置1,35.7
+Dave,manager,2021-11-24 17:27:31,0,False,裝置1,36.5
+Jerry Wang,Human_Resources,2021-11-24 17:28:11,0,False,裝置1,36.9
+Adam Harris,Sales,2021-11-25 08:32:32,1,False,裝置1,36.7
+Ricky,Human_Resources,2021-11-25 08:36:05,1,False,裝置1,37.0
+Jerry Wang,Human_Resources,2021-11-25 08:38:54,1,False,裝置1,37.0
+Dave,manager,2021-11-25 08:40:15,1,False,裝置1,36.3
+Christina Hayes,Human_Resources,2021-11-25 08:40:38,0,False,裝置1,36.3
+Cory Richardson,Sales,2021-11-25 08:46:46,1,False,裝置1,35.9
+Matthew Martin,General_Affairs,2021-11-25 08:48:25,1,False,裝置1,36.6
+Scott Smith,Sales,2021-11-25 08:51:10,1,False,裝置1,36.8
+James Nelson,Human_Resources,2021-11-25 08:52:37,0,False,裝置1,37.9
+Kirsten Williamson,General_Affairs,2021-11-25 08:56:35,1,False,裝置1,37.4
+Mike Riley,manager,2021-11-25 08:57:18,1,False,裝置1,36.0
+Kirsten Williamson,General_Affairs,2021-11-25 10:04:18,0,False,裝置1,36.0
+Kirsten Williamson,General_Affairs,2021-11-25 10:21:43,1,False,裝置1,36.8
+James Nelson,Human_Resources,2021-11-25 10:35:50,1,False,裝置1,36.3
+Christina Hayes,Human_Resources,2021-11-25 12:20:32,1,False,裝置1,36.4
+Mike Riley,manager,2021-11-25 12:47:25,0,False,裝置1,35.7
+Scott Smith,Sales,2021-11-25 12:57:48,0,False,裝置1,37.5
+James Nelson,Human_Resources,2021-11-25 13:04:05,1,False,裝置1,35.9
+Ricky,Human_Resources,2021-11-25 13:27:24,1,False,裝置1,36.0
+Scott Smith,Sales,2021-11-25 13:39:47,0,False,裝置1,37.2
+Cory Richardson,Sales,2021-11-25 13:51:33,1,False,裝置1,36.5
+Mike Riley,manager,2021-11-25 14:17:12,0,False,裝置1,36.0
+Matthew Martin,General_Affairs,2021-11-25 14:46:05,1,False,裝置1,37.5
+Jerry Wang,Human_Resources,2021-11-25 14:50:02,1,False,裝置1,37.7
+Cory Richardson,Sales,2021-11-25 14:52:46,0,False,裝置1,37.1
+Dave,manager,2021-11-25 15:30:58,0,False,裝置1,36.9
+Dave,manager,2021-11-25 15:31:03,0,False,裝置1,36.7
+Adam Harris,Sales,2021-11-25 15:33:39,0,False,裝置1,36.8
+Adam Harris,Sales,2021-11-25 15:43:01,0,False,裝置1,37.0
+Jerry Wang,Human_Resources,2021-11-25 15:55:22,1,False,裝置1,36.4
+Christina Hayes,Human_Resources,2021-11-25 16:13:01,0,False,裝置1,36.0
+Matthew Martin,General_Affairs,2021-11-25 16:28:24,1,False,裝置1,37.4
+Ricky,Human_Resources,2021-11-25 16:53:29,0,False,裝置1,37.9
+Cory Richardson,Sales,2021-11-25 17:02:21,0,False,裝置1,35.8
+Mike Riley,manager,2021-11-25 17:04:29,1,False,裝置1,36.5
+Jerry Wang,Human_Resources,2021-11-25 17:04:44,0,False,裝置1,37.8
+Ricky,Human_Resources,2021-11-25 17:06:17,1,False,裝置1,36.3
+James Nelson,Human_Resources,2021-11-25 17:07:19,1,False,裝置1,36.8
+Christina Hayes,Human_Resources,2021-11-25 17:11:31,0,False,裝置1,36.7
+Adam Harris,Sales,2021-11-25 17:15:11,0,False,裝置1,37.7
+Matthew Martin,General_Affairs,2021-11-25 17:23:47,1,False,裝置1,37.5
+Dave,manager,2021-11-25 17:27:43,0,False,裝置1,37.5
+Scott Smith,Sales,2021-11-25 17:28:58,1,False,裝置1,36.0
+Kirsten Williamson,General_Affairs,2021-11-25 17:29:18,1,False,裝置1,37.1
+Scott Smith,Sales,2021-11-26 08:33:37,0,False,裝置1,36.6
+Dave,manager,2021-11-26 08:38:38,1,False,裝置1,36.6
+Mike Riley,manager,2021-11-26 08:39:14,1,False,裝置1,37.3
+Kirsten Williamson,General_Affairs,2021-11-26 08:41:15,0,False,裝置1,37.8
+Christina Hayes,Human_Resources,2021-11-26 08:42:01,0,False,裝置1,36.8
+Cory Richardson,Sales,2021-11-26 08:42:12,0,False,裝置1,36.2
+Ricky,Human_Resources,2021-11-26 08:45:43,0,False,裝置1,36.2
+Adam Harris,Sales,2021-11-26 08:48:06,1,False,裝置1,37.6
+Jerry Wang,Human_Resources,2021-11-26 08:49:54,1,False,裝置1,36.9
+James Nelson,Human_Resources,2021-11-26 08:55:13,1,False,裝置1,37.9
+Matthew Martin,General_Affairs,2021-11-26 09:28:01,0,False,裝置1,35.8
+Jerry Wang,Human_Resources,2021-11-26 10:05:08,1,False,裝置1,36.7
+Adam Harris,Sales,2021-11-26 10:11:02,1,False,裝置1,37.1
+Adam Harris,Sales,2021-11-26 10:13:13,0,False,裝置1,36.0
+Ricky,Human_Resources,2021-11-26 10:49:37,0,False,裝置1,36.0
+Cory Richardson,Sales,2021-11-26 10:50:44,0,False,裝置1,36.5
+Jerry Wang,Human_Resources,2021-11-26 11:21:21,0,False,裝置1,36.0
+Matthew Martin,General_Affairs,2021-11-26 11:43:41,0,False,裝置1,37.0
+Scott Smith,Sales,2021-11-26 11:49:09,0,False,裝置1,37.1
+Kirsten Williamson,General_Affairs,2021-11-26 12:19:50,1,False,裝置1,37.8
+Cory Richardson,Sales,2021-11-26 12:31:21,0,False,裝置1,36.5
+Ricky,Human_Resources,2021-11-26 12:39:11,0,False,裝置1,36.1
+Mike Riley,manager,2021-11-26 12:50:42,1,False,裝置1,37.6
+James Nelson,Human_Resources,2021-11-26 12:52:06,0,False,裝置1,37.9
+James Nelson,Human_Resources,2021-11-26 13:01:35,1,False,裝置1,37.4
+Christina Hayes,Human_Resources,2021-11-26 13:06:03,0,False,裝置1,36.9
+Kirsten Williamson,General_Affairs,2021-11-26 13:41:24,0,False,裝置1,36.6
+Dave,manager,2021-11-26 13:52:15,0,False,裝置1,36.9
+Scott Smith,Sales,2021-11-26 14:25:24,0,False,裝置1,37.9
+Dave,manager,2021-11-26 14:36:54,1,False,裝置1,36.4
+Christina Hayes,Human_Resources,2021-11-26 15:15:49,0,False,裝置1,36.1
+Matthew Martin,General_Affairs,2021-11-26 15:32:19,0,False,裝置1,37.5
+Mike Riley,manager,2021-11-26 15:46:52,1,False,裝置1,36.4
+Scott Smith,Sales,2021-11-26 17:02:35,1,False,裝置1,37.3
+James Nelson,Human_Resources,2021-11-26 17:03:47,0,False,裝置1,36.1
+Jerry Wang,Human_Resources,2021-11-26 17:06:30,1,False,裝置1,37.5
+Mike Riley,manager,2021-11-26 17:09:28,1,False,裝置1,37.3
+Dave,manager,2021-11-26 17:10:16,0,False,裝置1,36.5
+Kirsten Williamson,General_Affairs,2021-11-26 17:10:28,0,False,裝置1,36.4
+Christina Hayes,Human_Resources,2021-11-26 17:16:23,1,False,裝置1,37.1
+Cory Richardson,Sales,2021-11-26 17:19:40,0,False,裝置1,36.9
+Ricky,Human_Resources,2021-11-26 17:26:06,1,False,裝置1,37.4
+Adam Harris,Sales,2021-11-26 17:26:08,0,False,裝置1,36.2
+Matthew Martin,General_Affairs,2021-11-26 17:26:46,0,False,裝置1,36.2
+Dave,manager,2021-11-27 08:33:02,0,False,裝置1,37.6
+Kirsten Williamson,General_Affairs,2021-11-27 08:35:10,1,False,裝置1,37.6
+Scott Smith,Sales,2021-11-27 08:37:16,0,False,裝置1,36.1
+Ricky,Human_Resources,2021-11-27 08:38:13,1,False,裝置1,37.5
+Matthew Martin,General_Affairs,2021-11-27 08:38:14,1,False,裝置1,37.7
+James Nelson,Human_Resources,2021-11-27 08:39:29,1,False,裝置1,36.3
+Mike Riley,manager,2021-11-27 08:41:32,0,False,裝置1,37.5
+Jerry Wang,Human_Resources,2021-11-27 08:43:57,1,False,裝置1,37.2
+Cory Richardson,Sales,2021-11-27 08:56:04,1,False,裝置1,37.8
+Adam Harris,Sales,2021-11-27 08:57:23,0,False,裝置1,37.3
+Christina Hayes,Human_Resources,2021-11-27 09:11:19,1,False,裝置1,36.9
+Christina Hayes,Human_Resources,2021-11-27 10:36:43,1,False,裝置1,36.3
+James Nelson,Human_Resources,2021-11-27 10:56:12,1,False,裝置1,36.4
+Adam Harris,Sales,2021-11-27 11:05:50,0,False,裝置1,36.6
+Jerry Wang,Human_Resources,2021-11-27 11:05:56,1,False,裝置1,36.9
+Jerry Wang,Human_Resources,2021-11-27 11:39:54,0,False,裝置1,37.5
+Adam Harris,Sales,2021-11-27 11:55:23,1,False,裝置1,36.5
+Scott Smith,Sales,2021-11-27 12:15:37,1,False,裝置1,36.1
+Mike Riley,manager,2021-11-27 12:23:33,1,False,裝置1,36.6
+Matthew Martin,General_Affairs,2021-11-27 12:32:03,0,False,裝置1,36.1
+Kirsten Williamson,General_Affairs,2021-11-27 12:53:29,0,False,裝置1,35.7
+Scott Smith,Sales,2021-11-27 13:24:18,1,False,裝置1,35.9
+Ricky,Human_Resources,2021-11-27 13:43:31,1,False,裝置1,37.2
+Matthew Martin,General_Affairs,2021-11-27 13:50:28,1,False,裝置1,37.8
+Ricky,Human_Resources,2021-11-27 14:01:25,0,False,裝置1,35.8
+Cory Richardson,Sales,2021-11-27 14:07:20,0,False,裝置1,36.1
+Mike Riley,manager,2021-11-27 14:18:52,0,False,裝置1,36.6
+James Nelson,Human_Resources,2021-11-27 14:28:38,1,False,裝置1,36.8
+Christina Hayes,Human_Resources,2021-11-27 14:33:57,1,False,裝置1,36.9
+Cory Richardson,Sales,2021-11-27 15:05:37,1,False,裝置1,36.4
+Kirsten Williamson,General_Affairs,2021-11-27 15:15:08,0,False,裝置1,37.3
+Dave,manager,2021-11-27 15:36:44,0,False,裝置1,36.7
+Dave,manager,2021-11-27 16:25:52,0,False,裝置1,36.5
+Christina Hayes,Human_Resources,2021-11-27 17:01:03,1,False,裝置1,35.8
+Mike Riley,manager,2021-11-27 17:01:36,1,False,裝置1,36.5
+Dave,manager,2021-11-27 17:05:46,1,False,裝置1,36.4
+Ricky,Human_Resources,2021-11-27 17:06:23,1,False,裝置1,37.2
+Scott Smith,Sales,2021-11-27 17:15:44,1,False,裝置1,38.0
+Adam Harris,Sales,2021-11-27 17:18:49,0,False,裝置1,36.3
+Jerry Wang,Human_Resources,2021-11-27 17:19:45,1,False,裝置1,36.0
+Cory Richardson,Sales,2021-11-27 17:21:27,1,False,裝置1,37.1
+Matthew Martin,General_Affairs,2021-11-27 17:27:03,0,False,裝置1,36.8
+Kirsten Williamson,General_Affairs,2021-11-27 17:27:45,0,False,裝置1,37.0
+James Nelson,Human_Resources,2021-11-27 17:29:41,0,False,裝置1,36.6
+Jerry Wang,Human_Resources,2021-11-28 08:30:47,0,False,裝置1,36.7
+Matthew Martin,General_Affairs,2021-11-28 08:31:16,0,False,裝置1,37.2
+Mike Riley,manager,2021-11-28 08:33:26,1,False,裝置1,36.3
+Dave,manager,2021-11-28 08:34:16,1,False,裝置1,36.8
+James Nelson,Human_Resources,2021-11-28 08:36:25,1,False,裝置1,37.9
+Kirsten Williamson,General_Affairs,2021-11-28 08:43:14,0,False,裝置1,36.6
+Cory Richardson,Sales,2021-11-28 08:47:40,0,False,裝置1,35.9
+Adam Harris,Sales,2021-11-28 08:48:03,1,False,裝置1,37.3
+Christina Hayes,Human_Resources,2021-11-28 08:48:07,1,False,裝置1,37.9
+Ricky,Human_Resources,2021-11-28 08:50:45,1,False,裝置1,37.0
+Scott Smith,Sales,2021-11-28 08:57:57,1,False,裝置1,37.8
+Ricky,Human_Resources,2021-11-28 10:06:17,0,False,裝置1,37.3
+Matthew Martin,General_Affairs,2021-11-28 10:08:51,1,False,裝置1,36.8
+James Nelson,Human_Resources,2021-11-28 10:57:32,0,False,裝置1,36.5
+Dave,manager,2021-11-28 11:05:12,1,False,裝置1,37.3
+Cory Richardson,Sales,2021-11-28 11:05:42,0,False,裝置1,36.3
+Jerry Wang,Human_Resources,2021-11-28 11:18:10,1,False,裝置1,37.5
+Dave,manager,2021-11-28 11:24:44,0,False,裝置1,37.1
+Matthew Martin,General_Affairs,2021-11-28 11:44:21,0,False,裝置1,37.8
+Ricky,Human_Resources,2021-11-28 11:53:37,1,False,裝置1,37.5
+James Nelson,Human_Resources,2021-11-28 12:18:06,1,False,裝置1,37.7
+Mike Riley,manager,2021-11-28 13:43:18,1,False,裝置1,36.2
+Scott Smith,Sales,2021-11-28 13:53:13,0,False,裝置1,36.2
+Mike Riley,manager,2021-11-28 14:17:37,0,False,裝置1,36.7
+Christina Hayes,Human_Resources,2021-11-28 14:31:25,1,False,裝置1,36.0
+Kirsten Williamson,General_Affairs,2021-11-28 14:52:38,0,False,裝置1,37.4
+Scott Smith,Sales,2021-11-28 14:53:51,1,False,裝置1,36.5
+Adam Harris,Sales,2021-11-28 15:12:36,0,False,裝置1,36.6
+Christina Hayes,Human_Resources,2021-11-28 15:30:02,1,False,裝置1,37.2
+Jerry Wang,Human_Resources,2021-11-28 16:31:34,1,False,裝置1,37.8
+Cory Richardson,Sales,2021-11-28 16:34:48,1,False,裝置1,37.5
+Adam Harris,Sales,2021-11-28 16:39:52,0,False,裝置1,36.7
+Kirsten Williamson,General_Affairs,2021-11-28 16:43:02,1,False,裝置1,37.7
+James Nelson,Human_Resources,2021-11-28 17:07:57,1,False,裝置1,36.0
+Jerry Wang,Human_Resources,2021-11-28 17:10:33,1,False,裝置1,36.2
+Adam Harris,Sales,2021-11-28 17:12:35,1,False,裝置1,36.0
+Kirsten Williamson,General_Affairs,2021-11-28 17:14:40,1,False,裝置1,37.4
+Mike Riley,manager,2021-11-28 17:14:48,0,False,裝置1,37.9
+Ricky,Human_Resources,2021-11-28 17:16:22,0,False,裝置1,37.5
+Christina Hayes,Human_Resources,2021-11-28 17:17:28,1,False,裝置1,37.0
+Cory Richardson,Sales,2021-11-28 17:18:36,0,False,裝置1,37.9
+Dave,manager,2021-11-28 17:23:16,0,False,裝置1,36.6
+Matthew Martin,General_Affairs,2021-11-28 17:24:04,0,False,裝置1,37.8
+Scott Smith,Sales,2021-11-28 17:28:42,0,False,裝置1,36.3
+Mike Riley,manager,2021-11-29 08:31:19,1,False,裝置1,36.7
+James Nelson,Human_Resources,2021-11-29 08:32:48,0,False,裝置1,36.8
+Cory Richardson,Sales,2021-11-29 08:33:29,0,False,裝置1,35.7
+Ricky,Human_Resources,2021-11-29 08:34:56,1,False,裝置1,36.6
+Jerry Wang,Human_Resources,2021-11-29 08:36:30,1,False,裝置1,37.9
+Dave,manager,2021-11-29 08:38:39,1,False,裝置1,36.7
+Adam Harris,Sales,2021-11-29 08:40:58,1,False,裝置1,37.3
+Christina Hayes,Human_Resources,2021-11-29 08:45:10,1,False,裝置1,36.3
+Matthew Martin,General_Affairs,2021-11-29 08:51:03,0,False,裝置1,36.4
+Kirsten Williamson,General_Affairs,2021-11-29 08:55:41,1,False,裝置1,36.0
+Scott Smith,Sales,2021-11-29 08:56:48,1,False,裝置1,36.6
+Scott Smith,Sales,2021-11-29 10:04:50,1,False,裝置1,37.2
+Scott Smith,Sales,2021-11-29 10:33:17,0,False,裝置1,37.7
+Cory Richardson,Sales,2021-11-29 11:03:25,1,False,裝置1,36.6
+Ricky,Human_Resources,2021-11-29 11:08:25,1,False,裝置1,35.9
+Mike Riley,manager,2021-11-29 11:20:14,1,False,裝置1,37.2
+Christina Hayes,Human_Resources,2021-11-29 11:53:44,0,False,裝置1,37.5
+Adam Harris,Sales,2021-11-29 12:49:03,0,False,裝置1,37.9
+Dave,manager,2021-11-29 12:52:33,1,False,裝置1,37.5
+James Nelson,Human_Resources,2021-11-29 13:02:09,0,False,裝置1,35.9
+Dave,manager,2021-11-29 13:19:45,1,False,裝置1,37.2
+Kirsten Williamson,General_Affairs,2021-11-29 13:22:54,0,False,裝置1,36.5
+Matthew Martin,General_Affairs,2021-11-29 13:37:31,1,False,裝置1,37.5
+Adam Harris,Sales,2021-11-29 13:48:58,1,False,裝置1,37.4
+Christina Hayes,Human_Resources,2021-11-29 13:50:35,1,False,裝置1,36.2
+Ricky,Human_Resources,2021-11-29 13:51:46,1,False,裝置1,36.6
+James Nelson,Human_Resources,2021-11-29 13:52:44,0,False,裝置1,36.0
+Matthew Martin,General_Affairs,2021-11-29 14:44:54,1,False,裝置1,37.2
+Jerry Wang,Human_Resources,2021-11-29 14:58:21,0,False,裝置1,37.6
+Mike Riley,manager,2021-11-29 15:17:56,1,False,裝置1,35.8
+Cory Richardson,Sales,2021-11-29 15:42:28,0,False,裝置1,37.0
+Jerry Wang,Human_Resources,2021-11-29 16:19:04,1,False,裝置1,37.7
+Kirsten Williamson,General_Affairs,2021-11-29 16:43:51,1,False,裝置1,37.0
+Cory Richardson,Sales,2021-11-29 17:02:29,1,False,裝置1,37.8
+Ricky,Human_Resources,2021-11-29 17:03:14,0,False,裝置1,38.0
+Mike Riley,manager,2021-11-29 17:07:04,1,False,裝置1,36.6
+Matthew Martin,General_Affairs,2021-11-29 17:07:37,1,False,裝置1,37.5
+Adam Harris,Sales,2021-11-29 17:10:40,0,False,裝置1,35.9
+James Nelson,Human_Resources,2021-11-29 17:15:31,1,False,裝置1,37.6
+Christina Hayes,Human_Resources,2021-11-29 17:16:28,0,False,裝置1,37.5
+Dave,manager,2021-11-29 17:18:27,0,False,裝置1,36.8
+Kirsten Williamson,General_Affairs,2021-11-29 17:20:57,1,False,裝置1,37.5
+Jerry Wang,Human_Resources,2021-11-29 17:25:26,1,False,裝置1,37.9
+Scott Smith,Sales,2021-11-29 17:27:32,0,False,裝置1,35.9
+Christina Hayes,Human_Resources,2021-11-30 08:32:51,0,False,裝置1,37.2
+Kirsten Williamson,General_Affairs,2021-11-30 08:33:32,1,False,裝置1,36.7
+Dave,manager,2021-11-30 08:35:32,1,False,裝置1,35.7
+Mike Riley,manager,2021-11-30 08:39:16,0,False,裝置1,37.3
+James Nelson,Human_Resources,2021-11-30 08:39:55,0,False,裝置1,37.8
+Matthew Martin,General_Affairs,2021-11-30 08:43:47,1,False,裝置1,35.9
+Jerry Wang,Human_Resources,2021-11-30 08:47:08,1,False,裝置1,38.0
+Cory Richardson,Sales,2021-11-30 08:50:07,1,False,裝置1,35.8
+Scott Smith,Sales,2021-11-30 08:53:17,0,False,裝置1,36.2
+Adam Harris,Sales,2021-11-30 08:54:18,1,False,裝置1,36.8
+Ricky,Human_Resources,2021-11-30 08:55:33,1,False,裝置1,36.4
+Kirsten Williamson,General_Affairs,2021-11-30 10:04:17,1,False,裝置1,36.8
+James Nelson,Human_Resources,2021-11-30 10:18:47,0,False,裝置1,38.0
+Cory Richardson,Sales,2021-11-30 10:24:52,0,False,裝置1,36.7
+Dave,manager,2021-11-30 10:45:58,1,False,裝置1,37.3
+Dave,manager,2021-11-30 11:10:56,1,False,裝置1,36.8
+Ricky,Human_Resources,2021-11-30 11:36:06,1,False,裝置1,36.7
+Christina Hayes,Human_Resources,2021-11-30 12:31:27,0,False,裝置1,37.7
+Jerry Wang,Human_Resources,2021-11-30 12:37:53,1,False,裝置1,35.7
+Matthew Martin,General_Affairs,2021-11-30 12:38:13,1,False,裝置1,35.8
+Ricky,Human_Resources,2021-11-30 12:51:01,1,False,裝置1,37.1
+Scott Smith,Sales,2021-11-30 12:58:54,0,False,裝置1,37.4
+Adam Harris,Sales,2021-11-30 13:46:17,1,False,裝置1,36.8
+Matthew Martin,General_Affairs,2021-11-30 13:58:09,0,False,裝置1,35.8
+Jerry Wang,Human_Resources,2021-11-30 14:02:50,1,False,裝置1,37.0
+Cory Richardson,Sales,2021-11-30 14:15:04,0,False,裝置1,37.8
+Mike Riley,manager,2021-11-30 14:20:33,0,False,裝置1,36.1
+Adam Harris,Sales,2021-11-30 14:40:51,0,False,裝置1,35.9
+Scott Smith,Sales,2021-11-30 14:54:12,1,False,裝置1,36.1
+James Nelson,Human_Resources,2021-11-30 15:06:44,0,False,裝置1,36.8
+Christina Hayes,Human_Resources,2021-11-30 15:38:38,1,False,裝置1,35.8
+Kirsten Williamson,General_Affairs,2021-11-30 15:41:22,0,False,裝置1,37.5
+Mike Riley,manager,2021-11-30 16:20:33,0,False,裝置1,35.8
+Kirsten Williamson,General_Affairs,2021-11-30 17:03:36,1,False,裝置1,35.7
+Mike Riley,manager,2021-11-30 17:09:24,1,False,裝置1,37.7
+James Nelson,Human_Resources,2021-11-30 17:14:39,1,False,裝置1,37.7
+Christina Hayes,Human_Resources,2021-11-30 17:15:25,1,False,裝置1,37.0
+Dave,manager,2021-11-30 17:16:05,1,False,裝置1,35.8
+Scott Smith,Sales,2021-11-30 17:21:20,1,False,裝置1,36.5
+Adam Harris,Sales,2021-11-30 17:23:38,1,False,裝置1,36.5
+Ricky,Human_Resources,2021-11-30 17:25:17,0,False,裝置1,37.9
+Jerry Wang,Human_Resources,2021-11-30 17:26:02,0,False,裝置1,37.2
+Matthew Martin,General_Affairs,2021-11-30 17:26:03,0,False,裝置1,36.1
+Cory Richardson,Sales,2021-11-30 17:27:21,0,False,裝置1,35.8
+Matthew Martin,General_Affairs,2021-12-01 08:30:55,1,False,裝置1,36.9
+Matthew Martin,General_Affairs,2021-12-01 08:31:12,1,False,裝置1,37.3
+James Nelson,Human_Resources,2021-12-01 08:32:28,1,False,裝置1,37.4
+Christina Hayes,Human_Resources,2021-12-01 08:33:03,1,False,裝置1,36.2
+Scott Smith,Sales,2021-12-01 08:34:03,1,False,裝置1,36.0
+Ricky,Human_Resources,2021-12-01 08:34:06,1,False,裝置1,37.4
+Dave,manager,2021-12-01 08:35:53,1,False,裝置1,37.4
+Jerry Wang,Human_Resources,2021-12-01 08:36:04,0,False,裝置1,37.0
+Dave,manager,2021-12-01 08:38:10,0,False,裝置1,37.4
+Matthew Martin,General_Affairs,2021-12-01 08:39:55,0,False,裝置1,37.5
+Christina Hayes,Human_Resources,2021-12-01 08:41:08,1,False,裝置1,37.5
+Ricky,Human_Resources,2021-12-01 08:41:25,0,False,裝置1,37.2
+Jerry Wang,Human_Resources,2021-12-01 08:42:08,1,False,裝置1,37.2
+Scott Smith,Sales,2021-12-01 08:42:19,1,False,裝置1,36.7
+Adam Harris,Sales,2021-12-01 08:42:21,1,False,裝置1,37.4
+Matthew Martin,General_Affairs,2021-12-01 08:42:34,1,False,裝置1,35.9
+James Nelson,Human_Resources,2021-12-01 08:44:08,0,False,裝置1,36.5
+Dave,manager,2021-12-01 08:47:54,0,False,裝置1,36.9
+Cory Richardson,Sales,2021-12-01 08:50:11,1,False,裝置1,36.6
+Christina Hayes,Human_Resources,2021-12-01 08:50:27,1,False,裝置1,36.6
+Cory Richardson,Sales,2021-12-01 08:52:15,1,False,裝置1,35.8
+Kirsten Williamson,General_Affairs,2021-12-01 08:53:42,1,False,裝置1,36.0
+Cory Richardson,Sales,2021-12-01 08:55:57,0,False,裝置1,37.1
+Ricky,Human_Resources,2021-12-01 08:58:27,0,False,裝置1,37.0
+James Nelson,Human_Resources,2021-12-01 08:58:48,0,False,裝置1,36.9
+Jerry Wang,Human_Resources,2021-12-01 08:58:57,0,False,裝置1,36.8
+Christina Hayes,Human_Resources,2021-12-01 09:06:55,0,False,裝置1,37.7
+James Nelson,Human_Resources,2021-12-01 09:22:35,0,False,裝置1,36.4
+Christina Hayes,Human_Resources,2021-12-01 10:09:04,1,False,裝置1,36.8
+Ricky,Human_Resources,2021-12-01 10:51:16,1,False,裝置1,38.0
+Adam Harris,Sales,2021-12-01 10:55:14,0,False,裝置1,35.8
+Jerry Wang,Human_Resources,2021-12-01 10:57:04,1,False,裝置1,36.5
+Matthew Martin,General_Affairs,2021-12-01 11:12:06,1,False,裝置1,37.3
+Matthew Martin,General_Affairs,2021-12-01 11:19:14,0,False,裝置1,37.8
+Christina Hayes,Human_Resources,2021-12-01 12:08:14,0,False,裝置1,36.4
+Cory Richardson,Sales,2021-12-01 12:51:42,0,False,裝置1,36.0
+Cory Richardson,Sales,2021-12-01 13:04:04,0,False,裝置1,36.6
+Dave,manager,2021-12-01 13:29:53,1,False,裝置1,37.3
+Jerry Wang,Human_Resources,2021-12-01 13:37:56,1,False,裝置1,37.7
+Kirsten Williamson,General_Affairs,2021-12-01 13:57:05,0,False,裝置1,37.7
+Ricky,Human_Resources,2021-12-01 14:17:37,0,False,裝置1,37.5
+Dave,manager,2021-12-01 14:43:17,0,False,裝置1,37.6
+James Nelson,Human_Resources,2021-12-01 15:53:15,0,False,裝置1,37.6
+Scott Smith,Sales,2021-12-01 15:53:39,0,False,裝置1,37.2
+Adam Harris,Sales,2021-12-01 16:07:55,0,False,裝置1,36.4
+Scott Smith,Sales,2021-12-01 16:35:32,0,False,裝置1,36.0
+Kirsten Williamson,General_Affairs,2021-12-01 16:43:15,0,False,裝置1,35.9
+James Nelson,Human_Resources,2021-12-01 16:48:30,1,False,裝置1,36.4
+Ricky,Human_Resources,2021-12-01 17:06:14,1,False,裝置1,36.7
+Jerry Wang,Human_Resources,2021-12-01 17:10:09,1,False,裝置1,36.5
+Adam Harris,Sales,2021-12-01 17:12:46,1,False,裝置1,36.8
+Dave,manager,2021-12-01 17:13:31,0,False,裝置1,37.4
+Cory Richardson,Sales,2021-12-01 17:18:35,1,False,裝置1,36.4
+Scott Smith,Sales,2021-12-01 17:19:26,0,False,裝置1,37.2
+Kirsten Williamson,General_Affairs,2021-12-01 17:23:38,1,False,裝置1,37.0
+Matthew Martin,General_Affairs,2021-12-01 17:24:45,0,False,裝置1,37.9
+Christina Hayes,Human_Resources,2021-12-01 17:25:31,1,False,裝置1,36.7
+James Nelson,Human_Resources,2021-12-01 17:29:04,0,False,裝置1,37.7
+Kirsten Williamson,General_Affairs,2021-12-02 08:33:53,1,False,裝置1,36.0
+James Nelson,Human_Resources,2021-12-02 08:34:17,1,False,裝置1,37.5
+Ricky,Human_Resources,2021-12-02 08:37:37,1,False,裝置1,38.0
+Dave,manager,2021-12-02 08:37:51,1,False,裝置1,36.7
+Jerry Wang,Human_Resources,2021-12-02 08:39:10,1,False,裝置1,35.9
+Cory Richardson,Sales,2021-12-02 08:40:56,1,False,裝置1,37.0
+Christina Hayes,Human_Resources,2021-12-02 08:43:36,1,False,裝置1,36.5
+Matthew Martin,General_Affairs,2021-12-02 08:48:53,1,False,裝置1,37.1
+Scott Smith,Sales,2021-12-02 08:50:51,0,False,裝置1,36.2
+Adam Harris,Sales,2021-12-02 08:51:04,1,False,裝置1,36.7
+Jerry Wang,Human_Resources,2021-12-02 10:06:37,0,False,裝置1,37.2
+Kirsten Williamson,General_Affairs,2021-12-02 10:13:46,1,False,裝置1,37.6
+Dave,manager,2021-12-02 10:52:53,1,False,裝置1,36.4
+Matthew Martin,General_Affairs,2021-12-02 10:58:58,0,False,裝置1,36.9
+Ricky,Human_Resources,2021-12-02 11:09:05,1,False,裝置1,38.0
+Jerry Wang,Human_Resources,2021-12-02 11:22:03,0,False,裝置1,36.2
+Adam Harris,Sales,2021-12-02 11:31:42,1,False,裝置1,36.2
+Cory Richardson,Sales,2021-12-02 12:31:25,0,False,裝置1,37.1
+James Nelson,Human_Resources,2021-12-02 13:17:32,1,False,裝置1,35.8
+Adam Harris,Sales,2021-12-02 13:36:56,1,False,裝置1,37.4
+Dave,manager,2021-12-02 13:58:13,1,False,裝置1,37.0
+Ricky,Human_Resources,2021-12-02 14:09:48,1,False,裝置1,37.2
+Scott Smith,Sales,2021-12-02 14:36:34,0,False,裝置1,35.9
+Matthew Martin,General_Affairs,2021-12-02 14:43:47,0,False,裝置1,37.9
+Ricky,Human_Resources,2021-12-02 15:05:55,1,False,裝置1,36.42
+Ricky,Human_Resources,2021-12-02 15:06:10,1,False,裝置1,36.37
+Ricky,Human_Resources,2021-12-02 15:06:17,1,False,裝置1,36.36
+Christina Hayes,Human_Resources,2021-12-02 15:06:24,1,False,裝置1,36.56
+Ricky,Human_Resources,2021-12-02 15:06:37,1,False,裝置1,36.45
+Ricky,Human_Resources,2021-12-02 15:06:45,1,True,裝置1,38.35
+Christina Hayes,Human_Resources,2021-12-02 15:08:02,1,True,裝置1,38.38
+Christina Hayes,Human_Resources,2021-12-02 15:08:02,1,True,裝置1,38.38
+Cory Richardson,Sales,2021-12-02 15:09:21,1,False,裝置1,36.2
+Ricky,Human_Resources,2021-12-02 15:10:33,1,True,裝置1,38.31
+Ricky,Human_Resources,2021-12-02 15:10:46,1,True,裝置1,38.47
+Ricky,Human_Resources,2021-12-02 15:10:56,1,True,裝置1,38.39
+Ricky,Human_Resources,2021-12-02 15:12:10,1,True,裝置1,38.28
+Ricky,Human_Resources,2021-12-02 15:12:29,1,True,裝置1,38.27
+Ricky,Human_Resources,2021-12-02 15:14:02,1,True,裝置1,38.3
+Ricky,Human_Resources,2021-12-02 15:14:08,1,True,裝置1,38.31
+Ricky,Human_Resources,2021-12-02 15:15:05,1,True,裝置1,38.25
+Ricky,Human_Resources,2021-12-02 15:15:05,1,True,裝置1,38.25
+Christina Hayes,Human_Resources,2021-12-02 15:15:39,1,True,裝置1,38.4
+Christina Hayes,Human_Resources,2021-12-02 15:20:29,1,True,裝置1,38.22
+Christina Hayes,Human_Resources,2021-12-02 15:20:42,1,True,裝置1,38.26
+Christina Hayes,Human_Resources,2021-12-02 15:22:11,1,True,裝置1,38.27
+Ricky,Human_Resources,2021-12-02 15:22:27,1,True,裝置1,38.29
+Ricky,Human_Resources,2021-12-02 15:22:27,1,True,裝置1,38.29
+Ricky,Human_Resources,2021-12-02 15:22:39,1,True,裝置1,38.18
+Ricky,Human_Resources,2021-12-02 15:22:39,1,True,裝置1,38.18
+Christina Hayes,Human_Resources,2021-12-02 15:22:45,1,True,裝置1,38.29
+Christina Hayes,Human_Resources,2021-12-02 15:23:06,1,True,裝置1,38.26
+Christina Hayes,Human_Resources,2021-12-02 15:23:06,1,True,裝置1,38.26
+Christina Hayes,Human_Resources,2021-12-02 15:23:06,1,True,裝置1,38.26
+Dave,manager,2021-12-02 15:24:31,1,True,裝置1,38.32
+Dave,manager,2021-12-02 15:24:31,1,True,裝置1,38.32
+Christina Hayes,Human_Resources,2021-12-02 15:27:01,1,True,裝置1,38.3
+Ricky,Human_Resources,2021-12-02 15:27:37,1,True,裝置1,38.22
+Ricky,Human_Resources,2021-12-02 15:27:38,1,True,裝置1,38.22
+Scott Smith,Sales,2021-12-02 15:38:15,1,False,裝置1,37.9
+Kirsten Williamson,General_Affairs,2021-12-02 15:44:38,1,False,裝置1,37.8
+Christina Hayes,Human_Resources,2021-12-02 15:51:23,0,False,裝置1,37.0
+James Nelson,Human_Resources,2021-12-02 16:20:16,1,False,裝置1,36.3
+Christina Hayes,Human_Resources,2021-12-02 16:34:14,1,False,裝置1,35.8
+Scott Smith,Sales,2021-12-02 17:01:36,0,False,裝置1,37.7
+Dave,manager,2021-12-02 17:01:57,1,False,裝置1,36.5
+Adam Harris,Sales,2021-12-02 17:02:36,1,False,裝置1,36.8
+Matthew Martin,General_Affairs,2021-12-02 17:03:02,1,False,裝置1,38.0
+Ricky,Human_Resources,2021-12-02 17:11:21,1,False,裝置1,37.9
+Christina Hayes,Human_Resources,2021-12-02 17:12:11,1,False,裝置1,37.6
+Cory Richardson,Sales,2021-12-02 17:19:06,1,False,裝置1,36.9
+Kirsten Williamson,General_Affairs,2021-12-02 17:20:43,1,False,裝置1,37.7
+Jerry Wang,Human_Resources,2021-12-02 17:22:56,1,False,裝置1,38.0
+James Nelson,Human_Resources,2021-12-02 17:26:11,1,False,裝置1,37.4
+Kirsten Williamson,General_Affairs,2021-12-03 08:34:04,1,False,裝置1,35.9
+Dave,manager,2021-12-03 08:39:38,1,False,裝置1,36.0
+Scott Smith,Sales,2021-12-03 08:41:46,1,False,裝置1,37.4
+James Nelson,Human_Resources,2021-12-03 08:43:44,0,False,裝置1,37.2
+Adam Harris,Sales,2021-12-03 08:48:33,1,False,裝置1,37.8
+Jerry Wang,Human_Resources,2021-12-03 08:52:58,1,False,裝置1,37.9
+Matthew Martin,General_Affairs,2021-12-03 08:54:44,0,False,裝置1,37.4
+Ricky,Human_Resources,2021-12-03 08:55:11,1,False,裝置1,37.9
+Cory Richardson,Sales,2021-12-03 08:56:22,0,False,裝置1,36.3
+Christina Hayes,Human_Resources,2021-12-03 09:04:17,1,False,裝置1,37.6
+Kirsten Williamson,General_Affairs,2021-12-03 10:31:33,0,False,裝置1,37.1
+Jerry Wang,Human_Resources,2021-12-03 11:02:29,0,False,裝置1,35.8
+Dave,manager,2021-12-03 11:15:49,1,False,裝置1,35.8
+Matthew Martin,General_Affairs,2021-12-03 11:54:11,1,False,裝置1,37.4
+Adam Harris,Sales,2021-12-03 12:11:29,0,False,裝置1,37.8
+Cory Richardson,Sales,2021-12-03 12:17:58,1,False,裝置1,36.4
+Christina Hayes,Human_Resources,2021-12-03 12:45:02,1,False,裝置1,37.3
+Adam Harris,Sales,2021-12-03 13:09:44,0,False,裝置1,36.7
+Ricky,Human_Resources,2021-12-03 13:55:13,0,False,裝置1,36.6
+James Nelson,Human_Resources,2021-12-03 14:15:06,1,False,裝置1,35.9
+Scott Smith,Sales,2021-12-03 14:32:17,0,False,裝置1,35.8
+Dave,manager,2021-12-03 14:39:40,1,False,裝置1,37.8
+Christina Hayes,Human_Resources,2021-12-03 14:41:51,1,False,裝置1,36.1
+Matthew Martin,General_Affairs,2021-12-03 14:44:20,1,False,裝置1,37.1
+Ricky,Human_Resources,2021-12-03 14:48:45,1,False,裝置1,36.2
+James Nelson,Human_Resources,2021-12-03 15:56:57,0,False,裝置1,36.8
+Scott Smith,Sales,2021-12-03 16:07:24,0,False,裝置1,36.7
+Jerry Wang,Human_Resources,2021-12-03 16:20:24,0,False,裝置1,36.0
+Cory Richardson,Sales,2021-12-03 16:23:12,0,False,裝置1,36.9
+Kirsten Williamson,General_Affairs,2021-12-03 16:50:35,0,False,裝置1,37.7
+Ricky,Human_Resources,2021-12-03 17:04:14,0,False,裝置1,35.9
+Scott Smith,Sales,2021-12-03 17:06:31,1,False,裝置1,36.8
+Kirsten Williamson,General_Affairs,2021-12-03 17:07:31,0,False,裝置1,36.5
+Adam Harris,Sales,2021-12-03 17:13:02,1,False,裝置1,36.1
+Cory Richardson,Sales,2021-12-03 17:17:52,1,False,裝置1,37.8
+Matthew Martin,General_Affairs,2021-12-03 17:19:57,0,False,裝置1,37.5
+Jerry Wang,Human_Resources,2021-12-03 17:21:35,0,False,裝置1,37.7
+Dave,manager,2021-12-03 17:21:56,0,False,裝置1,35.7
+Christina Hayes,Human_Resources,2021-12-03 17:23:16,1,False,裝置1,37.3
+James Nelson,Human_Resources,2021-12-03 17:26:48,1,False,裝置1,36.7
+James Nelson,Human_Resources,2021-12-04 08:31:36,0,False,裝置1,36.3
+Adam Harris,Sales,2021-12-04 08:32:30,1,False,裝置1,36.5
+Kirsten Williamson,General_Affairs,2021-12-04 08:37:27,0,False,裝置1,35.8
+Dave,manager,2021-12-04 08:41:35,1,False,裝置1,37.1
+Jerry Wang,Human_Resources,2021-12-04 08:43:21,0,False,裝置1,36.0
+Ricky,Human_Resources,2021-12-04 08:43:51,0,False,裝置1,37.0
+Cory Richardson,Sales,2021-12-04 08:54:02,0,False,裝置1,36.5
+Christina Hayes,Human_Resources,2021-12-04 08:58:04,0,False,裝置1,37.8
+Scott Smith,Sales,2021-12-04 09:14:37,1,False,裝置1,36.1
+Matthew Martin,General_Affairs,2021-12-04 09:23:04,0,False,裝置1,37.4
+Matthew Martin,General_Affairs,2021-12-04 10:49:36,1,False,裝置1,37.6
+Christina Hayes,Human_Resources,2021-12-04 10:49:55,1,False,裝置1,37.1
+Adam Harris,Sales,2021-12-04 10:50:57,1,False,裝置1,37.8
+Ricky,Human_Resources,2021-12-04 11:30:52,1,False,裝置1,36.6
+Matthew Martin,General_Affairs,2021-12-04 12:10:50,1,False,裝置1,36.0
+Kirsten Williamson,General_Affairs,2021-12-04 12:35:32,1,False,裝置1,36.8
+Dave,manager,2021-12-04 13:23:12,1,False,裝置1,36.4
+Jerry Wang,Human_Resources,2021-12-04 13:54:12,0,False,裝置1,37.0
+Christina Hayes,Human_Resources,2021-12-04 14:05:31,0,False,裝置1,36.2
+Jerry Wang,Human_Resources,2021-12-04 14:28:24,1,False,裝置1,37.0
+James Nelson,Human_Resources,2021-12-04 14:31:48,1,False,裝置1,37.2
+James Nelson,Human_Resources,2021-12-04 14:36:31,1,False,裝置1,36.3
+Scott Smith,Sales,2021-12-04 14:42:25,1,False,裝置1,36.9
+Cory Richardson,Sales,2021-12-04 14:49:25,0,False,裝置1,36.5
+Kirsten Williamson,General_Affairs,2021-12-04 15:02:41,0,False,裝置1,36.2
+Adam Harris,Sales,2021-12-04 15:07:22,0,False,裝置1,37.5
+Dave,manager,2021-12-04 15:45:51,1,False,裝置1,36.8
+Ricky,Human_Resources,2021-12-04 16:46:46,0,False,裝置1,37.5
+Cory Richardson,Sales,2021-12-04 16:50:28,0,False,裝置1,37.4
+Scott Smith,Sales,2021-12-04 16:55:30,0,False,裝置1,36.6
+Adam Harris,Sales,2021-12-04 17:01:42,1,False,裝置1,37.3
+Jerry Wang,Human_Resources,2021-12-04 17:11:40,0,False,裝置1,36.8
+Dave,manager,2021-12-04 17:14:43,1,False,裝置1,37.8
+Ricky,Human_Resources,2021-12-04 17:15:18,0,False,裝置1,37.0
+James Nelson,Human_Resources,2021-12-04 17:23:14,0,False,裝置1,36.8
+Christina Hayes,Human_Resources,2021-12-04 17:24:34,1,False,裝置1,37.5
+Scott Smith,Sales,2021-12-04 17:26:21,1,False,裝置1,36.2
+Matthew Martin,General_Affairs,2021-12-04 17:27:15,1,False,裝置1,36.4
+Kirsten Williamson,General_Affairs,2021-12-04 17:27:36,0,False,裝置1,37.0
+Cory Richardson,Sales,2021-12-04 17:28:06,1,False,裝置1,37.8
+Christina Hayes,Human_Resources,2021-12-05 08:32:07,1,False,裝置1,37.3
+Adam Harris,Sales,2021-12-05 08:34:14,0,False,裝置1,37.2
+Scott Smith,Sales,2021-12-05 08:35:14,1,False,裝置1,37.4
+Ricky,Human_Resources,2021-12-05 08:36:37,1,False,裝置1,37.2
+Kirsten Williamson,General_Affairs,2021-12-05 08:38:50,0,False,裝置1,37.2
+Matthew Martin,General_Affairs,2021-12-05 08:39:43,1,False,裝置1,37.9
+Cory Richardson,Sales,2021-12-05 08:42:48,0,False,裝置1,36.8
+James Nelson,Human_Resources,2021-12-05 08:45:19,1,False,裝置1,37.8
+Dave,manager,2021-12-05 08:51:14,0,False,裝置1,36.6
+Jerry Wang,Human_Resources,2021-12-05 08:51:31,0,False,裝置1,37.0
+Adam Harris,Sales,2021-12-05 10:01:14,0,False,裝置1,36.3
+Dave,manager,2021-12-05 10:01:21,0,False,裝置1,37.4
+Matthew Martin,General_Affairs,2021-12-05 10:31:49,1,False,裝置1,37.5
+Matthew Martin,General_Affairs,2021-12-05 11:06:58,0,False,裝置1,36.4
+Adam Harris,Sales,2021-12-05 11:22:40,0,False,裝置1,37.4
+Cory Richardson,Sales,2021-12-05 12:38:10,0,False,裝置1,37.8
+James Nelson,Human_Resources,2021-12-05 13:32:48,0,False,裝置1,36.3
+James Nelson,Human_Resources,2021-12-05 13:47:28,1,False,裝置1,36.6
+Scott Smith,Sales,2021-12-05 13:51:42,1,False,裝置1,38.0
+Scott Smith,Sales,2021-12-05 13:52:48,0,False,裝置1,36.4
+Dave,manager,2021-12-05 14:26:09,1,False,裝置1,37.7
+Christina Hayes,Human_Resources,2021-12-05 14:50:05,1,False,裝置1,37.4
+Ricky,Human_Resources,2021-12-05 15:26:05,1,False,裝置1,36.8
+Christina Hayes,Human_Resources,2021-12-05 15:48:49,0,False,裝置1,37.9
+Ricky,Human_Resources,2021-12-05 15:58:08,1,False,裝置1,35.7
+Jerry Wang,Human_Resources,2021-12-05 16:17:06,1,False,裝置1,37.3
+Cory Richardson,Sales,2021-12-05 16:33:23,0,False,裝置1,37.5
+Jerry Wang,Human_Resources,2021-12-05 16:38:55,1,False,裝置1,35.9
+Kirsten Williamson,General_Affairs,2021-12-05 16:42:39,0,False,裝置1,36.2
+Kirsten Williamson,General_Affairs,2021-12-05 16:56:45,1,False,裝置1,36.4
+Christina Hayes,Human_Resources,2021-12-05 17:07:03,0,False,裝置1,35.8
+Scott Smith,Sales,2021-12-05 17:09:44,1,False,裝置1,37.3
+Adam Harris,Sales,2021-12-05 17:11:35,0,False,裝置1,36.3
+Ricky,Human_Resources,2021-12-05 17:15:35,1,False,裝置1,35.9
+Dave,manager,2021-12-05 17:20:20,0,False,裝置1,36.4
+Matthew Martin,General_Affairs,2021-12-05 17:21:02,1,False,裝置1,36.4
+Kirsten Williamson,General_Affairs,2021-12-05 17:23:43,1,False,裝置1,36.4
+Cory Richardson,Sales,2021-12-05 17:24:06,1,False,裝置1,36.0
+James Nelson,Human_Resources,2021-12-05 17:25:13,1,False,裝置1,37.2
+Jerry Wang,Human_Resources,2021-12-05 17:27:22,0,False,裝置1,36.7
+Cory Richardson,Sales,2021-12-06 08:33:57,0,False,裝置1,35.8
+James Nelson,Human_Resources,2021-12-06 08:34:12,0,False,裝置1,36.1
+Christina Hayes,Human_Resources,2021-12-06 08:37:37,1,False,裝置1,37.6
+Kirsten Williamson,General_Affairs,2021-12-06 08:38:40,0,False,裝置1,37.7
+Adam Harris,Sales,2021-12-06 08:44:02,0,False,裝置1,37.2
+Scott Smith,Sales,2021-12-06 08:54:56,1,False,裝置1,37.9
+Ricky,Human_Resources,2021-12-06 08:56:07,0,False,裝置1,37.0
+Jerry Wang,Human_Resources,2021-12-06 08:58:45,1,False,裝置1,37.5
+Matthew Martin,General_Affairs,2021-12-06 09:07:03,0,False,裝置1,37.4
+Dave,manager,2021-12-06 09:19:56,1,False,裝置1,36.1
+Cory Richardson,Sales,2021-12-06 10:22:33,0,False,裝置1,36.6
+Cory Richardson,Sales,2021-12-06 10:32:53,0,False,裝置1,36.0
+Matthew Martin,General_Affairs,2021-12-06 10:53:37,0,False,裝置1,36.4
+Christina Hayes,Human_Resources,2021-12-06 10:54:11,1,False,裝置1,37.1
+Kirsten Williamson,General_Affairs,2021-12-06 10:57:11,1,False,裝置1,36.9
+Jerry Wang,Human_Resources,2021-12-06 11:04:08,1,False,裝置1,36.6
+Scott Smith,Sales,2021-12-06 11:53:25,0,False,裝置1,37.6
+James Nelson,Human_Resources,2021-12-06 12:11:40,1,False,裝置1,36.1
+Kirsten Williamson,General_Affairs,2021-12-06 12:48:12,1,False,裝置1,38.0
+Ricky,Human_Resources,2021-12-06 13:05:58,0,False,裝置1,37.0
+Dave,manager,2021-12-06 13:13:57,0,False,裝置1,37.1
+Matthew Martin,General_Affairs,2021-12-06 13:35:10,0,False,裝置1,36.8
+Adam Harris,Sales,2021-12-06 13:51:08,0,False,裝置1,37.3
+Jerry Wang,Human_Resources,2021-12-06 14:04:19,1,False,裝置1,37.4
+James Nelson,Human_Resources,2021-12-06 14:53:42,1,False,裝置1,37.9
+Scott Smith,Sales,2021-12-06 15:12:32,1,False,裝置1,36.5
+Dave,manager,2021-12-06 15:31:53,1,False,裝置1,37.4
+Ricky,Human_Resources,2021-12-06 15:42:09,0,False,裝置1,36.3
+Adam Harris,Sales,2021-12-06 16:19:18,0,False,裝置1,36.3
+Christina Hayes,Human_Resources,2021-12-06 16:47:17,1,False,裝置1,37.0
+Jerry Wang,Human_Resources,2021-12-06 17:01:48,0,False,裝置1,36.6
+Matthew Martin,General_Affairs,2021-12-06 17:03:37,1,False,裝置1,36.1
+Dave,manager,2021-12-06 17:05:41,0,False,裝置1,36.6
+Cory Richardson,Sales,2021-12-06 17:06:12,1,False,裝置1,36.8
+Adam Harris,Sales,2021-12-06 17:14:16,0,False,裝置1,36.7
+Scott Smith,Sales,2021-12-06 17:17:12,0,False,裝置1,36.6
+Kirsten Williamson,General_Affairs,2021-12-06 17:18:12,0,False,裝置1,37.0
+Ricky,Human_Resources,2021-12-06 17:18:24,0,False,裝置1,35.8
+James Nelson,Human_Resources,2021-12-06 17:22:33,1,False,裝置1,37.7
+Christina Hayes,Human_Resources,2021-12-06 17:29:44,0,False,裝置1,37.9
+Jerry Wang,Human_Resources,2021-12-07 08:31:17,1,False,裝置1,37.9
+Ricky,Human_Resources,2021-12-07 08:36:31,0,False,裝置1,36.6
+Cory Richardson,Sales,2021-12-07 08:36:48,0,False,裝置1,37.7
+Adam Harris,Sales,2021-12-07 08:39:37,1,False,裝置1,35.9
+Scott Smith,Sales,2021-12-07 08:43:09,0,False,裝置1,36.5
+Christina Hayes,Human_Resources,2021-12-07 08:44:40,1,False,裝置1,37.6
+Dave,manager,2021-12-07 08:49:04,0,False,裝置1,36.0
+Kirsten Williamson,General_Affairs,2021-12-07 08:50:27,1,False,裝置1,37.6
+James Nelson,Human_Resources,2021-12-07 08:53:07,1,False,裝置1,37.7
+Matthew Martin,General_Affairs,2021-12-07 08:55:07,1,False,裝置1,37.3
+James Nelson,Human_Resources,2021-12-07 10:23:57,0,False,裝置1,36.4
+Dave,manager,2021-12-07 10:41:38,1,False,裝置1,36.4
+Jerry Wang,Human_Resources,2021-12-07 11:08:11,0,False,裝置1,35.9
+Christina Hayes,Human_Resources,2021-12-07 11:08:50,1,False,裝置1,37.7
+Kirsten Williamson,General_Affairs,2021-12-07 11:51:08,1,False,裝置1,36.0
+Matthew Martin,General_Affairs,2021-12-07 11:55:11,1,False,裝置1,36.8
+Kirsten Williamson,General_Affairs,2021-12-07 12:05:03,0,False,裝置1,37.5
+Ricky,Human_Resources,2021-12-07 12:10:06,1,False,裝置1,37.5
+Cory Richardson,Sales,2021-12-07 13:32:19,1,False,裝置1,38.0
+Dave,manager,2021-12-07 14:03:13,0,False,裝置1,37.7
+Cory Richardson,Sales,2021-12-07 14:21:38,1,False,裝置1,37.0
+Adam Harris,Sales,2021-12-07 14:30:54,0,False,裝置1,36.9
+Matthew Martin,General_Affairs,2021-12-07 15:05:07,0,False,裝置1,36.2
+Christina Hayes,Human_Resources,2021-12-07 15:31:50,0,False,裝置1,36.9
+Scott Smith,Sales,2021-12-07 16:01:28,0,False,裝置1,36.0
+Ricky,Human_Resources,2021-12-07 16:06:08,0,False,裝置1,37.4
+James Nelson,Human_Resources,2021-12-07 16:06:17,0,False,裝置1,37.0
+Jerry Wang,Human_Resources,2021-12-07 16:11:10,0,False,裝置1,37.2
+Scott Smith,Sales,2021-12-07 16:23:02,1,False,裝置1,35.9
+Adam Harris,Sales,2021-12-07 16:55:07,0,False,裝置1,36.7
+Scott Smith,Sales,2021-12-07 17:05:16,1,False,裝置1,36.6
+Dave,manager,2021-12-07 17:07:14,1,False,裝置1,35.8
+Jerry Wang,Human_Resources,2021-12-07 17:10:46,0,False,裝置1,35.7
+Christina Hayes,Human_Resources,2021-12-07 17:12:46,0,False,裝置1,37.8
+Ricky,Human_Resources,2021-12-07 17:20:20,0,False,裝置1,37.0
+Adam Harris,Sales,2021-12-07 17:21:55,0,False,裝置1,37.1
+Matthew Martin,General_Affairs,2021-12-07 17:24:55,1,False,裝置1,37.1
+Kirsten Williamson,General_Affairs,2021-12-07 17:27:22,0,False,裝置1,37.7
+James Nelson,Human_Resources,2021-12-07 17:27:33,1,False,裝置1,37.5
+Cory Richardson,Sales,2021-12-07 17:28:50,1,False,裝置1,37.6
+Ricky,Human_Resources,2021-12-08 08:32:39,1,False,裝置1,37.0
+Scott Smith,Sales,2021-12-08 08:34:10,1,False,裝置1,37.5
+Matthew Martin,General_Affairs,2021-12-08 08:38:14,0,False,裝置1,37.9
+Kirsten Williamson,General_Affairs,2021-12-08 08:42:42,1,False,裝置1,37.3
+James Nelson,Human_Resources,2021-12-08 08:45:55,1,False,裝置1,36.5
+Cory Richardson,Sales,2021-12-08 08:49:58,0,False,裝置1,37.5
+Jerry Wang,Human_Resources,2021-12-08 08:52:11,1,False,裝置1,37.9
+Adam Harris,Sales,2021-12-08 08:53:03,1,False,裝置1,36.1
+Dave,manager,2021-12-08 08:54:23,1,False,裝置1,36.3
+Christina Hayes,Human_Resources,2021-12-08 09:08:13,0,False,裝置1,37.2
+Ricky,Human_Resources,2021-12-08 10:19:21,1,False,裝置1,36.43
+Ricky,Human_Resources,2021-12-08 10:20:35,1,False,裝置1,36.43
+Ricky,Human_Resources,2021-12-08 10:21:20,1,False,裝置1,36.34
+Dave,manager,2021-12-08 10:21:25,1,False,裝置1,36.3
+Dave,manager,2021-12-08 10:21:40,1,False,裝置1,36.3
+Dave,manager,2021-12-08 10:21:48,1,False,裝置1,36.21
+Ricky,Human_Resources,2021-12-08 10:22:02,1,False,裝置1,36.32
+Dave,manager,2021-12-08 10:22:33,1,False,裝置1,36.23
+Dave,manager,2021-12-08 10:22:52,1,False,裝置1,36.24
+Dave,manager,2021-12-08 10:23:18,1,False,裝置1,36.18
+Dave,manager,2021-12-08 10:23:36,1,False,裝置1,36.24
+Dave,manager,2021-12-08 10:23:36,1,False,裝置1,36.24
+Ricky,Human_Resources,2021-12-08 10:23:37,1,False,裝置1,36.38
+Dave,manager,2021-12-08 10:23:58,1,False,裝置1,36.25
+Ricky,Human_Resources,2021-12-08 10:25:42,1,False,裝置1,36.33
+Ricky,Human_Resources,2021-12-08 10:25:42,1,False,裝置1,36.33
+Ricky,Human_Resources,2021-12-08 10:25:54,1,False,裝置1,36.33
+Ricky,Human_Resources,2021-12-08 10:25:57,1,False,裝置1,36.32
+Ricky,Human_Resources,2021-12-08 10:26:16,1,False,裝置1,36.19
+Ricky,Human_Resources,2021-12-08 10:26:16,1,False,裝置1,36.19
+Ricky,Human_Resources,2021-12-08 10:26:20,1,False,裝置1,36.1
+Scott Smith,Sales,2021-12-08 10:28:54,1,False,裝置1,36.2
+Christina Hayes,Human_Resources,2021-12-08 10:29:12,1,False,裝置1,36.27
+Ricky,Human_Resources,2021-12-08 10:34:31,0,False,裝置1,36.07
+Ricky,Human_Resources,2021-12-08 10:34:55,0,False,裝置1,36.04
+Ricky,Human_Resources,2021-12-08 10:35:39,0,False,裝置1,36.04
+Ricky,Human_Resources,2021-12-08 10:36:06,1,False,裝置1,36.11
+Ricky,Human_Resources,2021-12-08 10:36:13,1,False,裝置1,36.1
+Ricky,Human_Resources,2021-12-08 10:38:10,1,False,裝置1,36.12
+Ricky,Human_Resources,2021-12-08 10:38:40,1,False,裝置1,35.99
+Dave,manager,2021-12-08 10:39:48,1,False,裝置1,35.98
+Ricky,Human_Resources,2021-12-08 10:39:53,1,False,裝置1,35.98
+Dave,manager,2021-12-08 10:39:56,1,False,裝置1,35.97
+Ricky,Human_Resources,2021-12-08 10:40:04,1,False,裝置1,35.96
+Adam Harris,Sales,2021-12-08 10:40:13,0,False,裝置1,36.6
+Dave,manager,2021-12-08 10:41:26,1,False,裝置1,36.25
+Dave,manager,2021-12-08 10:42:52,1,False,裝置1,36.05
+Dave,manager,2021-12-08 10:44:11,1,False,裝置1,36.15
+Dave,manager,2021-12-08 10:44:26,1,False,裝置1,36.04
+Dave,manager,2021-12-08 10:44:26,1,False,裝置1,36.04
+Dave,manager,2021-12-08 10:55:02,0,False,裝置1,36.2
+Kirsten Williamson,General_Affairs,2021-12-08 11:04:46,0,False,裝置1,37.2
+Christina Hayes,Human_Resources,2021-12-08 11:08:39,0,False,裝置1,36.5
+Cory Richardson,Sales,2021-12-08 11:09:52,0,False,裝置1,36.6
+Cory Richardson,Sales,2021-12-08 11:37:45,0,False,裝置1,35.7
+Christina Hayes,Human_Resources,2021-12-08 11:43:26,1,False,裝置1,36.27
+Ricky,Human_Resources,2021-12-08 11:47:57,1,False,裝置1,36.25
+Ricky,Human_Resources,2021-12-08 11:48:12,1,False,裝置1,36.21
+Ricky,Human_Resources,2021-12-08 11:49:10,1,False,裝置1,36.44
+Ricky,Human_Resources,2021-12-08 11:49:41,1,False,裝置1,36.32
+Ricky,Human_Resources,2021-12-08 11:49:41,1,False,裝置1,36.32
+Ricky,Human_Resources,2021-12-08 11:49:53,1,False,裝置1,36.33
+Ricky,Human_Resources,2021-12-08 11:50:39,1,False,裝置1,36.29
+Ricky,Human_Resources,2021-12-08 11:50:57,1,False,裝置1,36.45
+Christina Hayes,Human_Resources,2021-12-08 11:55:50,1,False,裝置1,36.5
+Ricky,Human_Resources,2021-12-08 11:55:56,1,False,裝置1,36.44
+Ricky,Human_Resources,2021-12-08 11:56:20,1,False,裝置1,36.29
+Christina Hayes,Human_Resources,2021-12-08 12:02:19,1,False,裝置1,36.31
+Ricky,Human_Resources,2021-12-08 12:02:21,1,False,裝置1,36.28
+Adam Harris,Sales,2021-12-08 12:02:46,1,False,裝置1,37.5
+Ricky,Human_Resources,2021-12-08 12:02:51,1,False,裝置1,36.2
+Dave,manager,2021-12-08 12:07:13,1,False,裝置1,36.22
+Dave,manager,2021-12-08 12:07:20,1,False,裝置1,36.25
+Dave,manager,2021-12-08 12:07:20,1,False,裝置1,36.25
+Ricky,Human_Resources,2021-12-08 12:07:45,1,False,裝置1,36.23
+Dave,manager,2021-12-08 12:07:45,1,False,裝置1,36.23
+Dave,manager,2021-12-08 12:07:46,1,False,裝置1,36.23
+Dave,manager,2021-12-08 12:07:52,1,False,裝置1,36.24
+Dave,manager,2021-12-08 12:07:55,1,False,裝置1,36.15
+Dave,manager,2021-12-08 12:08:00,1,False,裝置1,36.16
+Dave,manager,2021-12-08 12:08:02,1,False,裝置1,36.06
+Dave,manager,2021-12-08 12:08:05,1,False,裝置1,36.19
+Dave,manager,2021-12-08 12:08:05,1,False,裝置1,36.19
+Dave,manager,2021-12-08 12:08:10,1,False,裝置1,36.21
+Dave,manager,2021-12-08 12:08:25,1,False,裝置1,36.23
+Dave,manager,2021-12-08 12:08:53,1,False,裝置1,36.13
+Dave,manager,2021-12-08 12:08:53,1,False,裝置1,36.13
+Dave,manager,2021-12-08 12:09:01,1,False,裝置1,36.17
+Dave,manager,2021-12-08 12:09:01,1,False,裝置1,36.17
+Christina Hayes,Human_Resources,2021-12-08 12:14:09,0,False,裝置1,36.8
+Ricky,Human_Resources,2021-12-08 12:19:08,1,False,裝置1,36.46
+Ricky,Human_Resources,2021-12-08 12:19:16,1,False,裝置1,36.42
+Ricky,Human_Resources,2021-12-08 12:19:16,1,False,裝置1,36.42
+Christina Hayes,Human_Resources,2021-12-08 12:19:21,1,False,裝置1,36.35
+Ricky,Human_Resources,2021-12-08 12:19:32,1,False,裝置1,36.44
+Ricky,Human_Resources,2021-12-08 12:19:35,1,False,裝置1,36.4
+Ricky,Human_Resources,2021-12-08 12:20:58,1,False,裝置1,36.29
+Ricky,Human_Resources,2021-12-08 12:20:58,1,False,裝置1,36.29
+Christina Hayes,Human_Resources,2021-12-08 12:21:09,1,False,裝置1,36.36
+Ricky,Human_Resources,2021-12-08 12:21:15,1,False,裝置1,36.42
+Ricky,Human_Resources,2021-12-08 12:31:02,1,False,裝置1,36.21
+Ricky,Human_Resources,2021-12-08 12:31:02,1,False,裝置1,36.21
+Ricky,Human_Resources,2021-12-08 12:31:16,1,False,裝置1,36.31
+Ricky,Human_Resources,2021-12-08 12:31:16,1,False,裝置1,36.31
+Ricky,Human_Resources,2021-12-08 12:31:46,1,False,裝置1,36.25
+Christina Hayes,Human_Resources,2021-12-08 12:33:55,1,False,裝置1,36.37
+Christina Hayes,Human_Resources,2021-12-08 12:34:21,1,False,裝置1,36.32
+Christina Hayes,Human_Resources,2021-12-08 12:34:43,1,False,裝置1,36.37
+Christina Hayes,Human_Resources,2021-12-08 12:34:43,1,False,裝置1,36.37
+Ricky,Human_Resources,2021-12-08 12:34:53,1,False,裝置1,36.26
+Ricky,Human_Resources,2021-12-08 12:35:11,1,False,裝置1,36.32
+Ricky,Human_Resources,2021-12-08 12:35:30,1,False,裝置1,36.24
+Ricky,Human_Resources,2021-12-08 12:35:34,1,False,裝置1,36.35
+Ricky,Human_Resources,2021-12-08 12:35:38,1,False,裝置1,36.26
+Ricky,Human_Resources,2021-12-08 12:35:38,1,False,裝置1,36.26
+Ricky,Human_Resources,2021-12-08 12:35:45,1,False,裝置1,36.24
+James Nelson,Human_Resources,2021-12-08 12:39:32,0,False,裝置1,36.5
+Dave,manager,2021-12-08 13:15:23,0,False,裝置1,36.9
+Matthew Martin,General_Affairs,2021-12-08 13:31:42,0,False,裝置1,36.2
+Ricky,Human_Resources,2021-12-08 13:49:11,1,False,裝置1,36.44
+Ricky,Human_Resources,2021-12-08 13:49:42,1,False,裝置1,36.32
+Ricky,Human_Resources,2021-12-08 13:50:38,1,False,裝置1,36.41
+Ricky,Human_Resources,2021-12-08 13:50:41,1,False,裝置1,36.6
+Ricky,Human_Resources,2021-12-08 13:50:48,1,False,裝置1,36.35
+Ricky,Human_Resources,2021-12-08 13:50:57,1,False,裝置1,36.3
+Ricky,Human_Resources,2021-12-08 13:51:42,1,False,裝置1,36.32
+Ricky,Human_Resources,2021-12-08 13:52:33,1,False,裝置1,36.25
+Ricky,Human_Resources,2021-12-08 13:52:33,1,False,裝置1,36.25
+Ricky,Human_Resources,2021-12-08 13:53:33,1,False,裝置1,36.33
+Ricky,Human_Resources,2021-12-08 13:54:31,1,False,裝置1,36.29
+Ricky,Human_Resources,2021-12-08 13:55:19,1,False,裝置1,36.25
+Ricky,Human_Resources,2021-12-08 13:55:19,1,False,裝置1,36.25
+Ricky,Human_Resources,2021-12-08 13:56:06,1,False,裝置1,36.2
+Ricky,Human_Resources,2021-12-08 13:56:06,1,False,裝置1,36.2
+Ricky,Human_Resources,2021-12-08 13:56:06,1,False,裝置1,36.2
+Ricky,Human_Resources,2021-12-08 13:58:31,1,False,裝置1,36.49
+Ricky,Human_Resources,2021-12-08 13:58:31,1,False,裝置1,36.49
+Ricky,Human_Resources,2021-12-08 14:01:01,0,False,裝置1,36.5
+Christina Hayes,Human_Resources,2021-12-08 14:02:31,1,False,裝置1,36.56
+Ricky,Human_Resources,2021-12-08 14:03:23,1,False,裝置1,36.38
+Ricky,Human_Resources,2021-12-08 14:03:43,1,False,裝置1,36.41
+Ricky,Human_Resources,2021-12-08 14:05:11,1,False,裝置1,36.52
+Ricky,Human_Resources,2021-12-08 14:05:11,1,False,裝置1,36.52
+Christina Hayes,Human_Resources,2021-12-08 14:05:21,1,False,裝置1,36.55
+Ricky,Human_Resources,2021-12-08 14:05:39,1,False,裝置1,36.32
+Ricky,Human_Resources,2021-12-08 14:05:39,1,False,裝置1,36.32
+Ricky,Human_Resources,2021-12-08 14:05:39,1,False,裝置1,36.32
+Dave,manager,2021-12-08 14:05:44,1,False,裝置1,36.3
+Dave,manager,2021-12-08 14:05:53,1,False,裝置1,36.31
+Dave,manager,2021-12-08 14:06:11,1,False,裝置1,36.35
+Ricky,Human_Resources,2021-12-08 14:06:15,1,False,裝置1,36.4
+Ricky,Human_Resources,2021-12-08 14:06:15,1,False,裝置1,36.4
+Ricky,Human_Resources,2021-12-08 14:07:56,1,False,裝置1,36.51
+Ricky,Human_Resources,2021-12-08 14:07:56,1,False,裝置1,36.51
+Ricky,Human_Resources,2021-12-08 14:07:56,1,False,裝置1,36.51
+Kirsten Williamson,General_Affairs,2021-12-08 14:08:53,1,False,裝置1,35.8
+Christina Hayes,Human_Resources,2021-12-08 14:09:46,1,False,裝置1,36.51
+Christina Hayes,Human_Resources,2021-12-08 14:10:09,1,False,裝置1,36.5
+Christina Hayes,Human_Resources,2021-12-08 14:10:09,1,False,裝置1,36.5
+Ricky,Human_Resources,2021-12-08 14:14:13,1,False,裝置1,36.5
+Ricky,Human_Resources,2021-12-08 14:14:39,1,False,裝置1,36.47
+Ricky,Human_Resources,2021-12-08 14:14:39,1,False,裝置1,36.47
+Ricky,Human_Resources,2021-12-08 14:14:39,1,False,裝置1,36.47
+Ricky,Human_Resources,2021-12-08 14:17:43,1,False,裝置1,36.39
+Ricky,Human_Resources,2021-12-08 14:17:44,1,False,裝置1,36.39
+Ricky,Human_Resources,2021-12-08 14:17:44,1,False,裝置1,36.39
+Ricky,Human_Resources,2021-12-08 14:18:28,1,False,裝置1,36.38
+Ricky,Human_Resources,2021-12-08 14:19:10,1,False,裝置1,36.42
+Ricky,Human_Resources,2021-12-08 14:19:59,1,False,裝置1,36.38
+Ricky,Human_Resources,2021-12-08 14:19:59,1,False,裝置1,36.38
+Ricky,Human_Resources,2021-12-08 14:19:59,1,False,裝置1,36.38
+Ricky,Human_Resources,2021-12-08 14:20:06,1,False,裝置1,36.32
+Ricky,Human_Resources,2021-12-08 14:20:52,1,False,裝置1,36.33
+Ricky,Human_Resources,2021-12-08 14:20:52,1,False,裝置1,36.33
+Christina Hayes,Human_Resources,2021-12-08 14:21:06,1,False,裝置1,36.36
+Ricky,Human_Resources,2021-12-08 14:21:14,1,False,裝置1,36.32
+Christina Hayes,Human_Resources,2021-12-08 14:22:13,1,False,裝置1,36.37
+Ricky,Human_Resources,2021-12-08 14:22:17,1,False,裝置1,36.34
+Ricky,Human_Resources,2021-12-08 14:22:43,1,False,裝置1,36.33
+Ricky,Human_Resources,2021-12-08 14:23:02,1,False,裝置1,36.31
+Christina Hayes,Human_Resources,2021-12-08 14:23:37,1,False,裝置1,36.33
+Christina Hayes,Human_Resources,2021-12-08 14:23:38,1,False,裝置1,36.33
+Ricky,Human_Resources,2021-12-08 14:23:46,1,False,裝置1,36.39
+Ricky,Human_Resources,2021-12-08 14:24:03,1,False,裝置1,36.4
+Christina Hayes,Human_Resources,2021-12-08 14:24:06,1,False,裝置1,36.38
+Ricky,Human_Resources,2021-12-08 14:24:12,1,False,裝置1,36.46
+Ricky,Human_Resources,2021-12-08 14:24:39,1,False,裝置1,36.42
+Ricky,Human_Resources,2021-12-08 14:24:39,1,False,裝置1,36.42
+Ricky,Human_Resources,2021-12-08 14:24:41,1,False,裝置1,36.38
+Ricky,Human_Resources,2021-12-08 14:24:46,1,False,裝置1,36.33
+Ricky,Human_Resources,2021-12-08 14:52:43,1,False,裝置1,36.45
+Ricky,Human_Resources,2021-12-08 14:52:44,1,False,裝置1,36.45
+Ricky,Human_Resources,2021-12-08 14:53:10,1,False,裝置1,36.42
+Ricky,Human_Resources,2021-12-08 14:54:20,1,False,裝置1,36.45
+Christina Hayes,Human_Resources,2021-12-08 14:54:30,1,False,裝置1,36.46
+Ricky,Human_Resources,2021-12-08 14:54:52,1,False,裝置1,36.45
+Ricky,Human_Resources,2021-12-08 14:55:11,1,False,裝置1,36.37
+Ricky,Human_Resources,2021-12-08 14:55:29,1,False,裝置1,36.45
+Ricky,Human_Resources,2021-12-08 14:55:29,1,False,裝置1,36.45
+Scott Smith,Sales,2021-12-08 14:55:33,1,False,裝置1,37.7
+Ricky,Human_Resources,2021-12-08 14:55:52,1,False,裝置1,36.44
+Ricky,Human_Resources,2021-12-08 14:56:04,1,False,裝置1,36.45
+Ricky,Human_Resources,2021-12-08 14:56:09,1,False,裝置1,36.44
+Ricky,Human_Resources,2021-12-08 14:56:25,1,False,裝置1,36.36
+Christina Hayes,Human_Resources,2021-12-08 14:56:35,1,False,裝置1,36.44
+Christina Hayes,Human_Resources,2021-12-08 14:56:35,1,False,裝置1,36.44
+Ricky,Human_Resources,2021-12-08 14:56:51,1,False,裝置1,36.38
+Ricky,Human_Resources,2021-12-08 14:56:51,1,False,裝置1,36.38
+Jerry Wang,Human_Resources,2021-12-08 16:25:47,0,False,裝置1,37.6
+Ricky,Human_Resources,2021-12-08 16:27:50,1,False,裝置1,37.9
+James Nelson,Human_Resources,2021-12-08 16:31:26,1,False,裝置1,36.5
+Matthew Martin,General_Affairs,2021-12-08 16:40:16,1,False,裝置1,36.5
+Jerry Wang,Human_Resources,2021-12-08 16:54:54,0,False,裝置1,36.5
+Scott Smith,Sales,2021-12-08 17:01:50,0,False,裝置1,37.6
+Christina Hayes,Human_Resources,2021-12-08 17:02:14,1,False,裝置1,37.7
+Matthew Martin,General_Affairs,2021-12-08 17:02:27,1,False,裝置1,35.8
+Jerry Wang,Human_Resources,2021-12-08 17:03:01,0,False,裝置1,36.5
+Dave,manager,2021-12-08 17:07:04,0,False,裝置1,37.5
+Kirsten Williamson,General_Affairs,2021-12-08 17:10:08,1,False,裝置1,35.8
+Cory Richardson,Sales,2021-12-08 17:19:40,0,False,裝置1,36.0
+Ricky,Human_Resources,2021-12-08 17:26:05,1,False,裝置1,36.0
+James Nelson,Human_Resources,2021-12-08 17:28:15,1,False,裝置1,37.8
+Adam Harris,Sales,2021-12-08 17:29:30,1,False,裝置1,37.5
+Jerry Wang,Human_Resources,2021-12-09 08:33:11,1,False,裝置1,37.6
+Scott Smith,Sales,2021-12-09 08:37:40,0,False,裝置1,37.9
+Kirsten Williamson,General_Affairs,2021-12-09 08:39:05,0,False,裝置1,36.0
+Adam Harris,Sales,2021-12-09 08:40:33,1,False,裝置1,37.5
+Ricky,Human_Resources,2021-12-09 08:43:44,1,False,裝置1,36.6
+James Nelson,Human_Resources,2021-12-09 08:48:24,1,False,裝置1,36.1
+Cory Richardson,Sales,2021-12-09 08:55:08,0,False,裝置1,36.5
+Dave,manager,2021-12-09 08:56:11,1,False,裝置1,37.7
+Christina Hayes,Human_Resources,2021-12-09 08:57:29,0,False,裝置1,37.6
+Matthew Martin,General_Affairs,2021-12-09 08:58:20,1,False,裝置1,37.8
+Ricky,Human_Resources,2021-12-09 09:52:36,0,False,裝置1,36.4
+Ricky,Human_Resources,2021-12-09 09:52:36,0,False,裝置1,36.4
+Ricky,Human_Resources,2021-12-09 09:52:46,0,False,裝置1,36.51
+Ricky,Human_Resources,2021-12-09 09:52:46,0,False,裝置1,36.51
+Ricky,Human_Resources,2021-12-09 09:52:59,0,True,裝置1,38.49
+Ricky,Human_Resources,2021-12-09 09:53:59,0,True,裝置1,38.43
+Ricky,Human_Resources,2021-12-09 09:53:59,0,True,裝置1,38.43
+Ricky,Human_Resources,2021-12-09 09:53:59,0,True,裝置1,38.43
+Ricky,Human_Resources,2021-12-09 09:54:39,0,True,裝置1,38.47
+Ricky,Human_Resources,2021-12-09 09:54:46,0,True,裝置1,38.46
+Ricky,Human_Resources,2021-12-09 09:54:52,0,True,裝置1,38.45
+Ricky,Human_Resources,2021-12-09 09:55:05,0,True,裝置1,38.44
+Ricky,Human_Resources,2021-12-09 09:55:06,0,True,裝置1,38.44
+Ricky,Human_Resources,2021-12-09 09:55:49,0,True,裝置1,38.48
+Ricky,Human_Resources,2021-12-09 10:46:43,1,False,裝置1,37.3
+Ricky,Human_Resources,2021-12-09 10:52:37,0,False,裝置1,36.5
+Dave,manager,2021-12-09 11:30:45,1,False,裝置1,37.9
+James Nelson,Human_Resources,2021-12-09 11:32:21,0,False,裝置1,35.8
+Matthew Martin,General_Affairs,2021-12-09 11:36:34,1,False,裝置1,37.0
+Jerry Wang,Human_Resources,2021-12-09 11:50:41,0,False,裝置1,37.6
+Dave,manager,2021-12-09 12:09:30,0,False,裝置1,37.2
+Christina Hayes,Human_Resources,2021-12-09 12:21:48,1,False,裝置1,36.1
+James Nelson,Human_Resources,2021-12-09 13:07:20,1,False,裝置1,36.6
+Cory Richardson,Sales,2021-12-09 13:09:16,0,False,裝置1,36.7
+Scott Smith,Sales,2021-12-09 14:30:09,0,False,裝置1,36.3
+Matthew Martin,General_Affairs,2021-12-09 14:41:14,1,False,裝置1,35.7
+Christina Hayes,Human_Resources,2021-12-09 14:43:21,1,False,裝置1,37.0
+Scott Smith,Sales,2021-12-09 15:05:26,1,False,裝置1,37.1
+Kirsten Williamson,General_Affairs,2021-12-09 15:10:45,0,False,裝置1,36.6
+Adam Harris,Sales,2021-12-09 15:49:49,1,False,裝置1,37.9
+Cory Richardson,Sales,2021-12-09 15:54:27,1,False,裝置1,36.7
+Kirsten Williamson,General_Affairs,2021-12-09 16:05:33,1,False,裝置1,35.9
+Jerry Wang,Human_Resources,2021-12-09 16:18:57,1,False,裝置1,37.7
+Adam Harris,Sales,2021-12-09 16:36:33,1,False,裝置1,35.8
+Scott Smith,Sales,2021-12-09 17:05:31,0,False,裝置1,37.8
+Matthew Martin,General_Affairs,2021-12-09 17:10:01,1,False,裝置1,36.7
+Christina Hayes,Human_Resources,2021-12-09 17:10:10,0,False,裝置1,37.1
+Kirsten Williamson,General_Affairs,2021-12-09 17:11:07,0,False,裝置1,37.2
+Adam Harris,Sales,2021-12-09 17:13:45,0,False,裝置1,37.5
+Cory Richardson,Sales,2021-12-09 17:15:11,0,False,裝置1,36.8
+Ricky,Human_Resources,2021-12-09 17:18:58,0,False,裝置1,37.6
+Dave,manager,2021-12-09 17:20:37,1,False,裝置1,36.9
+Jerry Wang,Human_Resources,2021-12-09 17:25:36,1,False,裝置1,35.8
+James Nelson,Human_Resources,2021-12-09 17:27:52,1,False,裝置1,36.3
+Christina Hayes,Human_Resources,2021-12-10 08:32:05,0,False,裝置1,36.2
+Ricky,Human_Resources,2021-12-10 08:32:08,1,False,裝置1,36.0
+Jerry Wang,Human_Resources,2021-12-10 08:33:19,1,False,裝置1,36.3
+Cory Richardson,Sales,2021-12-10 08:40:32,0,False,裝置1,36.8
+James Nelson,Human_Resources,2021-12-10 08:42:28,0,False,裝置1,36.1
+Adam Harris,Sales,2021-12-10 08:44:29,0,False,裝置1,36.8
+Scott Smith,Sales,2021-12-10 08:47:26,0,False,裝置1,36.8
+Kirsten Williamson,General_Affairs,2021-12-10 08:53:53,0,False,裝置1,37.6
+Dave,manager,2021-12-10 08:54:23,0,False,裝置1,37.0
+Matthew Martin,General_Affairs,2021-12-10 08:54:49,1,False,裝置1,37.8
+James Nelson,Human_Resources,2021-12-10 10:09:15,0,False,裝置1,38.0
+Ricky,Human_Resources,2021-12-10 10:44:16,1,False,裝置1,37.9
+Cory Richardson,Sales,2021-12-10 11:04:54,1,False,裝置1,36.4
+Adam Harris,Sales,2021-12-10 11:37:55,0,False,裝置1,37.4
+Christina Hayes,Human_Resources,2021-12-10 12:46:09,1,False,裝置1,37.5
+Matthew Martin,General_Affairs,2021-12-10 13:12:57,1,False,裝置1,37.5
+Christina Hayes,Human_Resources,2021-12-10 13:28:50,1,False,裝置1,35.7
+Cory Richardson,Sales,2021-12-10 13:30:03,1,False,裝置1,36.3
+Scott Smith,Sales,2021-12-10 13:41:49,0,False,裝置1,37.6
+Jerry Wang,Human_Resources,2021-12-10 13:52:12,1,False,裝置1,36.4
+Ricky,Human_Resources,2021-12-10 14:21:36,0,False,裝置1,36.7
+Dave,manager,2021-12-10 14:24:09,1,False,裝置1,37.4
+Scott Smith,Sales,2021-12-10 15:26:53,0,False,裝置1,37.2
+James Nelson,Human_Resources,2021-12-10 15:27:35,0,False,裝置1,36.6
+Matthew Martin,General_Affairs,2021-12-10 15:36:26,1,False,裝置1,36.7
+Kirsten Williamson,General_Affairs,2021-12-10 15:39:41,0,False,裝置1,37.0
+Dave,manager,2021-12-10 16:08:37,0,False,裝置1,38.0
+Adam Harris,Sales,2021-12-10 16:16:49,0,False,裝置1,36.0
+Jerry Wang,Human_Resources,2021-12-10 16:32:40,0,False,裝置1,36.2
+Kirsten Williamson,General_Affairs,2021-12-10 16:34:42,1,False,裝置1,36.6
+Adam Harris,Sales,2021-12-10 17:01:11,1,False,裝置1,36.2
+Christina Hayes,Human_Resources,2021-12-10 17:07:31,0,False,裝置1,36.6
+Cory Richardson,Sales,2021-12-10 17:08:29,1,False,裝置1,37.0
+Dave,manager,2021-12-10 17:08:40,0,False,裝置1,36.1
+Kirsten Williamson,General_Affairs,2021-12-10 17:11:47,0,False,裝置1,36.2
+Ricky,Human_Resources,2021-12-10 17:15:15,0,False,裝置1,35.8
+Jerry Wang,Human_Resources,2021-12-10 17:18:34,0,False,裝置1,37.2
+Scott Smith,Sales,2021-12-10 17:23:54,1,False,裝置1,36.9
+James Nelson,Human_Resources,2021-12-10 17:26:14,1,False,裝置1,37.9
+Matthew Martin,General_Affairs,2021-12-10 17:29:15,0,False,裝置1,37.7
+James Nelson,Human_Resources,2021-12-11 08:33:18,0,False,裝置1,36.7
+Cory Richardson,Sales,2021-12-11 08:35:52,0,False,裝置1,37.6
+Scott Smith,Sales,2021-12-11 08:40:08,1,False,裝置1,36.8
+Adam Harris,Sales,2021-12-11 08:40:47,1,False,裝置1,37.3
+Christina Hayes,Human_Resources,2021-12-11 08:49:03,0,False,裝置1,35.9
+Matthew Martin,General_Affairs,2021-12-11 08:50:41,1,False,裝置1,37.9
+Dave,manager,2021-12-11 08:55:16,0,False,裝置1,36.0
+Ricky,Human_Resources,2021-12-11 08:55:44,0,False,裝置1,35.7
+Kirsten Williamson,General_Affairs,2021-12-11 08:57:34,0,False,裝置1,36.1
+Jerry Wang,Human_Resources,2021-12-11 08:58:30,0,False,裝置1,37.5
+Ricky,Human_Resources,2021-12-11 10:07:06,0,False,裝置1,37.4
+Cory Richardson,Sales,2021-12-11 10:46:52,0,False,裝置1,35.8
+Dave,manager,2021-12-11 10:53:14,1,False,裝置1,36.5
+Adam Harris,Sales,2021-12-11 11:22:29,0,False,裝置1,35.8
+Cory Richardson,Sales,2021-12-11 11:33:29,1,False,裝置1,37.5
+Christina Hayes,Human_Resources,2021-12-11 11:46:36,0,False,裝置1,36.4
+Adam Harris,Sales,2021-12-11 12:05:29,0,False,裝置1,36.4
+Matthew Martin,General_Affairs,2021-12-11 13:05:54,1,False,裝置1,36.8
+Kirsten Williamson,General_Affairs,2021-12-11 13:06:30,1,False,裝置1,36.9
+Christina Hayes,Human_Resources,2021-12-11 13:09:11,1,False,裝置1,35.8
+Scott Smith,Sales,2021-12-11 13:12:27,0,False,裝置1,36.4
+Dave,manager,2021-12-11 14:09:48,1,False,裝置1,36.7
+Scott Smith,Sales,2021-12-11 14:35:45,0,False,裝置1,36.0
+James Nelson,Human_Resources,2021-12-11 14:37:46,1,False,裝置1,37.5
+Kirsten Williamson,General_Affairs,2021-12-11 14:43:16,1,False,裝置1,36.4
+Matthew Martin,General_Affairs,2021-12-11 15:31:38,0,False,裝置1,37.9
+Ricky,Human_Resources,2021-12-11 16:16:47,1,False,裝置1,36.3
+James Nelson,Human_Resources,2021-12-11 16:24:31,1,False,裝置1,35.8
+Jerry Wang,Human_Resources,2021-12-11 16:28:28,1,False,裝置1,37.8
+Jerry Wang,Human_Resources,2021-12-11 16:51:28,0,False,裝置1,36.6
+Ricky,Human_Resources,2021-12-11 17:01:18,0,False,裝置1,36.6
+James Nelson,Human_Resources,2021-12-11 17:01:33,0,False,裝置1,36.6
+Matthew Martin,General_Affairs,2021-12-11 17:02:19,0,False,裝置1,36.0
+Christina Hayes,Human_Resources,2021-12-11 17:03:30,1,False,裝置1,37.5
+Cory Richardson,Sales,2021-12-11 17:03:58,1,False,裝置1,37.6
+Dave,manager,2021-12-11 17:13:30,1,False,裝置1,36.2
+Kirsten Williamson,General_Affairs,2021-12-11 17:14:42,1,False,裝置1,36.5
+Adam Harris,Sales,2021-12-11 17:23:28,1,False,裝置1,35.8
+Scott Smith,Sales,2021-12-11 17:25:29,0,False,裝置1,36.0
+Jerry Wang,Human_Resources,2021-12-11 17:27:34,1,False,裝置1,36.1
+Christina Hayes,Human_Resources,2021-12-12 08:31:50,1,False,裝置1,36.9
+Kirsten Williamson,General_Affairs,2021-12-12 08:43:20,1,False,裝置1,36.7
+Scott Smith,Sales,2021-12-12 08:47:37,0,False,裝置1,37.0
+James Nelson,Human_Resources,2021-12-12 08:48:43,0,False,裝置1,37.6
+Adam Harris,Sales,2021-12-12 08:49:20,0,False,裝置1,36.9
+Cory Richardson,Sales,2021-12-12 08:49:40,1,False,裝置1,35.9
+Ricky,Human_Resources,2021-12-12 08:51:24,0,False,裝置1,36.6
+Dave,manager,2021-12-12 08:52:45,1,False,裝置1,36.1
+Matthew Martin,General_Affairs,2021-12-12 08:56:10,1,False,裝置1,37.0
+Jerry Wang,Human_Resources,2021-12-12 08:56:38,1,False,裝置1,36.2
+Scott Smith,Sales,2021-12-12 10:02:46,0,False,裝置1,37.9
+Ricky,Human_Resources,2021-12-12 10:23:26,1,False,裝置1,35.9
+Jerry Wang,Human_Resources,2021-12-12 10:27:09,1,False,裝置1,37.3
+Christina Hayes,Human_Resources,2021-12-12 11:52:27,0,False,裝置1,36.8
+Christina Hayes,Human_Resources,2021-12-12 12:46:26,0,False,裝置1,36.8
+Cory Richardson,Sales,2021-12-12 12:54:10,1,False,裝置1,36.6
+James Nelson,Human_Resources,2021-12-12 13:01:49,1,False,裝置1,37.3
+Kirsten Williamson,General_Affairs,2021-12-12 13:07:50,1,False,裝置1,37.6
+Matthew Martin,General_Affairs,2021-12-12 13:28:49,0,False,裝置1,36.9
+Cory Richardson,Sales,2021-12-12 14:05:39,1,False,裝置1,36.7
+Adam Harris,Sales,2021-12-12 14:27:48,0,False,裝置1,36.2
+Jerry Wang,Human_Resources,2021-12-12 15:08:01,1,False,裝置1,36.6
+Scott Smith,Sales,2021-12-12 15:22:06,0,False,裝置1,37.0
+Matthew Martin,General_Affairs,2021-12-12 15:24:14,1,False,裝置1,36.6
+Ricky,Human_Resources,2021-12-12 15:37:32,1,False,裝置1,36.8
+Kirsten Williamson,General_Affairs,2021-12-12 15:41:14,0,False,裝置1,36.3
+Dave,manager,2021-12-12 16:05:52,1,False,裝置1,37.2
+Dave,manager,2021-12-12 16:18:14,0,False,裝置1,37.6
+Adam Harris,Sales,2021-12-12 16:20:22,1,False,裝置1,37.7
+James Nelson,Human_Resources,2021-12-12 16:49:22,0,False,裝置1,36.1
+Christina Hayes,Human_Resources,2021-12-12 17:02:08,1,False,裝置1,37.8
+Cory Richardson,Sales,2021-12-12 17:02:25,1,False,裝置1,35.8
+Adam Harris,Sales,2021-12-12 17:03:08,0,False,裝置1,35.8
+Scott Smith,Sales,2021-12-12 17:03:25,1,False,裝置1,36.8
+James Nelson,Human_Resources,2021-12-12 17:06:55,1,False,裝置1,36.3
+Dave,manager,2021-12-12 17:07:33,1,False,裝置1,36.2
+Jerry Wang,Human_Resources,2021-12-12 17:11:15,0,False,裝置1,37.6
+Ricky,Human_Resources,2021-12-12 17:12:26,1,False,裝置1,35.9
+Kirsten Williamson,General_Affairs,2021-12-12 17:14:21,1,False,裝置1,37.9
+Matthew Martin,General_Affairs,2021-12-12 17:15:37,0,False,裝置1,37.2
+Christina Hayes,Human_Resources,2021-12-13 08:37:05,0,False,裝置1,37.6
+Scott Smith,Sales,2021-12-13 08:39:22,1,False,裝置1,37.7
+Cory Richardson,Sales,2021-12-13 08:41:33,1,False,裝置1,37.2
+Kirsten Williamson,General_Affairs,2021-12-13 08:43:26,0,False,裝置1,37.1
+Matthew Martin,General_Affairs,2021-12-13 08:43:36,0,False,裝置1,36.8
+Jerry Wang,Human_Resources,2021-12-13 08:49:02,0,False,裝置1,37.3
+Ricky,Human_Resources,2021-12-13 08:49:57,0,False,裝置1,37.2
+James Nelson,Human_Resources,2021-12-13 08:52:31,0,False,裝置1,36.7
+Dave,manager,2021-12-13 08:52:34,1,False,裝置1,37.7
+Adam Harris,Sales,2021-12-13 08:53:53,1,False,裝置1,37.4
+Kirsten Williamson,General_Affairs,2021-12-13 10:24:19,1,False,裝置1,37.6
+Adam Harris,Sales,2021-12-13 10:24:19,1,False,裝置1,35.8
+Kirsten Williamson,General_Affairs,2021-12-13 10:26:35,1,False,裝置1,37.9
+Matthew Martin,General_Affairs,2021-12-13 10:39:45,0,False,裝置1,36.5
+Cory Richardson,Sales,2021-12-13 10:43:50,1,False,裝置1,37.6
+Christina Hayes,Human_Resources,2021-12-13 11:06:01,0,False,裝置1,37.1
+Scott Smith,Sales,2021-12-13 11:10:31,0,False,裝置1,37.7
+Dave,manager,2021-12-13 11:31:24,0,False,裝置1,37.1
+Christina Hayes,Human_Resources,2021-12-13 11:36:49,1,False,裝置1,37.4
+James Nelson,Human_Resources,2021-12-13 12:03:37,0,False,裝置1,35.7
+James Nelson,Human_Resources,2021-12-13 12:09:18,1,False,裝置1,36.8
+Matthew Martin,General_Affairs,2021-12-13 12:43:10,0,False,裝置1,36.0
+Ricky,Human_Resources,2021-12-13 13:05:14,1,False,裝置1,36.1
+Jerry Wang,Human_Resources,2021-12-13 13:22:29,1,False,裝置1,35.8
+Dave,manager,2021-12-13 13:27:41,0,False,裝置1,36.3
+Adam Harris,Sales,2021-12-13 13:32:35,0,False,裝置1,37.5
+Cory Richardson,Sales,2021-12-13 13:41:44,1,False,裝置1,36.0
+Scott Smith,Sales,2021-12-13 14:05:05,0,False,裝置1,36.4
+Ricky,Human_Resources,2021-12-13 14:30:05,0,False,裝置1,37.7
+Jerry Wang,Human_Resources,2021-12-13 14:39:08,0,False,裝置1,36.6
+James Nelson,Human_Resources,2021-12-13 17:04:35,0,False,裝置1,37.8
+Adam Harris,Sales,2021-12-13 17:07:36,1,False,裝置1,36.0
+Christina Hayes,Human_Resources,2021-12-13 17:10:55,0,False,裝置1,37.8
+Matthew Martin,General_Affairs,2021-12-13 17:13:32,1,False,裝置1,36.0
+Cory Richardson,Sales,2021-12-13 17:15:23,0,False,裝置1,37.4
+Jerry Wang,Human_Resources,2021-12-13 17:16:47,0,False,裝置1,36.8
+Dave,manager,2021-12-13 17:19:36,1,False,裝置1,37.1
+Scott Smith,Sales,2021-12-13 17:23:50,0,False,裝置1,36.2
+Kirsten Williamson,General_Affairs,2021-12-13 17:23:55,1,False,裝置1,36.2
+Ricky,Human_Resources,2021-12-13 17:28:05,1,False,裝置1,36.2
+Cory Richardson,Sales,2021-12-14 08:30:57,0,False,裝置1,36.8
+James Nelson,Human_Resources,2021-12-14 08:32:53,0,False,裝置1,37.2
+Jerry Wang,Human_Resources,2021-12-14 08:33:19,0,False,裝置1,35.8
+Christina Hayes,Human_Resources,2021-12-14 08:34:08,0,False,裝置1,37.7
+Ricky,Human_Resources,2021-12-14 08:37:42,1,False,裝置1,37.5
+Matthew Martin,General_Affairs,2021-12-14 08:43:03,0,False,裝置1,37.3
+Adam Harris,Sales,2021-12-14 08:43:46,1,False,裝置1,35.7
+Dave,manager,2021-12-14 08:45:08,0,False,裝置1,36.5
+Scott Smith,Sales,2021-12-14 08:48:07,1,False,裝置1,37.8
+Kirsten Williamson,General_Affairs,2021-12-14 09:05:16,1,False,裝置1,36.7
+Matthew Martin,General_Affairs,2021-12-14 10:10:29,0,False,裝置1,35.9
+Cory Richardson,Sales,2021-12-14 10:35:21,1,False,裝置1,36.1
+Kirsten Williamson,General_Affairs,2021-12-14 10:40:28,1,False,裝置1,37.0
+Jerry Wang,Human_Resources,2021-12-14 10:41:08,0,False,裝置1,35.8
+Matthew Martin,General_Affairs,2021-12-14 11:25:23,1,False,裝置1,37.4
+James Nelson,Human_Resources,2021-12-14 11:26:05,0,False,裝置1,36.4
+Dave,manager,2021-12-14 11:46:20,1,False,裝置1,37.5
+Christina Hayes,Human_Resources,2021-12-14 12:10:27,1,False,裝置1,37.7
+Scott Smith,Sales,2021-12-14 12:23:33,1,False,裝置1,36.2
+Christina Hayes,Human_Resources,2021-12-14 13:25:54,1,False,裝置1,37.3
+Dave,manager,2021-12-14 13:31:40,0,False,裝置1,37.3
+Cory Richardson,Sales,2021-12-14 13:58:31,1,False,裝置1,37.7
+Ricky,Human_Resources,2021-12-14 14:22:51,0,False,裝置1,36.9
+James Nelson,Human_Resources,2021-12-14 14:28:01,0,False,裝置1,37.2
+Kirsten Williamson,General_Affairs,2021-12-14 14:39:06,0,False,裝置1,37.5
+Scott Smith,Sales,2021-12-14 14:55:06,1,False,裝置1,36.8
+Adam Harris,Sales,2021-12-14 15:11:12,0,False,裝置1,37.7
+Ricky,Human_Resources,2021-12-14 15:22:22,1,False,裝置1,35.9
+Adam Harris,Sales,2021-12-14 15:56:09,1,False,裝置1,37.4
+Jerry Wang,Human_Resources,2021-12-14 16:52:47,1,False,裝置1,36.6
+James Nelson,Human_Resources,2021-12-14 17:02:37,0,False,裝置1,37.1
+Kirsten Williamson,General_Affairs,2021-12-14 17:04:12,1,False,裝置1,35.9
+Cory Richardson,Sales,2021-12-14 17:08:02,0,False,裝置1,36.3
+Dave,manager,2021-12-14 17:13:09,1,False,裝置1,36.2
+Christina Hayes,Human_Resources,2021-12-14 17:13:16,1,False,裝置1,37.9
+Scott Smith,Sales,2021-12-14 17:14:58,1,False,裝置1,36.1
+Ricky,Human_Resources,2021-12-14 17:20:03,1,False,裝置1,37.5
+Adam Harris,Sales,2021-12-14 17:21:50,0,False,裝置1,36.8
+Jerry Wang,Human_Resources,2021-12-14 17:24:17,1,False,裝置1,37.2
+Matthew Martin,General_Affairs,2021-12-14 17:29:11,1,False,裝置1,36.1
+Ricky,Human_Resources,2021-12-15 15:10:22,1,False,裝置3,36.27
+Ricky,Human_Resources,2021-12-15 15:11:04,1,False,裝置3,36.46
+Ricky,Human_Resources,2021-12-16 13:56:23,1,True,裝置3,38.35
+Ricky,Human_Resources,2021-12-16 13:56:36,1,True,裝置3,38.42
+Ricky,Human_Resources,2021-12-16 13:57:11,1,True,裝置3,38.4
+Ricky,Human_Resources,2021-12-16 13:57:11,1,True,裝置3,38.4
+Ricky,Human_Resources,2021-12-16 13:57:23,1,True,裝置3,38.38
+Christina Hayes,Human_Resources,2021-12-16 13:58:08,1,True,裝置3,38.54
+Christina Hayes,Human_Resources,2021-12-16 13:58:08,1,True,裝置3,38.54
+Christina Hayes,Human_Resources,2021-12-16 13:58:08,1,True,裝置3,38.54
+Christina Hayes,Human_Resources,2021-12-16 13:59:40,1,True,裝置3,38.46
+Ricky,Human_Resources,2021-12-16 14:00:12,1,True,裝置3,38.41
+Ricky,Human_Resources,2021-12-16 14:00:12,1,True,裝置3,38.41
+Ricky,Human_Resources,2021-12-16 14:00:43,1,True,裝置3,38.29
+Christina Hayes,Human_Resources,2021-12-16 14:04:58,1,True,裝置3,38.34
+Christina Hayes,Human_Resources,2021-12-16 14:04:59,1,True,裝置3,38.34
+Ricky,Human_Resources,2021-12-16 14:28:16,1,True,裝置3,38.37
+Christina Hayes,Human_Resources,2021-12-16 14:28:22,1,True,裝置3,38.37
+Christina Hayes,Human_Resources,2021-12-16 14:28:22,1,True,裝置3,38.37
+Christina Hayes,Human_Resources,2021-12-16 14:28:22,1,True,裝置3,38.37
+Christina Hayes,Human_Resources,2021-12-16 14:28:26,1,True,裝置3,38.38
+Christina Hayes,Human_Resources,2021-12-16 14:28:32,1,True,裝置3,38.33
+Christina Hayes,Human_Resources,2021-12-16 14:28:33,1,True,裝置3,38.33
+Christina Hayes,Human_Resources,2021-12-16 14:28:33,1,True,裝置3,38.33
+Christina Hayes,Human_Resources,2021-12-16 14:28:37,1,True,裝置3,38.35
+Christina Hayes,Human_Resources,2021-12-16 14:29:22,1,True,裝置3,38.38
+Ricky,Human_Resources,2021-12-16 14:29:32,1,True,裝置3,38.18
+Ricky,Human_Resources,2021-12-16 14:29:37,1,True,裝置3,38.28
+Christina Hayes,Human_Resources,2021-12-16 14:29:50,1,True,裝置3,38.37
+Christina Hayes,Human_Resources,2021-12-16 14:29:50,1,True,裝置3,38.37
+Christina Hayes,Human_Resources,2021-12-16 14:30:01,1,True,裝置3,38.18
+Ricky,Human_Resources,2021-12-16 14:32:24,1,True,裝置3,38.25
+Ricky,Human_Resources,2021-12-16 14:33:02,1,True,裝置3,38.22
+Ricky,Human_Resources,2021-12-16 14:34:00,1,True,裝置3,38.3
+Christina Hayes,Human_Resources,2021-12-16 14:34:10,1,True,裝置3,38.29
+Ricky,Human_Resources,2021-12-16 14:34:19,1,True,裝置3,38.4
+Ricky,Human_Resources,2021-12-16 14:35:16,1,True,裝置3,38.3
+Ricky,Human_Resources,2021-12-16 14:35:16,1,True,裝置3,38.3
+Ricky,Human_Resources,2021-12-16 14:35:21,1,True,裝置3,38.35
+Ricky,Human_Resources,2021-12-16 14:35:21,1,True,裝置3,38.35
+Christina Hayes,Human_Resources,2021-12-16 14:35:56,1,True,裝置3,38.26
+Christina Hayes,Human_Resources,2021-12-16 14:35:56,1,True,裝置3,38.26
+Christina Hayes,Human_Resources,2021-12-16 14:35:56,1,True,裝置3,38.26
+Christina Hayes,Human_Resources,2021-12-16 14:35:56,1,True,裝置3,38.26
+Ricky,Human_Resources,2021-12-17 10:52:56,1,True,裝置3,38.45
+Ricky,Human_Resources,2021-12-17 10:53:27,1,True,裝置3,38.18
+Ricky,Human_Resources,2021-12-17 10:53:40,1,False,裝置3,36.04
+Ricky,Human_Resources,2021-12-17 10:53:58,1,False,裝置3,36.72
+Ricky,Human_Resources,2021-12-17 10:54:02,1,False,裝置3,36.73
+Ricky,Human_Resources,2021-12-17 10:54:12,1,False,裝置3,36.7
+Ricky,Human_Resources,2021-12-17 10:54:12,1,False,裝置3,36.7
+Ricky,Human_Resources,2021-12-17 10:54:20,1,False,裝置3,36.73
+Ricky,Human_Resources,2021-12-17 10:54:36,1,False,裝置3,36.22
+Ricky,Human_Resources,2021-12-17 10:54:43,1,False,裝置3,36.38
+Ricky,Human_Resources,2021-12-17 10:54:43,1,False,裝置3,36.38
+Ricky,Human_Resources,2021-12-17 10:54:58,1,False,裝置3,36.34
+Ricky,Human_Resources,2021-12-17 10:56:16,1,False,裝置3,36.11
+Ricky,Human_Resources,2021-12-17 10:57:12,1,False,裝置3,36.24
+Ricky,Human_Resources,2021-12-17 10:57:12,1,False,裝置3,36.24
+Ricky,Human_Resources,2021-12-22 12:03:05,1,False,裝置3,36.29
+CW,Human_Resources,2021-12-22 12:03:50,1,False,裝置3,36.1
+Ricky,Human_Resources,2021-12-22 12:03:51,1,False,裝置3,36.1
+Christina Hayes,Human_Resources,2021-12-22 12:04:00,1,False,裝置3,36.1
+Christina Hayes,Human_Resources,2021-12-22 12:04:00,1,False,裝置3,36.1
+Dave,manager,2021-12-22 13:17:17,1,False,裝置3,35.93
+CW,Human_Resources,2021-12-22 13:17:33,1,False,裝置3,35.61
+Dave,manager,2021-12-22 13:17:33,1,False,裝置3,35.98
+CW,Human_Resources,2021-12-22 13:17:45,1,False,裝置3,36.32
+CW,Human_Resources,2021-12-22 13:17:45,1,False,裝置3,36.32
+CW,Human_Resources,2021-12-22 13:18:01,1,False,裝置3,35.85
+CW,Human_Resources,2021-12-22 13:22:13,1,False,裝置3,36.32
+CW,Human_Resources,2021-12-22 13:31:16,1,False,裝置3,36.26
+Ricky,Human_Resources,2021-12-22 13:31:22,1,False,裝置3,36.07
+Christina Hayes,Human_Resources,2021-12-22 13:32:26,1,False,裝置3,36.25
+CW,Human_Resources,2021-12-22 13:32:49,1,False,裝置3,36.12
+CW,Human_Resources,2021-12-22 13:33:45,1,False,裝置3,36.03
+CW,Human_Resources,2021-12-22 13:51:28,1,False,裝置3,36.25
+CW,Human_Resources,2021-12-22 13:52:18,1,False,裝置3,35.56
+CW,Human_Resources,2021-12-22 13:52:18,1,False,裝置3,35.56
+CW,Human_Resources,2021-12-22 13:54:23,1,False,裝置3,35.53
+CW,Human_Resources,2021-12-22 13:59:56,1,False,裝置3,36.1
+CW,Human_Resources,2021-12-22 14:00:23,1,False,裝置3,35.64
+CW,Human_Resources,2021-12-22 14:01:46,1,False,裝置3,36.38
+CW,Human_Resources,2021-12-22 14:02:03,1,False,裝置3,36.38
+CW,Human_Resources,2021-12-22 14:02:47,1,False,裝置3,36.29
+CW,Human_Resources,2021-12-22 14:03:23,1,False,裝置3,36.22
+CW,Human_Resources,2021-12-22 14:04:06,1,False,裝置3,35.8
+CW,Human_Resources,2021-12-22 14:04:06,1,False,裝置3,35.8
+CW,Human_Resources,2021-12-22 14:04:06,1,False,裝置3,35.8
+CW,Human_Resources,2021-12-22 14:11:35,1,False,裝置3,36.21
+CW,Human_Resources,2021-12-22 14:11:35,1,False,裝置3,36.21
+CW,Human_Resources,2021-12-22 14:13:13,1,False,裝置3,35.9
+Ricky,Human_Resources,2021-12-22 14:19:40,1,False,裝置3,36.14
+Ricky,Human_Resources,2021-12-22 14:19:40,1,False,裝置3,36.14
+Christina Hayes,Human_Resources,2021-12-22 14:19:48,1,False,裝置3,36.27
+Christina Hayes,Human_Resources,2021-12-22 14:19:48,1,False,裝置3,36.27
+Ricky,Human_Resources,2021-12-22 14:19:53,1,False,裝置3,36.27
+Ricky,Human_Resources,2021-12-22 14:19:57,1,False,裝置3,36.21
+Ricky,Human_Resources,2021-12-22 14:20:45,1,False,裝置3,36.22
+Ricky,Human_Resources,2021-12-22 14:20:45,1,False,裝置3,36.22
+CW,Human_Resources,2021-12-22 14:22:14,1,False,裝置3,36.33
+CW,Human_Resources,2021-12-22 14:22:14,1,False,裝置3,36.33
+Ricky,Human_Resources,2021-12-22 14:22:25,1,False,裝置3,36.33
+Ricky,Human_Resources,2021-12-22 14:22:28,1,False,裝置3,36.28
+Ricky,Human_Resources,2021-12-22 14:22:46,1,False,裝置3,36.26
+Ricky,Human_Resources,2021-12-22 14:23:11,1,False,裝置3,36.1
+Ricky,Human_Resources,2021-12-22 14:23:24,1,False,裝置3,36.31
+Ricky,Human_Resources,2021-12-22 14:23:24,1,False,裝置3,36.32
+Ricky,Human_Resources,2021-12-22 14:24:47,1,False,裝置3,36.09
+CW,Human_Resources,2021-12-22 14:33:11,1,False,裝置3,36.16
+CW,Human_Resources,2021-12-22 14:33:11,1,False,裝置3,36.16
+CW,Human_Resources,2021-12-22 14:34:02,1,False,裝置3,36.26
+CW,Human_Resources,2021-12-22 14:34:23,1,False,裝置3,36.22
+CW,Human_Resources,2021-12-22 14:36:54,1,False,裝置3,35.97
+CW,Human_Resources,2021-12-22 14:36:54,1,False,裝置3,35.97
+Ricky,Human_Resources,2021-12-22 14:36:58,1,False,裝置3,35.99
+Ricky,Human_Resources,2021-12-22 14:36:58,1,False,裝置3,35.99
+Ricky,Human_Resources,2021-12-22 14:39:54,1,False,裝置3,35.66
+Ricky,Human_Resources,2021-12-22 14:41:55,1,False,裝置3,35.79
+Ricky,Human_Resources,2021-12-22 14:41:55,1,False,裝置3,35.79
+Ricky,Human_Resources,2021-12-22 14:41:55,1,False,裝置3,35.79
+Ricky,Human_Resources,2021-12-22 14:43:02,1,False,裝置3,36.13
+Ricky,Human_Resources,2021-12-22 14:43:02,1,False,裝置3,36.13
+Ricky,Human_Resources,2021-12-22 14:44:59,1,False,裝置3,36.28
+Christina Hayes,Human_Resources,2021-12-22 14:53:06,1,False,裝置3,36.35
+Ricky,Human_Resources,2021-12-22 14:57:20,1,False,裝置3,36.37
+Ricky,Human_Resources,2021-12-22 14:57:30,1,False,裝置3,36.37
+Christina Hayes,Human_Resources,2021-12-22 14:57:38,1,False,裝置3,36.26
+Ricky,Human_Resources,2021-12-22 14:58:21,1,False,裝置3,36.2
+Ricky,Human_Resources,2021-12-22 15:01:18,1,False,裝置3,35.71
+CW,Human_Resources,2021-12-22 16:05:03,1,False,裝置3,36.34
+CW,Human_Resources,2021-12-22 16:09:48,1,False,裝置3,36.44
+CW,Human_Resources,2021-12-22 16:10:11,1,False,裝置3,36.35
+CW,Human_Resources,2021-12-22 16:10:11,1,False,裝置3,36.35
+CW,Human_Resources,2021-12-22 16:10:11,1,False,裝置3,36.35
+CW,Human_Resources,2021-12-22 16:14:59,1,False,裝置3,36.37
+CW,Human_Resources,2021-12-22 16:14:59,1,False,裝置3,36.37
+CW,Human_Resources,2021-12-22 16:15:55,1,False,裝置3,36.1
+CW,Human_Resources,2021-12-22 16:15:55,1,False,裝置3,36.1
+CW,Human_Resources,2021-12-22 16:17:05,1,False,裝置3,36.22
+CW,Human_Resources,2021-12-22 16:18:13,1,False,裝置3,36.34
+CW,Human_Resources,2021-12-22 16:18:14,1,False,裝置3,36.34
+CW,Human_Resources,2021-12-22 16:18:24,1,False,裝置3,36.3
+CW,Human_Resources,2021-12-22 16:18:24,1,False,裝置3,36.3
+CW,Human_Resources,2021-12-22 16:18:24,1,False,裝置3,36.3
+CW,Human_Resources,2021-12-22 16:19:39,1,False,裝置3,36.01
+CW,Human_Resources,2021-12-22 16:24:46,1,False,裝置3,35.85
+CW,Human_Resources,2021-12-22 16:26:30,1,False,裝置3,35.86
+CW,Human_Resources,2021-12-22 16:27:53,1,False,裝置3,36.29
+Christina Hayes,Human_Resources,2021-12-24 15:23:48,1,False,裝置3,36.39
+Christina Hayes,Human_Resources,2021-12-24 15:23:49,1,False,裝置3,36.39
+Ricky,Human_Resources,2021-12-28 12:27:29,1,False,裝置3,36.08
