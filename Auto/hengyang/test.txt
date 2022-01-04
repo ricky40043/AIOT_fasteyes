@@ -1,0 +1,2022 @@
+[
+        {
+            "Result": 1,
+            "Id": 1960033,
+            "PhenomenonTime": "2021-12-29T10:04:01+08:00",
+            "UpdatedAt": "2021-12-29T10:04:03.69907+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 30.9,
+            "Id": 1960030,
+            "PhenomenonTime": "2021-12-29T10:04:01+08:00",
+            "UpdatedAt": "2021-12-29T10:04:01.857182+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 31,
+            "Id": 1960035,
+            "PhenomenonTime": "2021-12-29T10:04:01+08:00",
+            "UpdatedAt": "2021-12-29T10:04:03.716951+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 1,
+            "Id": 1960028,
+            "PhenomenonTime": "2021-12-29T10:04:01+08:00",
+            "UpdatedAt": "2021-12-29T10:04:01.840764+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 23.077637,
+            "Id": 1960029,
+            "PhenomenonTime": "2021-12-29T10:04:01+08:00",
+            "UpdatedAt": "2021-12-29T10:04:01.848907+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": "2021-12-29.10_04_01_1768.jpg",
+            "Id": 1960032,
+            "PhenomenonTime": "2021-12-29T10:04:01+08:00",
+            "UpdatedAt": "2021-12-29T10:04:03.68158+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 23.077637,
+            "Id": 1960034,
+            "PhenomenonTime": "2021-12-29T10:04:01+08:00",
+            "UpdatedAt": "2021-12-29T10:04:03.708375+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 36.45,
+            "Id": 1960031,
+            "PhenomenonTime": "2021-12-29T10:04:01+08:00",
+            "UpdatedAt": "2021-12-29T10:04:03.635336+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "2021-12-29.10_04_01_1766.jpg",
+            "Id": 1960027,
+            "PhenomenonTime": "2021-12-29T10:04:01+08:00",
+            "UpdatedAt": "2021-12-29T10:04:01.832551+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 36.44,
+            "Id": 1960026,
+            "PhenomenonTime": "2021-12-29T10:04:01+08:00",
+            "UpdatedAt": "2021-12-29T10:04:01.818617+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": 22.412682,
+            "Id": 1959957,
+            "PhenomenonTime": "2021-12-29T08:03:48+08:00",
+            "UpdatedAt": "2021-12-29T08:03:49.772343+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 0,
+            "Id": 1959956,
+            "PhenomenonTime": "2021-12-29T08:03:48+08:00",
+            "UpdatedAt": "2021-12-29T08:03:49.764697+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 36.47,
+            "Id": 1959954,
+            "PhenomenonTime": "2021-12-29T08:03:48+08:00",
+            "UpdatedAt": "2021-12-29T08:03:49.741507+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "丁月玲_Judy.2021-12-29.08_03_48_1764.jpg",
+            "Id": 1959955,
+            "PhenomenonTime": "2021-12-29T08:03:48+08:00",
+            "UpdatedAt": "2021-12-29T08:03:49.756867+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": "088013",
+            "Id": 1959959,
+            "PhenomenonTime": "2021-12-29T08:03:48+08:00",
+            "UpdatedAt": "2021-12-29T08:03:49.787312+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 573,
+                "StaffName": "丁月玲_Judy"
+            }
+        },
+        {
+            "Result": 31.2,
+            "Id": 1959958,
+            "PhenomenonTime": "2021-12-29T08:03:48+08:00",
+            "UpdatedAt": "2021-12-29T08:03:49.779911+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 22.380508,
+            "Id": 1959921,
+            "PhenomenonTime": "2021-12-29T08:00:24+08:00",
+            "UpdatedAt": "2021-12-29T08:00:25.570539+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": "088009",
+            "Id": 1959923,
+            "PhenomenonTime": "2021-12-29T08:00:24+08:00",
+            "UpdatedAt": "2021-12-29T08:00:25.588592+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 572,
+                "StaffName": "康淑珍_Rita"
+            }
+        },
+        {
+            "Result": 26.2,
+            "Id": 1959922,
+            "PhenomenonTime": "2021-12-29T08:00:24+08:00",
+            "UpdatedAt": "2021-12-29T08:00:25.579709+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 35.97,
+            "Id": 1959918,
+            "PhenomenonTime": "2021-12-29T08:00:24+08:00",
+            "UpdatedAt": "2021-12-29T08:00:25.537966+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "康淑珍_Rita.2021-12-29.08_00_24_1762.jpg",
+            "Id": 1959919,
+            "PhenomenonTime": "2021-12-29T08:00:24+08:00",
+            "UpdatedAt": "2021-12-29T08:00:25.552543+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1959920,
+            "PhenomenonTime": "2021-12-29T08:00:24+08:00",
+            "UpdatedAt": "2021-12-29T08:00:25.561645+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 36.53,
+            "Id": 1959260,
+            "PhenomenonTime": "2021-12-29T07:47:07+08:00",
+            "UpdatedAt": "2021-12-29T07:47:07.946947+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "088059",
+            "Id": 1959265,
+            "PhenomenonTime": "2021-12-29T07:47:07+08:00",
+            "UpdatedAt": "2021-12-29T07:47:07.990726+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 578,
+                "StaffName": "林旭嵐_Jason"
+            }
+        },
+        {
+            "Result": 22.144554,
+            "Id": 1959263,
+            "PhenomenonTime": "2021-12-29T07:47:07+08:00",
+            "UpdatedAt": "2021-12-29T07:47:07.974697+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 0,
+            "Id": 1959262,
+            "PhenomenonTime": "2021-12-29T07:47:07+08:00",
+            "UpdatedAt": "2021-12-29T07:47:07.967114+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 31.800001,
+            "Id": 1959264,
+            "PhenomenonTime": "2021-12-29T07:47:07+08:00",
+            "UpdatedAt": "2021-12-29T07:47:07.982555+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": "林旭嵐_Jason.2021-12-29.07_47_07_1760.jpg",
+            "Id": 1959261,
+            "PhenomenonTime": "2021-12-29T07:47:07+08:00",
+            "UpdatedAt": "2021-12-29T07:47:07.959597+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 22.101654,
+            "Id": 1959169,
+            "PhenomenonTime": "2021-12-29T07:44:15+08:00",
+            "UpdatedAt": "2021-12-29T07:44:15.974363+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 29.4,
+            "Id": 1959170,
+            "PhenomenonTime": "2021-12-29T07:44:15+08:00",
+            "UpdatedAt": "2021-12-29T07:44:15.983693+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": "101067",
+            "Id": 1959171,
+            "PhenomenonTime": "2021-12-29T07:44:15+08:00",
+            "UpdatedAt": "2021-12-29T07:44:15.993136+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 637,
+                "StaffName": "王永棋"
+            }
+        },
+        {
+            "Result": 36.29,
+            "Id": 1959166,
+            "PhenomenonTime": "2021-12-29T07:44:15+08:00",
+            "UpdatedAt": "2021-12-29T07:44:15.941347+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "王永棋.2021-12-29.07_44_15_1758.jpg",
+            "Id": 1959167,
+            "PhenomenonTime": "2021-12-29T07:44:15+08:00",
+            "UpdatedAt": "2021-12-29T07:44:15.955934+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1959168,
+            "PhenomenonTime": "2021-12-29T07:44:15+08:00",
+            "UpdatedAt": "2021-12-29T07:44:15.965082+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 0,
+            "Id": 1959068,
+            "PhenomenonTime": "2021-12-29T07:41:46+08:00",
+            "UpdatedAt": "2021-12-29T07:41:46.96285+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 36.19,
+            "Id": 1959066,
+            "PhenomenonTime": "2021-12-29T07:41:46+08:00",
+            "UpdatedAt": "2021-12-29T07:41:46.939709+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": 22.133827,
+            "Id": 1959069,
+            "PhenomenonTime": "2021-12-29T07:41:46+08:00",
+            "UpdatedAt": "2021-12-29T07:41:46.973799+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 28.4,
+            "Id": 1959070,
+            "PhenomenonTime": "2021-12-29T07:41:46+08:00",
+            "UpdatedAt": "2021-12-29T07:41:46.982563+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": "088071",
+            "Id": 1959071,
+            "PhenomenonTime": "2021-12-29T07:41:46+08:00",
+            "UpdatedAt": "2021-12-29T07:41:46.991509+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 580,
+                "StaffName": "王巧雲"
+            }
+        },
+        {
+            "Result": "王巧雲.2021-12-29.07_41_46_1756.jpg",
+            "Id": 1959067,
+            "PhenomenonTime": "2021-12-29T07:41:46+08:00",
+            "UpdatedAt": "2021-12-29T07:41:46.9541+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": "102053",
+            "Id": 1959059,
+            "PhenomenonTime": "2021-12-29T07:41:40+08:00",
+            "UpdatedAt": "2021-12-29T07:41:41.053573+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 639,
+                "StaffName": "李明修"
+            }
+        },
+        {
+            "Result": 36.46,
+            "Id": 1959054,
+            "PhenomenonTime": "2021-12-29T07:41:40+08:00",
+            "UpdatedAt": "2021-12-29T07:41:40.999929+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "李明修.2021-12-29.07_41_40_1752.jpg",
+            "Id": 1959055,
+            "PhenomenonTime": "2021-12-29T07:41:40+08:00",
+            "UpdatedAt": "2021-12-29T07:41:41.015558+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1959056,
+            "PhenomenonTime": "2021-12-29T07:41:40+08:00",
+            "UpdatedAt": "2021-12-29T07:41:41.025808+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 22.112381,
+            "Id": 1959057,
+            "PhenomenonTime": "2021-12-29T07:41:40+08:00",
+            "UpdatedAt": "2021-12-29T07:41:41.03489+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 31.1,
+            "Id": 1959058,
+            "PhenomenonTime": "2021-12-29T07:41:40+08:00",
+            "UpdatedAt": "2021-12-29T07:41:41.044237+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 0,
+            "Id": 1959062,
+            "PhenomenonTime": "2021-12-29T07:41:40+08:00",
+            "UpdatedAt": "2021-12-29T07:41:42.614493+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 36.41,
+            "Id": 1959060,
+            "PhenomenonTime": "2021-12-29T07:41:40+08:00",
+            "UpdatedAt": "2021-12-29T07:41:42.591376+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "李明修.2021-12-29.07_41_40_1754.jpg",
+            "Id": 1959061,
+            "PhenomenonTime": "2021-12-29T07:41:40+08:00",
+            "UpdatedAt": "2021-12-29T07:41:42.605655+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 22.112381,
+            "Id": 1959063,
+            "PhenomenonTime": "2021-12-29T07:41:40+08:00",
+            "UpdatedAt": "2021-12-29T07:41:42.623444+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 30.6,
+            "Id": 1959064,
+            "PhenomenonTime": "2021-12-29T07:41:40+08:00",
+            "UpdatedAt": "2021-12-29T07:41:42.632512+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": "102053",
+            "Id": 1959065,
+            "PhenomenonTime": "2021-12-29T07:41:40+08:00",
+            "UpdatedAt": "2021-12-29T07:41:42.6416+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 639,
+                "StaffName": "李明修"
+            }
+        },
+        {
+            "Result": 0,
+            "Id": 1959015,
+            "PhenomenonTime": "2021-12-29T07:40:53+08:00",
+            "UpdatedAt": "2021-12-29T07:40:54.422943+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 36.43,
+            "Id": 1959013,
+            "PhenomenonTime": "2021-12-29T07:40:53+08:00",
+            "UpdatedAt": "2021-12-29T07:40:54.398796+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "湯嘉彥_Kevin.2021-12-29.07_40_53_1750.jpg",
+            "Id": 1959014,
+            "PhenomenonTime": "2021-12-29T07:40:53+08:00",
+            "UpdatedAt": "2021-12-29T07:40:54.414342+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": "092037",
+            "Id": 1959018,
+            "PhenomenonTime": "2021-12-29T07:40:53+08:00",
+            "UpdatedAt": "2021-12-29T07:40:54.448543+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 592,
+                "StaffName": "湯嘉彥_Kevin"
+            }
+        },
+        {
+            "Result": 30.800001,
+            "Id": 1959017,
+            "PhenomenonTime": "2021-12-29T07:40:53+08:00",
+            "UpdatedAt": "2021-12-29T07:40:54.439941+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 22.058754,
+            "Id": 1959016,
+            "PhenomenonTime": "2021-12-29T07:40:53+08:00",
+            "UpdatedAt": "2021-12-29T07:40:54.431448+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 36.48,
+            "Id": 1958972,
+            "PhenomenonTime": "2021-12-29T07:39:29+08:00",
+            "UpdatedAt": "2021-12-29T07:39:29.531253+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "潘麗婷.2021-12-29.07_39_29_1748.jpg",
+            "Id": 1958973,
+            "PhenomenonTime": "2021-12-29T07:39:29+08:00",
+            "UpdatedAt": "2021-12-29T07:39:29.546601+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1958974,
+            "PhenomenonTime": "2021-12-29T07:39:29+08:00",
+            "UpdatedAt": "2021-12-29T07:39:29.555674+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 21.994408,
+            "Id": 1958975,
+            "PhenomenonTime": "2021-12-29T07:39:29+08:00",
+            "UpdatedAt": "2021-12-29T07:39:29.564935+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 31.300001,
+            "Id": 1958976,
+            "PhenomenonTime": "2021-12-29T07:39:29+08:00",
+            "UpdatedAt": "2021-12-29T07:39:29.573893+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": "092056",
+            "Id": 1958977,
+            "PhenomenonTime": "2021-12-29T07:39:29+08:00",
+            "UpdatedAt": "2021-12-29T07:39:29.583196+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 594,
+                "StaffName": "潘麗婷"
+            }
+        },
+        {
+            "Result": "099072",
+            "Id": 1958965,
+            "PhenomenonTime": "2021-12-29T07:39:17+08:00",
+            "UpdatedAt": "2021-12-29T07:39:17.673353+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 609,
+                "StaffName": "吳淑慧"
+            }
+        },
+        {
+            "Result": 30.7,
+            "Id": 1958964,
+            "PhenomenonTime": "2021-12-29T07:39:17+08:00",
+            "UpdatedAt": "2021-12-29T07:39:17.664564+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 22.02658,
+            "Id": 1958963,
+            "PhenomenonTime": "2021-12-29T07:39:17+08:00",
+            "UpdatedAt": "2021-12-29T07:39:17.655497+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": "吳淑慧.2021-12-29.07_39_17_1746.jpg",
+            "Id": 1958961,
+            "PhenomenonTime": "2021-12-29T07:39:17+08:00",
+            "UpdatedAt": "2021-12-29T07:39:17.637409+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1958962,
+            "PhenomenonTime": "2021-12-29T07:39:17+08:00",
+            "UpdatedAt": "2021-12-29T07:39:17.646351+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 36.42,
+            "Id": 1958960,
+            "PhenomenonTime": "2021-12-29T07:39:17+08:00",
+            "UpdatedAt": "2021-12-29T07:39:17.622834+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": 0,
+            "Id": 1958950,
+            "PhenomenonTime": "2021-12-29T07:39:04+08:00",
+            "UpdatedAt": "2021-12-29T07:39:05.178308+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 28.7,
+            "Id": 1958952,
+            "PhenomenonTime": "2021-12-29T07:39:04+08:00",
+            "UpdatedAt": "2021-12-29T07:39:05.196696+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 22.048027,
+            "Id": 1958951,
+            "PhenomenonTime": "2021-12-29T07:39:04+08:00",
+            "UpdatedAt": "2021-12-29T07:39:05.187824+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": "董鳳霞.2021-12-29.07_39_04_1744.jpg",
+            "Id": 1958949,
+            "PhenomenonTime": "2021-12-29T07:39:04+08:00",
+            "UpdatedAt": "2021-12-29T07:39:05.156332+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 36.22,
+            "Id": 1958948,
+            "PhenomenonTime": "2021-12-29T07:39:04+08:00",
+            "UpdatedAt": "2021-12-29T07:39:05.092483+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "095001",
+            "Id": 1958953,
+            "PhenomenonTime": "2021-12-29T07:39:04+08:00",
+            "UpdatedAt": "2021-12-29T07:39:05.205652+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 599,
+                "StaffName": "董鳳霞"
+            }
+        },
+        {
+            "Result": 0,
+            "Id": 1958944,
+            "PhenomenonTime": "2021-12-29T07:38:58+08:00",
+            "UpdatedAt": "2021-12-29T07:39:00.715824+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 22.048027,
+            "Id": 1958945,
+            "PhenomenonTime": "2021-12-29T07:38:58+08:00",
+            "UpdatedAt": "2021-12-29T07:39:00.725091+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": "088046",
+            "Id": 1958947,
+            "PhenomenonTime": "2021-12-29T07:38:58+08:00",
+            "UpdatedAt": "2021-12-29T07:39:00.743474+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 575,
+                "StaffName": "鄧麗萍_Lisa"
+            }
+        },
+        {
+            "Result": "鄧麗萍_Lisa.2021-12-29.07_38_58_1742.jpg",
+            "Id": 1958943,
+            "PhenomenonTime": "2021-12-29T07:38:58+08:00",
+            "UpdatedAt": "2021-12-29T07:39:00.706579+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 30.2,
+            "Id": 1958946,
+            "PhenomenonTime": "2021-12-29T07:38:58+08:00",
+            "UpdatedAt": "2021-12-29T07:39:00.734259+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 36.37,
+            "Id": 1958942,
+            "PhenomenonTime": "2021-12-29T07:38:58+08:00",
+            "UpdatedAt": "2021-12-29T07:39:00.693316+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": 36.37,
+            "Id": 1958937,
+            "PhenomenonTime": "2021-12-29T07:38:57+08:00",
+            "UpdatedAt": "2021-12-29T07:38:59.214542+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "2021-12-29.07_38_57_1740.jpg",
+            "Id": 1958938,
+            "PhenomenonTime": "2021-12-29T07:38:57+08:00",
+            "UpdatedAt": "2021-12-29T07:38:59.227633+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 22.080208,
+            "Id": 1958940,
+            "PhenomenonTime": "2021-12-29T07:38:57+08:00",
+            "UpdatedAt": "2021-12-29T07:38:59.243073+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 0,
+            "Id": 1958939,
+            "PhenomenonTime": "2021-12-29T07:38:57+08:00",
+            "UpdatedAt": "2021-12-29T07:38:59.235382+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 30.2,
+            "Id": 1958941,
+            "PhenomenonTime": "2021-12-29T07:38:57+08:00",
+            "UpdatedAt": "2021-12-29T07:38:59.250897+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 36.37,
+            "Id": 1958932,
+            "PhenomenonTime": "2021-12-29T07:38:57+08:00",
+            "UpdatedAt": "2021-12-29T07:38:57.635463+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "2021-12-29.07_38_57_1738.jpg",
+            "Id": 1958933,
+            "PhenomenonTime": "2021-12-29T07:38:57+08:00",
+            "UpdatedAt": "2021-12-29T07:38:57.650717+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1958934,
+            "PhenomenonTime": "2021-12-29T07:38:57+08:00",
+            "UpdatedAt": "2021-12-29T07:38:57.662222+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 22.080208,
+            "Id": 1958935,
+            "PhenomenonTime": "2021-12-29T07:38:57+08:00",
+            "UpdatedAt": "2021-12-29T07:38:57.671358+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 30.2,
+            "Id": 1958936,
+            "PhenomenonTime": "2021-12-29T07:38:57+08:00",
+            "UpdatedAt": "2021-12-29T07:38:57.680681+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 36.24,
+            "Id": 1958926,
+            "PhenomenonTime": "2021-12-29T07:38:49+08:00",
+            "UpdatedAt": "2021-12-29T07:38:49.506564+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "呂學明_Sherlock.2021-12-29.07_38_49_1736.jpg",
+            "Id": 1958927,
+            "PhenomenonTime": "2021-12-29T07:38:49+08:00",
+            "UpdatedAt": "2021-12-29T07:38:49.521918+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 1,
+            "Id": 1958928,
+            "PhenomenonTime": "2021-12-29T07:38:49+08:00",
+            "UpdatedAt": "2021-12-29T07:38:49.531683+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 22.058754,
+            "Id": 1958929,
+            "PhenomenonTime": "2021-12-29T07:38:49+08:00",
+            "UpdatedAt": "2021-12-29T07:38:49.542066+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 28.9,
+            "Id": 1958930,
+            "PhenomenonTime": "2021-12-29T07:38:49+08:00",
+            "UpdatedAt": "2021-12-29T07:38:49.551717+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": "091013",
+            "Id": 1958931,
+            "PhenomenonTime": "2021-12-29T07:38:49+08:00",
+            "UpdatedAt": "2021-12-29T07:38:49.561309+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 588,
+                "StaffName": "呂學明_Sherlock"
+            }
+        },
+        {
+            "Result": 36.31,
+            "Id": 1958844,
+            "PhenomenonTime": "2021-12-29T07:37:08+08:00",
+            "UpdatedAt": "2021-12-29T07:37:08.887688+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "林俊秀.2021-12-29.07_37_08_1734.jpg",
+            "Id": 1958845,
+            "PhenomenonTime": "2021-12-29T07:37:08+08:00",
+            "UpdatedAt": "2021-12-29T07:37:08.902585+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1958846,
+            "PhenomenonTime": "2021-12-29T07:37:08+08:00",
+            "UpdatedAt": "2021-12-29T07:37:08.911819+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 22.037308,
+            "Id": 1958847,
+            "PhenomenonTime": "2021-12-29T07:37:08+08:00",
+            "UpdatedAt": "2021-12-29T07:37:08.921069+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 29.6,
+            "Id": 1958848,
+            "PhenomenonTime": "2021-12-29T07:37:08+08:00",
+            "UpdatedAt": "2021-12-29T07:37:08.930394+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": "105023",
+            "Id": 1958849,
+            "PhenomenonTime": "2021-12-29T07:37:08+08:00",
+            "UpdatedAt": "2021-12-29T07:37:08.939783+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 626,
+                "StaffName": "林俊秀"
+            }
+        },
+        {
+            "Result": "109023",
+            "Id": 1958831,
+            "PhenomenonTime": "2021-12-29T07:36:47+08:00",
+            "UpdatedAt": "2021-12-29T07:36:47.781162+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 661,
+                "StaffName": "洪嘉盛"
+            }
+        },
+        {
+            "Result": 27.7,
+            "Id": 1958830,
+            "PhenomenonTime": "2021-12-29T07:36:47+08:00",
+            "UpdatedAt": "2021-12-29T07:36:47.771929+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 22.048027,
+            "Id": 1958829,
+            "PhenomenonTime": "2021-12-29T07:36:47+08:00",
+            "UpdatedAt": "2021-12-29T07:36:47.762699+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": "洪嘉盛.2021-12-29.07_36_47_1732.jpg",
+            "Id": 1958827,
+            "PhenomenonTime": "2021-12-29T07:36:47+08:00",
+            "UpdatedAt": "2021-12-29T07:36:47.744628+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1958828,
+            "PhenomenonTime": "2021-12-29T07:36:47+08:00",
+            "UpdatedAt": "2021-12-29T07:36:47.753875+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 36.12,
+            "Id": 1958826,
+            "PhenomenonTime": "2021-12-29T07:36:47+08:00",
+            "UpdatedAt": "2021-12-29T07:36:47.729629+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "蕭璦憶.2021-12-29.07_36_40_1730.jpg",
+            "Id": 1958821,
+            "PhenomenonTime": "2021-12-29T07:36:40+08:00",
+            "UpdatedAt": "2021-12-29T07:36:40.867913+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 22.02658,
+            "Id": 1958823,
+            "PhenomenonTime": "2021-12-29T07:36:40+08:00",
+            "UpdatedAt": "2021-12-29T07:36:40.886618+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 28.9,
+            "Id": 1958824,
+            "PhenomenonTime": "2021-12-29T07:36:40+08:00",
+            "UpdatedAt": "2021-12-29T07:36:40.895934+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": "091010",
+            "Id": 1958825,
+            "PhenomenonTime": "2021-12-29T07:36:40+08:00",
+            "UpdatedAt": "2021-12-29T07:36:40.905267+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 595,
+                "StaffName": "蕭璦憶"
+            }
+        },
+        {
+            "Result": 36.24,
+            "Id": 1958820,
+            "PhenomenonTime": "2021-12-29T07:36:40+08:00",
+            "UpdatedAt": "2021-12-29T07:36:40.85286+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": 0,
+            "Id": 1958822,
+            "PhenomenonTime": "2021-12-29T07:36:40+08:00",
+            "UpdatedAt": "2021-12-29T07:36:40.877359+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 22.005127,
+            "Id": 1958805,
+            "PhenomenonTime": "2021-12-29T07:36:17+08:00",
+            "UpdatedAt": "2021-12-29T07:36:19.002373+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": "089062",
+            "Id": 1958807,
+            "PhenomenonTime": "2021-12-29T07:36:17+08:00",
+            "UpdatedAt": "2021-12-29T07:36:19.021203+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 583,
+                "StaffName": "簡子欽"
+            }
+        },
+        {
+            "Result": 27.2,
+            "Id": 1958806,
+            "PhenomenonTime": "2021-12-29T07:36:17+08:00",
+            "UpdatedAt": "2021-12-29T07:36:19.011711+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 36.07,
+            "Id": 1958802,
+            "PhenomenonTime": "2021-12-29T07:36:17+08:00",
+            "UpdatedAt": "2021-12-29T07:36:18.968037+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "簡子欽.2021-12-29.07_36_17_1728.jpg",
+            "Id": 1958803,
+            "PhenomenonTime": "2021-12-29T07:36:17+08:00",
+            "UpdatedAt": "2021-12-29T07:36:18.983395+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1958804,
+            "PhenomenonTime": "2021-12-29T07:36:17+08:00",
+            "UpdatedAt": "2021-12-29T07:36:18.992676+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 22.005127,
+            "Id": 1958800,
+            "PhenomenonTime": "2021-12-29T07:36:16+08:00",
+            "UpdatedAt": "2021-12-29T07:36:17.422853+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 27.2,
+            "Id": 1958801,
+            "PhenomenonTime": "2021-12-29T07:36:16+08:00",
+            "UpdatedAt": "2021-12-29T07:36:17.434314+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 36.07,
+            "Id": 1958797,
+            "PhenomenonTime": "2021-12-29T07:36:16+08:00",
+            "UpdatedAt": "2021-12-29T07:36:16.515103+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "2021-12-29.07_36_16_1726.jpg",
+            "Id": 1958798,
+            "PhenomenonTime": "2021-12-29T07:36:16+08:00",
+            "UpdatedAt": "2021-12-29T07:36:16.528945+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1958799,
+            "PhenomenonTime": "2021-12-29T07:36:16+08:00",
+            "UpdatedAt": "2021-12-29T07:36:16.536495+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": "109020",
+            "Id": 1958784,
+            "PhenomenonTime": "2021-12-29T07:35:28+08:00",
+            "UpdatedAt": "2021-12-29T07:35:28.831411+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 684,
+                "StaffName": "阮氏蘭英_NGUYEN_THI_LAN_ANH"
+            }
+        },
+        {
+            "Result": 21.994408,
+            "Id": 1958782,
+            "PhenomenonTime": "2021-12-29T07:35:28+08:00",
+            "UpdatedAt": "2021-12-29T07:35:28.812274+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 29.4,
+            "Id": 1958783,
+            "PhenomenonTime": "2021-12-29T07:35:28+08:00",
+            "UpdatedAt": "2021-12-29T07:35:28.82177+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 0,
+            "Id": 1958781,
+            "PhenomenonTime": "2021-12-29T07:35:28+08:00",
+            "UpdatedAt": "2021-12-29T07:35:28.80266+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": "阮氏蘭英_NGUYEN_THI_LAN_ANH.2021-12-29.07_35_28_1724.jpg",
+            "Id": 1958780,
+            "PhenomenonTime": "2021-12-29T07:35:28+08:00",
+            "UpdatedAt": "2021-12-29T07:35:28.793279+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 36.29,
+            "Id": 1958779,
+            "PhenomenonTime": "2021-12-29T07:35:28+08:00",
+            "UpdatedAt": "2021-12-29T07:35:28.777901+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "103029",
+            "Id": 1958760,
+            "PhenomenonTime": "2021-12-29T07:34:19+08:00",
+            "UpdatedAt": "2021-12-29T07:34:20.229471+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 624,
+                "StaffName": "陳寧"
+            }
+        },
+        {
+            "Result": 29.2,
+            "Id": 1958759,
+            "PhenomenonTime": "2021-12-29T07:34:19+08:00",
+            "UpdatedAt": "2021-12-29T07:34:20.219931+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 22.166008,
+            "Id": 1958758,
+            "PhenomenonTime": "2021-12-29T07:34:19+08:00",
+            "UpdatedAt": "2021-12-29T07:34:20.210296+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 36.27,
+            "Id": 1958755,
+            "PhenomenonTime": "2021-12-29T07:34:19+08:00",
+            "UpdatedAt": "2021-12-29T07:34:20.175952+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "陳寧.2021-12-29.07_34_19_1722.jpg",
+            "Id": 1958756,
+            "PhenomenonTime": "2021-12-29T07:34:19+08:00",
+            "UpdatedAt": "2021-12-29T07:34:20.191327+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1958757,
+            "PhenomenonTime": "2021-12-29T07:34:19+08:00",
+            "UpdatedAt": "2021-12-29T07:34:20.20084+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 0,
+            "Id": 1958745,
+            "PhenomenonTime": "2021-12-29T07:34:03+08:00",
+            "UpdatedAt": "2021-12-29T07:34:03.773248+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": "110049",
+            "Id": 1958748,
+            "PhenomenonTime": "2021-12-29T07:34:03+08:00",
+            "UpdatedAt": "2021-12-29T07:34:03.814021+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 4175,
+                "StaffName": "陳學億"
+            }
+        },
+        {
+            "Result": 28.6,
+            "Id": 1958747,
+            "PhenomenonTime": "2021-12-29T07:34:03+08:00",
+            "UpdatedAt": "2021-12-29T07:34:03.790826+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 22.187454,
+            "Id": 1958746,
+            "PhenomenonTime": "2021-12-29T07:34:03+08:00",
+            "UpdatedAt": "2021-12-29T07:34:03.781844+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": "陳學億.2021-12-29.07_34_03_1720.jpg",
+            "Id": 1958744,
+            "PhenomenonTime": "2021-12-29T07:34:03+08:00",
+            "UpdatedAt": "2021-12-29T07:34:03.755139+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 36.21,
+            "Id": 1958743,
+            "PhenomenonTime": "2021-12-29T07:34:03+08:00",
+            "UpdatedAt": "2021-12-29T07:34:03.706537+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": 36.27,
+            "Id": 1958737,
+            "PhenomenonTime": "2021-12-29T07:33:57+08:00",
+            "UpdatedAt": "2021-12-29T07:33:57.584827+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": 29.2,
+            "Id": 1958741,
+            "PhenomenonTime": "2021-12-29T07:33:57+08:00",
+            "UpdatedAt": "2021-12-29T07:33:57.625636+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": "102013",
+            "Id": 1958742,
+            "PhenomenonTime": "2021-12-29T07:33:57+08:00",
+            "UpdatedAt": "2021-12-29T07:33:57.634398+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 622,
+                "StaffName": "黃奎仁"
+            }
+        },
+        {
+            "Result": "黃奎仁.2021-12-29.07_33_57_1718.jpg",
+            "Id": 1958738,
+            "PhenomenonTime": "2021-12-29T07:33:57+08:00",
+            "UpdatedAt": "2021-12-29T07:33:57.599336+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1958739,
+            "PhenomenonTime": "2021-12-29T07:33:57+08:00",
+            "UpdatedAt": "2021-12-29T07:33:57.608119+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 22.208908,
+            "Id": 1958740,
+            "PhenomenonTime": "2021-12-29T07:33:57+08:00",
+            "UpdatedAt": "2021-12-29T07:33:57.616802+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 0,
+            "Id": 1958733,
+            "PhenomenonTime": "2021-12-29T07:33:50+08:00",
+            "UpdatedAt": "2021-12-29T07:33:50.618851+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": "鄧氏花_DANG_THI_HOA.2021-12-29.07_33_50_1716.jpg",
+            "Id": 1958732,
+            "PhenomenonTime": "2021-12-29T07:33:50+08:00",
+            "UpdatedAt": "2021-12-29T07:33:50.60968+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 36.15,
+            "Id": 1958731,
+            "PhenomenonTime": "2021-12-29T07:33:50+08:00",
+            "UpdatedAt": "2021-12-29T07:33:50.594607+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "108044",
+            "Id": 1958736,
+            "PhenomenonTime": "2021-12-29T07:33:50+08:00",
+            "UpdatedAt": "2021-12-29T07:33:50.646412+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 633,
+                "StaffName": "鄧氏花_DANG_THI_HOA"
+            }
+        },
+        {
+            "Result": 28,
+            "Id": 1958735,
+            "PhenomenonTime": "2021-12-29T07:33:50+08:00",
+            "UpdatedAt": "2021-12-29T07:33:50.637322+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 22.208908,
+            "Id": 1958734,
+            "PhenomenonTime": "2021-12-29T07:33:50+08:00",
+            "UpdatedAt": "2021-12-29T07:33:50.628269+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": "099070",
+            "Id": 1958730,
+            "PhenomenonTime": "2021-12-29T07:33:43+08:00",
+            "UpdatedAt": "2021-12-29T07:33:43.498424+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 605,
+                "StaffName": "林盈湘"
+            }
+        },
+        {
+            "Result": 28.6,
+            "Id": 1958729,
+            "PhenomenonTime": "2021-12-29T07:33:43+08:00",
+            "UpdatedAt": "2021-12-29T07:33:43.488846+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 22.198181,
+            "Id": 1958728,
+            "PhenomenonTime": "2021-12-29T07:33:43+08:00",
+            "UpdatedAt": "2021-12-29T07:33:43.479405+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 0,
+            "Id": 1958727,
+            "PhenomenonTime": "2021-12-29T07:33:43+08:00",
+            "UpdatedAt": "2021-12-29T07:33:43.469935+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": "林盈湘.2021-12-29.07_33_43_1714.jpg",
+            "Id": 1958726,
+            "PhenomenonTime": "2021-12-29T07:33:43+08:00",
+            "UpdatedAt": "2021-12-29T07:33:43.460449+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 36.21,
+            "Id": 1958725,
+            "PhenomenonTime": "2021-12-29T07:33:43+08:00",
+            "UpdatedAt": "2021-12-29T07:33:43.445313+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": 36.17,
+            "Id": 1958719,
+            "PhenomenonTime": "2021-12-29T07:33:34+08:00",
+            "UpdatedAt": "2021-12-29T07:33:35.062768+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "100049",
+            "Id": 1958724,
+            "PhenomenonTime": "2021-12-29T07:33:34+08:00",
+            "UpdatedAt": "2021-12-29T07:33:35.110255+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 612,
+                "StaffName": "劉智和"
+            }
+        },
+        {
+            "Result": 22.198181,
+            "Id": 1958722,
+            "PhenomenonTime": "2021-12-29T07:33:34+08:00",
+            "UpdatedAt": "2021-12-29T07:33:35.092053+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": "劉智和.2021-12-29.07_33_34_1712.jpg",
+            "Id": 1958720,
+            "PhenomenonTime": "2021-12-29T07:33:34+08:00",
+            "UpdatedAt": "2021-12-29T07:33:35.07581+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1958721,
+            "PhenomenonTime": "2021-12-29T07:33:34+08:00",
+            "UpdatedAt": "2021-12-29T07:33:35.083319+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 28.2,
+            "Id": 1958723,
+            "PhenomenonTime": "2021-12-29T07:33:34+08:00",
+            "UpdatedAt": "2021-12-29T07:33:35.101183+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": "107019",
+            "Id": 1958683,
+            "PhenomenonTime": "2021-12-29T07:31:15+08:00",
+            "UpdatedAt": "2021-12-29T07:31:16.067516+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 662,
+                "StaffName": "謝筑涵"
+            }
+        },
+        {
+            "Result": 22.230354,
+            "Id": 1958681,
+            "PhenomenonTime": "2021-12-29T07:31:15+08:00",
+            "UpdatedAt": "2021-12-29T07:31:16.050384+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 0,
+            "Id": 1958680,
+            "PhenomenonTime": "2021-12-29T07:31:15+08:00",
+            "UpdatedAt": "2021-12-29T07:31:16.041682+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 29.800001,
+            "Id": 1958682,
+            "PhenomenonTime": "2021-12-29T07:31:15+08:00",
+            "UpdatedAt": "2021-12-29T07:31:16.058834+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": "謝筑涵.2021-12-29.07_31_15_1710.jpg",
+            "Id": 1958679,
+            "PhenomenonTime": "2021-12-29T07:31:15+08:00",
+            "UpdatedAt": "2021-12-29T07:31:16.033345+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 36.33,
+            "Id": 1958678,
+            "PhenomenonTime": "2021-12-29T07:31:15+08:00",
+            "UpdatedAt": "2021-12-29T07:31:16.019594+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "095023",
+            "Id": 1958677,
+            "PhenomenonTime": "2021-12-29T07:30:59+08:00",
+            "UpdatedAt": "2021-12-29T07:30:59.567131+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 600,
+                "StaffName": "吳慧貞_Amy"
+            }
+        },
+        {
+            "Result": 30.800001,
+            "Id": 1958676,
+            "PhenomenonTime": "2021-12-29T07:30:59+08:00",
+            "UpdatedAt": "2021-12-29T07:30:59.558069+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 22.273254,
+            "Id": 1958675,
+            "PhenomenonTime": "2021-12-29T07:30:59+08:00",
+            "UpdatedAt": "2021-12-29T07:30:59.549078+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 1,
+            "Id": 1958674,
+            "PhenomenonTime": "2021-12-29T07:30:59+08:00",
+            "UpdatedAt": "2021-12-29T07:30:59.540328+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": "吳慧貞_Amy.2021-12-29.07_30_59_1708.jpg",
+            "Id": 1958673,
+            "PhenomenonTime": "2021-12-29T07:30:59+08:00",
+            "UpdatedAt": "2021-12-29T07:30:59.530997+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 36.43,
+            "Id": 1958672,
+            "PhenomenonTime": "2021-12-29T07:30:59+08:00",
+            "UpdatedAt": "2021-12-29T07:30:59.518175+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": 36.33,
+            "Id": 1958660,
+            "PhenomenonTime": "2021-12-29T07:30:37+08:00",
+            "UpdatedAt": "2021-12-29T07:30:37.892161+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "108009",
+            "Id": 1958665,
+            "PhenomenonTime": "2021-12-29T07:30:37+08:00",
+            "UpdatedAt": "2021-12-29T07:30:37.941409+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 673,
+                "StaffName": "何氏慶玄_HA_THI_KHANH_HUYEN"
+            }
+        },
+        {
+            "Result": "何氏慶玄_HA_THI_KHANH_HUYEN.2021-12-29.07_30_37_1706.jpg",
+            "Id": 1958661,
+            "PhenomenonTime": "2021-12-29T07:30:37+08:00",
+            "UpdatedAt": "2021-12-29T07:30:37.905134+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 29.800001,
+            "Id": 1958664,
+            "PhenomenonTime": "2021-12-29T07:30:37+08:00",
+            "UpdatedAt": "2021-12-29T07:30:37.932333+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 0,
+            "Id": 1958662,
+            "PhenomenonTime": "2021-12-29T07:30:37+08:00",
+            "UpdatedAt": "2021-12-29T07:30:37.913172+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 22.283981,
+            "Id": 1958663,
+            "PhenomenonTime": "2021-12-29T07:30:37+08:00",
+            "UpdatedAt": "2021-12-29T07:30:37.923071+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 22.273254,
+            "Id": 1958657,
+            "PhenomenonTime": "2021-12-29T07:30:33+08:00",
+            "UpdatedAt": "2021-12-29T07:30:33.668196+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": "109012",
+            "Id": 1958659,
+            "PhenomenonTime": "2021-12-29T07:30:33+08:00",
+            "UpdatedAt": "2021-12-29T07:30:33.683028+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 629,
+                "StaffName": "阮氏李_NGUYEN_THI_LY"
+            }
+        },
+        {
+            "Result": 29.4,
+            "Id": 1958658,
+            "PhenomenonTime": "2021-12-29T07:30:33+08:00",
+            "UpdatedAt": "2021-12-29T07:30:33.675519+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 0,
+            "Id": 1958656,
+            "PhenomenonTime": "2021-12-29T07:30:33+08:00",
+            "UpdatedAt": "2021-12-29T07:30:33.661136+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": "阮氏李_NGUYEN_THI_LY.2021-12-29.07_30_33_1704.jpg",
+            "Id": 1958655,
+            "PhenomenonTime": "2021-12-29T07:30:33+08:00",
+            "UpdatedAt": "2021-12-29T07:30:33.654041+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 36.29,
+            "Id": 1958654,
+            "PhenomenonTime": "2021-12-29T07:30:33+08:00",
+            "UpdatedAt": "2021-12-29T07:30:33.641281+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": 29.4,
+            "Id": 1958641,
+            "PhenomenonTime": "2021-12-29T07:29:57+08:00",
+            "UpdatedAt": "2021-12-29T07:29:58.351347+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": "110032",
+            "Id": 1958642,
+            "PhenomenonTime": "2021-12-29T07:29:57+08:00",
+            "UpdatedAt": "2021-12-29T07:29:58.360354+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 3809,
+                "StaffName": "湯嘉玲_Jannie"
+            }
+        },
+        {
+            "Result": 36.29,
+            "Id": 1958637,
+            "PhenomenonTime": "2021-12-29T07:29:57+08:00",
+            "UpdatedAt": "2021-12-29T07:29:58.31168+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "湯嘉玲_Jannie.2021-12-29.07_29_57_1702.jpg",
+            "Id": 1958638,
+            "PhenomenonTime": "2021-12-29T07:29:57+08:00",
+            "UpdatedAt": "2021-12-29T07:29:58.325836+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1958639,
+            "PhenomenonTime": "2021-12-29T07:29:57+08:00",
+            "UpdatedAt": "2021-12-29T07:29:58.334389+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 22.251808,
+            "Id": 1958640,
+            "PhenomenonTime": "2021-12-29T07:29:57+08:00",
+            "UpdatedAt": "2021-12-29T07:29:58.34285+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 36.11,
+            "Id": 1958560,
+            "PhenomenonTime": "2021-12-29T07:26:09+08:00",
+            "UpdatedAt": "2021-12-29T07:26:10.31092+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "鄭氏玄_TRINH_THI_HUYEN.2021-12-29.07_26_09_1700.jpg",
+            "Id": 1958561,
+            "PhenomenonTime": "2021-12-29T07:26:09+08:00",
+            "UpdatedAt": "2021-12-29T07:26:10.325248+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1958562,
+            "PhenomenonTime": "2021-12-29T07:26:09+08:00",
+            "UpdatedAt": "2021-12-29T07:26:10.333938+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 22.455582,
+            "Id": 1958563,
+            "PhenomenonTime": "2021-12-29T07:26:09+08:00",
+            "UpdatedAt": "2021-12-29T07:26:10.342455+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 27.6,
+            "Id": 1958564,
+            "PhenomenonTime": "2021-12-29T07:26:09+08:00",
+            "UpdatedAt": "2021-12-29T07:26:10.350921+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": "110017",
+            "Id": 1958565,
+            "PhenomenonTime": "2021-12-29T07:26:09+08:00",
+            "UpdatedAt": "2021-12-29T07:26:10.359635+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 921,
+                "StaffName": "鄭氏玄_TRINH_THI_HUYEN"
+            }
+        },
+        {
+            "Result": "林景芳.2021-12-29.07_25_10_1698.jpg",
+            "Id": 1958549,
+            "PhenomenonTime": "2021-12-29T07:25:10+08:00",
+            "UpdatedAt": "2021-12-29T07:25:11.085012+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 22.412682,
+            "Id": 1958551,
+            "PhenomenonTime": "2021-12-29T07:25:10+08:00",
+            "UpdatedAt": "2021-12-29T07:25:11.10371+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 31,
+            "Id": 1958552,
+            "PhenomenonTime": "2021-12-29T07:25:10+08:00",
+            "UpdatedAt": "2021-12-29T07:25:11.112856+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": "088007",
+            "Id": 1958553,
+            "PhenomenonTime": "2021-12-29T07:25:10+08:00",
+            "UpdatedAt": "2021-12-29T07:25:11.122194+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 574,
+                "StaffName": "林景芳"
+            }
+        },
+        {
+            "Result": 0,
+            "Id": 1958550,
+            "PhenomenonTime": "2021-12-29T07:25:10+08:00",
+            "UpdatedAt": "2021-12-29T07:25:11.09444+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 36.45,
+            "Id": 1958548,
+            "PhenomenonTime": "2021-12-29T07:25:10+08:00",
+            "UpdatedAt": "2021-12-29T07:25:11.068285+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": 31.7,
+            "Id": 1958535,
+            "PhenomenonTime": "2021-12-29T07:23:34+08:00",
+            "UpdatedAt": "2021-12-29T07:23:34.499522+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 22.337608,
+            "Id": 1958534,
+            "PhenomenonTime": "2021-12-29T07:23:34+08:00",
+            "UpdatedAt": "2021-12-29T07:23:34.49078+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": 0,
+            "Id": 1958533,
+            "PhenomenonTime": "2021-12-29T07:23:34+08:00",
+            "UpdatedAt": "2021-12-29T07:23:34.481836+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": "107034",
+            "Id": 1958536,
+            "PhenomenonTime": "2021-12-29T07:23:34+08:00",
+            "UpdatedAt": "2021-12-29T07:23:34.508605+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 635,
+                "StaffName": "蔡銘豪"
+            }
+        },
+        {
+            "Result": "蔡銘豪.2021-12-29.07_23_34_1696.jpg",
+            "Id": 1958532,
+            "PhenomenonTime": "2021-12-29T07:23:34+08:00",
+            "UpdatedAt": "2021-12-29T07:23:34.47261+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 36.52,
+            "Id": 1958531,
+            "PhenomenonTime": "2021-12-29T07:23:34+08:00",
+            "UpdatedAt": "2021-12-29T07:23:34.458658+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": 0,
+            "Id": 1958527,
+            "PhenomenonTime": "2021-12-29T07:22:58+08:00",
+            "UpdatedAt": "2021-12-29T07:22:59.316662+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": "101021",
+            "Id": 1958530,
+            "PhenomenonTime": "2021-12-29T07:22:58+08:00",
+            "UpdatedAt": "2021-12-29T07:22:59.343887+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 615,
+                "StaffName": "林光勛"
+            }
+        },
+        {
+            "Result": 31.5,
+            "Id": 1958529,
+            "PhenomenonTime": "2021-12-29T07:22:58+08:00",
+            "UpdatedAt": "2021-12-29T07:22:59.334722+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 22.262535,
+            "Id": 1958528,
+            "PhenomenonTime": "2021-12-29T07:22:58+08:00",
+            "UpdatedAt": "2021-12-29T07:22:59.325693+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": "林光勛.2021-12-29.07_22_58_1694.jpg",
+            "Id": 1958526,
+            "PhenomenonTime": "2021-12-29T07:22:58+08:00",
+            "UpdatedAt": "2021-12-29T07:22:59.30753+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 36.5,
+            "Id": 1958525,
+            "PhenomenonTime": "2021-12-29T07:22:58+08:00",
+            "UpdatedAt": "2021-12-29T07:22:59.2928+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": 32.9,
+            "Id": 1958512,
+            "PhenomenonTime": "2021-12-29T07:22:04+08:00",
+            "UpdatedAt": "2021-12-29T07:22:04.890949+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": 36.64,
+            "Id": 1958508,
+            "PhenomenonTime": "2021-12-29T07:22:04+08:00",
+            "UpdatedAt": "2021-12-29T07:22:04.833701+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "陳素珍.2021-12-29.07_22_04_1692.jpg",
+            "Id": 1958509,
+            "PhenomenonTime": "2021-12-29T07:22:04+08:00",
+            "UpdatedAt": "2021-12-29T07:22:04.863726+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 0,
+            "Id": 1958510,
+            "PhenomenonTime": "2021-12-29T07:22:04+08:00",
+            "UpdatedAt": "2021-12-29T07:22:04.874893+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 22.208908,
+            "Id": 1958511,
+            "PhenomenonTime": "2021-12-29T07:22:04+08:00",
+            "UpdatedAt": "2021-12-29T07:22:04.882479+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        },
+        {
+            "Result": "093034",
+            "Id": 1958513,
+            "PhenomenonTime": "2021-12-29T07:22:04+08:00",
+            "UpdatedAt": "2021-12-29T07:22:04.915155+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 590,
+                "StaffName": "陳素珍"
+            }
+        },
+        {
+            "Result": 0,
+            "Id": 1958487,
+            "PhenomenonTime": "2021-12-29T07:21:05+08:00",
+            "UpdatedAt": "2021-12-29T07:21:06.43952+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 5
+        },
+        {
+            "Result": 36.52,
+            "Id": 1958485,
+            "PhenomenonTime": "2021-12-29T07:21:05+08:00",
+            "UpdatedAt": "2021-12-29T07:21:06.414868+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 1
+        },
+        {
+            "Result": "林曉君_Molly.2021-12-29.07_21_05_1690.jpg",
+            "Id": 1958486,
+            "PhenomenonTime": "2021-12-29T07:21:05+08:00",
+            "UpdatedAt": "2021-12-29T07:21:06.430087+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 2
+        },
+        {
+            "Result": 31.7,
+            "Id": 1958489,
+            "PhenomenonTime": "2021-12-29T07:21:05+08:00",
+            "UpdatedAt": "2021-12-29T07:21:06.458345+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 8
+        },
+        {
+            "Result": "100018",
+            "Id": 1958490,
+            "PhenomenonTime": "2021-12-29T07:21:05+08:00",
+            "UpdatedAt": "2021-12-29T07:21:06.467861+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 6,
+            "Parameters": {
+                "StaffId": 611,
+                "StaffName": "林曉君_Molly"
+            }
+        },
+        {
+            "Result": 22.198181,
+            "Id": 1958488,
+            "PhenomenonTime": "2021-12-29T07:21:05+08:00",
+            "UpdatedAt": "2021-12-29T07:21:06.449054+08:00",
+            "DeviceId": 118,
+            "ObservedPropertyId": 4
+        }
+    ]
