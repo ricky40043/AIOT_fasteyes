@@ -188,7 +188,21 @@ def update_observation(db: Session, observation_id: int, obsPatch: FasteyesObser
     db.begin()
     try:
         observation_db = db.query(fasteyes_observation).filter(fasteyes_observation.id == observation_id).first()
-        observation_db.staff_id = obsPatch.staff_id
+        temp_info = observation_db.info.copy()  # dict 是 call by Ref. 所以一定要複製一份
+        if obsPatch.staff_id == 0:
+            observation_db.staff_id = get_default_staff_id(db)
+            temp_info["staff_name"] = "訪客"
+            temp_info["staff_serial_number"] = "None"
+            temp_info["department_name"] = "訪客"
+        else:
+            observation_db.staff_id = obsPatch.staff_id
+            staff_db = get_staff_by_id(db, obsPatch.staff_id)
+            department_db = get_department_by_id(db, staff_db.department_id)
+            temp_info["staff_name"] = staff_db.info["name"]
+            temp_info["staff_serial_number"] = staff_db.serial_number
+            temp_info["department_name"] = department_db.name
+        observation_db.updated_at = datetime.now()
+        observation_db.info = temp_info
         db.commit()
     except Exception as e:
         db.rollback()

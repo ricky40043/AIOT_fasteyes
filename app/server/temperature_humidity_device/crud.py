@@ -31,6 +31,7 @@ def create_temperature_humidity_devices(db: Session, group_id: int, user_id: int
                                         Temperature_humidityDevice_create: Temperature_humidityDevice_InfoModel):
     check_name_repeate(db, name, DeviceType.temperature_humidity.value)
     check_serial_number_repeate(db, name, DeviceType.temperature_humidity.value)
+    print(Temperature_humidityDevice_create)
 
     db.begin()
     try:
@@ -41,7 +42,6 @@ def create_temperature_humidity_devices(db: Session, group_id: int, user_id: int
                            group_id=group_id,
                            user_id=user_id,
                            device_model_id=DeviceType.temperature_humidity.value)
-
         db.add(device_db)
         db.commit()
         db.refresh(device_db)

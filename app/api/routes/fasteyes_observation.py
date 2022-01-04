@@ -152,7 +152,7 @@ def UpdateObservation(observation_id: int, obsPatch: FasteyesObservationPatchVie
 
     check_observation_Authority(db, current_user, observation_id)
 
-    if not get_staff_by_id(db, obsPatch.staff_id):
+    if not get_staff_by_id(db, obsPatch.staff_id) and obsPatch.staff_id !=0:
         raise HTTPException(status_code=404, detail="staff id is not exist")
 
     return update_observation(db, observation_id, obsPatch)
