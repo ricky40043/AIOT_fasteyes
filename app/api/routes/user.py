@@ -18,6 +18,7 @@ from app.server.device.crud import get_All_devices
 from app.server.device_model.crud import get_All_device_models
 from app.server.face.crud import get_All_faces
 from app.server.fasteyes_device.crud import get_All_fasteyes_devices
+from app.server.fasteyes_observation import create_output_data_form
 from app.server.fasteyes_observation.crud import get_All_fasteyes_observations
 from app.server.fasteyes_output.crud import get_All_fasteyes_outputs, create_fasteyes_output
 from app.server.fasteyes_uuid.crud import get_All_fasteyes_uuids
@@ -189,6 +190,7 @@ def CreateAdminUser(user_create: adminUserPostViewModel, db: Session = Depends(g
     group_db = create_group(db, user_create.group)
     user_db = Create_User(db, user_create, group_db.id, level=Authority_Level.Admin.value, is_enable=True)
     create_fasteyes_output(db, user_db.id, group_db.id)
+    create_output_data_form(group_db.id)
     create_bulletin_board(db, user_db.group_id)
     return user_db
 

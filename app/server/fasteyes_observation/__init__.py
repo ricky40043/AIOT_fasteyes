@@ -1,5 +1,7 @@
 import csv
 import json
+import os
+import shutil
 
 from app.core.config import FASTEYES_OUTPUT_PATH
 from app.server.fasteyes_observation.crud import output_observations_by_group
@@ -82,3 +84,17 @@ def modify_output_data_form(group_id, output_form):
     with open(path, "w") as outfile:
         json.dump(output_form.__dict__, outfile)
     return output_form
+
+
+def create_output_data_form(group_id):
+    source="sample.json"
+
+    destination = FASTEYES_OUTPUT_PATH + str(group_id) + "/output_form.json"
+
+    if not os.path.exists(FASTEYES_OUTPUT_PATH):
+        os.mkdir(FASTEYES_OUTPUT_PATH)
+    if not os.path.exists(FASTEYES_OUTPUT_PATH + str(group_id)):
+        os.mkdir(FASTEYES_OUTPUT_PATH + str(group_id))
+
+    shutil.copyfile(source, destination)
+    return destination

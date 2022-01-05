@@ -87,7 +87,6 @@ def change_user_setting(db: Session, user_id: int, userPatch: UserChangeSettingM
         db.commit()
         db.refresh(user_db)
 
-
     except Exception as e:
         db.rollback()
         print(str(e))

@@ -1,0 +1,22 @@
+{
+  "output_time": ["07:00","11:00","23:00"],
+  "output_fasteyes": [
+    {"id": 1, "name":  "裝置1"},
+    {"id": 2, "name":  "裝置2"},
+    {"id": 3, "name":  "裝置3"},
+    {"id": 4, "name":  "裝置4"},
+    {"id": 5, "name":  "裝置5"}
+  ],
+  "output_sequence": [{"id": 1,"name": "名稱","english_name": "staff_name" },
+    {"id": 2,"name": "部門","english_name": "department_name"},
+    {"id": 3,"name": "觀測時間","english_name": "phenomenon_time"},
+    {"id": 4,"name": "戴口罩","english_name": "wear_mask"},
+    {"id": 5,"name": "溫度","english_name": "temperature"},
+    {"id": 6,"name": "觀測結果","english_name": "result"},
+    {"id": 7,"name": "裝置名稱","english_name": "device_name"}],
+  "not_output": [{"id": 8,"name": "觀測結果ID","english_name": "id"},
+    {"id": 9,"name": "門檻溫度","english_name": "threshold_temperature"},
+    {"id": 10,"name": "補償溫度","english_name": "compensate_temperature"},
+    {"id": 11,"name": "上傳時間","english_name": "updated_at"}],
+  "resign_staff_output": false
+}

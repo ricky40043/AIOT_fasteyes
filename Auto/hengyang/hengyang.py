@@ -7,7 +7,6 @@ from app.models.domain.staff import staff
 
 sessionlocal = SessionLocal()
 
-
 def get_current_user_header():
     with open(path + 'Default/User_data/Headers.json', encoding='utf-8') as json_file:
         data = json.load(json_file)
@@ -15,29 +14,28 @@ def get_current_user_header():
 
 
 def get_user_data(user):
-    with open(path + 'Default/User_data/' + user + '.json', encoding='utf-8') as json_file:
+    with open(path + 'hengyang/User_data/' + user + '.json', encoding='utf-8') as json_file:
         data = json.load(json_file)
     return data
 
 
 def get_uuid_data(uuid):
-    with open(path + 'Default/UUID_data/' + uuid + '.json', encoding='utf-8') as json_file:
+    with open(path + 'hengyang/UUID_data/' + uuid + '.json', encoding='utf-8') as json_file:
         data = json.load(json_file)
     return data
 
 
 ################### default ####################
-def test_clear_all_data_no_auth():
-    url = URL + '/auth/clear_all_data_no_auth'
-    response = client.delete(url)
-    assert response.status_code == 200
+# def test_clear_all_data_no_auth():
+#     url = URL + '/auth/clear_all_data_no_auth'
+#     response = client.delete(url)
+#     assert response.status_code == 200
 
 
-def test_add_RD():
-    url = URL + "/users/RD"
-    RD_data = get_user_data("RD")
-    response = client.post(url, json=RD_data)
-    assert response.status_code == 200
+# def test_add_RD():
+#     url = URL + "/users/RD"
+#     RD_data = get_user_data("RD")
+#     response = client.post(url, json=RD_data)
 
 
 def test_add_AdminUser():
@@ -47,6 +45,7 @@ def test_add_AdminUser():
     adminusers_data["password"] = "Conductor@1030"
     adminusers_data["name"] = "Hung Yang"
     response = client.post(url, json=adminusers_data)
+    print(response.json())
     assert response.status_code == 200
 
 
@@ -98,6 +97,13 @@ def test_create_staff():
     status_list = []
     start_date_list = []
 
+    #取得department
+    url_department = URL + "/department"
+    department_response = client.get(url_department, headers=get_current_user_header())
+    department_list = department_response.json()
+    department_key_list = [department["id"] for department in department_list]
+    department_val_list = [department["name"] for department in department_list]
+
     with open(os.getcwd() + "/Auto/hengyang/hengyang_staff_info.txt", "r", encoding="utf-8") as file:
         file_data = file.read()
         staff_info = eval(file_data)
@@ -106,7 +112,12 @@ def test_create_staff():
         serial_number_list.append(info["SerialNumber"])
         staff_name_list.append(info["Name"])
         file_name_list.append(str(info["Id"]) + "_EMP_" + str(info["SerialNumber"]))
-        department_id_list.append(int(job.index(info["Department"]) + 1))
+        # print(info["Department"])
+        position = department_val_list.index(info["Department"])
+        # print(department_key_list[position])
+        department_id_list.append(department_key_list[position])
+        # department_id_list.append(int(job.index(info["Department"]) + 1))
+
         start_date_list.append(info["CreatedAt"])
         if info["Gender"] == "女" or info["Gender"] =="Female":
             gender_list.append(2)
@@ -168,8 +179,13 @@ def test_create_staff():
 
 
 def test_StaffFaceImages():
-    for i, file_name, name in zip(range(1, len(file_name_list) + 1), file_name_list, staff_name_list):
-        url = URL + "/staffs/" + str(i) + "/faces"
+    for i, file_name, name, serial_number in zip(range(1, len(file_name_list) + 1), file_name_list, staff_name_list, serial_number_list):
+        result = sessionlocal.query(staff.id).filter(staff.serial_number == serial_number).first()
+        result = str(result).replace("(", "")
+        result = str(result).replace(",", "")
+        result = str(result).replace(")", "")
+        staff_id = result
+        url = URL + "/staffs/" + str(staff_id) + "/faces"
         face_path = os.getcwd() + "/Auto/hengyang/hengyang_staff/" + str(file_name) + "/" + str(name) + ".jpg"
         files = {'Image_file': open(face_path, 'rb')}
         response = client.post(url, files=files, headers=get_current_user_header())
@@ -178,8 +194,13 @@ def test_StaffFaceImages():
 
 
 def test_StaffFaceFeature():
-    for i, basename in zip(range(1, len(file_name_list) + 1), file_name_list):
-        url = URL + "/staffs/" + str(i) + "/raw_face_features"
+    for i, basename, serial_number in zip(range(1, len(file_name_list) + 1), file_name_list, serial_number_list):
+        result = sessionlocal.query(staff.id).filter(staff.serial_number == serial_number).first()
+        result = str(result).replace("(", "")
+        result = str(result).replace(",", "")
+        result = str(result).replace(")", "")
+        staff_id = result
+        url = URL + "/staffs/" + str(staff_id) + "/raw_face_features"
         feature_path = os.getcwd() + "/Auto/hengyang/hengyang_staff/" + str(basename) + "/" + "feature.txt"
         with open(feature_path, 'rb') as feature:
             raw_face_feature = feature.read()
@@ -193,7 +214,7 @@ def test_StaffFaceFeature():
 
 
 def test_create_3_fasteyes_device():
-    for i in range(3):
+    for i in range(2, 5):
         test_Login_RD()
 
         url = URL + "/fasteyes_uuid"
@@ -202,6 +223,7 @@ def test_create_3_fasteyes_device():
             "product_number": "000" + str(i + 1)
         }
         device_response = client.post(url, json=para, headers=get_current_user_header())
+        print(device_response.json())
         assert device_response.status_code == 200
 
         url = URL + "/fasteyes_uuid"
@@ -262,4 +284,27 @@ def test_create_fasteyes_observation():
         }
         response = client.post(url, json=data, headers=get_current_user_header())
         print(response.json())
+        assert response.status_code == 200
+
+
+def test_create_TH_device():
+    area_list = ["機房", "大廳", "電測區", "成品區"]
+    name_list = ["冷凍", "零食", "冷藏", "Ricky", "黑盒子", "Frank", "Dave", "機房"]
+    serial_number_list = ["170434", "1705EF", "170681", "170438", "170432", "170414", "170436", "170431"]
+    url = URL + "/devices/device_model/1"
+    for name, serial_number in zip(name_list, serial_number_list):
+        data = {
+            "name": name,
+            "serial_number": serial_number,
+            "area": random.choice(area_list),
+            "info": {
+                "interval_time": "10",
+                "alarm_temperature_upper_limit": random.randrange(70, 100),
+                "alarm_temperature_lower_limit": random.randrange(0, 30),
+                "alarm_humidity_upper_limit": random.randrange(70, 100),
+                "alarm_humidity_lower_limit": random.randrange(0, 30),
+                "battery_alarm": random.randrange(10, 100)
+            }
+        }
+        response = client.post(url, json=data, headers=get_current_user_header())
         assert response.status_code == 200

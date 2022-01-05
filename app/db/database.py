@@ -8,8 +8,8 @@ import os
 # config_path = os.path.abspath(os.path.dirname(__file__))
 # print(config_path)
 # SQLALCHEMY_DATABASE_URL = "sqlite:///"+ os.path.join(config_path, 'sql_app_20210304.db')
-SQLALCHEMY_DATABASE_URL = "sqlite:///sql_app_20220103.db"
 # SQLALCHEMY_DATABASE_URL = "postgresql://postgres:88888888@192.168.45.51/fastapi_db_20210924"
+from app.core.config import SQLALCHEMY_DATABASE_URL
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL

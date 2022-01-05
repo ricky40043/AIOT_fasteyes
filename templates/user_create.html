@@ -60,15 +60,27 @@
         <input type="label" id="token" value={{token}} hidden>
         <h1>Email:{{email}}</h1>
         <form method="post">
+            <div id="container">
+                <p class="lable">*為必填</p>
+            </div>
             <table>
                 <tbody>
                     <tr>
                         <td>用户名</td>
-                        <td><input type="text" id="name"></td>
-                    </tr>
+                        <td>
+                             <div id="container">
+                                <p class="lable">*</p>
+                                <input type="text" id="name">
+                             </div>
+                        </td>
                     <tr>
                         <td>密碼</td>
-                        <td><input type="text" id="password"></td>
+                        <td>
+                             <div id="container">
+                                <p class="lable">*</p>
+                                <input type="text" id="password"></td>
+                             </div>
+                        </td>
                     </tr>
                     <tr>
                         <td>email</td>
@@ -121,5 +133,15 @@
             <input type="button" value="Create User" onclick="myfunction()">
         </form>
     </body>
+    <style>
+      #container {
+        overflow: auto;
+        white-space: nowrap;
+      }
+      .lable {
+        display: inline-block;
+        color: red;
+      }
+    </style>
 </html>
 

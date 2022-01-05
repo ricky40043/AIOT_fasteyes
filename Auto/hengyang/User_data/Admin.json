@@ -1,0 +1,18 @@
+{
+  "name": "Sumi",
+  "password": "Conductor@1030",
+  "email": "sumi@conductor.com.tw",
+  "info": {
+    "address": "桃園市國際路一段168號",
+    "telephone_number": "0987654321",
+    "usage": "商用",
+    "country": "Taiwan",
+    "company_scale": "100~500",
+    "industry": "軟體業",
+    "email_alert": "False",
+    "language": "0"
+  },
+  "group": {
+    "name": "Sumi_Group"
+  }
+}

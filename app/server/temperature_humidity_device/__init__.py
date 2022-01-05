@@ -20,7 +20,7 @@ from app.server.user.crud import get_user_by_id, get_user_by_id_no_db
 alarm_data_list = []
 
 
-# data_list = []
+data_list = []
 
 
 class MyUDPProtocol(asyncio.DatagramProtocol):

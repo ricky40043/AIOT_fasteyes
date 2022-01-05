@@ -59,6 +59,7 @@ def test_Login_RD():
         "password": "test"
     }
     response = client.post(url, json=login_data)
+    print(response.json())
     with open(path + 'Default/User_data/Headers.json', 'w', encoding='utf-8') as outfile:
         json.dump(response.json(), outfile)
     assert response.status_code == 200
@@ -66,7 +67,7 @@ def test_Login_RD():
 
 # 註冊五支真實蘑菇
 def test_create_5_fasteyes_device():
-    for i in range(5):
+    for i in range(2):
         test_Login_RD()
 
         url = URL + "/fasteyes_uuid"
@@ -111,8 +112,8 @@ def test_create_5_fasteyes_device():
 def test_Login_admin():
     url = URL + "/auth/login"
     login_data = {
-        "email": "Test_Admin@fastwise.net",
-        "password": "test"
+        "email": "ricky@fastwise.net",
+        "password": "ricky"
     }
     response = client.post(url, json=login_data)
     with open(path + 'Default/User_data/Headers.json', 'w', encoding='utf-8') as outfile:
@@ -269,27 +270,27 @@ def create_device_model():
 #         assert response.status_code == 200
 
 
-def test_create_TH_device():
-    area_list = ["機房", "大廳", "電測區", "成品區"]
-    name_list = ["冷凍", "零食", "冷藏", "Ricky", "黑盒子", "Frank", "Dave", "機房"]
-    serial_number_list = ["170434", "1705EF", "170681", "170438", "170432", "170414", "170436", "170431"]
-    url = URL + "/devices/device_model/1"
-    for name, serial_number in zip(name_list, serial_number_list):
-        data = {
-            "name": name,
-            "serial_number": serial_number,
-            "area": random.choice(area_list),
-            "info": {
-                "interval_time": "10",
-                "alarm_temperature_upper_limit": random.randrange(70, 100),
-                "alarm_temperature_lower_limit": random.randrange(0, 30),
-                "alarm_humidity_upper_limit": random.randrange(70, 100),
-                "alarm_humidity_lower_limit": random.randrange(0, 30),
-                "battery_alarm": random.randrange(10, 100)
-            }
-        }
-        response = client.post(url, json=data, headers=get_current_user_header())
-        assert response.status_code == 200
+# def test_create_TH_device():
+#     area_list = ["機房", "大廳", "電測區", "成品區"]
+#     name_list = ["冷凍", "零食", "冷藏", "Ricky", "黑盒子", "Frank", "Dave", "機房"]
+#     serial_number_list = ["170434", "1705EF", "170681", "170438", "170432", "170414", "170436", "170431"]
+#     url = URL + "/devices/device_model/1"
+#     for name, serial_number in zip(name_list, serial_number_list):
+#         data = {
+#             "name": name,
+#             "serial_number": serial_number,
+#             "area": random.choice(area_list),
+#             "info": {
+#                 "interval_time": "10",
+#                 "alarm_temperature_upper_limit": random.randrange(70, 100),
+#                 "alarm_temperature_lower_limit": random.randrange(0, 30),
+#                 "alarm_humidity_upper_limit": random.randrange(70, 100),
+#                 "alarm_humidity_lower_limit": random.randrange(0, 30),
+#                 "battery_alarm": random.randrange(10, 100)
+#             }
+#         }
+#         response = client.post(url, json=data, headers=get_current_user_header())
+#         assert response.status_code == 200
 
 
 def test_create_Ipcam_device_defult():
