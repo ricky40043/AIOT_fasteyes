@@ -1,5 +1,6 @@
 # crud
 import csv
+from typing import Optional
 
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
@@ -50,7 +51,7 @@ def modify_Nitrogen_devices(db: Session, group_id: int, device_id: int,
                                         device.device_model_id == DeviceType.Nitrogen.value,
                                         device.id == device_id).first()
 
-    device_by_name = get_device_by_name(db, device_patch.name, DeviceType.Nitrogen.value)
+    device_by_name = get_device_by_name(db, device_patch.name, DeviceType.Nitrogen.value, group_id)
     if device_by_name:
         if device_by_name.id != device_db.id:
             raise HTTPException(status_code=400, detail="device name is exist")
@@ -92,11 +93,11 @@ def delete_Nitrogen_devices(db: Session, group_id: int, device_id: int):
     return device_db
 
 
-def get_Nitrogen_observation_csv(db: Session, group_id, device_model_id, status, start_timestamp, end_timestamp):
+def get_Nitrogen_observation_csv(db: Session, group_id, device_model_id, status, start_timestamp, end_timestamp, area: Optional[str]= None):
     observation_data_list = get_Observations_by_group_and_device_model_id_and_timespan(db, group_id,
                                                                                        device_model_id,
                                                                                        status, start_timestamp,
-                                                                                       end_timestamp)
+                                                                                       end_timestamp, area)
 
     device_db_list = get_device_by_group_id_and_device_model_id(db, group_id, device_model_id)
     device_name_dict = {device_db.__dict__["id"]: device_db.__dict__["name"] for device_db in device_db_list}

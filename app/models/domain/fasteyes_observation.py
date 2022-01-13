@@ -14,7 +14,7 @@ class fasteyes_observation(Base):
     updated_at = Column(DateTime, index=True)
     result = Column(Boolean, index=True)
     image_name = Column(String, index=True)
-    info = Column(JSON, index=True)
+    info = Column(JSON)
     staff_id = Column(Integer, ForeignKey("staffs.id"))
 
     def __init__(self, group_id, fasteyes_device_id, phenomenon_time, info, result, image_name, staff_id,  **kwargs):

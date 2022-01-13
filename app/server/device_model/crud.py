@@ -12,6 +12,10 @@ def get_All_device_models(db: Session):
     return db.query(device_model).all()
 
 
+def get_device_model_by_name(db: Session, name: str):
+    return db.query(device_model).filter(name == name).first()
+
+
 def create_device_models(db: Session, device_post: DeviceModelPostModel):
     db.begin()
     try:
@@ -26,7 +30,7 @@ def create_device_models(db: Session, device_post: DeviceModelPostModel):
     return device_model_db
 
 
-def modify_device_models(db: Session,device_model_id: int , device_patch: DeviceModelPatchModel):
+def modify_device_models(db: Session, device_model_id: int, device_patch: DeviceModelPatchModel):
     device_model_db = db.query(device_model).filter(device_model.id == device_model_id).first()
     db.begin()
     try:

@@ -11,7 +11,7 @@ class observation(Base):
     group_id = Column(Integer, ForeignKey("groups.id"))
     # 1. 溫濕度感應器 2. ip cam 3. 靜電環 4. 氮氣機
     device_model_id = Column(Integer, ForeignKey("device_models.id"))
-    info = Column(JSON, index=True)
+    info = Column(JSON)
     created_at = Column(DateTime, index=True)
     updated_at = Column(DateTime, index=True)
 

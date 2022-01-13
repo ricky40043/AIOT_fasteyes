@@ -245,3 +245,9 @@ while True:
 #
 # while True:
 #     print_some_times()
+#
+
+# Send mail 邏輯
+# 每五分鐘get所有latest device observation 到 observation_list
+# 跑回圈看每個區域是否有 alarm 資料 存入 area_alarm_list
+# 發mail到群組

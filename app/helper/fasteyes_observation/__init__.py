@@ -17,7 +17,7 @@ def check_observation_Authority(db: Session, current_user: user, observation_id:
     observation = check_observation_ownwer(db, observation_id, current_user.id)
     if observation is None:
         if checkLevel(current_user, Authority_Level.Admin.value):
-            observation = get_observation_by_id(observation_id)
+            observation = get_observation_by_id(db, observation_id)
         else:
             raise HTTPException(status_code=401, detail="你不是裝置的使用者")
 

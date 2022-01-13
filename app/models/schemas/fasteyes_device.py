@@ -71,7 +71,7 @@ class FasteyesDeviceSettingChangeModel(Base):
 #     device_id: int
 #     created_at: datetime
 #     updated_at: datetime
-#     email_alert: bool
+#     area: bool
 #     body_temperature_threshold: float
 #     uploadScreenshot: int
 

@@ -50,8 +50,6 @@ def create_staff(db: Session, StaffIn: StaffPostModel, user_id: int, group_id: i
     db.begin()
     try:
         StaffIn.info.birthday = str(StaffIn.info.birthday)
-        # temp_info = StaffIn.info.copy()
-        # temp_info["face_detect"] =
         db_staff = staff(**StaffIn.dict(), user_id=user_id, group_id=group_id)
         db.add(db_staff)
         db.commit()

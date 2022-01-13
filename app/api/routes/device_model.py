@@ -8,8 +8,8 @@ from app.db.database import get_db
 from app.helper.authentication import Authorize_user
 from app.models.schemas.device_model import DeviceModelViewModel, DeviceModelPostModel, DeviceModelPatchModel
 from app.server.authentication import Authority_Level, verify_password, checkLevel
-from app.server.device_model.crud import get_All_device_models, create_device_models, modify_device_models
-
+from app.server.device_model.crud import get_All_device_models, create_device_models, modify_device_models, \
+    get_device_model_by_name
 router = APIRouter()
 
 
@@ -31,6 +31,9 @@ def CreateDevicesModel(device_post: DeviceModelPostModel, db: Session = Depends(
 
     if not checkLevel(current_user, Authority_Level.RD.value):
         raise HTTPException(status_code=401, detail="權限不夠")
+
+    if get_device_model_by_name(db, DeviceModelPostModel.name):
+        raise HTTPException(status_code=400, detail="name is exist")
 
     return create_device_models(db, device_post)
 

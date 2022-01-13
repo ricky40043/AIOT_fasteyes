@@ -80,8 +80,6 @@ def change_user_setting(db: Session, user_id: int, userPatch: UserChangeSettingM
             temp_info["language"] = userPatch.language
         if userPatch.email_alert != -1:
             temp_info["email_alert"] = userPatch.email_alert
-        if userPatch.device_email_alert != -1:
-            temp_info["device_email_alert"] = userPatch.device_email_alert
         user_db.updated_at = datetime.now()
         user_db.info = temp_info
         db.commit()

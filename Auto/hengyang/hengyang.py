@@ -298,11 +298,13 @@ def test_create_TH_device():
             "serial_number": serial_number,
             "area": random.choice(area_list),
             "info": {
-                "interval_time": "10",
+                "interval_time": "300",
                 "alarm_temperature_upper_limit": random.randrange(70, 100),
                 "alarm_temperature_lower_limit": random.randrange(0, 30),
                 "alarm_humidity_upper_limit": random.randrange(70, 100),
                 "alarm_humidity_lower_limit": random.randrange(0, 30),
+                "compensate_temperature": random.randrange(-2, 2),
+                "compensate_humidity": random.randrange(-2, 2),
                 "battery_alarm": random.randrange(10, 100)
             }
         }

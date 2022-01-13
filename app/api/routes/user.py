@@ -13,20 +13,9 @@ from app.models.schemas.user import UserViewModel, UserPostViewModel, adminUserP
     UserPatchPasswordViewModel, UserChangeSettingModel, UserInviteViewModel
 from app.server.authentication import Authority_Level, verify_password, checkLevel, get_tocken, get_email_token
 from app.server.bulletin_board.crud import create_bulletin_board
-from app.server.department.crud import get_All_departments
-from app.server.device.crud import get_All_devices
-from app.server.device_model.crud import get_All_device_models
-from app.server.face.crud import get_All_faces
-from app.server.fasteyes_device.crud import get_All_fasteyes_devices
 from app.server.fasteyes_observation import create_output_data_form
-from app.server.fasteyes_observation.crud import get_All_fasteyes_observations
-from app.server.fasteyes_output.crud import get_All_fasteyes_outputs, create_fasteyes_output
-from app.server.fasteyes_uuid.crud import get_All_fasteyes_uuids
 from app.server.group.crud import get_All_groups, create_group, get_group_by_name
-from app.server.observation.crud import get_All_observations
-from app.server.role.crud import get_All_roles
 from app.server.send_email import send_invite_mail
-from app.server.staff.crud import get_All_staffs
 from app.server.user.crud import Create_User, get_user_by_email, get_user_by_name, get_All_users, check_Email_Exist, \
     modefy_User, get_user_by_name_in_group, modefy_User_Password, change_user_setting, change_user_verify_code_enable, \
     get_users_in_group, get_user_by_id, delete_group_by_group_id, check_user_owner, delete_user_by_user_id
@@ -129,6 +118,8 @@ def DeleteUser(user_id: int,
     if delete_user.level <= current_user.level:
         raise HTTPException(status_code=401, detail="權限不夠")
 
+    delete_email_alert_user_by_user_id(db, delete_user.id)
+
     return delete_user_by_user_id(db, delete_user.id)
 
 
@@ -189,15 +180,15 @@ def CreateAdminUser(user_create: adminUserPostViewModel, db: Session = Depends(g
 
     group_db = create_group(db, user_create.group)
     user_db = Create_User(db, user_create, group_db.id, level=Authority_Level.Admin.value, is_enable=True)
-    create_fasteyes_output(db, user_db.id, group_db.id)
     create_output_data_form(group_db.id)
     create_bulletin_board(db, user_db.group_id)
+
     return user_db
 
 
 # 創建 RD User (RD)
 @router.post("/users/RD", response_model=UserViewModel)
-def CreateAdminUser(user_create: adminUserPostViewModel, db: Session = Depends(get_db)):
+def CreateRDUser(user_create: adminUserPostViewModel, db: Session = Depends(get_db)):
     if get_user_by_email(db, email=user_create.email):
         raise HTTPException(status_code=400, detail="Email already registered")
 
@@ -209,7 +200,6 @@ def CreateAdminUser(user_create: adminUserPostViewModel, db: Session = Depends(g
 
     group_db = create_group(db, user_create.group)
     user_db = Create_User(db, user_create, group_db.id, level=Authority_Level.RD.value, is_enable=True)
-    create_fasteyes_output(db, user_db.id, group_db.id)
     return user_db
 
 
@@ -234,6 +224,21 @@ def DeleteAdminUser(user_id: int, db: Session = Depends(get_db),
     if delete_user.level <= current_user.level:
         raise HTTPException(status_code=401, detail="權限不夠")
 
+
+    #刪除所有 fasteyes observation & fasteyes
+
+    #刪除所有 device & observation
+
+    #刪除所有 staff & face
+
+    #刪除fasteyes output
+
+    #刪除佈告欄
+
+
+    #刪除所有user
+
+    #刪除group
     return delete_group_by_group_id(db, delete_user.group_id)
 
 

@@ -29,7 +29,6 @@ from app.server.fasteyes_observation.crud import upload_observation_image, downl
     download_observation_image_by_id, CeateFasteyesObservation, update_observation, get_attendence_by_time_interval, \
     delete_observation_by_id, delete_observation_by_device_id, get_Observations_by_group_id_and_timespan, \
     get_attendence_by_time_interval_data, output_observations_by_group
-from app.server.fasteyes_output.crud import get_fasteyes_outputs_by_id, fasteyes_output_modify
 from app.server.send_email import send_email_async, send_email_temperature_alert
 from app.server.staff.crud import get_staff_by_id, get_staff_by_group
 from fastapi_pagination import Page, paginate
@@ -288,7 +287,7 @@ def DeleteDeviceObservation(device_id: int,
 @router.get("/fasteyes_observations/output_form", response_model=FasteyesOutputPatchViewModel)
 def getFasteyeObservationOutputForm(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-    if not checkLevel(current_user, Authority_Level.Admin.value):
+    if not checkLevel(current_user, Authority_Level.HRAccess.value):
         raise HTTPException(status_code=401, detail="權限不夠")
 
     data = get_output_data_form(current_user.group_id)
@@ -296,10 +295,10 @@ def getFasteyeObservationOutputForm(db: Session = Depends(get_db), Authorize: Au
 
 
 @router.patch("/fasteyes_observations/output_form/modify", response_model=FasteyesOutputPatchViewModel)
-def getFasteyeObservationOutputForm(output_form: FasteyesOutputPatchViewModel,
+def patchFasteyeObservationOutputForm(output_form: FasteyesOutputPatchViewModel,
                                     db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-    if not checkLevel(current_user, Authority_Level.HRAccess.value):
+    if not checkLevel(current_user, Authority_Level.Admin.value):
         raise HTTPException(status_code=401, detail="權限不夠")
 
     output_form_out = modify_output_data_form(current_user.group_id, output_form)
@@ -313,7 +312,7 @@ def FasteyesOutputCSV(start_timestamp: Optional[datetime] = None,
                       db: Session = Depends(get_db),
                       Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-    if not checkLevel(current_user, Authority_Level.Admin.value):
+    if not checkLevel(current_user, Authority_Level.HRAccess.value):
         raise HTTPException(status_code=401, detail="權限不夠")
 
     csv_file = output_interval_data_csv(db, current_user.group_id, start_timestamp, end_timestamp)

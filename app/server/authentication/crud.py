@@ -12,7 +12,6 @@ from app.models.domain.device_model import device_model
 from app.models.domain.face import face
 from app.models.domain.fasteyes_device import fasteyes_device
 from app.models.domain.fasteyes_observation import fasteyes_observation
-from app.models.domain.fasteyes_output import fasteyes_output
 from app.models.domain.fasteyes_uuid import fasteyes_uuid
 from app.models.domain.group import group
 from app.models.domain.observation import observation
@@ -91,14 +90,13 @@ def clear_all_data(db: Session):
 
         db.query(face).delete()
         db.query(fasteyes_observation).delete()
+        db.query(fasteyes_device).delete()
         db.query(fasteyes_uuid).delete()
         db.query(observation).delete()
         db.query(bulletin_board).delete()
-        db.query(fasteyes_output).delete()
 
         db.query(staff).delete()
         db.query(department).delete()
-        db.query(fasteyes_device).delete()
         db.query(device).delete()
         db.query(device_model).delete()
 

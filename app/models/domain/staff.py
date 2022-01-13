@@ -16,7 +16,7 @@ class staff(Base):
     end_date = Column(DateTime, index=True)
     created_at = Column(DateTime, index=True)
     updated_at = Column(DateTime, index=True)
-    info = Column(JSON, index=True)
+    info = Column(JSON)
 
     # name = Column(String, index=True)
     # email = Column(String, index=True)

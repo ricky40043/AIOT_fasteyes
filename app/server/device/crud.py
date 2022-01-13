@@ -30,8 +30,9 @@ def check_name_repeate(db: Session, name: str, device_model_id: int):
         raise HTTPException(status_code=400, detail="device name is exist")
 
 
-def get_device_by_name(db: Session, name: str, device_model_id: int):
-    return db.query(device).filter(device.name == name, device.device_model_id == device_model_id).first()
+def get_device_by_name(db: Session, name: str, device_model_id: int, group_id: int):
+    return db.query(device).filter(device.name == name, device.device_model_id == device_model_id,
+                                   device.group_id == group_id).first()
 
 
 def check_serial_number_repeate(db: Session, name: str, device_model_id: int):

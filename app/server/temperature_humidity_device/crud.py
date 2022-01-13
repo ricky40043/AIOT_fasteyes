@@ -1,5 +1,6 @@
 # crud
 import csv
+from typing import Optional
 
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
@@ -31,7 +32,6 @@ def create_temperature_humidity_devices(db: Session, group_id: int, user_id: int
                                         Temperature_humidityDevice_create: Temperature_humidityDevice_InfoModel):
     check_name_repeate(db, name, DeviceType.temperature_humidity.value)
     check_serial_number_repeate(db, name, DeviceType.temperature_humidity.value)
-    print(Temperature_humidityDevice_create)
 
     db.begin()
     try:
@@ -58,7 +58,7 @@ def modify_temperature_humidity_devices(db: Session, group_id: int, device_id: i
                                         device.device_model_id == DeviceType.temperature_humidity.value,
                                         device.id == device_id).first()
 
-    device_by_name = get_device_by_name(db, device_patch.name, DeviceType.temperature_humidity.value)
+    device_by_name = get_device_by_name(db, device_patch.name, DeviceType.temperature_humidity.value, group_id)
     if device_by_name:
         if device_by_name.id != device_db.id:
             raise HTTPException(status_code=400, detail="device name is exist")
@@ -71,6 +71,9 @@ def modify_temperature_humidity_devices(db: Session, group_id: int, device_id: i
         temp_info["alarm_temperature_lower_limit"] = device_patch.info["alarm_temperature_lower_limit"]
         temp_info["alarm_temperature_upper_limit"] = device_patch.info["alarm_temperature_upper_limit"]
         temp_info["battery_alarm"] = device_patch.info["battery_alarm"]
+        temp_info["interval_time"] = device_patch.info["interval_time"]
+        temp_info["compensate_temperature"] = device_patch.info["compensate_temperature"]
+        temp_info["compensate_humidity"] = device_patch.info["compensate_humidity"]
         temp_info["interval_time"] = device_patch.info["interval_time"]
         device_db.info = temp_info
         device_db.name = device_patch.name
@@ -102,31 +105,36 @@ def delete_temperature_humidity_devices(db: Session, group_id: int, device_id: i
     return device_db
 
 
-def get_TH_observation_csv(db: Session, group_id, device_model_id, status, start_timestamp, end_timestamp):
+def get_TH_observation_csv(db: Session, group_id, device_model_id, status, start_timestamp, end_timestamp, area: Optional[str]= None):
     observation_data_list = get_Observations_by_group_and_device_model_id_and_timespan(db, group_id,
                                                                                        device_model_id,
                                                                                        status, start_timestamp,
-                                                                                       end_timestamp)
+                                                                                       end_timestamp, area)
 
-    device_db_list = get_device_by_group_id_and_device_model_id(db, group_id, device_model_id)
-    device_name_dict = {device_db.__dict__["id"]: device_db.__dict__["name"] for device_db in device_db_list}
-    device_area_dict = {device_db.__dict__["id"]: device_db.__dict__["area"] for device_db in device_db_list}
-    device_serial_number_dict = {device_db.__dict__["id"]: device_db.__dict__["serial_number"] for device_db in
-                                 device_db_list}
-    outputdata = [["裝置名稱", "裝置編號", "裝置位置", "測量時間", "溫度", "溫度異常", "濕度", "濕度異常", "電池電量"]]
+    # device_db_list = get_device_by_group_id_and_device_model_id(db, group_id, device_model_id)
+    # device_name_dict = {device_db.__dict__["id"]: device_db.__dict__["name"] for device_db in device_db_list}
+    # device_area_dict = {device_db.__dict__["id"]: device_db.__dict__["area"] for device_db in device_db_list}
+    # device_serial_number_dict = {device_db.__dict__["id"]: device_db.__dict__["serial_number"] for device_db in
+    #                              device_db_list}
+    outputdata = [["裝置名稱", "裝置編號", "裝置位置", "測量時間", "溫度", "溫度異常", "濕度", "濕度異常", "溫度補償", "濕度補償", "電池電量"]]
 
     for each_data in observation_data_list:
         each_data_dict = each_data.__dict__
         temp = []
         if device_model_id == DeviceType.temperature_humidity.value:
-            temp.append(device_name_dict[each_data_dict["device_id"]])
-            temp.append(device_serial_number_dict[each_data_dict["device_id"]])
-            temp.append(device_area_dict[each_data_dict["device_id"]])
+            # temp.append(device_name_dict[each_data_dict["device_id"]])
+            # temp.append(device_serial_number_dict[each_data_dict["device_id"]])
+            # temp.append(device_area_dict[each_data_dict["device_id"]])
+            temp.append(each_data_dict["info"]["name"])
+            temp.append(each_data_dict["info"]["serial_number"])
+            temp.append(each_data_dict["info"]["area"])
             temp.append(each_data_dict["created_at"].strftime("%m/%d/%Y, %H:%M:%S"))
             temp.append(each_data_dict["info"]["temperature"])
             temp.append("異常" if each_data_dict["info"]["alarm_temperature"] else "正常")
             temp.append(each_data_dict["info"]["humidity"])
             temp.append("異常" if each_data_dict["info"]["alarm_humidity"] else "正常")
+            temp.append(each_data_dict["info"]["compensate_temperature"])
+            temp.append(each_data_dict["info"]["compensate_humidity"])
             temp.append(str(each_data_dict["info"]["battery"]) + "%")
             outputdata.append(temp)
 

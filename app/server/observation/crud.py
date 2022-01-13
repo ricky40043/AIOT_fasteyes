@@ -155,22 +155,23 @@ def get_Observations_by_group_and_device_model_id_and_timespan(db: Session, grou
                                                                status_in: int,
                                                                start_timestamp: datetime,
                                                                end_timestamp: datetime,
-                                                               select_device_id: Optional[int]=-1):
+                                                               select_device_id: Optional[int]=-1,
+                                                               area: Optional[str]= None):
     if status_in == -1:
         if select_device_id == -1:
-            return db.query(observation).filter(observation.group_id == group_id,
+            data_list = db.query(observation).filter(observation.group_id == group_id,
                                                 observation.device_model_id == device_model_id).filter(
                 observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
                 order_by(-observation.id).all()
         else:
-            return db.query(observation).filter(observation.group_id == group_id,
+            data_list = db.query(observation).filter(observation.group_id == group_id,
                                                 observation.device_model_id == device_model_id,
                                                 observation.device_id == select_device_id).filter(
                 observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
                 order_by(-observation.id).all()
     elif status_in == 0:
         if select_device_id == -1:
-            return db.query(observation).filter(observation.group_id == group_id,
+            data_list = db.query(observation).filter(observation.group_id == group_id,
                                                 observation.device_model_id == device_model_id).filter(
                 observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
                 filter(observation.info["status"] == "0",
@@ -178,7 +179,7 @@ def get_Observations_by_group_and_device_model_id_and_timespan(db: Session, grou
                        observation.info["alarm_humidity"] == "0"). \
                 order_by(-observation.id).all()
         else:
-            return db.query(observation).filter(observation.group_id == group_id,
+            data_list = db.query(observation).filter(observation.group_id == group_id,
                                                 observation.device_model_id == device_model_id,
                                                 observation.device_id == select_device_id).filter(
                 observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
@@ -206,4 +207,9 @@ def get_Observations_by_group_and_device_model_id_and_timespan(db: Session, grou
                            observation.info["alarm_temperature"] == "1",
                            observation.info["alarm_humidity"] == "1")). \
                 order_by(-observation.id).all()
-            return data_list
+
+    if area is None:
+        return data_list
+    else:
+        filter_list = list(filter(lambda each_observation: each_observation.info["area"]==area, data_list))
+        return filter_list

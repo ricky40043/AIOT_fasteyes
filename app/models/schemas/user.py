@@ -25,7 +25,6 @@ class UserInfoModel(UserBase):
     usage: str = ""
     industry: str = ""
     email_alert: bool = False
-    device_email_alert: bool = False
     language: int = 0
 
 
@@ -45,12 +44,11 @@ class adminUserPostViewModel(UserBase):
                 "info": {
                     "address": "台北市中山區民權東路一段",
                     "telephone_number": "0987654321",
-                    "address": "台北市中山區民權東路一段",
                     "usage": "商用",
                     "country": "Taiwan",
                     "company_scale": "10~50",
                     "industry": "軟體業",
-                    "email_alert": "False",
+                    "area": "False",
                     "language": "0"
                 },
                 "group": {
@@ -75,12 +73,11 @@ class UserPostViewModel(UserBase):
                 "info": {
                     "address": "台北市中山區民權東路一段",
                     "telephone_number": "0987654321",
-                    "address": "台北市中山區民權東路一段",
                     "usage": "商用",
                     "country": "Taiwan",
                     "company_scale": "10~50",
                     "industry": "軟體業",
-                    "email_alert": "False",
+                    "area": "False",
                     "language": "0"
                 }
             }
@@ -100,14 +97,12 @@ class UserPatchInfoModel(UserBase):
 
 class UserChangeSettingModel(UserBase):
     email_alert: Optional[bool] = -1
-    device_email_alert: Optional[bool] = -1
     language: Optional[int] = -1
 
     class Config:
         schema_extra = {
             "example": {
-                "email_alert": False,
-                "device_email_alert": True,
+                "area": False,
                 "language": 0,
             }
         }

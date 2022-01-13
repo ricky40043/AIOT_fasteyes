@@ -24,7 +24,7 @@ router = APIRouter()
 # 登入
 @router.post("/auth/login", response_model=LoginResultUserViewModel)
 def login(user_data: UserLoginViewModel, background_tasks: BackgroundTasks,
-                Authorize: AuthJWT = Depends(), db: Session = Depends(get_db)):
+          Authorize: AuthJWT = Depends(), db: Session = Depends(get_db)):
     user = authenticate_user(user_data.email, user_data.password, db)
     if not user:
         raise HTTPException(
@@ -126,7 +126,7 @@ def ResendVerificationEmail(background_tasks: BackgroundTasks, email: str, db: S
 # 忘記密碼寄信
 @router.post("/auth/forget_password")
 def ForgetPassword(background_tasks: BackgroundTasks,
-                         email: str, db: Session = Depends(get_db)):
+                   email: str, db: Session = Depends(get_db)):
     if not check_Email_Exist(db, email):
         return "Email is not exist"
 
@@ -139,7 +139,7 @@ def ForgetPassword(background_tasks: BackgroundTasks,
 # 改變權限 Admin
 @router.patch("/auth/users/{user_id}/change", response_model=UserViewModel)
 def ChangeUserLevel(user_id: int, level: int, db: Session = Depends(get_db),
-                     Authorize: AuthJWT = Depends()):
+                    Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     if not checkLevel(current_user, Authority_Level.Admin.value):
         raise HTTPException(status_code=401, detail="權限不夠")
@@ -186,6 +186,7 @@ def ClearAllData(db: Session = Depends(get_db),
     clear_all_data(db)
 
     return "Clear Done"
+
 
 @router.delete('/auth/clear_all_data_no_auth')
 def ClearAllData(db: Session = Depends(get_db)):

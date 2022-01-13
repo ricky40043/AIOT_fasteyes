@@ -16,7 +16,7 @@ class user(Base):
     updated_at = Column(DateTime, index=True)
     is_enable = Column(Boolean, index=True, default=False)
     verify_code_enable = Column(Boolean, index=True, default=False)
-    info = Column(JSON, index=True)
+    info = Column(JSON)
 
     # address = Column(String, index=True)
     # country = Column(String, index=True)
@@ -24,7 +24,7 @@ class user(Base):
     # company_scale = Column(String, index=True)
     # usage = Column(String, index=True)
     # industry = Column(String, index=True)
-    # email_alert = Column(Boolean, index=True)
+    # area = Column(Boolean, index=True)
     # language = Column(Integer, index=True)
     # verify_code_enable = Column(Boolean, index=True)
 
@@ -60,6 +60,6 @@ class user(Base):
     #         'serial_number': self.serial_number,
     #         'industry': self.industry,
     #         'company_scale': self.company_scale,
-    #         'email_alert': self.email_alert,
+    #         'area': self.area,
     #         'language': self.language
     #     }

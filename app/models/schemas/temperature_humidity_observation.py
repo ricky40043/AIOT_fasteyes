@@ -21,6 +21,9 @@ class temperature_humidity_infoModel(Base):
     alarm_humidity: bool
     battery: int
     status: int
+    serial_number: str
+    name: str
+    area: str
 
 
 class temperature_humidity_ObservationPostModel(Base):
@@ -29,19 +32,19 @@ class temperature_humidity_ObservationPostModel(Base):
     device_id: int
     group_id: int
 
-    class Config:
-        schema_extra = {
-            "example": {
-                "devicemodel_id": 1,
-                "staff_id": 5,
-                "info": {
-                    "temperature": 38.0,
-                    "humidity": 43,
-                    "index": 432,
-                    "alarm_temperature": False,
-                    "alarm_humidity": True,
-                    "battery": 99,
-                    "status": 0
-                }
-            }
-        }
+    # class Config:
+    #     schema_extra = {
+    #         "example": {
+    #             "devicemodel_id": 1,
+    #             "staff_id": 5,
+    #             "info": {
+    #                 "temperature": 38.0,
+    #                 "humidity": 43,
+    #                 "index": 432,
+    #                 "alarm_temperature": False,
+    #                 "alarm_humidity": True,
+    #                 "battery": 99,
+    #                 "status": 0
+    #             }
+    #         }
+    #     }

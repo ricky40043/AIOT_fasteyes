@@ -16,10 +16,7 @@ class fasteyes_device(Base):
     device_uuid = Column(Text, unique=True, index=True)
     name = Column(String, index=True)
     description = Column(String, index=True)
-    info = Column(JSON, index=True)
-    uploadScreenshot = Column(Integer, index=True)
-    body_temperature_threshold = Column(Float, index=True)
-
+    info = Column(JSON)
     created_at = Column(DateTime, index=True)
     updated_at = Column(DateTime, index=True)
 

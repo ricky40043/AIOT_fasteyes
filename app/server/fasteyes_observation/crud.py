@@ -131,14 +131,14 @@ def get_Observations_by_group_id_and_timespan(db: Session, group_id: int, start_
             return db.query(fasteyes_observation).filter(fasteyes_observation.group_id == group_id).filter(
                 fasteyes_observation.phenomenon_time >= start_timestamp,
                 fasteyes_observation.phenomenon_time <= end_timestamp).filter(
-                fasteyes_observation.result == status_in).order_by(
+                fasteyes_observation.result == bool(status_in)).order_by(
                 -fasteyes_observation.id).all()
         else:
             return db.query(fasteyes_observation).filter(fasteyes_observation.group_id == group_id,
                                                          fasteyes_observation.fasteyes_device_id  ==  device_id).filter(
                 fasteyes_observation.phenomenon_time >= start_timestamp,
                 fasteyes_observation.phenomenon_time <= end_timestamp).filter(
-                fasteyes_observation.result == status_in).order_by(
+                fasteyes_observation.result == bool(status_in)).order_by(
                 -fasteyes_observation.id).all()
 
 

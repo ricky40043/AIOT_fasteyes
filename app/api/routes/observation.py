@@ -88,13 +88,14 @@ def GetObservationsByDeviceId(device_model_id: int,
                               start_timestamp: datetime,
                               end_timestamp: datetime,
                               select_device: Optional[int] = -1,
+                              area: Optional[str] = None,
                               db: Session = Depends(get_db),
                               Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     return paginate(
         get_Observations_by_group_and_device_model_id_and_timespan(db, current_user.group_id, device_model_id,
                                                                    status, start_timestamp, end_timestamp,
-                                                                   select_device))
+                                                                   select_device, area))
 
 
 # Device ID 取得所有觀測 (User)
@@ -103,13 +104,14 @@ def GetObservationsByDeviceId(device_model_id: int,
                               status: int,
                               start_timestamp: datetime,
                               end_timestamp: datetime,
+                              area: Optional[str]= None,
                               db: Session = Depends(get_db),
                               Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     if device_model_id == 1:
-        file_location = get_TH_observation_csv(db, current_user.group_id, 1, status, start_timestamp, end_timestamp)
+        file_location = get_TH_observation_csv(db, current_user.group_id, 1, status, start_timestamp, end_timestamp, area)
     elif device_model_id == 4:
-        file_location = get_Nitrogen_observation_csv(db, current_user.group_id, 1, status, start_timestamp, end_timestamp)
+        file_location = get_Nitrogen_observation_csv(db, current_user.group_id, 1, status, start_timestamp, end_timestamp, area)
 
     return FileResponse(file_location, media_type='text/csv', filename=file_location)
 
