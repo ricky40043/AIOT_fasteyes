@@ -7,6 +7,7 @@ from app.models.domain.staff import staff
 
 sessionlocal = SessionLocal()
 
+
 def get_current_user_header():
     with open(path + 'Default/User_data/Headers.json', encoding='utf-8') as json_file:
         data = json.load(json_file)
@@ -97,7 +98,7 @@ def test_create_staff():
     status_list = []
     start_date_list = []
 
-    #取得department
+    # 取得department
     url_department = URL + "/department"
     department_response = client.get(url_department, headers=get_current_user_header())
     department_list = department_response.json()
@@ -119,7 +120,7 @@ def test_create_staff():
         # department_id_list.append(int(job.index(info["Department"]) + 1))
 
         start_date_list.append(info["CreatedAt"])
-        if info["Gender"] == "女" or info["Gender"] =="Female":
+        if info["Gender"] == "女" or info["Gender"] == "Female":
             gender_list.append(2)
         else:
             gender_list.append(1)
@@ -179,7 +180,8 @@ def test_create_staff():
 
 
 def test_StaffFaceImages():
-    for i, file_name, name, serial_number in zip(range(1, len(file_name_list) + 1), file_name_list, staff_name_list, serial_number_list):
+    for i, file_name, name, serial_number in zip(range(1, len(file_name_list) + 1), file_name_list, staff_name_list,
+                                                 serial_number_list):
         result = sessionlocal.query(staff.id).filter(staff.serial_number == serial_number).first()
         result = str(result).replace("(", "")
         result = str(result).replace(",", "")
@@ -252,39 +254,49 @@ def test_create_3_fasteyes_device():
 
 
 def test_create_fasteyes_observation():
-    url = URL + "/fasteyes_devices/1/observation"
-    with open(os.getcwd() + "/Auto/hengyang/test.txt", "r", encoding="utf-8") as file:
+    url = URL + "/fasteyes_devices/5/observation"
+    with open(os.getcwd() + "/Auto/hengyang/hengyang_0117.txt", "r", encoding="utf-8") as file:
         file_data = file.read()
     all_observation = eval(file_data)
     observartion = []
+    serial_number_list = []
+    with open(os.getcwd() + "/Auto/hengyang/hengyang_staff_info.txt", "r", encoding="utf-8") as file:
+        file_data = file.read()
+        staff_info = eval(file_data)
+    # 整理舊資料
+    for info in staff_info:
+        serial_number_list.append(info["SerialNumber"])
+
     for i in all_observation:
         if "Parameters" in i:
-            if i["Result"] not in serial_number_list:
-                if i["PhenomenonTime"] not in observartion:
-                    observartion.append(i)
+            if i["Result"] in serial_number_list:
+                # if i["PhenomenonTime"] in observartion:
+                # print(i)
+                observartion.append(i)
+    # print(len(observartion))
+    # assert 1 == 200
+
     for j in observartion:
-        result = sessionlocal.query(staff.id).filter(staff.serial_number == j["Result"]).first()
-        result = str(result).replace("(", "")
-        result = str(result).replace(",", "")
-        result = str(result).replace(")", "")
-        staff_id = result
-
-        data = {
-            "phenomenon_time": j["PhenomenonTime"],
-            "result": False,
-            "image_name": "",
-            "staff_id": staff_id,
-            "info": {
-                "wear_mask": 1,
-                "temperature": round(random.uniform(35.7, 36.5), 1),
-                "threshold_temperature": 37.5,
-                "compensate_temperature": 0,
+        # print(j["Result"])
+        # print(type(j["Result"]))
+        result = sessionlocal.query(staff).filter(staff.serial_number == j["Result"]).first()
+        if result:
+            staff_id = result.id
+            data = {
+                "phenomenon_time": j["PhenomenonTime"],
+                "result": False,
+                "image_name": "",
+                "staff_id": staff_id,
+                "info": {
+                    "wear_mask": 1,
+                    "temperature": round(random.uniform(35.7, 36.5), 1),
+                    "threshold_temperature": 37.5,
+                    "compensate_temperature": 0,
+                }
             }
-
-        }
-        response = client.post(url, json=data, headers=get_current_user_header())
-        print(response.json())
-        assert response.status_code == 200
+            response = client.post(url, json=data, headers=get_current_user_header())
+            print(response.json())
+            assert response.status_code == 200
 
 
 def test_create_TH_device():

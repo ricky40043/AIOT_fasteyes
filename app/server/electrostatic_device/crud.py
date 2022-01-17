@@ -1,4 +1,6 @@
 # crud
+from typing import Optional
+
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
@@ -10,8 +12,14 @@ from app.server.device.crud import check_name_repeate, check_serial_number_repea
 from app.server.device_model import DeviceType
 
 
-def get_electrostatic_devices(db: Session, group_id: int):
-    return db.query(device).filter(device.device_model_id == DeviceType.electrostatic.value, device.group_id == group_id).all()
+def get_electrostatic_devices(db: Session, group_id: int, area: Optional[str] = ""):
+    if area == "":
+        return db.query(device).filter(device.device_model_id == DeviceType.electrostatic.value,
+                                       device.group_id == group_id).order_by(device.id).all()
+    else:
+        return db.query(device).filter(device.device_model_id == DeviceType.electrostatic.value,
+                                       device.group_id == group_id, device.area == area).order_by(device.id).all()
+
 
 
 def create_electrostatic_devices(db: Session, group_id: int, user_id: int,

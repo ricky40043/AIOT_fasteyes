@@ -4,7 +4,82 @@ import os
 import shutil
 
 from app.core.config import FASTEYES_OUTPUT_PATH
-from app.server.fasteyes_observation.crud import output_observations_by_group
+from app.server.fasteyes_observation.crud import output_observations_by_group, get_attendence_by_time_interval
+from datetime import datetime, time
+from sqlalchemy.orm import Session
+
+
+def output_interval_attendance_csv(db: Session, group_id: int, start_timestamp: datetime,
+                                   end_timestamp: datetime, status_in: int, select_device_id: int,
+                                   working_time_1: time,
+                                   working_time_2: time,
+                                   working_time_off_1: time,
+                                   working_time_off_2: time):
+    title = ["員工", "部門", "ID", "最早時間", "體溫", "最晚時間", "體溫", "類型"]
+    observation_model_list = get_attendence_by_time_interval(db, group_id, start_timestamp, end_timestamp,
+                                                             status_in, select_device_id, working_time_1,
+                                                             working_time_2, working_time_off_1, working_time_off_2)
+
+    observation_list = [title]
+
+    for observation_model in observation_model_list:
+        each_date_data = observation_model["attendance"]
+        for data in each_date_data:
+            each_data = []
+            status = "正常"
+            if "staff_name" in data:
+                each_data.append(data["staff_name"])
+            else:
+                each_data.append("Unknow")
+
+            if "department_name" in data:
+                each_data.append(data["department_name"])
+            else:
+                each_data.append("訪客")
+
+            if "staff_serial_number" in data:
+                each_data.append(data["staff_serial_number"])
+            else:
+                each_data.append("None")
+
+            if "punch_in" in data:
+                each_data.append(data["punch_in"])
+            else:
+                each_data.append("無資料")
+
+            if "punch_in_temperature" in data:
+                each_data.append(data["punch_in_temperature"])
+            else:
+                each_data.append("無資料")
+
+            if "punch_out" in data:
+                each_data.append(data["punch_out"])
+            else:
+                each_data.append("無資料")
+
+            if "punch_out_temperature" in data:
+                each_data.append(data["punch_out_temperature"])
+            else:
+                each_data.append("無資料")
+
+            if "punch_in_temperature_result" in data and "punch_out_temperature_result" in data:
+                if data["punch_in_temperature_result"] or data["punch_out_temperature_result"]:
+                    status = "異常"
+            else:
+                status = "異常"
+
+            each_data.append(status)
+            observation_list.append(each_data)
+
+    # print(observation_list)
+    file_location = FASTEYES_OUTPUT_PATH + str(group_id) + '/fasteyes_attendance_data.csv'
+    with open(file_location, 'w', encoding='utf-8-sig') as f:
+        w = csv.writer(f)
+        for eachdata in observation_list:
+            print(eachdata)
+            w.writerow(eachdata)
+
+    return file_location
 
 
 def output_interval_data_csv(db, group_id, start_timestamp, end_timestamp):
@@ -31,9 +106,6 @@ def output_interval_data_csv(db, group_id, start_timestamp, end_timestamp):
     observation_list.append(title)
     for observation_model in observation_model_list:
         observation_dict = observation_model.__dict__
-        # pop_key = ['_sa_instance_state', ]  # + pop_name_list
-        # for key in pop_key:
-        #     observation_dict.pop(key, None)
         each_data = []
         for each_item in name_list:
             if each_item in observation_dict.keys():
@@ -55,13 +127,14 @@ def output_interval_data_csv(db, group_id, start_timestamp, end_timestamp):
                 else:
                     each_data.append(observation_dict["info"][each_item])
 
-
         observation_list.append(each_data)
 
+    # print(observation_list)
     file_location = FASTEYES_OUTPUT_PATH + str(group_id) + '/fasteyes_observation_data.csv'
-    with open(file_location, 'w') as f:
+    with open(file_location, 'w', encoding='utf-8-sig') as f:
         w = csv.writer(f)
         for eachdata in observation_list:
+            print(eachdata)
             w.writerow(eachdata)
 
     return file_location
@@ -87,7 +160,7 @@ def modify_output_data_form(group_id, output_form):
 
 
 def create_output_data_form(group_id):
-    source="sample.json"
+    source = "sample.json"
 
     destination = FASTEYES_OUTPUT_PATH + str(group_id) + "/output_form.json"
 

@@ -17,11 +17,12 @@ from starlette.responses import StreamingResponse
 from fastapi import UploadFile, File
 
 from app.models.schemas.observation import ObservationPostModel
-from app.models.schemas.temperature_humidity_observation import temperature_humidity_ObservationPostModel
+from app.models.schemas.temperature_humidity_observation import temperature_humidity_ObservationPostModel, \
+    temperature_humidity_infoModel
 from app.models.schemas.Nitrogen_observation import Nitrogen_ObservationPostModel
 from app.models.schemas.electrostatic_observation import electrostatic_ObservationPostModel
 from app.server.device_model import DeviceType
-
+from sqlalchemy import Column, Integer, ForeignKey, String, DateTime, Boolean
 
 def get_All_observations(db: Session):
     return db.query(observation).all()
@@ -35,7 +36,8 @@ def check_observation_ownwer(db: Session, observation_id: int, group_id: int):
     return db.query(observation).filter(observation.id == observation_id, observation.group_id == group_id).first()
 
 
-def Create_temperature_humidity_Observation(observation_in: dict, group_id: int, device_id: int):
+def Create_temperature_humidity_Observation(observation_in: temperature_humidity_infoModel, group_id: int,
+                                            device_id: int):
     db = next(get_db())
     db.begin()
     try:
@@ -133,13 +135,14 @@ def get_Observations_by_device_id(db: Session, device_id: int):
 
 
 def get_Lastest_Observation_by_device_id(db: Session, group_id: int):
-    temperature_humidity_device_list = db.query(device).filter(device.device_model_id == DeviceType.temperature_humidity.value,
-                                   device.group_id == group_id).order_by(device.id).all()
+    temperature_humidity_device_list = db.query(device).filter(
+        device.device_model_id == DeviceType.temperature_humidity.value,
+        device.group_id == group_id).order_by(device.id).all()
 
     temperature_humidity_observation_list = []
     for temperature_humidity_device in temperature_humidity_device_list:
         interval_time = temperature_humidity_device.info["interval_time"]
-        start_time = datetime.now() - timedelta(seconds=int(interval_time)*3)
+        start_time = datetime.now() - timedelta(seconds=int(interval_time) * 3)
         end_time = datetime.now()
         observation_db = db.query(observation).filter(observation.device_id == temperature_humidity_device.id,
                                                       observation.created_at > start_time,
@@ -155,37 +158,37 @@ def get_Observations_by_group_and_device_model_id_and_timespan(db: Session, grou
                                                                status_in: int,
                                                                start_timestamp: datetime,
                                                                end_timestamp: datetime,
-                                                               select_device_id: Optional[int]=-1,
-                                                               area: Optional[str]= None):
+                                                               select_device_id: Optional[int] = -1,
+                                                               area: Optional[str] = ""):
     if status_in == -1:
         if select_device_id == -1:
             data_list = db.query(observation).filter(observation.group_id == group_id,
-                                                observation.device_model_id == device_model_id).filter(
+                                                     observation.device_model_id == device_model_id).filter(
                 observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
                 order_by(-observation.id).all()
         else:
             data_list = db.query(observation).filter(observation.group_id == group_id,
-                                                observation.device_model_id == device_model_id,
-                                                observation.device_id == select_device_id).filter(
+                                                     observation.device_model_id == device_model_id,
+                                                     observation.device_id == select_device_id).filter(
                 observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
                 order_by(-observation.id).all()
     elif status_in == 0:
         if select_device_id == -1:
             data_list = db.query(observation).filter(observation.group_id == group_id,
-                                                observation.device_model_id == device_model_id).filter(
+                                                     observation.device_model_id == device_model_id).filter(
                 observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
-                filter(observation.info["status"] == "0",
-                       observation.info["alarm_temperature"] == "0",
-                       observation.info["alarm_humidity"] == "0"). \
+                filter(observation.info["status"].astext.cast(Integer) == 0,
+                       observation.info["alarm_temperature"].astext.cast(Boolean) == False,
+                       observation.info["alarm_humidity"].astext.cast(Boolean) == False). \
                 order_by(-observation.id).all()
         else:
             data_list = db.query(observation).filter(observation.group_id == group_id,
-                                                observation.device_model_id == device_model_id,
-                                                observation.device_id == select_device_id).filter(
+                                                     observation.device_model_id == device_model_id,
+                                                     observation.device_id == select_device_id).filter(
                 observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
-                filter(observation.info["status"] == "0",
-                       observation.info["alarm_temperature"] == "0",
-                       observation.info["alarm_humidity"] == "0"). \
+                filter(observation.info["status"].astext.cast(Integer) == 0,
+                       observation.info["alarm_temperature"].astext.cast(Boolean) == False,
+                       observation.info["alarm_humidity"].astext.cast(Boolean) == False). \
                 order_by(-observation.id).all()
 
     else:
@@ -193,9 +196,9 @@ def get_Observations_by_group_and_device_model_id_and_timespan(db: Session, grou
             data_list = db.query(observation).filter(observation.group_id == group_id,
                                                      observation.device_model_id == device_model_id).filter(
                 observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
-                filter(or_(observation.info["status"] != "0",
-                           observation.info["alarm_temperature"] == "1",
-                           observation.info["alarm_humidity"] == "1")). \
+                filter(or_(observation.info["status"].astext.cast(Integer) !=0,
+                           observation.info["alarm_temperature"].astext.cast(Boolean) == True,
+                           observation.info["alarm_humidity"].astext.cast(Boolean) == True)). \
                 order_by(-observation.id).all()
             return data_list
         else:
@@ -203,13 +206,12 @@ def get_Observations_by_group_and_device_model_id_and_timespan(db: Session, grou
                                                      observation.device_model_id == device_model_id,
                                                      observation.device_id == select_device_id).filter(
                 observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
-                filter(or_(observation.info["status"] != "0",
-                           observation.info["alarm_temperature"] == "1",
-                           observation.info["alarm_humidity"] == "1")). \
+                filter(or_(observation.info["status"].astext.cast(Integer) != 0,
+                           observation.info["alarm_temperature"].astext.cast(Boolean) == True,
+                           observation.info["alarm_humidity"].astext.cast(Boolean) == True)). \
                 order_by(-observation.id).all()
-
-    if area is None:
+    if area == "" or area == None:
         return data_list
     else:
-        filter_list = list(filter(lambda each_observation: each_observation.info["area"]==area, data_list))
+        filter_list = list(filter(lambda each_observation: each_observation.info["area"] == area, data_list))
         return filter_list

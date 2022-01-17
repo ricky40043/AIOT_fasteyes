@@ -3,7 +3,7 @@ from fastapi_jwt_auth import AuthJWT
 from pydantic import EmailStr
 from sqlalchemy.orm import Session
 
-from typing import List
+from typing import List, Optional
 
 from starlette.responses import StreamingResponse
 
@@ -27,19 +27,20 @@ router = APIRouter()
 
 # 取得所有device (user)
 @router.get("/devices/device_model/{device_model_id}", response_model=List[DeviceViewModel])
-def GetAllDevices(device_model_id: int, db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+def GetAllDevices(device_model_id: int, area:Optional[str]="",
+                  db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     if not checkLevel(current_user, Authority_Level.User.value):
         raise HTTPException(status_code=401, detail="權限不夠")
 
     if device_model_id == DeviceType.temperature_humidity.value:
-        return get_temperature_humidity_devices(db, current_user.group_id)
+        return get_temperature_humidity_devices(db, current_user.group_id, area)
     elif device_model_id == DeviceType.ip_cam.value:
-        return get_ip_cam_devices(db, current_user.group_id)
+        return get_ip_cam_devices(db, current_user.group_id, area)
     elif device_model_id == DeviceType.electrostatic.value:
-        return get_electrostatic_devices(db, current_user.group_id)
+        return get_electrostatic_devices(db, current_user.group_id, area)
     elif device_model_id == DeviceType.Nitrogen.value:
-        return get_Nitrogen_devices(db, current_user.group_id)
+        return get_Nitrogen_devices(db, current_user.group_id, area)
 
 
 # 創建device (Admin)

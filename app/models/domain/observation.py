@@ -1,13 +1,13 @@
-from sqlalchemy import Column, Integer, ForeignKey, String, DateTime, JSON
+from sqlalchemy import Column, Integer, ForeignKey, String, DateTime
 from app.db.database import Base
 from datetime import datetime
-
+from sqlalchemy.dialects.postgresql import JSON
 
 # from sqlalchemy.dialects.postgresql import JSON
 class observation(Base):
     __tablename__ = "observations"
     id = Column(Integer, primary_key=True, index=True)
-    device_id = Column(Integer, ForeignKey("users.id"))
+    device_id = Column(Integer, ForeignKey("devices.id"))
     group_id = Column(Integer, ForeignKey("groups.id"))
     # 1. 溫濕度感應器 2. ip cam 3. 靜電環 4. 氮氣機
     device_model_id = Column(Integer, ForeignKey("device_models.id"))

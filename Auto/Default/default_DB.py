@@ -45,30 +45,6 @@ def test_add_RD():
     assert response.status_code == 200
 
 
-def test_Login_RD():
-    url = URL + "/auth/login"
-    login_data = {
-        "email": "Test_RD@fastwise.net",
-        "password": "test"
-    }
-    response = client.post(url, json=login_data)
-    print(response.json())
-    with open(path + 'Default/User_data/Headers.json', 'w', encoding='utf-8') as outfile:
-        json.dump(response.json(), outfile)
-    assert response.status_code == 200
-
-
-def test_create_device_model():
-    url = URL + "/device_model"
-    name_list = ["Temperature_humidity", "ip_cam", "electrostatic", "Nitrogen"]
-    for name in name_list:
-        device_name = {
-            "name": name
-        }
-        response = client.post(url, json=device_name, headers=get_current_user_header())
-        assert response.status_code == 200
-
-
 def test_add_AdminUser():
     url = URL + "/users/admin"
     adminusers_data = get_user_data("Admin")
@@ -257,8 +233,31 @@ def test_Staff3FaceFeature():
     response = client.post(url, params=face_data, headers=get_current_user_header())
     assert response.status_code == 200
 
-# ##########################################(11/30 - 2)#################################################
-#
+
+##########################################(11/30 - 2)#################################################
+def test_Login_RD():
+    url = URL + "/auth/login"
+    login_data = {
+        "email": "Test_RD@fastwise.net",
+        "password": "test"
+    }
+    response = client.post(url, json=login_data)
+    print(response.json())
+    with open(path + 'Default/User_data/Headers.json', 'w', encoding='utf-8') as outfile:
+        json.dump(response.json(), outfile)
+    assert response.status_code == 200
+
+
+def test_create_device_model():
+    url = URL + "/device_model"
+    name_list = ["Temperature_humidity", "ip_cam", "electrostatic", "Nitrogen"]
+    for name in name_list:
+        device_name = {
+            "name": name
+        }
+        response = client.post(url, json=device_name, headers=get_current_user_header())
+        print(response.json())
+        assert response.status_code == 200
 #
 # # def test_create_TH_device():
 # #     area_list = ["room", "outside", "toilet", "school"]

@@ -14,8 +14,12 @@ def get_All_areas(db: Session):
     return db.query(area).all()
 
 
-def get_email_alert_by_id(db: Session, area_id: int):
+def get_area_by_id(db: Session, area_id: int):
     return db.query(area).filter(area.id == area_id).first()
+
+
+def get_area_by_group_id(db: Session, group_id: int):
+    return db.query(area).filter(area.group_id == group_id).order_by(area.id).all()
 
 
 def get_area_by_group_id_and_name(db: Session, group_id: int, name: str):
@@ -37,6 +41,35 @@ def create_area(db: Session, group_id: int, name: str):
     return db_area
 
 
+def modify_area(db: Session, area_id: int, name: str, send_mail: bool):
+    db_area = db.query(area).filter(area.id == area_id).first()
+    db.begin()
+    try:
+        if name != -1:
+            db_area.name = name
+        if send_mail != -1:
+            db_area.send_mail = send_mail
+        db.commit()
+        db.refresh(db_area)
+    except Exception as e:
+        db.rollback()
+        print(str(e))
+        raise UnicornException(name=create_area.__name__, description=str(e), status_code=500)
+    return db_area
+
+
+def delete_area_by_id(db: Session, area_id: int):
+    db.begin()
+    try:
+        db.query(area).filter(area.id == area_id).delete()
+        db.commit()
+    except Exception as e:
+        db.rollback()
+        print(str(e))
+        raise UnicornException(name=delete_area_by_id.__name__, description=str(e), status_code=500)
+    return "delete done"
+
+
 def delete_area_by_group_id(db: Session, group_id: int):
     db.begin()
     try:
@@ -55,9 +88,14 @@ def get_All_area_users(db: Session):
     return db.query(area_user).all()
 
 
-def get_users_by_email_alert_id(db: Session, email_alert_id: int):
-    area_user_db_list = db.query(area_user.user_id).filter(area_user.email_alert_id == email_alert_id).all()
-    return db.query(user).filter(user.id.in_(area_user_db_list)).all()
+def get_users_by_area_id(db: Session, area_id: int):
+    area_user_db_list = db.query(area_user).filter(area_user.area_id == area_id).all()
+    area_user_id_list = [item.user_id for item in area_user_db_list]
+    return db.query(user).filter(user.id.in_(area_user_id_list)).all()
+
+
+def get_area_user_by_area_id_and_user_id(db: Session, area_id: int, user_id: int):
+    return db.query(area_user).filter(area_user.area_id == area_id, area_user.user_id == user_id).first()
 
 
 def create_area_user(db: Session, area_id: int, user_id: int):
@@ -108,4 +146,29 @@ def delete_area_user_by_user_id(db: Session, user_id: int):
         db.rollback()
         print(str(e))
         raise UnicornException(name=delete_area_user_by_user_id.__name__, description=str(e), status_code=500)
+    return "delete email_alert_user Done"
+
+
+def delete_area_user_by_area_id(db: Session, area_id: int):
+    db.begin()
+    try:
+        db.query(area_user).filter(area_user.area_id == area_id).delete()
+        db.commit()
+    except Exception as e:
+        db.rollback()
+        print(str(e))
+        raise UnicornException(name=delete_area_user_by_user_id.__name__, description=str(e), status_code=500)
+    return "delete email_alert_user Done"
+
+
+def delete_area_user_by_area_id_and_user_id(db: Session, area_id: int, user_id: int):
+    db.begin()
+    try:
+        area_user_db = db.query(area_user).filter(area_user.area_id == area_id, area_user.user_id == user_id).first()
+        db.delete(area_user_db)
+        db.commit()
+    except Exception as e:
+        db.rollback()
+        print(str(e))
+        raise UnicornException(name=delete_area_user_by_id.__name__, description=str(e), status_code=500)
     return "delete email_alert_user Done"

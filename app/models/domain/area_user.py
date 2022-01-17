@@ -10,7 +10,7 @@ class area_user(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
     created_at = Column(DateTime, index=True)
 
-    def __init__(self, email_alert_id, user_id):
-        self.email_alert_id = email_alert_id
+    def __init__(self, area_id, user_id):
+        self.area_id = area_id
         self.user_id = user_id
         self.created_at = datetime.now()

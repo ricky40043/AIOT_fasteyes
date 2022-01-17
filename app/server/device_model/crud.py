@@ -13,7 +13,7 @@ def get_All_device_models(db: Session):
 
 
 def get_device_model_by_name(db: Session, name: str):
-    return db.query(device_model).filter(name == name).first()
+    return db.query(device_model).filter(device_model.name == name).first()
 
 
 def create_device_models(db: Session, device_post: DeviceModelPostModel):

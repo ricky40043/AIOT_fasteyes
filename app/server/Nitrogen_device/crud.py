@@ -15,9 +15,13 @@ from app.server.device_model import DeviceType
 from app.server.observation.crud import get_Observations_by_group_and_device_model_id_and_timespan
 
 
-def get_Nitrogen_devices(db: Session, group_id: int):
-    return db.query(device).filter(device.device_model_id == DeviceType.Nitrogen.value,
-                                   device.group_id == group_id).all()
+def get_Nitrogen_devices(db: Session, group_id: int, area: Optional[str] = ""):
+    if area == "":
+        return db.query(device).filter(device.device_model_id == DeviceType.Nitrogen.value,
+                                       device.group_id == group_id).order_by(device.id).all()
+    else:
+        return db.query(device).filter(device.device_model_id == DeviceType.Nitrogen.value,
+                                       device.group_id == group_id, device.area == area).order_by(device.id).all()
 
 
 def create_Nitrogen_devices(db: Session, group_id: int, user_id: int,
@@ -63,6 +67,8 @@ def modify_Nitrogen_devices(db: Session, group_id: int, device_id: int,
         temp_info["alarm_Nitrogen_upper_limit"] = device_patch.info["alarm_Nitrogen_upper_limit"]
         temp_info["alarm_Oxygen_lower_limit"] = device_patch.info["alarm_Oxygen_lower_limit"]
         temp_info["alarm_Oxygen_upper_limit"] = device_patch.info["alarm_Oxygen_upper_limit"]
+        temp_info["serial_number"] = device_patch.info["serial_number"]
+
         device_db.info = temp_info
         device_db.name = device_patch.name
         device_db.area = device_patch.area
@@ -93,11 +99,11 @@ def delete_Nitrogen_devices(db: Session, group_id: int, device_id: int):
     return device_db
 
 
-def get_Nitrogen_observation_csv(db: Session, group_id, device_model_id, status, start_timestamp, end_timestamp, area: Optional[str]= None):
+def get_Nitrogen_observation_csv(db: Session, group_id, device_model_id, status, start_timestamp, end_timestamp, select_device:Optional[int]=-1, area: Optional[str]= ""):
     observation_data_list = get_Observations_by_group_and_device_model_id_and_timespan(db, group_id,
                                                                                        device_model_id,
                                                                                        status, start_timestamp,
-                                                                                       end_timestamp, area)
+                                                                                       end_timestamp, select_device, area)
 
     device_db_list = get_device_by_group_id_and_device_model_id(db, group_id, device_model_id)
     device_name_dict = {device_db.__dict__["id"]: device_db.__dict__["name"] for device_db in device_db_list}

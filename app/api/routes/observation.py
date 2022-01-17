@@ -104,14 +104,15 @@ def GetObservationsByDeviceId(device_model_id: int,
                               status: int,
                               start_timestamp: datetime,
                               end_timestamp: datetime,
+                              select_device: Optional[int] = -1,
                               area: Optional[str]= None,
                               db: Session = Depends(get_db),
                               Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     if device_model_id == 1:
-        file_location = get_TH_observation_csv(db, current_user.group_id, 1, status, start_timestamp, end_timestamp, area)
+        file_location = get_TH_observation_csv(db, current_user.group_id, 1, status, start_timestamp, end_timestamp, select_device, area)
     elif device_model_id == 4:
-        file_location = get_Nitrogen_observation_csv(db, current_user.group_id, 1, status, start_timestamp, end_timestamp, area)
+        file_location = get_Nitrogen_observation_csv(db, current_user.group_id, 1, status, start_timestamp, end_timestamp, select_device, area)
 
     return FileResponse(file_location, media_type='text/csv', filename=file_location)
 

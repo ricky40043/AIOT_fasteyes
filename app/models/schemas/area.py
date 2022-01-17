@@ -25,3 +25,16 @@ class Area_UsersViewModel(Base):
     created_at: datetime
     area_id: int
     user_id: int
+
+#
+# class Area_patch_Model(Base):
+#     send_mail: Optional[bool] = -1
+#     name: Optional[str] = -1
+#
+#     class Config:
+#         schema_extra = {
+#             "example": {
+#                 "send_mail": False,
+#                 "name": "1F",
+#             }
+#         }

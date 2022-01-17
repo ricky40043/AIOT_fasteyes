@@ -1,7 +1,7 @@
-from sqlalchemy import Column, Integer, ForeignKey, String, DateTime, JSON, Boolean
+from sqlalchemy import Column, Integer, ForeignKey, String, DateTime, Boolean
 from app.db.database import Base
 from datetime import datetime
-
+from sqlalchemy.dialects.postgresql import JSON
 
 class bulletin_board(Base):
     __tablename__ = "bulletin_boards"

@@ -1,7 +1,7 @@
-from sqlalchemy import Column, Integer, ForeignKey, String, DateTime, JSON
+from sqlalchemy import Column, Integer, ForeignKey, String, DateTime
 from app.db.database import Base
 from datetime import datetime
-
+from sqlalchemy.dialects.postgresql import JSON
 
 class device(Base):
     __tablename__ = "devices"

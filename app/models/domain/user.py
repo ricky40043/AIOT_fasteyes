@@ -1,8 +1,8 @@
 from datetime import datetime
-from sqlalchemy import Boolean, Column, Integer, String, Text, DateTime, ForeignKey, JSON
+from sqlalchemy import Boolean, Column, Integer, String, Text, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from app.db.database import Base
-
+from sqlalchemy.dialects.postgresql import JSON
 
 class user(Base):
     __tablename__ = "users"

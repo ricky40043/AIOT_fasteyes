@@ -1,12 +1,12 @@
 from pydantic import BaseModel
 from datetime import datetime
 
-from sqlalchemy import Boolean, Column, Integer, String, Text, DateTime, ForeignKey, JSON, Float
+from sqlalchemy import Boolean, Column, Integer, String, Text, DateTime, ForeignKey, Float
 
 from sqlalchemy.orm import relationship
 
 from app.db.database import Base
-
+from sqlalchemy.dialects.postgresql import JSON
 
 class fasteyes_device(Base):
     __tablename__ = "fasteyes_devices"

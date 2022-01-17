@@ -11,6 +11,7 @@ from app.db.database import get_db
 from app.helper.authentication import Authorize_user
 from app.models.schemas.user import UserViewModel, UserPostViewModel, adminUserPostViewModel, UserPatchInfoModel, \
     UserPatchPasswordViewModel, UserChangeSettingModel, UserInviteViewModel
+from app.server.area.crud import delete_area_user_by_user_id
 from app.server.authentication import Authority_Level, verify_password, checkLevel, get_tocken, get_email_token
 from app.server.bulletin_board.crud import create_bulletin_board
 from app.server.fasteyes_observation import create_output_data_form
@@ -118,7 +119,7 @@ def DeleteUser(user_id: int,
     if delete_user.level <= current_user.level:
         raise HTTPException(status_code=401, detail="權限不夠")
 
-    delete_email_alert_user_by_user_id(db, delete_user.id)
+    delete_area_user_by_user_id(db, delete_user.id)
 
     return delete_user_by_user_id(db, delete_user.id)
 

@@ -1,8 +1,8 @@
 from pydantic import BaseModel
 from datetime import datetime
-from sqlalchemy import Boolean, Column, Integer, String, Text, DateTime, ForeignKey, Float, JSON
+from sqlalchemy import Boolean, Column, Integer, String, Text, DateTime, ForeignKey, Float
 from app.db.database import Base
-
+from sqlalchemy.dialects.postgresql import JSON
 
 class fasteyes_observation(Base):
     __tablename__ = "fasteyes_observations"

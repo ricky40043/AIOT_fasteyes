@@ -1,4 +1,6 @@
 # crud
+from typing import Optional
+
 from sqlalchemy.orm import Session
 
 from app.models.domain.device import device
@@ -9,8 +11,12 @@ def get_All_devices(db: Session):
     return db.query(device).all()
 
 
-def get_device_by_group_id_and_device_model_id(db: Session, group_id: int, device_model_id: int):
-    return db.query(device).filter(device.group_id == group_id, device.device_model_id == device_model_id).all()
+def get_device_by_group_id_and_device_model_id(db: Session, group_id: int, device_model_id: int, area:Optional[str]=""):
+    if area == "":
+        return db.query(device).filter(device.group_id == group_id, device.device_model_id == device_model_id).all()
+    else:
+        return db.query(device).filter(device.group_id == group_id, device.device_model_id == device_model_id,
+                                       device.area == area).all()
 
 
 def get_device_by_id(db: Session, id: int):

@@ -19,6 +19,7 @@ from fastapi import UploadFile, File
 from app.server.department.crud import get_department_by_id
 from app.server.fasteyes_device.crud import get_fasteyes_device_by_id
 from app.server.staff.crud import get_default_staff_id, get_staff_by_id
+from datetime import datetime, time
 
 
 def get_All_observations(db: Session):
@@ -217,8 +218,11 @@ def check_observation_ownwer(db: Session, observation_id: int, group_id: int):
 
 
 def get_attendence_by_time_interval(db: Session, group_id: int, start_timestamp: datetime,
-                                    end_timestamp: datetime, attendance_in: attendancePostModel, status_in: int,
-                                    select_device_id: int):
+                                    end_timestamp: datetime, status_in: int, select_device_id: int,
+                                    working_time_1: time,
+                                    working_time_2: time,
+                                    working_time_off_1: time,
+                                    working_time_off_2: time):
     if select_device_id == -1:
         fasteyes_observation_db_list = db.query(fasteyes_observation).filter(
             fasteyes_observation.group_id == group_id).filter(
@@ -232,8 +236,8 @@ def get_attendence_by_time_interval(db: Session, group_id: int, start_timestamp:
 
     bCrossDay = False
     date = start_timestamp.date()
-    datetime1 = datetime.combine(date, attendance_in.working_time_1)
-    datetime2 = datetime.combine(date, attendance_in.working_time_off_1)
+    datetime1 = datetime.combine(date, working_time_1)
+    datetime2 = datetime.combine(date, working_time_off_1)
 
     if datetime1 > datetime2:
         bCrossDay = True
@@ -243,7 +247,7 @@ def get_attendence_by_time_interval(db: Session, group_id: int, start_timestamp:
                             range(timeinterval.days + 1)]
     for each_fasteyes_observation in fasteyes_observation_db_list:
         # 先判斷上班時間
-        if attendance_in.working_time_1 < each_fasteyes_observation.phenomenon_time.time() < attendance_in.working_time_2:
+        if working_time_1 < each_fasteyes_observation.phenomenon_time.time() < working_time_2:
             temp_timeinterval = (each_fasteyes_observation.phenomenon_time.date() - start_timestamp.date())
             idx = temp_timeinterval.days
             date_attendance = date_attendance_list[idx]["attendance"]
@@ -267,7 +271,7 @@ def get_attendence_by_time_interval(db: Session, group_id: int, start_timestamp:
             #     res["punch_in_temperature_result"] = each_fasteyes_observation.result
             #     res["punch_in_temperature"] = each_fasteyes_observation.info["temperature"]
         # 判斷下班時間
-        elif attendance_in.working_time_off_1 < each_fasteyes_observation.phenomenon_time.time() < attendance_in.working_time_off_2:
+        elif working_time_off_1 < each_fasteyes_observation.phenomenon_time.time() < working_time_off_2:
             temp_timeinterval = (each_fasteyes_observation.phenomenon_time.date() - start_timestamp.date())
             idx = temp_timeinterval.days
             if bCrossDay:
@@ -304,8 +308,11 @@ def get_attendence_by_time_interval(db: Session, group_id: int, start_timestamp:
 
 
 def get_attendence_by_time_interval_data(db: Session, group_id: int, start_timestamp: datetime,
-                                         end_timestamp: datetime, attendance_in: attendancePostModel, status_in: int,
-                                         select_device_id: int):
+                                         end_timestamp: datetime, status_in: int, select_device_id: int,
+                                         working_time_1: time,
+                                         working_time_2: time,
+                                         working_time_off_1: time,
+                                         working_time_off_2: time):
     if select_device_id == -1:
         fasteyes_observation_db_list = db.query(fasteyes_observation).filter(
             fasteyes_observation.group_id == group_id).filter(
@@ -320,8 +327,8 @@ def get_attendence_by_time_interval_data(db: Session, group_id: int, start_times
 
     bCrossDay = False
     date = start_timestamp.date()
-    datetime1 = datetime.combine(date, attendance_in.working_time_1)
-    datetime2 = datetime.combine(date, attendance_in.working_time_off_1)
+    datetime1 = datetime.combine(date, working_time_1)
+    datetime2 = datetime.combine(date, working_time_off_1)
 
     if datetime1 > datetime2:
         bCrossDay = True
@@ -331,7 +338,7 @@ def get_attendence_by_time_interval_data(db: Session, group_id: int, start_times
                             range(timeinterval.days + 1)]
     for each_fasteyes_observation in fasteyes_observation_db_list:
         # 先判斷上班時間
-        if each_fasteyes_observation.phenomenon_time.time() < attendance_in.working_time_off_1:
+        if each_fasteyes_observation.phenomenon_time.time() < working_time_off_1:
             temp_timeinterval = (each_fasteyes_observation.phenomenon_time.date() - start_timestamp.date())
             idx = temp_timeinterval.days
             date_attendance = date_attendance_list[idx]["attendance"]
@@ -355,7 +362,7 @@ def get_attendence_by_time_interval_data(db: Session, group_id: int, start_times
             #     res["punch_in_temperature_result"] = each_fasteyes_observation.result
             #     res["punch_in_temperature"] = each_fasteyes_observation.info["temperature"]
         # 判斷下班時間
-        elif attendance_in.working_time_2 < each_fasteyes_observation.phenomenon_time.time():
+        elif working_time_2 < each_fasteyes_observation.phenomenon_time.time():
             temp_timeinterval = (each_fasteyes_observation.phenomenon_time.date() - start_timestamp.date())
             idx = temp_timeinterval.days
             if bCrossDay:
@@ -452,5 +459,5 @@ def output_observations_by_group(db: Session, group_id: int, start_timestamp: da
                                                           fasteyes_observation.fasteyes_device_id.in_(output_fasteyes_list)).filter(
             fasteyes_observation.phenomenon_time >= start_timestamp,
             fasteyes_observation.phenomenon_time <= end_timestamp).filter(
-            staff.status == 1 , staff.id == fasteyes_observation.staff_id).all()
+            staff.status == 1, staff.id == fasteyes_observation.staff_id).all()
     return output_db

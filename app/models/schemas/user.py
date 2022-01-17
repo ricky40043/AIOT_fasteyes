@@ -102,7 +102,7 @@ class UserChangeSettingModel(UserBase):
     class Config:
         schema_extra = {
             "example": {
-                "area": False,
+                "email_alert": False,
                 "language": 0,
             }
         }
