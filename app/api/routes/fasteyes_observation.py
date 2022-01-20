@@ -24,8 +24,7 @@ from app.server.fasteyes_observation.crud import upload_observation_image, downl
     get_Observations_by_department_id, \
     get_Observations_by_staff_id_and_timespan, get_Observations_by_department_id_and_timespan, \
     download_observation_image_by_id, CeateFasteyesObservation, update_observation, get_attendence_by_time_interval, \
-    delete_observation_by_id, delete_observation_by_device_id, get_Observations_by_group_id_and_timespan, \
-    get_attendence_by_time_interval_data, output_observations_by_group
+    delete_observation_by_id, delete_observation_by_device_id, get_Observations_by_group_id_and_timespan
 from app.server.send_email import send_email_async, send_email_temperature_alert
 from app.server.staff.crud import get_staff_by_id, get_staff_by_group
 from fastapi_pagination import Page, paginate
@@ -216,6 +215,9 @@ def GetAttendancePie(working_time_1: time,
     attendence_data_list = get_attendence_by_time_interval(db, current_user.group_id, start_timestamp, end_timestamp,
                                                            -1, select_device_id, working_time_1, working_time_2,
                                                            working_time_off_1, working_time_off_2)
+    if working_time_1 > working_time_off_1:
+        del attendence_data_list[-1]
+
     # 取得在職員工
     staff_db_list = get_staff_by_group(db, current_user.group_id, 1, -1)
     staff_id_list = [each_staff.id for each_staff in staff_db_list]
@@ -258,11 +260,10 @@ def GetAttendanceLine_chart(working_time_1: time,
     current_user = Authorize_user(Authorize, db)
     if not checkLevel(current_user, Authority_Level.HRAccess.value):
         raise HTTPException(status_code=401, detail="權限不夠")
-    work_time_interval_data = get_attendence_by_time_interval_data(db, current_user.group_id, start_timestamp,
+    work_time_interval_data = get_attendence_by_time_interval(db, current_user.group_id, start_timestamp,
                                                                    end_timestamp, -1, select_device_id,
                                                                    working_time_1, working_time_2, working_time_off_1,
                                                                    working_time_off_2)
-
     temp = attendanceTime_intervalViewModel()
     # 取得在職員工
     staff_total = len(get_staff_by_group(db, current_user.group_id, 1, -1))
@@ -270,21 +271,44 @@ def GetAttendanceLine_chart(working_time_1: time,
     working_time = int(working_time_1.strftime("%-H"))
     working_time_off = int(working_time_off_2.strftime("%-H")) + 1
     day_attendence_data = work_time_interval_data[page - 1]["attendance"]
-    time_interval = [x for x in range(working_time, working_time_off)]
-    work_staff = [0 for i in range(working_time, working_time_off)]
-    for each_data in day_attendence_data:
-        # print(each_data)
-        if "punch_in" in each_data and "punch_out" in each_data:
-            punch_in_time = int(each_data["punch_in"].strftime("%-H")) + 1
-            punch_out_time = int(each_data["punch_out"].strftime("%-H"))
+    if working_time>working_time_off:
+        time_interval1 = [x for x in range(working_time, 24)]
+        time_interval2 = [x for x in range(0, working_time_off)]
+        time_interval = time_interval1+time_interval2
+        work_staff1 = [0 for i in range(working_time, 24)]
+        work_staff2 = [0 for i in range(0, working_time_off)]
+        work_staff = work_staff1+work_staff2
 
-            for i in range(working_time, working_time_off):
-                if punch_in_time <= i <= punch_out_time:
-                    work_staff[i - working_time] += 1
-    temp.time_interval = [str(each_time) + ":00" for each_time in time_interval]
-    # temp.time_interval = time_interval
-    temp.work_staff = work_staff
-    temp.total_staff = staff_total
+        for each_data in day_attendence_data:
+            if "punch_in" in each_data and "punch_out" in each_data:
+                punch_in_time = int(each_data["punch_in"].strftime("%-H")) + 1
+                punch_out_time = int(each_data["punch_out"].strftime("%-H"))
+                for i in range(len(time_interval)):
+                    if punch_in_time <= time_interval[i] <= 24 or 0<= time_interval[i] <= punch_out_time:
+                        # print("punch_in_time:"+str(punch_in_time))
+                        # print("punch_out_time:"+str(punch_out_time))
+                        # print("time_interval:"+str(time_interval[i]))
+                        work_staff[i] += 1
+        temp.time_interval = [str(each_time) + ":00" for each_time in time_interval]
+        # temp.time_interval = time_interval
+        temp.work_staff = work_staff
+        temp.total_staff = staff_total
+    else:
+        time_interval = [x for x in range(working_time, working_time_off)]
+        work_staff = [0 for i in range(working_time, working_time_off)]
+
+        for each_data in day_attendence_data:
+            if "punch_in" in each_data and "punch_out" in each_data:
+                punch_in_time = int(each_data["punch_in"].strftime("%-H")) + 1
+                punch_out_time = int(each_data["punch_out"].strftime("%-H"))
+
+                for i in range(working_time, working_time_off):
+                    if punch_in_time <= i <= punch_out_time:
+                        work_staff[i - working_time] += 1
+        temp.time_interval = [str(each_time) + ":00" for each_time in time_interval]
+        # temp.time_interval = time_interval
+        temp.work_staff = work_staff
+        temp.total_staff = staff_total
 
     return temp
 

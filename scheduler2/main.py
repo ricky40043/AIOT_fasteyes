@@ -15,6 +15,7 @@ app = FastAPI()
 q = Queue()
 HOST_IP = os.getenv('HOST_IP')
 PORT = os.getenv('UDP_PORT')
+TIME_INTERVAL = 30
 
 
 class MyUDPProtocol(asyncio.DatagramProtocol):
@@ -32,7 +33,7 @@ async def start_receive():
 @app.on_event("startup")
 async def start_deal_with_data():
     while True:
-        await asyncio.sleep(10)
+        await asyncio.sleep(TIME_INTERVAL)
         for i in range(q.qsize()):
             decode(q.get())
         activity()

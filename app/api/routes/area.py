@@ -121,7 +121,7 @@ def CreateArea_users(area_id: int, user_id: int, db: Session = Depends(get_db), 
     return create_area_user(db, area_id, user_id)
 
 
-@router.delete("/area_user", response_model=Area_UsersViewModel)
+@router.delete("/area_user")
 def deleteArea_user(area_id: int, user_id: int, db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
 

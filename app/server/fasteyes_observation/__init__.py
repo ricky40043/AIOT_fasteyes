@@ -76,7 +76,6 @@ def output_interval_attendance_csv(db: Session, group_id: int, start_timestamp: 
     with open(file_location, 'w', encoding='utf-8-sig') as f:
         w = csv.writer(f)
         for eachdata in observation_list:
-            print(eachdata)
             w.writerow(eachdata)
 
     return file_location
@@ -134,7 +133,6 @@ def output_interval_data_csv(db, group_id, start_timestamp, end_timestamp):
     with open(file_location, 'w', encoding='utf-8-sig') as f:
         w = csv.writer(f)
         for eachdata in observation_list:
-            print(eachdata)
             w.writerow(eachdata)
 
     return file_location

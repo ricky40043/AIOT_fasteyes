@@ -306,104 +306,111 @@ def get_attendence_by_time_interval(db: Session, group_id: int, start_timestamp:
 
     return date_attendance_list
 
-
-def get_attendence_by_time_interval_data(db: Session, group_id: int, start_timestamp: datetime,
-                                         end_timestamp: datetime, status_in: int, select_device_id: int,
-                                         working_time_1: time,
-                                         working_time_2: time,
-                                         working_time_off_1: time,
-                                         working_time_off_2: time):
-    if select_device_id == -1:
-        fasteyes_observation_db_list = db.query(fasteyes_observation).filter(
-            fasteyes_observation.group_id == group_id).filter(
-            fasteyes_observation.phenomenon_time >= start_timestamp,
-            fasteyes_observation.phenomenon_time <= end_timestamp).order_by(fasteyes_observation.phenomenon_time).all()
-    else:
-        fasteyes_observation_db_list = db.query(fasteyes_observation).filter(
-            fasteyes_observation.group_id == group_id, fasteyes_observation.fasteyes_device_id == select_device_id).filter(
-            fasteyes_observation.phenomenon_time >= start_timestamp,
-            fasteyes_observation.phenomenon_time <= end_timestamp).order_by(fasteyes_observation.phenomenon_time,
-                                                                            ).all()
-
-    bCrossDay = False
-    date = start_timestamp.date()
-    datetime1 = datetime.combine(date, working_time_1)
-    datetime2 = datetime.combine(date, working_time_off_1)
-
-    if datetime1 > datetime2:
-        bCrossDay = True
-
-    timeinterval = end_timestamp - start_timestamp
-    date_attendance_list = [{"date": start_timestamp.date() + timedelta(day), "attendance": []} for day in
-                            range(timeinterval.days + 1)]
-    for each_fasteyes_observation in fasteyes_observation_db_list:
-        # 先判斷上班時間
-        if each_fasteyes_observation.phenomenon_time.time() < working_time_off_1:
-            temp_timeinterval = (each_fasteyes_observation.phenomenon_time.date() - start_timestamp.date())
-            idx = temp_timeinterval.days
-            date_attendance = date_attendance_list[idx]["attendance"]
-
-            # 判斷 資料是否已有 沒有就新增
-            res = next((sub for sub in date_attendance if sub['staff_id'] == each_fasteyes_observation.staff_id), None)
-            if not res:
-                working_time_data = {
-                    "staff_id": each_fasteyes_observation.staff_id,
-                    "punch_in": each_fasteyes_observation.phenomenon_time,
-                    "punch_in_temperature_result": each_fasteyes_observation.result,
-                    "punch_in_temperature": each_fasteyes_observation.info["temperature"],
-                    "staff_name": each_fasteyes_observation.info["staff_name"],
-                    "staff_serial_number": each_fasteyes_observation.info["staff_serial_number"],
-                    "department_name": each_fasteyes_observation.info["department_name"]
-                }
-                date_attendance.append(working_time_data)
-
-            # else:
-            #     res["punch_in"] = each_fasteyes_observation.phenomenon_time
-            #     res["punch_in_temperature_result"] = each_fasteyes_observation.result
-            #     res["punch_in_temperature"] = each_fasteyes_observation.info["temperature"]
-        # 判斷下班時間
-        elif working_time_2 < each_fasteyes_observation.phenomenon_time.time():
-            temp_timeinterval = (each_fasteyes_observation.phenomenon_time.date() - start_timestamp.date())
-            idx = temp_timeinterval.days
-            if bCrossDay:
-                idx = idx - 1
-            date_attendance = date_attendance_list[idx]["attendance"]
-            # 判斷 資料是否已有 沒有就新增
-            res = next((sub for sub in date_attendance if sub['staff_id'] == each_fasteyes_observation.staff_id), None)
-            if not res:
-                working_time_data = {
-                    "staff_id": each_fasteyes_observation.staff_id,
-                    "punch_out": each_fasteyes_observation.phenomenon_time,
-                    "punch_out_temperature_result": each_fasteyes_observation.result,
-                    "punch_out_temperature": each_fasteyes_observation.info["temperature"],
-                    "staff_name": each_fasteyes_observation.info["staff_name"],
-                    "staff_serial_number": each_fasteyes_observation.info["staff_serial_number"],
-                    "department_name": each_fasteyes_observation.info["department_name"]
-                }
-                date_attendance.append(working_time_data)
-            else:
-                res["punch_out"] = each_fasteyes_observation.phenomenon_time
-                res["punch_out_temperature_result"] = each_fasteyes_observation.result
-                res["punch_out_temperature"] = each_fasteyes_observation.info["temperature"]
-
-    for each_date_attendance in date_attendance_list:
-        attendance_list = each_date_attendance["attendance"]
-        if status_in == 0:
-            filtered = filter(filter_status_normal, attendance_list)
-            each_date_attendance["attendance"] = list(filtered)
-        elif status_in == 1:
-            filtered = filter(filter_status_abnormal, attendance_list)
-            each_date_attendance["attendance"] = list(filtered)
-
-    return date_attendance_list
+#
+# def get_attendence_by_time_interval_data(db: Session, group_id: int, start_timestamp: datetime,
+#                                          end_timestamp: datetime, status_in: int, select_device_id: int,
+#                                          working_time_1: time,
+#                                          working_time_2: time,
+#                                          working_time_off_1: time,
+#                                          working_time_off_2: time):
+#     if select_device_id == -1:
+#         fasteyes_observation_db_list = db.query(fasteyes_observation).filter(
+#             fasteyes_observation.group_id == group_id).filter(
+#             fasteyes_observation.phenomenon_time >= start_timestamp,
+#             fasteyes_observation.phenomenon_time <= end_timestamp).order_by(fasteyes_observation.phenomenon_time).all()
+#     else:
+#         fasteyes_observation_db_list = db.query(fasteyes_observation).filter(
+#             fasteyes_observation.group_id == group_id, fasteyes_observation.fasteyes_device_id == select_device_id).filter(
+#             fasteyes_observation.phenomenon_time >= start_timestamp,
+#             fasteyes_observation.phenomenon_time <= end_timestamp).order_by(fasteyes_observation.phenomenon_time,
+#                                                                             ).all()
+#
+#     bCrossDay = False
+#     date = start_timestamp.date()
+#     datetime1 = datetime.combine(date, working_time_1)
+#     datetime2 = datetime.combine(date, working_time_off_1)
+#     datetime3 = datetime.combine(date, working_time_2)
+#
+#     if datetime1 > datetime2:
+#         bCrossDay = True
+#         date += timedelta(days=1)
+#
+#     datetime2 = datetime.combine(date, working_time_off_1)
+#
+#     timeinterval = end_timestamp - start_timestamp
+#     date_attendance_list = [{"date": start_timestamp.date() + timedelta(day), "attendance": []} for day in
+#                             range(timeinterval.days + 1)]
+#     for each_fasteyes_observation in fasteyes_observation_db_list:
+#         # 先判斷上班時間
+#         if each_fasteyes_observation.phenomenon_time < datetime2:
+#             temp_timeinterval = (each_fasteyes_observation.phenomenon_time.date() - start_timestamp.date())
+#             idx = temp_timeinterval.days
+#             date_attendance = date_attendance_list[idx]["attendance"]
+#             # 判斷 資料是否已有 沒有就新增
+#             res = next((sub for sub in date_attendance if sub['staff_id'] == each_fasteyes_observation.staff_id), None)
+#             if not res:
+#                 working_time_data = {
+#                     "staff_id": each_fasteyes_observation.staff_id,
+#                     "punch_in": each_fasteyes_observation.phenomenon_time,
+#                     "punch_in_temperature_result": each_fasteyes_observation.result,
+#                     "punch_in_temperature": each_fasteyes_observation.info["temperature"],
+#                     "staff_name": each_fasteyes_observation.info["staff_name"],
+#                     "staff_serial_number": each_fasteyes_observation.info["staff_serial_number"],
+#                     "department_name": each_fasteyes_observation.info["department_name"]
+#                 }
+#                 date_attendance.append(working_time_data)
+#
+#             # else:
+#             #     res["punch_in"] = each_fasteyes_observation.phenomenon_time
+#             #     res["punch_in_temperature_result"] = each_fasteyes_observation.result
+#             #     res["punch_in_temperature"] = each_fasteyes_observation.info["temperature"]
+#         # 判斷下班時間
+#         elif datetime3 < each_fasteyes_observation.phenomenon_time:
+#             temp_timeinterval = (each_fasteyes_observation.phenomenon_time.date() - start_timestamp.date())
+#             idx = temp_timeinterval.days
+#             if bCrossDay:
+#                 idx = idx - 1
+#             date_attendance = date_attendance_list[idx]["attendance"]
+#             # 判斷 資料是否已有 沒有就新增
+#             res = next((sub for sub in date_attendance if sub['staff_id'] == each_fasteyes_observation.staff_id), None)
+#             if not res:
+#                 working_time_data = {
+#                     "staff_id": each_fasteyes_observation.staff_id,
+#                     "punch_out": each_fasteyes_observation.phenomenon_time,
+#                     "punch_out_temperature_result": each_fasteyes_observation.result,
+#                     "punch_out_temperature": each_fasteyes_observation.info["temperature"],
+#                     "staff_name": each_fasteyes_observation.info["staff_name"],
+#                     "staff_serial_number": each_fasteyes_observation.info["staff_serial_number"],
+#                     "department_name": each_fasteyes_observation.info["department_name"]
+#                 }
+#                 date_attendance.append(working_time_data)
+#             else:
+#                 res["punch_out"] = each_fasteyes_observation.phenomenon_time
+#                 res["punch_out_temperature_result"] = each_fasteyes_observation.result
+#                 res["punch_out_temperature"] = each_fasteyes_observation.info["temperature"]
+#
+#     for each_date_attendance in date_attendance_list:
+#         attendance_list = each_date_attendance["attendance"]
+#         if status_in == 0:
+#             filtered = filter(filter_status_normal, attendance_list)
+#             each_date_attendance["attendance"] = list(filtered)
+#         elif status_in == 1:
+#             filtered = filter(filter_status_abnormal, attendance_list)
+#             each_date_attendance["attendance"] = list(filtered)
+#     print(date_attendance_list[0])
+#     return date_attendance_list
 
 
 def filter_status_normal(x):
-    return not x["punch_in_temperature_result"] and not x["punch_out_temperature_result"] and len(x) == 10
+    if len(x) < 10:
+        return False
+    return not x["punch_in_temperature_result"] and not x["punch_out_temperature_result"]
 
 
 def filter_status_abnormal(x):
-    return x["punch_in_temperature_result"] or x["punch_out_temperature_result"] or len(x) < 10
+    if len(x) < 10:
+        return True
+    return x["punch_in_temperature_result"] or x["punch_out_temperature_result"]
 
 
 def delete_observation_by_device_id(db: Session, device_id: int):

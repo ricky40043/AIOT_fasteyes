@@ -27,15 +27,6 @@ def upload_image(group_id: int, image: UploadFile = File(...)):
 # 傳檔案
 def get_bulletin_image_file(db: Session, group_id: int):
     bulletin_board_db = db.query(bulletin_board).filter(bulletin_board.group_id == group_id).first()
-    print(bulletin_board_db.__dict__)
-    print(bulletin_board_db.is_used)
-    print(bulletin_board_db.is_used)
-    print(bulletin_board_db.is_used)
-    print(bulletin_board_db.is_used)
-    print(bulletin_board_db.is_used)
-    print(bulletin_board_db.is_used)
-    if bulletin_board_db.is_used is False:
-        return "bulletin image is none"
 
     if not bulletin_board_db:
         raise UnicornException(name=get_bulletin_image_file.__name__, description="bulletin db not exist",

@@ -56,6 +56,26 @@ def upload_Bulletin_file(db: Session, group_id: int, image: UploadFile = File(..
     return db_bulletin_board
 
 
+def patch_bulletin(db: Session, group_id: int, is_used: bool):
+    bulletin_board_db = db.query(bulletin_board).filter(bulletin_board.group_id == group_id).first()
+    if bulletin_board_db is None:
+        raise HTTPException(status_code=404, detail="bulletin_board_id is not exist or is not in this group")
+
+    db.begin()
+    try:
+        bulletin_board_db.updated_at = datetime.now()
+        bulletin_board_db.is_used = is_used
+        db.commit()
+        db.refresh(bulletin_board_db)
+
+    except Exception as e:
+        db.rollback()
+        print(str(e))
+        raise UnicornException(name=upload_Bulletin_file.__name__, description=str(e), status_code=500)
+
+    return bulletin_board_db
+
+
 def delete_Bulletin_file(db: Session, group_id: int):
     db_bulletin_board = db.query(bulletin_board).filter(bulletin_board.group_id == group_id).first()
     db.begin()

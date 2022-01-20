@@ -7,7 +7,7 @@ from app.models.schemas.bulletin_board import Bulletin_boardViewModel, Bulletin_
 from app.server.authentication import Authority_Level, verify_password, checkLevel, get_tocken, get_email_token
 from app.server.bulletin_board import get_bulletin_image_file
 from app.server.bulletin_board.crud import get_bulletin_board_by_group_id, create_bulletin_board, \
-    delete_bulletin_board, upload_Bulletin_file, delete_Bulletin_file
+    delete_bulletin_board, upload_Bulletin_file, delete_Bulletin_file, patch_bulletin
 
 router = APIRouter()
 
@@ -20,7 +20,7 @@ def GetBulletin(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     if not checkLevel(current_user, Authority_Level.User.value):
         raise HTTPException(status_code=401, detail="權限不夠")
 
-    return get_bulletin_board_by_group_id(current_user.group_id)
+    return get_bulletin_board_by_group_id(db, current_user.group_id)
 
 
 # 取得佈告欄 (Admin)
@@ -34,8 +34,8 @@ def GetBulletin(db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     return get_bulletin_image_file(db, current_user.group_id)
 
 
-# 修改佈告欄 (Admin)
-@router.patch("/bulletin", response_model=Bulletin_boardViewModel)
+# 佈告欄 上傳圖片(Admin)
+@router.post("/bulletin/image", response_model=Bulletin_boardViewModel)
 def ModifyBulletin(Image_file: UploadFile = File(...),
                    db: Session = Depends(get_db),
                    Authorize: AuthJWT = Depends()):
@@ -46,6 +46,19 @@ def ModifyBulletin(Image_file: UploadFile = File(...),
 
     # 覆蓋舊的資料
     return upload_Bulletin_file(db, current_user.group_id, Image_file)
+
+
+# 修改佈告欄 (Admin)
+@router.patch("/bulletin", response_model=Bulletin_boardViewModel)
+def ModifyBulletin(is_used: bool,
+                   db: Session = Depends(get_db),
+                   Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+
+    if not checkLevel(current_user, Authority_Level.Admin.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    return patch_bulletin(db, current_user.group_id, is_used)
 
 
 # 刪除佈告欄 (Admin)

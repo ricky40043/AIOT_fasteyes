@@ -53,3 +53,4 @@ class Bulletin_boardViewModel(Base):
     picture_or_text: bool
     created_at: datetime
     updated_at: datetime
+    is_used: bool
