@@ -47,6 +47,8 @@ jmespath==0.10.0
 jsonify==0.5
 lxml==4.6.3
 MarkupSafe==2.0.1
+modbus-tk==1.1.2
+modbus_client==0.0.3
 netifaces==0.11.0
 numpy==1.21.2
 opencv-python==4.5.3.56
@@ -66,6 +68,7 @@ PyDispatcher==2.0.5
 PyJWT==1.7.1
 pyOpenSSL==20.0.1
 pyparsing==2.4.7
+pyserial==3.5
 pytest==6.2.5
 python-dateutil==2.8.2
 python-dotenv==0.19.0
