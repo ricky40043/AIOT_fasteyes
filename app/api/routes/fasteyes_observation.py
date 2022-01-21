@@ -268,8 +268,8 @@ def GetAttendanceLine_chart(working_time_1: time,
     # 取得在職員工
     staff_total = len(get_staff_by_group(db, current_user.group_id, 1, -1))
     # 計算出勤
-    working_time = int(working_time_1.strftime("%-H"))
-    working_time_off = int(working_time_off_2.strftime("%-H")) + 1
+    working_time = working_time_1.hour
+    working_time_off = working_time_off_2.hour + 1
     day_attendence_data = work_time_interval_data[page - 1]["attendance"]
     if working_time>working_time_off:
         time_interval1 = [x for x in range(working_time, 24)]
@@ -281,8 +281,8 @@ def GetAttendanceLine_chart(working_time_1: time,
 
         for each_data in day_attendence_data:
             if "punch_in" in each_data and "punch_out" in each_data:
-                punch_in_time = int(each_data["punch_in"].strftime("%-H")) + 1
-                punch_out_time = int(each_data["punch_out"].strftime("%-H"))
+                punch_in_time = each_data["punch_in"].hour + 1
+                punch_out_time = each_data["punch_out"].hour
                 for i in range(len(time_interval)):
                     if punch_in_time <= time_interval[i] <= 24 or 0<= time_interval[i] <= punch_out_time:
                         # print("punch_in_time:"+str(punch_in_time))
@@ -299,8 +299,8 @@ def GetAttendanceLine_chart(working_time_1: time,
 
         for each_data in day_attendence_data:
             if "punch_in" in each_data and "punch_out" in each_data:
-                punch_in_time = int(each_data["punch_in"].strftime("%-H")) + 1
-                punch_out_time = int(each_data["punch_out"].strftime("%-H"))
+                punch_in_time = each_data["punch_in"].hour + 1
+                punch_out_time = each_data["punch_out"].hour
 
                 for i in range(working_time, working_time_off):
                     if punch_in_time <= i <= punch_out_time:

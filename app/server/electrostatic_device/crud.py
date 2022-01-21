@@ -50,7 +50,11 @@ def modify_electrostatic_devices(db: Session, group_id: int, device_id: int,
                                  device_patch: ElectrostaticDevicePatchModel):
     device_db = db.query(device).filter(device.group_id == group_id, device.device_model_id == DeviceType.electrostatic.value,
                                         device.id == device_id).first()
-    check_name_repeate(db, device_patch.name, DeviceType.electrostatic.value)
+
+    check_name_repeate(db, device_patch.name, DeviceType.electrostatic.value, group_id, device_id)
+
+    check_serial_number_repeate(db, device_patch.serial_number, DeviceType.electrostatic.value, group_id,
+                                device_id)
     db.begin()
     try:
         temp_info = device_db.info.copy()  # dict 是 call by Ref. 所以一定要複製一份
@@ -60,6 +64,7 @@ def modify_electrostatic_devices(db: Session, group_id: int, device_id: int,
         device_db.info = temp_info
         device_db.name = device_patch.name
         device_db.area = device_patch.area
+        device_db.serial_number = device_patch.serial_number
         db.commit()
         db.refresh(device_db)
     except Exception as e:

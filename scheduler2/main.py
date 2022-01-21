@@ -6,7 +6,7 @@ from typing import Tuple
 from fastapi import FastAPI
 from apscheduler.schedulers.background import BackgroundScheduler
 
-from scheduler2.crud import decode, activity
+from scheduler2.crud import activity, temperature_humidity_decode
 from dotenv import load_dotenv
 
 scheduler = BackgroundScheduler()
@@ -15,7 +15,7 @@ app = FastAPI()
 q = Queue()
 HOST_IP = os.getenv('HOST_IP')
 PORT = os.getenv('UDP_PORT')
-TIME_INTERVAL = 30
+TIME_INTERVAL = int(os.getenv('TIME_INTERVAL'))
 
 
 class MyUDPProtocol(asyncio.DatagramProtocol):
@@ -35,11 +35,12 @@ async def start_deal_with_data():
     while True:
         await asyncio.sleep(TIME_INTERVAL)
         for i in range(q.qsize()):
-            decode(q.get())
+            temperature_humidity_decode(q.get())
         activity()
 
 
 @app.on_event("shutdown")
 async def on_shutdown() -> None:
     app.state.udp_transport.close()
-# uvicorn scheduler2.main:app --reload --host 192.168.45.75 --port 9000
+
+# uvicorn scheduler2.main:app --reload --host 192.168.45.75 --port 8000

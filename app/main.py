@@ -47,26 +47,4 @@ def authjwt_exception_handler(request: Request, exc: AuthJWTException):
     )
 
 
-# @app.on_event("startup")
-# async def on_startup() -> None:
-#     loop = asyncio.get_running_loop()
-#     transport, protocol = await loop.create_datagram_endpoint(
-#         lambda: MyUDPProtocol(), local_addr=(HOST_IP, PORT)
-#     )
-#     app.state.udp_transport = transport
-#     app.state.udp_protocol = protocol
-
-
-# pcs = set()
-# args = ''
-
-
-# @app.on_event("shutdown")
-# async def on_shutdown() -> None:
-#     app.state.udp_transport.close()
-    # coros = [pc.close() for pc in pcs]
-    # await asyncio.gather(*coros)
-    # pcs.clear()
-
-
-
+# uvicorn app.main:app --host 192.168.45.75 --port 8080

@@ -152,13 +152,13 @@ def get_output_data_form(group_id):
 
 def modify_output_data_form(group_id, output_form):
     path = FASTEYES_OUTPUT_PATH + str(group_id) + "/output_form.json"
-    with open(path, "w") as outfile:
+    with open(path, "w", encoding='utf-8-sig') as outfile:
         json.dump(output_form.__dict__, outfile)
     return output_form
 
 
 def create_output_data_form(group_id):
-    source = "sample.json"
+    source = "output_form.json"
 
     destination = FASTEYES_OUTPUT_PATH + str(group_id) + "/output_form.json"
 

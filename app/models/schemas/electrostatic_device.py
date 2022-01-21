@@ -42,6 +42,8 @@ class ElectrostaticDevicePatchModel(Base):
     info: ElectrostaticDeviceInfoModel
     name: str
     area: str
+    serial_number: str
+
     class Config:
         schema_extra = {
             "example": {

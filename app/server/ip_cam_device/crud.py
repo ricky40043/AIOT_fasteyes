@@ -49,7 +49,10 @@ def modify_ip_cam_devices(db: Session, group_id: int, device_id: int,
     device_db = db.query(device).filter(device.group_id == group_id, device.device_model_id == DeviceType.ip_cam.value,
                                         device.id == device_id).first()
 
-    check_name_repeate(db, device_patch.name, DeviceType.ip_cam.value)
+    check_name_repeate(db, device_patch.name, DeviceType.ip_cam.value, group_id, device_id)
+
+    check_serial_number_repeate(db, device_patch.serial_number, DeviceType.ip_cam.value, group_id,
+                                device_id)
 
     db.begin()
     try:
@@ -62,6 +65,7 @@ def modify_ip_cam_devices(db: Session, group_id: int, device_id: int,
         device_db.info = temp_info
         device_db.name = device_patch.name
         device_db.area = device_patch.area
+        device_db.serial_number = device_patch.serial_number
         db.commit()
         db.refresh(device_db)
     except Exception as e:

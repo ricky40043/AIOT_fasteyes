@@ -26,8 +26,9 @@ def get_Nitrogen_devices(db: Session, group_id: int, area: Optional[str] = ""):
 
 def create_Nitrogen_devices(db: Session, group_id: int, user_id: int,
                             name: str, serial_number: str, area: str, NitrogenDevice_create: NitrogenDevice_InfoModel):
-    check_name_repeate(db, name, DeviceType.Nitrogen.value)
-    check_serial_number_repeate(db, name, DeviceType.Nitrogen.value)
+
+    check_name_repeate(db, name, DeviceType.Nitrogen.value, group_id)
+    check_serial_number_repeate(db, name, DeviceType.Nitrogen.value, group_id)
 
     db.begin()
     try:
@@ -55,10 +56,8 @@ def modify_Nitrogen_devices(db: Session, group_id: int, device_id: int,
                                         device.device_model_id == DeviceType.Nitrogen.value,
                                         device.id == device_id).first()
 
-    device_by_name = get_device_by_name(db, device_patch.name, DeviceType.Nitrogen.value, group_id)
-    if device_by_name:
-        if device_by_name.id != device_db.id:
-            raise HTTPException(status_code=400, detail="device name is exist")
+    check_name_repeate(db, device_patch.name, DeviceType.Nitrogen.value, group_id, device_id)
+    check_serial_number_repeate(db, device_patch.serial_number, DeviceType.Nitrogen.value, group_id, device_id)
 
     db.begin()
     try:
@@ -67,11 +66,17 @@ def modify_Nitrogen_devices(db: Session, group_id: int, device_id: int,
         temp_info["alarm_Nitrogen_upper_limit"] = device_patch.info["alarm_Nitrogen_upper_limit"]
         temp_info["alarm_Oxygen_lower_limit"] = device_patch.info["alarm_Oxygen_lower_limit"]
         temp_info["alarm_Oxygen_upper_limit"] = device_patch.info["alarm_Oxygen_upper_limit"]
-        temp_info["serial_number"] = device_patch.info["serial_number"]
+        temp_info["Nitrogen_Flow_lower_limit"] = device_patch.info["Nitrogen_Flow_lower_limit"]
+        temp_info["Nitrogen_Flow_upper_limit"] = device_patch.info["Nitrogen_Flow_upper_limit"]
+        temp_info["Nitrogen_content_Oxygen_lower_limit"] = device_patch.info["Nitrogen_content_Oxygen_lower_limit"]
+        temp_info["Nitrogen_content_Oxygen_upper_limit"] = device_patch.info["Nitrogen_content_Oxygen_upper_limit"]
+        temp_info["ip"] = device_patch.info["ip"]
+        temp_info["port"] = device_patch.info["port"]
 
         device_db.info = temp_info
         device_db.name = device_patch.name
         device_db.area = device_patch.area
+        device_db.serial_number = device_patch.serial_number
         db.commit()
         db.refresh(device_db)
     except Exception as e:

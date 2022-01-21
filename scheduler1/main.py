@@ -9,11 +9,14 @@ from app.db.database import SessionLocal
 from app.models.domain.group import group
 from app.models.domain.fasteyes_observation import fasteyes_observation
 from app.models.domain.staff import staff
+from dotenv import load_dotenv
 
+load_dotenv('.env')
 path = os.getcwd() + "/scheduler1/file/"
 app = FastAPI()
 session = SessionLocal()
 scheduler = BackgroundScheduler()
+UPLOAD_INTERVAL = int(os.getenv('UPLOAD_INTERVAL'))
 
 
 def job():
@@ -53,7 +56,7 @@ def job():
 @app.on_event("startup")
 def start_upload():
     # scheduler.add_job(func=job, trigger="interval", seconds=10)
-    scheduler.add_job(func=job, trigger="interval", minutes=10)
+    scheduler.add_job(func=job, trigger="interval", minutes=UPLOAD_INTERVAL)
     scheduler.start()
 
 # uvicorn scheduler1.main:app --reload --port 8001

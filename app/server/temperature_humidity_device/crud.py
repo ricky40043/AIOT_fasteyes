@@ -16,13 +16,13 @@ from app.server.device_model import DeviceType
 from app.server.observation.crud import get_Observations_by_group_and_device_model_id_and_timespan
 
 
-def get_temperature_humidity_devices(db: Session, group_id: int, area:Optional[str]=""):
+def get_temperature_humidity_devices(db: Session, group_id: int, area: Optional[str] = ""):
     if area == "":
         return db.query(device).filter(device.device_model_id == DeviceType.temperature_humidity.value,
                                        device.group_id == group_id).order_by(device.id).all()
     else:
         return db.query(device).filter(device.device_model_id == DeviceType.temperature_humidity.value,
-                                       device.group_id == group_id, device.area == area ).order_by(device.id).all()
+                                       device.group_id == group_id, device.area == area).order_by(device.id).all()
 
 
 def get_temperature_humidity_devices_by_serial_number(serial_number: str):
@@ -62,10 +62,9 @@ def modify_temperature_humidity_devices(db: Session, group_id: int, device_id: i
                                         device.device_model_id == DeviceType.temperature_humidity.value,
                                         device.id == device_id).first()
 
-    device_by_name = get_device_by_name(db, device_patch.name, DeviceType.temperature_humidity.value, group_id)
-    if device_by_name:
-        if device_by_name.id != device_db.id:
-            raise HTTPException(status_code=400, detail="device name is exist")
+    check_name_repeate(db, device_patch.serial_number, DeviceType.temperature_humidity.value, group_id, device_id)
+
+    check_serial_number_repeate(db, device_patch.serial_number, DeviceType.temperature_humidity.value, group_id, device_id)
 
     db.begin()
     try:
@@ -79,10 +78,10 @@ def modify_temperature_humidity_devices(db: Session, group_id: int, device_id: i
         temp_info["compensate_temperature"] = device_patch.info["compensate_temperature"]
         temp_info["compensate_humidity"] = device_patch.info["compensate_humidity"]
         temp_info["interval_time"] = device_patch.info["interval_time"]
-        temp_info["serial_number"] = device_patch.info["serial_number"]
         device_db.info = temp_info
         device_db.name = device_patch.name
         device_db.area = device_patch.area
+        device_db.serial_number = device_patch.serial_number
         db.commit()
         db.refresh(device_db)
     except Exception as e:
@@ -110,11 +109,13 @@ def delete_temperature_humidity_devices(db: Session, group_id: int, device_id: i
     return device_db
 
 
-def get_TH_observation_csv(db: Session, group_id, device_model_id, status, start_timestamp, end_timestamp, select_device:Optional[int]=-1, area: Optional[str]= ""):
+def get_TH_observation_csv(db: Session, group_id, device_model_id, status, start_timestamp, end_timestamp,
+                           select_device: Optional[int] = -1, area: Optional[str] = ""):
     observation_data_list = get_Observations_by_group_and_device_model_id_and_timespan(db, group_id,
                                                                                        device_model_id,
                                                                                        status, start_timestamp,
-                                                                                       end_timestamp, select_device, area)
+                                                                                       end_timestamp, select_device,
+                                                                                       area)
 
     # device_db_list = get_device_by_group_id_and_device_model_id(db, group_id, device_model_id)
     # device_name_dict = {device_db.__dict__["id"]: device_db.__dict__["name"] for device_db in device_db_list}

@@ -54,6 +54,7 @@ class Ip_CamDevicePatchModel(Base):
     name: str
     area: str
     info: Ip_CamInfoModel
+    serial_number: str
 
     class Config:
         schema_extra = {

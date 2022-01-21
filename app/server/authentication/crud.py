@@ -3,8 +3,10 @@ import shutil
 from datetime import datetime
 from random import random
 
-from app.core.config import FILE_PATH
-from app.models.domain.Error_handler import UnicornException
+from app.core.config import FILE_PATH, FASTEYES_OUTPUT_PATH
+from app.models.domain.Error_handler import UnicornException, Error_handler
+from app.models.domain.area import area
+from app.models.domain.area_user import area_user
 from app.models.domain.bulletin_board import bulletin_board
 from app.models.domain.department import department
 from app.models.domain.device import device
@@ -86,7 +88,10 @@ def create_and_set_user_password(db: Session, user_email: str):
 def clear_all_data(db: Session):
     db.begin()
     try:
-        # db.query(Error_handler).delete()
+        db.query(Error_handler).delete()
+
+        db.query(area_user).delete()
+        db.query(area).delete()
 
         db.query(face).delete()
         db.query(fasteyes_observation).delete()
@@ -110,6 +115,9 @@ def clear_all_data(db: Session):
 
             if os.path.exists(FILE_PATH + "face"):
                 shutil.rmtree(FILE_PATH + "face")
+
+        if os.path.exists(FASTEYES_OUTPUT_PATH):
+            shutil.rmtree(FASTEYES_OUTPUT_PATH)
 
         db.commit()
     except Exception as e:

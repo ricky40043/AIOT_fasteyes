@@ -80,3 +80,4 @@ class DevicePatchModel(Base):
     info: dict
     area: str
     name: str
+    serial_number: str
