@@ -1,6 +1,6 @@
 import os
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, File, UploadFile
 from fastapi_jwt_auth import AuthJWT
 from pydantic import EmailStr
 from sqlalchemy.orm import Session
@@ -14,7 +14,7 @@ from app.models.schemas.user import UserViewModel
 from app.server.area.crud import create_area_user, delete_area_user_by_id, get_All_area_users, get_All_areas, \
     create_area, get_area_by_group_id, modify_area, delete_area_by_id, get_users_by_area_id, \
     delete_area_user_by_area_id, get_area_by_group_id_and_name, get_area_user_by_area_id_and_user_id, \
-    delete_area_user_by_area_id_and_user_id
+    delete_area_user_by_area_id_and_user_id, get_area_image, upload_area_image, delete_area_image
 from app.server.authentication import Authority_Level, verify_password, checkLevel, get_tocken, get_email_token
 
 router = APIRouter()
@@ -59,7 +59,7 @@ def CreateArea(name: str,
 
 # 修改Area (Admin)
 @router.patch("/area/{area_id}", response_model=Area_ViewModel)
-def ModifyArea(area_id: int, name: Optional[str]=-1, send_mail: Optional[bool]=-1,
+def ModifyArea(area_id: int, name: Optional[str] = -1, send_mail: Optional[bool] = -1,
                db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
 
@@ -85,6 +85,40 @@ def DeleteArea(area_id: int,
     delete_area_user_by_area_id(db, area_id)
 
     return delete_area_by_id(db, area_id)
+
+
+# 取得Area Image(User)
+@router.get("/area/{area_id}/image", response_model=List[Area_ViewModel])
+def GetAreaImage(area_id: int, db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+
+    if not checkLevel(current_user, Authority_Level.User.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    return get_area_image(db, area_id)
+
+
+# 上傳Area Image(User)
+@router.patch("/area/{area_id}/image", response_model=Area_ViewModel)
+def patchAreaImage(area_id: int, Image_file: UploadFile = File(...), db: Session = Depends(get_db),
+            Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+
+    if not checkLevel(current_user, Authority_Level.User.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    return upload_area_image(db, area_id, Image_file)
+
+
+# 不用Area Image(User)
+@router.delete("/area/{area_id}/image", response_model=Area_ViewModel)
+def deleteAreaImage(area_id: int, db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+
+    if not checkLevel(current_user, Authority_Level.User.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    return delete_area_image(db, area_id)
 
 
 ########################################################################################################################

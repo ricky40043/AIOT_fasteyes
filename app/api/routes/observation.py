@@ -73,11 +73,11 @@ def GetObservationsByDeviceId(device_id: int,
 
 
 # Device ID 最新所有觀測 (User)
-@router.get("/observations/device/observation/latest", response_model=List[ObservationViewModel])
-def GetObservationsByDeviceId(db: Session = Depends(get_db),
+@router.get("/observations/device_model/{device_model_id}/latest", response_model=List[ObservationViewModel])
+def GetObservationsByDeviceId(device_model_id: int, db: Session = Depends(get_db),
                               Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-    data = get_Lastest_Observation_by_device_id(db, current_user.group_id)
+    data = get_Lastest_Observation_by_device_id(db, current_user.group_id, device_model_id)
     return data
 
 

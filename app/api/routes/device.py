@@ -11,6 +11,7 @@ from app.db.database import get_db
 from app.helper.authentication import Authorize_user
 from app.models.schemas.device_model import DeviceViewModel, DeviceModelPostModel, DevicePatchModel, DevicePostModel
 from app.server.authentication import Authority_Level, verify_password, checkLevel
+from app.server.device.crud import modify_device_position
 from app.server.device_model import DeviceType
 from app.server.ip_cam_device import ip_cam_video_stream
 from app.server.temperature_humidity_device.crud import get_temperature_humidity_devices, \
@@ -27,7 +28,7 @@ router = APIRouter()
 
 # 取得所有device (user)
 @router.get("/devices/device_model/{device_model_id}", response_model=List[DeviceViewModel])
-def GetAllDevices(device_model_id: int, area:Optional[str]="",
+def GetAllDevices(device_model_id: int, area: Optional[str] = "",
                   db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     if not checkLevel(current_user, Authority_Level.User.value):
@@ -54,16 +55,20 @@ def CreateDevices(device_model_id: int, device_create: DevicePostModel,
         raise HTTPException(status_code=401, detail="權限不夠")
     if device_model_id == DeviceType.temperature_humidity.value:
         device = create_temperature_humidity_devices(db, current_user.group_id, current_user.id,
-                                                     device_create.name, device_create.serial_number, device_create.area, device_create.info)
+                                                     device_create.name, device_create.serial_number,
+                                                     device_create.area, device_create.info)
     elif device_model_id == DeviceType.ip_cam.value:
         device = create_ip_cam_devices(db, current_user.group_id, current_user.id,
-                                       device_create.name, device_create.serial_number, device_create.area, device_create.info)
+                                       device_create.name, device_create.serial_number, device_create.area,
+                                       device_create.info)
     elif device_model_id == DeviceType.electrostatic.value:
         device = create_electrostatic_devices(db, current_user.group_id, current_user.id,
-                                              device_create.name, device_create.serial_number, device_create.area, device_create.info)
+                                              device_create.name, device_create.serial_number, device_create.area,
+                                              device_create.info)
     elif device_model_id == DeviceType.Nitrogen.value:
         device = create_Nitrogen_devices(db, current_user.group_id, current_user.id,
-                                         device_create.name, device_create.serial_number, device_create.area, device_create.info)
+                                         device_create.name, device_create.serial_number, device_create.area,
+                                         device_create.info)
 
     return device
 
@@ -121,11 +126,22 @@ def DeleteDevices(device_model_id: int, device_id: int, db: Session = Depends(ge
 # ipcam test (Admin)
 @router.get("/ip_cam/connect_test")
 def Ip_camConnectTest(ip: str,
-                        port: str,
-                        username: str,
-                        password: str,
-                        stream_name: str):
+                      port: str,
+                      username: str,
+                      password: str,
+                      stream_name: str):
     return StreamingResponse(ip_cam_video_stream(ip, port, username, password, stream_name),
                              media_type="multipart/x-mixed-replace;boundary=frame")
 
 
+# 修改device (RD)
+@router.patch("/devices/device_model/{device_model_id}/device/{device_id}/position", response_model=DeviceViewModel)
+def ModifyDevicesPosition(device_model_id: int, device_id: int, position_x: int, position_y: int,
+                  db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
+    current_user = Authorize_user(Authorize, db)
+
+    if not checkLevel(current_user, Authority_Level.Admin.value):
+        raise HTTPException(status_code=401, detail="權限不夠")
+
+    device_db = modify_device_position(db, current_user.group_id, device_model_id, device_id, position_x, position_y)
+    return device_db

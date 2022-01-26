@@ -34,8 +34,8 @@ def get_temperature_humidity_devices_by_serial_number(serial_number: str):
 def create_temperature_humidity_devices(db: Session, group_id: int, user_id: int, name: str, serial_number: str,
                                         area: str,
                                         Temperature_humidityDevice_create: Temperature_humidityDevice_InfoModel):
-    check_name_repeate(db, name, DeviceType.temperature_humidity.value)
-    check_serial_number_repeate(db, name, DeviceType.temperature_humidity.value)
+    check_name_repeate(db, name, DeviceType.temperature_humidity.value, group_id)
+    check_serial_number_repeate(db, name, DeviceType.temperature_humidity.value, group_id)
 
     db.begin()
     try:

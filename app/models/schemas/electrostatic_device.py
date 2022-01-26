@@ -15,6 +15,8 @@ class ElectrostaticDeviceInfoModel(Base):
     left_alarm: float
     right_alarm: float
     head_alarm: float
+    position_x: Optional[int] = -1
+    position_y: Optional[int] = -1
 
 
 class ElectrostaticDevicePostModel(Base):

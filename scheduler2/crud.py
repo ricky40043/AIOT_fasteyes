@@ -11,10 +11,10 @@ from app.server.observation.crud import Create_temperature_humidity_Observation,
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from app.server.send_email import conf
-
 import modbus_client as modbus_client
 import modbus_tk.modbus_tcp as mt
 import modbus_tk.defines as md
+import struct
 
 
 class DictList(dict):
@@ -31,13 +31,14 @@ class DictList(dict):
 all_data_dict = DictList()
 session = SessionLocal()
 
+
 def activity():
     """將group內的所有device取出，並進行比對"""
     group_list = session.query(group).all()
     for each_group in group_list:
         group_index = each_group.id
 
-        #溫濕度感應器
+        # 溫濕度感應器
         get_temperature_humidity_observaion(group_index)
         # 氮氣機
         get_Nitrogen_observation(group_index)
@@ -220,13 +221,13 @@ def get_temperature_humidity_observaion(group_index):
             if battery < device_db.info["battery_alarm"]:
                 temperature_humidity_sendemail(device_db, observation_db, "電池異常")
                 # print(device_db, "已寄送電池異常email")
-            if status == 1:
+            elif status == 1:
                 temperature_humidity_sendemail(observation_db, "溫濕度感應器狀態異常")
                 # print(device_db, "已寄送溫濕度感應器狀態異常email")
-            if alarm_humidity:
+            elif alarm_humidity:
                 temperature_humidity_sendemail(device_db, observation_db, "溫濕度感應器濕度異常")
                 # print("已寄送濕度異常email")
-            if alarm_temperature:
+            elif alarm_temperature:
                 temperature_humidity_sendemail(device_db, observation_db, "溫濕度感應器濕度異常")
                 # print("已寄送溫度異常email")
         else:
@@ -267,6 +268,10 @@ def Nitrogen_decode(data_sam):
     stop_status = status_num_bin_reversed[15]
     standby_status = status_num_bin_reversed[0]
     maintain_status = status_num_bin_reversed[1]
+    air_press = ReadFloat((data[5], data[4]))
+    nitrogen_flowrate = ReadFloat((data[13], data[21]))
+    nitrogen_pressure = ReadFloat((data[15], data[14]))
+    oxygen_content = ReadFloat((data[19], data[18]))
 
     print("oxygen_height:", oxygen_height)
     print("air_press_low:", air_press_low)
@@ -278,84 +283,12 @@ def Nitrogen_decode(data_sam):
     print("stop_status:", stop_status)
     print("standby_status:", standby_status)
     print("maintain_status:", maintain_status)
-
-    # air_press_bin(40005 + 40006)
-    air_press_int_1 = data[4]
-    air_press_int_2 = data[5]
-    air_press_bin_1 = bin(air_press_int_1).split("b")[1]
-    air_press_bin_2 = bin(air_press_int_2).split("b")[1]
-    # 若小於16位需補零
-    while True:
-        if len(air_press_bin_2) < 16:
-            air_press_bin_2 = str(0) + air_press_bin_2
-        else:
-            break
-    print(air_press_bin_2)
-    # air_press_int
-    air_press = int(air_press_bin_1 + air_press_bin_2, 2)
-    print(len(air_press_bin_1))
-    print(len(air_press_bin_2))
-    print(len(air_press_bin_1 + air_press_bin_2))
     print("air_press:", air_press)
-
-    # nitrogen_flowrate_bin(40012 + 40013)
-    nitrogen_flowrate_int_1 = data[12]
-    nitrogen_flowrate_int_2 = data[13]
-    nitrogen_flowrate_bin_1 = bin(nitrogen_flowrate_int_1).split("b")[1]
-    nitrogen_flowrate_bin_2 = bin(nitrogen_flowrate_int_2).split("b")[1]
-    # 若小於16位需補零
-    while True:
-        if len(nitrogen_flowrate_bin_2) < 16:
-            nitrogen_flowrate_bin_2 = str(0) + nitrogen_flowrate_bin_2
-        else:
-            break
-    print(nitrogen_flowrate_bin_2)
-    # nitrogen_flowrate_int
-    nitrogen_flowrate = int(nitrogen_flowrate_bin_1 + nitrogen_flowrate_bin_2, 2)
-    print(len(nitrogen_flowrate_bin_1))
-    print(len(nitrogen_flowrate_bin_2))
-    print(len(nitrogen_flowrate_bin_1 + nitrogen_flowrate_bin_2))
     print("nitrogen_flowrate:", nitrogen_flowrate)
-
-    # nitrogen_pressure_bin(40014 + 40015)
-    nitrogen_pressure_int_1 = data[14]
-    nitrogen_pressure_int_2 = data[15]
-    nitrogen_pressure_bin_1 = bin(nitrogen_pressure_int_1).split("b")[1]
-    nitrogen_pressure_bin_2 = bin(nitrogen_pressure_int_2).split("b")[1]
-    # 若小於16位需補零
-    while True:
-        if len(nitrogen_pressure_bin_2) < 16:
-            nitrogen_pressure_bin_2 = str(0) + nitrogen_pressure_bin_2
-        else:
-            break
-    print(nitrogen_pressure_bin_2)
-    # nitrogen_pressure_int
-    nitrogen_pressure = int(nitrogen_pressure_bin_1 + nitrogen_pressure_bin_2, 2)
-    print(len(nitrogen_pressure_bin_1))
-    print(len(nitrogen_pressure_bin_2))
-    print(len(nitrogen_pressure_bin_1 + nitrogen_pressure_bin_2))
     print("nitrogen_pressure:", nitrogen_pressure)
-
-    # air press_bin(40018 + 40019)
-    oxygen_content_int_1 = data[18]
-    oxygen_content_int_2 = data[19]
-    oxygen_content_bin_1 = bin(oxygen_content_int_1).split("b")[1]
-    oxygen_content_bin_2 = bin(oxygen_content_int_2).split("b")[1]
-    # 若小於16位需補零
-    while True:
-        if len(oxygen_content_bin_2) < 16:
-            oxygen_content_bin_2 = str(0) + oxygen_content_bin_2
-        else:
-            break
-    print(oxygen_content_bin_2)
-    # oxygen_content_int
-    oxygen_content = int(oxygen_content_bin_1 + oxygen_content_bin_2, 2)
-    print(len(oxygen_content_bin_1))
-    print(len(oxygen_content_bin_2))
-    print(len(oxygen_content_bin_1 + oxygen_content_bin_2))
     print("oxygen_content:", oxygen_content)
 
-    observation_in ={
+    observation_in = {
         "nitrogen_pressure": nitrogen_pressure,
         "air_press": air_press,
         "nitrogen_flowrate": nitrogen_flowrate,
@@ -372,6 +305,19 @@ def Nitrogen_decode(data_sam):
         "maintain_status": maintain_status
     }
     return observation_in
+
+
+def ReadFloat(*args, reverse=False):
+    for n, m in args:
+        n, m = '%04x' % n, '%04x' % m
+    if reverse:
+        v = n + m
+    else:
+        v = m + n
+    y_bytes = bytes.fromhex(v)
+    y = struct.unpack('!f', y_bytes)[0]
+    y = round(y, 6)
+    return y
 
 
 def Nitrogen_sendemail(device_db, data, title):
@@ -472,12 +418,57 @@ def get_Nitrogen_observation(group_index):
             data_sam = master.execute(1, md.READ_HOLDING_REGISTERS, 0, 22)
             # 解碼
             observation_in = Nitrogen_decode(data_sam)
+            observation_in["name"] = each_device.name
+            observation_in["area"] = each_device.area
+            observation_in["serial_number"] = each_device.serial_number
             # 塞資料
             observation_db = Ceate_Nitrogen_Observation(observation_in=observation_in,
-                                                                     group_id=group_index,
-                                                                     device_id=each_device.id)
-            # 發信
-            Nitrogen_sendemail(each_device, observation_db, "資料遺失結果")
+                                                        group_id=group_index,
+                                                        device_id=each_device.id)
+            # 寄信判斷
+            if observation_db.info["freeze_drier"]:
+                Nitrogen_sendemail(each_device, observation_db, "冷乾機故障")
+            elif observation_db.info["air_system"]:
+                Nitrogen_sendemail(each_device, observation_db, "空氣系统报警")
+            elif observation_db.info["air_press_low"]:
+                Nitrogen_sendemail(each_device, observation_db, "空氣壓力異常")
+                # print(device_db, "已寄送電池異常email")
+            elif observation_db.info["nitrogen_press_height"] or observation_db.info["nitrogen_press_height"]:
+                Nitrogen_sendemail(observation_db, "氮氣壓力異常")
+                # print(device_db, "已寄送溫濕度感應器狀態異常email")
+            elif observation_db.info["oxygen_height"]:
+                Nitrogen_sendemail(each_device, observation_db, "氮氣含氧量異常")
+                # print("已寄送濕度異常email")
+
+                # print("已寄送溫度異常email")
         except Exception as e:
             print("Error message: ", e)
+
+            # Ricky 不要在這寫程式，這是暫時寫的
+            observation_in = {
+                "nitrogen_pressure": "-1",
+                "air_press": "-1",
+                "nitrogen_flowrate": "-1",
+                "oxygen_content": "-1",
+                "oxygen_height": "-1",
+                "air_press_low": "-1",
+                "freeze_drier": "-1",
+                "air_system": "-1",
+                "nitrogen_press_height": "-1",
+                "nitrogen_press_low": "-1",
+                "run_status": "-1",
+                "stop_status": "-1",
+                "standby_status": "-1",
+                "maintain_status": "-1"
+            }
+            observation_in["name"] = each_device.name
+            observation_in["area"] = each_device.area
+            observation_in["serial_number"] = each_device.serial_number
+            observation_db = Ceate_Nitrogen_Observation(observation_in=observation_in,
+                                                        group_id=group_index,
+                                                        device_id=each_device.id)
+
+            Nitrogen_sendemail(each_device, observation_db, "資料遺失結果")
+
+
 

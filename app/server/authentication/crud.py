@@ -116,6 +116,9 @@ def clear_all_data(db: Session):
             if os.path.exists(FILE_PATH + "face"):
                 shutil.rmtree(FILE_PATH + "face")
 
+            if os.path.exists(FILE_PATH + "area"):
+                shutil.rmtree(FILE_PATH + "area")
+
         if os.path.exists(FASTEYES_OUTPUT_PATH):
             shutil.rmtree(FASTEYES_OUTPUT_PATH)
 

@@ -21,12 +21,11 @@ def get_electrostatic_devices(db: Session, group_id: int, area: Optional[str] = 
                                        device.group_id == group_id, device.area == area).order_by(device.id).all()
 
 
-
 def create_electrostatic_devices(db: Session, group_id: int, user_id: int,
-                                 name:str, serial_number: str, area: str,
+                                 name: str, serial_number: str, area: str,
                                  ElectrostaticDevice_create: ElectrostaticDevicePostModel):
-    check_name_repeate(db, name, DeviceType.electrostatic.value)
-    check_serial_number_repeate(db, name, DeviceType.electrostatic.value)
+    check_name_repeate(db, name, DeviceType.electrostatic.value, group_id)
+    check_serial_number_repeate(db, name, DeviceType.electrostatic.value, group_id)
     db.begin()
     try:
         device_db = device(name=name,
@@ -48,7 +47,8 @@ def create_electrostatic_devices(db: Session, group_id: int, user_id: int,
 
 def modify_electrostatic_devices(db: Session, group_id: int, device_id: int,
                                  device_patch: ElectrostaticDevicePatchModel):
-    device_db = db.query(device).filter(device.group_id == group_id, device.device_model_id == DeviceType.electrostatic.value,
+    device_db = db.query(device).filter(device.group_id == group_id,
+                                        device.device_model_id == DeviceType.electrostatic.value,
                                         device.id == device_id).first()
 
     check_name_repeate(db, device_patch.name, DeviceType.electrostatic.value, group_id, device_id)
@@ -75,7 +75,8 @@ def modify_electrostatic_devices(db: Session, group_id: int, device_id: int,
 
 
 def delete_electrostatic_devices(db: Session, group_id: int, device_id: int):
-    device_db = db.query(device).filter(device.group_id == group_id, device.device_model_id == DeviceType.electrostatic.value,
+    device_db = db.query(device).filter(device.group_id == group_id,
+                                        device.device_model_id == DeviceType.electrostatic.value,
                                         device.id == device_id).first()
     if device_db is None:
         raise HTTPException(status_code=404, detail="device is not exist or is not in this group.")

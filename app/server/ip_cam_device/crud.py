@@ -22,8 +22,8 @@ def get_ip_cam_devices(db: Session, group_id: int, area: Optional[str] = ""):
 
 def create_ip_cam_devices(db: Session, group_id: int, user_id: int,
                           name: str, serial_number: str, area: str, Ip_CamPost_create: Ip_CamInfoModel):
-    check_name_repeate(db, name, DeviceType.ip_cam.value)
-    check_serial_number_repeate(db, name, DeviceType.ip_cam.value)
+    check_name_repeate(db, name, DeviceType.ip_cam.value, group_id)
+    check_serial_number_repeate(db, name, DeviceType.ip_cam.value, group_id)
     db.begin()
     try:
         device_db = device(name=name,

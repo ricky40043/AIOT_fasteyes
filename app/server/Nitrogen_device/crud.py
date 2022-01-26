@@ -27,7 +27,7 @@ def get_Nitrogen_devices(db: Session, group_id: int, area: Optional[str] = ""):
 def create_Nitrogen_devices(db: Session, group_id: int, user_id: int,
                             name: str, serial_number: str, area: str, NitrogenDevice_create: NitrogenDevice_InfoModel):
 
-    check_name_repeate(db, name, DeviceType.Nitrogen.value, group_id)
+    check_name_repeate(db, name, DeviceType.Nitrogen.value, group_id, group_id)
     check_serial_number_repeate(db, name, DeviceType.Nitrogen.value, group_id)
 
     db.begin()

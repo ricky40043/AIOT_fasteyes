@@ -56,12 +56,13 @@ def Create_temperature_humidity_Observation(observation_in: temperature_humidity
     return observation_db
 
 
-def Ceate_Nitrogen_Observation(db: Session,
-                               observation_in: Nitrogen_ObservationPostModel,
+def Ceate_Nitrogen_Observation(observation_in: Nitrogen_ObservationPostModel,
                                group_id: int, device_id: int):
+    db = next(get_db())
+
     db.begin()
     try:
-        observation_db = observation(**observation_in.dict(),
+        observation_db = observation(info=observation_in,
                                      group_id=group_id,
                                      device_id=device_id,
                                      device_model_id=DeviceType.Nitrogen.value)
@@ -134,24 +135,18 @@ def get_Observations_by_device_id(db: Session, device_id: int):
     return db.query(observation).filter(observation.device_id == device_id).all()
 
 
-def get_Lastest_Observation_by_device_id(db: Session, group_id: int):
-    temperature_humidity_device_list = db.query(device).filter(
-        device.device_model_id == DeviceType.temperature_humidity.value,
+def get_Lastest_Observation_by_device_id(db: Session, group_id: int, device_model_id: int):
+    device_list = db.query(device).filter(
+        device.device_model_id == device_model_id,
         device.group_id == group_id).order_by(device.id).all()
 
-    temperature_humidity_observation_list = []
-    for temperature_humidity_device in temperature_humidity_device_list:
-        interval_time = temperature_humidity_device.info["interval_time"]
-        start_time = datetime.now() - timedelta(seconds=int(interval_time) * 3)
-        end_time = datetime.now()
-        observation_db = db.query(observation).filter(observation.device_id == temperature_humidity_device.id,
-                                                      observation.created_at > start_time,
-                                                      observation.created_at < end_time,
-                                                      ).order_by(-observation.id).first()
+    observation_list = []
+    for each_device in device_list:
+        observation_db = db.query(observation).filter(observation.device_id == each_device.id).order_by(-observation.id).first()
         if observation_db:
-            temperature_humidity_observation_list.append(observation_db)
+            observation_list.append(observation_db)
 
-    return temperature_humidity_observation_list
+    return observation_list
 
 
 def get_Observations_by_group_and_device_model_id_and_timespan(db: Session, group_id: int, device_model_id: int,

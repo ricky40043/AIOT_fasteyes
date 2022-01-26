@@ -17,6 +17,8 @@ class Ip_CamInfoModel(Base):
     username: str
     password: str
     stream_name: str
+    position_x: Optional[int] = -1
+    position_y: Optional[int] = -1
 
     class Config:
         schema_extra = {

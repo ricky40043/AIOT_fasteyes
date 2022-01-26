@@ -20,6 +20,8 @@ class Temperature_humidityDevice_InfoModel(Base):
     compensate_temperature: float
     compensate_humidity: float
     battery_alarm: int
+    position_x: Optional[int] = -1
+    position_y: Optional[int] = -1
 
 
 class Temperature_humidityDevicePostModel(Base):

@@ -9,10 +9,12 @@ class area(Base):
     group_id = Column(Integer, ForeignKey("groups.id"))
     name = Column(String, index=True)
     send_mail = Column(Boolean, index=True)
+    use_image = Column(Boolean, index=True)
     created_at = Column(DateTime, index=True)
 
     def __init__(self, group_id, name):
         self.group_id = group_id
         self.name = name
         self.send_mail = False
+        self.use_image = False
         self.created_at = datetime.now()

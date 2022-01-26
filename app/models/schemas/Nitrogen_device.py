@@ -22,7 +22,8 @@ class NitrogenDevice_InfoModel(Base):
     Nitrogen_content_Oxygen_upper_limit: float
     ip: str
     port: str
-
+    position_x: Optional[int] = -1
+    position_y: Optional[int] = -1
 
 class NitrogenDevicePostModel(Base):
     info: NitrogenDevice_InfoModel

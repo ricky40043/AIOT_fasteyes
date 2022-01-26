@@ -18,6 +18,7 @@ class Area_ViewModel(Base):
     group_id: int
     name: str
     send_mail: bool
+    use_image: Optional[bool] = False
 
 
 class Area_UsersViewModel(Base):
