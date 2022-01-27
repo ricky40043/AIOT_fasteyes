@@ -112,7 +112,7 @@ def GetObservationsByDeviceId(device_model_id: int,
     if device_model_id == 1:
         file_location = get_TH_observation_csv(db, current_user.group_id, 1, status, start_timestamp, end_timestamp, select_device, area)
     elif device_model_id == 4:
-        file_location = get_Nitrogen_observation_csv(db, current_user.group_id, 1, status, start_timestamp, end_timestamp, select_device, area)
+        file_location = get_Nitrogen_observation_csv(db, current_user.group_id, 4, status, start_timestamp, end_timestamp, select_device, area)
 
     return FileResponse(file_location, media_type='text/csv', filename=file_location)
 

@@ -205,6 +205,7 @@ def get_Observations_by_group_and_device_model_id_and_timespan(db: Session, grou
                            observation.info["alarm_temperature"].astext.cast(Boolean) == True,
                            observation.info["alarm_humidity"].astext.cast(Boolean) == True)). \
                 order_by(-observation.id).all()
+
     if area == "" or area == None:
         return data_list
     else:

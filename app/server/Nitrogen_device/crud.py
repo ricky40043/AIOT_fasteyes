@@ -110,26 +110,118 @@ def get_Nitrogen_observation_csv(db: Session, group_id, device_model_id, status,
                                                                                        status, start_timestamp,
                                                                                        end_timestamp, select_device, area)
 
-    device_db_list = get_device_by_group_id_and_device_model_id(db, group_id, device_model_id)
-    device_name_dict = {device_db.__dict__["id"]: device_db.__dict__["name"] for device_db in device_db_list}
-    device_area_dict = {device_db.__dict__["id"]: device_db.__dict__["area"] for device_db in device_db_list}
-    device_serial_number_dict = {device_db.__dict__["id"]: device_db.__dict__["serial_number"] for device_db in
-                                 device_db_list}
-    outputdata = [["裝置名稱", "裝置編號", "裝置位置", "測量時間", "氮氣壓力", "氮氣壓力異常", "氧氣濃度", "氧氣異常"]]
+    # device_db_list = get_device_by_group_id_and_device_model_id(db, group_id, device_model_id)
+    # device_name_dict = {device_db.__dict__["id"]: device_db.__dict__["name"] for device_db in device_db_list}
+    # device_area_dict = {device_db.__dict__["id"]: device_db.__dict__["area"] for device_db in device_db_list}
+    # device_serial_number_dict = {device_db.__dict__["id"]: device_db.__dict__["serial_number"] for device_db in
+    #                              device_db_list}
+    outputdata = [["裝置名稱", "裝置編號", "裝置位置", "測量時間", "氮氣壓力(Mpag)", "空氣壓力(Nm3/h)", "氮氣流量(Mpag)",
+                   "氮氣含氧量(ppm)", "氮氣氧含量高报警", "儀表空氣壓力低报警", "冷乾機故障", "空氣系統報警",
+                   "氮氣壓力高", "氮氣壓力低", "運行信號", "停機信號", "系統待機", "維護提示"]]
 
     for each_data in observation_data_list:
         each_data_dict = each_data.__dict__
         temp = []
-        if device_model_id == DeviceType.temperature_humidity.value:
-            temp.append(device_name_dict[each_data_dict["device_id"]])
-            temp.append(device_serial_number_dict[each_data_dict["device_id"]])
-            temp.append(device_area_dict[each_data_dict["device_id"]])
-            temp.append(each_data_dict["created_at"].strftime("%m/%d/%Y, %H:%M:%S"))
-            temp.append(each_data_dict["info"]["Nitrogen"])
-            temp.append("異常" if each_data_dict["info"]["alarm_Nitrogen"] else "正常")
-            temp.append(each_data_dict["info"]["Oxygen"] + "%")
-            temp.append("異常" if each_data_dict["info"]["alarm_Oxygen"] else "正常")
-            outputdata.append(temp)
+        # temp.append(device_name_dict[each_data_dict["device_id"]])
+        # temp.append(device_serial_number_dict[each_data_dict["device_id"]])
+        # temp.append(device_area_dict[each_data_dict["device_id"]])
+        # print(each_data_dict["info"])
+        temp.append(each_data_dict["info"]["name"])
+        temp.append(each_data_dict["info"]["serial_number"])
+        temp.append(each_data_dict["info"]["area"])
+        temp.append(each_data_dict["created_at"].strftime("%m/%d/%Y, %H:%M:%S"))
+
+        if each_data_dict["info"]["oxygen_height"] == -1:
+            temp.append("無資料")
+        else:
+            temp.append(each_data_dict["info"]["oxygen_height"])
+
+        if each_data_dict["info"]["air_press"] == -1:
+            temp.append("無資料")
+        else:
+            temp.append(each_data_dict["info"]["air_press"])
+
+        if each_data_dict["info"]["nitrogen_flowrate"] == -1:
+            temp.append("無資料")
+        else:
+            temp.append(each_data_dict["info"]["nitrogen_flowrate"])
+
+        if each_data_dict["info"]["oxygen_content"] == -1:
+            temp.append("無資料")
+        else:
+            temp.append(each_data_dict["info"]["oxygen_content"])
+
+        if each_data_dict["info"]["oxygen_height"] == 1:
+            temp.append("異常")
+        elif each_data_dict["info"]["oxygen_height"] == 0:
+            temp.append("正常")
+        else:
+            temp.append("無資料")
+
+        if each_data_dict["info"]["air_press_low"] == 1:
+            temp.append("異常")
+        elif each_data_dict["info"]["air_press_low"] == 0:
+            temp.append("正常")
+        else:
+            temp.append("無資料")
+
+        if each_data_dict["info"]["freeze_drier"] == 1:
+            temp.append("異常")
+        elif each_data_dict["info"]["freeze_drier"] == 0:
+            temp.append("正常")
+        else:
+            temp.append("無資料")
+
+        if each_data_dict["info"]["air_system"] == 1:
+            temp.append("異常")
+        elif each_data_dict["info"]["air_system"] == 0:
+            temp.append("正常")
+        else:
+            temp.append("無資料")
+
+        if each_data_dict["info"]["nitrogen_press_height"] == 1:
+            temp.append("壓力高")
+        elif each_data_dict["info"]["nitrogen_press_height"] == 0:
+            temp.append("正常")
+        else:
+            temp.append("無資料")
+
+        if each_data_dict["info"]["nitrogen_press_low"] == 1:
+            temp.append("壓力低")
+        elif each_data_dict["info"]["nitrogen_press_low"] == 0:
+            temp.append("正常")
+        else:
+            temp.append("無資料")
+
+        if each_data_dict["info"]["run_status"] == 1:
+            temp.append("運轉中")
+        elif each_data_dict["info"]["run_status"] == 0:
+            temp.append("無運轉")
+        else:
+            temp.append("無資料")
+
+        if each_data_dict["info"]["stop_status"] == 1:
+            temp.append("停機")
+        elif each_data_dict["info"]["stop_status"] == 0:
+            temp.append("未停機")
+        else:
+            temp.append("無資料")
+
+        if each_data_dict["info"]["standby_status"] == 1:
+            temp.append("待機中")
+        elif each_data_dict["info"]["standby_status"] == 0:
+            temp.append("非待機狀態")
+        else:
+            temp.append("無資料")
+
+        if each_data_dict["info"]["maintain_status"] == 1:
+            temp.append("維護提示")
+        elif each_data_dict["info"]["maintain_status"] == 0:
+            temp.append("無提示")
+        else:
+            temp.append("無資料")
+
+        outputdata.append(temp)
 
     file_location = 'observation_data.csv'
     with open(file_location, 'w', newline="", encoding='utf-8-sig') as f:

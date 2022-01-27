@@ -12,7 +12,7 @@ import cv2
 from starlette.responses import StreamingResponse
 import io
 
-from app.server.area import upload_image, delete_image
+from app.server.area import upload_image, delete_image, delete_group_image
 
 
 def get_All_areas(db: Session):
@@ -81,6 +81,7 @@ def delete_area_by_group_id(db: Session, group_id: int):
     db.begin()
     try:
         db.query(area).filter(area.group_id == group_id).delete()
+        delete_group_image(group_id)
         db.commit()
     except Exception as e:
         db.rollback()
@@ -226,6 +227,7 @@ def delete_area_image(db: Session, area_id: int):
     area_db = db.query(area).filter(area.id == area_id).first()
     db.begin()
     try:
+        delete_image(area_db.group_id, area_id)
         area_db.use_image = False
         db.add(area_db)
         db.commit()

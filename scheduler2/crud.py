@@ -241,7 +241,7 @@ def get_temperature_humidity_observaion(group_index):
                                                                      group_id=group_index,
                                                                      device_id=device_db.id)
 
-            temperature_humidity_sendemail(device_db, observation_db, "資料遺失結果")
+            temperature_humidity_sendemail(device_db, observation_db, "溫濕度感應器資料遺失")
 
 
 def Nitrogen_decode(data_sam):
@@ -446,20 +446,20 @@ def get_Nitrogen_observation(group_index):
 
             # Ricky 不要在這寫程式，這是暫時寫的
             observation_in = {
-                "nitrogen_pressure": "-1",
-                "air_press": "-1",
-                "nitrogen_flowrate": "-1",
-                "oxygen_content": "-1",
-                "oxygen_height": "-1",
-                "air_press_low": "-1",
-                "freeze_drier": "-1",
-                "air_system": "-1",
-                "nitrogen_press_height": "-1",
-                "nitrogen_press_low": "-1",
-                "run_status": "-1",
-                "stop_status": "-1",
-                "standby_status": "-1",
-                "maintain_status": "-1"
+                "nitrogen_pressure": -1,
+                "air_press": -1,
+                "nitrogen_flowrate": -1,
+                "oxygen_content": -1,
+                "oxygen_height": -1,
+                "air_press_low": -1,
+                "freeze_drier": -1,
+                "air_system": -1,
+                "nitrogen_press_height": -1,
+                "nitrogen_press_low": -1,
+                "run_status": -1,
+                "stop_status": -1,
+                "standby_status": -1,
+                "maintain_status": -1
             }
             observation_in["name"] = each_device.name
             observation_in["area"] = each_device.area
@@ -468,7 +468,7 @@ def get_Nitrogen_observation(group_index):
                                                         group_id=group_index,
                                                         device_id=each_device.id)
 
-            Nitrogen_sendemail(each_device, observation_db, "資料遺失結果")
+            Nitrogen_sendemail(each_device, observation_db, "氮氣機資料遺失")
 
 
 

@@ -83,7 +83,7 @@ def DeleteArea(area_id: int,
         raise HTTPException(status_code=401, detail="權限不夠")
 
     delete_area_user_by_area_id(db, area_id)
-
+    delete_area_image(db, area_id)
     return delete_area_by_id(db, area_id)
 
 

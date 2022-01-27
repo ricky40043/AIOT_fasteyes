@@ -11,7 +11,7 @@ from app.db.database import get_db
 from app.helper.authentication import Authorize_user
 from app.models.schemas.device_model import DeviceViewModel, DeviceModelPostModel, DevicePatchModel, DevicePostModel
 from app.server.authentication import Authority_Level, verify_password, checkLevel
-from app.server.device.crud import modify_device_position
+from app.server.device.crud import modify_device_position, get_All_devices
 from app.server.device_model import DeviceType
 from app.server.ip_cam_device import ip_cam_video_stream
 from app.server.temperature_humidity_device.crud import get_temperature_humidity_devices, \
@@ -23,11 +23,13 @@ from app.server.electrostatic_device.crud import get_electrostatic_devices, \
 from app.server.Nitrogen_device.crud import get_Nitrogen_devices, \
     create_Nitrogen_devices, modify_Nitrogen_devices, delete_Nitrogen_devices
 
+from fastapi_pagination import Page, paginate
+
 router = APIRouter()
 
 
 # 取得所有device (user)
-@router.get("/devices/device_model/{device_model_id}", response_model=List[DeviceViewModel])
+@router.get("/devices/device_model/{device_model_id}", response_model=Page[DeviceViewModel])
 def GetAllDevices(device_model_id: int, area: Optional[str] = "",
                   db: Session = Depends(get_db), Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
@@ -35,13 +37,15 @@ def GetAllDevices(device_model_id: int, area: Optional[str] = "",
         raise HTTPException(status_code=401, detail="權限不夠")
 
     if device_model_id == DeviceType.temperature_humidity.value:
-        return get_temperature_humidity_devices(db, current_user.group_id, area)
+        return paginate(get_temperature_humidity_devices(db, current_user.group_id, area))
     elif device_model_id == DeviceType.ip_cam.value:
-        return get_ip_cam_devices(db, current_user.group_id, area)
+        return paginate(get_ip_cam_devices(db, current_user.group_id, area))
     elif device_model_id == DeviceType.electrostatic.value:
-        return get_electrostatic_devices(db, current_user.group_id, area)
+        return paginate(get_electrostatic_devices(db, current_user.group_id, area))
     elif device_model_id == DeviceType.Nitrogen.value:
-        return get_Nitrogen_devices(db, current_user.group_id, area)
+        return paginate(get_Nitrogen_devices(db, current_user.group_id, area))
+    elif device_model_id == -1:
+        return paginate(get_All_devices(db, current_user.group_id, area))
 
 
 # 創建device (Admin)
