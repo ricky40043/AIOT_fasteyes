@@ -38,6 +38,11 @@ def CeateFasteyesObservation(db: Session, observation_in: FasteyesObservationPos
             observation_in.staff_id = get_default_staff_id(db).id
 
         staff_db = get_staff_by_id(db, observation_in.staff_id)
+
+        if staff_db is None:  # 如果人員被刪除就會進來
+            observation_in.staff_id = get_default_staff_id(db).id
+            staff_db = get_staff_by_id(db, observation_in.staff_id)
+
         temp_info = observation_in.info.copy()  # dict 是 call by Ref. 所以一定要複製一份
         info = temp_info.dict()
         info["staff_name"] = staff_db.info["name"]
@@ -136,7 +141,7 @@ def get_Observations_by_group_id_and_timespan(db: Session, group_id: int, start_
                 -fasteyes_observation.id).all()
         else:
             return db.query(fasteyes_observation).filter(fasteyes_observation.group_id == group_id,
-                                                         fasteyes_observation.fasteyes_device_id  ==  device_id).filter(
+                                                         fasteyes_observation.fasteyes_device_id == device_id).filter(
                 fasteyes_observation.phenomenon_time >= start_timestamp,
                 fasteyes_observation.phenomenon_time <= end_timestamp).filter(
                 fasteyes_observation.result == bool(status_in)).order_by(
@@ -160,7 +165,7 @@ def get_Observations_by_department_id(db: Session, department_id: int):
 
 
 def get_Observations_by_staff_id_and_timespan(db: Session, staff_id: int, start_timestamp: datetime,
-                                              end_timestamp: datetime,select_device_id: int):
+                                              end_timestamp: datetime, select_device_id: int):
     if select_device_id == -1:
         return db.query(fasteyes_observation).filter(fasteyes_observation.staff_id == staff_id).filter(
             fasteyes_observation.phenomenon_time >= start_timestamp,
@@ -230,7 +235,8 @@ def get_attendence_by_time_interval(db: Session, group_id: int, start_timestamp:
             fasteyes_observation.phenomenon_time <= end_timestamp).order_by(fasteyes_observation.phenomenon_time).all()
     else:
         fasteyes_observation_db_list = db.query(fasteyes_observation).filter(
-            fasteyes_observation.group_id == group_id, fasteyes_observation.fasteyes_device_id == select_device_id).filter(
+            fasteyes_observation.group_id == group_id,
+            fasteyes_observation.fasteyes_device_id == select_device_id).filter(
             fasteyes_observation.phenomenon_time >= start_timestamp,
             fasteyes_observation.phenomenon_time <= end_timestamp).order_by(fasteyes_observation.phenomenon_time).all()
 
@@ -305,6 +311,7 @@ def get_attendence_by_time_interval(db: Session, group_id: int, start_timestamp:
             each_date_attendance["attendance"] = list(filtered)
 
     return date_attendance_list
+
 
 #
 # def get_attendence_by_time_interval_data(db: Session, group_id: int, start_timestamp: datetime,
@@ -451,19 +458,21 @@ def delete_observation_by_id(db: Session, observation_id: int):
 def output_observations_by_group(db: Session, group_id: int, start_timestamp: datetime, end_timestamp: datetime,
                                  resign_staff_output: bool, output_fasteyes_list: list):
     if start_timestamp is None:
-        start_timestamp = datetime.now()-timedelta(days=1)
+        start_timestamp = datetime.now() - timedelta(days=1)
     if end_timestamp is None:
         end_timestamp = datetime.now()
 
     if resign_staff_output:
         output_db = db.query(fasteyes_observation).filter(fasteyes_observation.group_id == group_id,
-                                                          fasteyes_observation.fasteyes_device_id.in_(output_fasteyes_list)).filter(
+                                                          fasteyes_observation.fasteyes_device_id.in_(
+                                                              output_fasteyes_list)).filter(
             fasteyes_observation.phenomenon_time >= start_timestamp,
             fasteyes_observation.phenomenon_time <= end_timestamp).filter(
-            staff.id == fasteyes_observation.staff_id,).all()
+            staff.id == fasteyes_observation.staff_id, ).all()
     else:
         output_db = db.query(fasteyes_observation).filter(fasteyes_observation.group_id == group_id,
-                                                          fasteyes_observation.fasteyes_device_id.in_(output_fasteyes_list)).filter(
+                                                          fasteyes_observation.fasteyes_device_id.in_(
+                                                              output_fasteyes_list)).filter(
             fasteyes_observation.phenomenon_time >= start_timestamp,
             fasteyes_observation.phenomenon_time <= end_timestamp).filter(
             staff.status == 1, staff.id == fasteyes_observation.staff_id).all()

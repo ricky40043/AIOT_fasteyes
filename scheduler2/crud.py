@@ -269,7 +269,7 @@ def Nitrogen_decode(data_sam):
     standby_status = status_num_bin_reversed[0]
     maintain_status = status_num_bin_reversed[1]
     air_press = ReadFloat((data[5], data[4]))
-    nitrogen_flowrate = ReadFloat((data[13], data[21]))
+    nitrogen_flowrate = ReadFloat((data[13], data[12]))
     nitrogen_pressure = ReadFloat((data[15], data[14]))
     oxygen_content = ReadFloat((data[19], data[18]))
 
