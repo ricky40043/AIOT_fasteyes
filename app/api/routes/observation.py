@@ -25,8 +25,8 @@ from app.server.device_model import DeviceType
 from app.server.ip_cam_device import ip_cam_video_stream, ip_cam_face_detect_stream
 from app.server.observation.crud import delete_observation_by_device_id, \
     get_Observations_by_device_id_and_timespan, get_Observations_by_device_id, delete_observation_by_id, \
-    get_Lastest_Observation_by_device_id, get_Observations_by_group_and_device_model_id_and_timespan, \
-    Create_temperature_humidity_Observation
+    get_Lastest_Observation_by_device_id, Create_temperature_humidity_Observation, \
+    get_THObservations_by_group_and_and_timespan, get_NitrogenObservations_by_group_and_timespan
 from app.server.send_email import send_email_async, send_email_temperature_alert, send_email_device_alert, conf
 from fastapi_pagination import Page, paginate
 import csv
@@ -92,10 +92,17 @@ def GetObservationsByDeviceId(device_model_id: int,
                               db: Session = Depends(get_db),
                               Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-    return paginate(
-        get_Observations_by_group_and_device_model_id_and_timespan(db, current_user.group_id, device_model_id,
-                                                                   status, start_timestamp, end_timestamp,
-                                                                   select_device, area))
+    if device_model_id == DeviceType.temperature_humidity.value:
+        return paginate(
+            get_THObservations_by_group_and_and_timespan(db, current_user.group_id,
+                                                         status, start_timestamp, end_timestamp,
+                                                         select_device, area))
+
+    elif device_model_id == DeviceType.Nitrogen.value:
+        return paginate(
+            get_NitrogenObservations_by_group_and_timespan(db, current_user.group_id,
+                                                           status, start_timestamp, end_timestamp,
+                                                           select_device, area))
 
 
 # Device ID 取得所有觀測 (User)
@@ -105,14 +112,16 @@ def GetObservationsByDeviceId(device_model_id: int,
                               start_timestamp: datetime,
                               end_timestamp: datetime,
                               select_device: Optional[int] = -1,
-                              area: Optional[str]= None,
+                              area: Optional[str] = None,
                               db: Session = Depends(get_db),
                               Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     if device_model_id == 1:
-        file_location = get_TH_observation_csv(db, current_user.group_id, 1, status, start_timestamp, end_timestamp, select_device, area)
+        file_location = get_TH_observation_csv(db, current_user.group_id, 1, status, start_timestamp, end_timestamp,
+                                               select_device, area)
     elif device_model_id == 4:
-        file_location = get_Nitrogen_observation_csv(db, current_user.group_id, 4, status, start_timestamp, end_timestamp, select_device, area)
+        file_location = get_Nitrogen_observation_csv(db, current_user.group_id, 4, status, start_timestamp,
+                                                     end_timestamp, select_device, area)
 
     return FileResponse(file_location, media_type='text/csv', filename=file_location)
 

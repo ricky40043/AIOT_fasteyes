@@ -13,7 +13,7 @@ from app.models.schemas.temperature_humidity_device import Temperature_humidityD
 from app.server.device.crud import check_name_repeate, check_serial_number_repeate, get_device_by_name, \
     get_device_by_group_id_and_device_model_id
 from app.server.device_model import DeviceType
-from app.server.observation.crud import get_Observations_by_group_and_device_model_id_and_timespan
+from app.server.observation.crud import get_THObservations_by_group_and_and_timespan
 
 
 def get_temperature_humidity_devices(db: Session, group_id: int, area: Optional[str] = ""):
@@ -111,18 +111,17 @@ def delete_temperature_humidity_devices(db: Session, group_id: int, device_id: i
 
 def get_TH_observation_csv(db: Session, group_id, device_model_id, status, start_timestamp, end_timestamp,
                            select_device: Optional[int] = -1, area: Optional[str] = ""):
-    observation_data_list = get_Observations_by_group_and_device_model_id_and_timespan(db, group_id,
-                                                                                       device_model_id,
-                                                                                       status, start_timestamp,
-                                                                                       end_timestamp, select_device,
-                                                                                       area)
+    observation_data_list = get_THObservations_by_group_and_and_timespan(db, group_id,
+                                                                         status, start_timestamp,
+                                                                         end_timestamp, select_device,
+                                                                         area)
 
     # device_db_list = get_device_by_group_id_and_device_model_id(db, group_id, device_model_id)
     # device_name_dict = {device_db.__dict__["id"]: device_db.__dict__["name"] for device_db in device_db_list}
     # device_area_dict = {device_db.__dict__["id"]: device_db.__dict__["area"] for device_db in device_db_list}
     # device_serial_number_dict = {device_db.__dict__["id"]: device_db.__dict__["serial_number"] for device_db in
     #                              device_db_list}
-    outputdata = [["裝置名稱", "裝置編號", "裝置位置", "測量時間", "溫度", "溫度異常", "濕度", "濕度異常", "溫度補償", "濕度補償", "電池電量"]]
+    outputdata = [["裝置名稱", "裝置編號", "裝置位置", "測量時間", "溫度", "溫度異常", "濕度", "濕度異常", "溫度補償", "濕度補償", "電池電量", "裝置狀態"]]
     for each_data in observation_data_list:
         each_data_dict = each_data.__dict__
         temp = []
@@ -141,6 +140,14 @@ def get_TH_observation_csv(db: Session, group_id, device_model_id, status, start
             temp.append(each_data_dict["info"]["compensate_temperature"])
             temp.append(each_data_dict["info"]["compensate_humidity"])
             temp.append(str(each_data_dict["info"]["battery"]) + "%")
+            if each_data_dict["info"]["status"] == 3:
+                temp.append("資料遺失")
+            elif each_data_dict["info"]["status"] == 2:
+                temp.append("異常")
+            else:
+                temp.append("正常")
+
+
             outputdata.append(temp)
 
     file_location = 'observation_data.csv'

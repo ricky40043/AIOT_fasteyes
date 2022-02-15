@@ -23,6 +23,7 @@ class StaffInfoModel(Base):
     telephone_number: Optional[str]
     birthday: Optional[datetime] = "1000-01-01T00:00"
     face_detect: Optional[bool] = False
+    face_feature: Optional[str] = ""
 
 
 class StaffPostModel(Base):

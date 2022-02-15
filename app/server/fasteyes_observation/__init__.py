@@ -84,7 +84,7 @@ def output_interval_attendance_csv(db: Session, group_id: int, start_timestamp: 
 def output_interval_data_csv(db, group_id, start_timestamp, end_timestamp):
     path = FASTEYES_OUTPUT_PATH + str(group_id) + "/output_form.json"
     # Opening JSON file
-    f = open(path)
+    f = open(path, encoding="utf-8-sig")
     # returns JSON object as
     # a dictionary
     data = json.load(f)
@@ -141,7 +141,7 @@ def output_interval_data_csv(db, group_id, start_timestamp, end_timestamp):
 def get_output_data_form(group_id):
     path = FASTEYES_OUTPUT_PATH + str(group_id) + "/output_form.json"
     # Opening JSON file
-    f = open(path)
+    f = open(path, encoding="utf-8-sig")
     # returns JSON object as
     # a dictionary
     data = json.load(f)

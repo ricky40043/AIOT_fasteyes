@@ -4,6 +4,8 @@ from pydantic import EmailStr
 from sqlalchemy.orm import Session
 
 from typing import List, Optional
+
+from app.core.config import HOST_NAME, COMPUTE_URL
 from app.db.database import get_db
 from app.helper.authentication import Authorize_user
 from app.helper.department import check_department_Authority
@@ -13,9 +15,12 @@ from app.models.schemas.staff import StaffViewModel, StaffPostModel, StaffPatchM
 from app.server.authentication import Authority_Level, checkLevel
 from app.server.department.crud import get_department_by_id
 from app.server.face.crud import get_staff_face_images, get_staff_face_image_file, upload_face_file, \
-    delete_staff_all_image, delete_feature, download_raw_face_feature, upload_raw_face_feature
+    delete_staff_all_image, download_raw_face_feature, upload_raw_face_feature
 from app.server.staff.crud import get_All_staffs, get_user_by_serveral_number_in_group, create_staff, \
     get_staff_by_group, modefy_Staff_Info, delete_Staff_by_Staff_id, get_default_staff_id
+import json
+
+import requests
 
 router = APIRouter()
 
@@ -86,6 +91,7 @@ def AddStaffFaceImagesAsync(staff_id: int, Image_file: UploadFile = File(...), d
     check_Staff_Authority(db, current_user, staff_id)
     # 刪除舊的資料
     delete_staff_all_image(db, staff_id)
+
     return upload_face_file(db, staff_id, Image_file)
 
 
@@ -118,25 +124,29 @@ def CreateStaff(staff_create: StaffPostModel, db: Session = Depends(get_db),
 def DeleteStaff(staff_id: int, db: Session = Depends(get_db),
                 Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
-    print("1")
     check_Staff_Authority(db, current_user, staff_id)
-    print("2")
-
     delete_staff_all_image(db, staff_id)
-    print("3")
-    delete_feature(db, staff_id)
-    print("4")
     return delete_Staff_by_Staff_id(db, staff_id)
 
 
 # 員工ID 上傳員工Feature (HRAccess)
-@router.post("/staffs/{staff_id}/raw_face_features")
+@router.post("/staffs/{staff_id}/raw_face_features", response_model=StaffViewModel)
 def Upload_Face_Feature(staff_id: int, feature: str, db: Session = Depends(get_db),
                         Authorize: AuthJWT = Depends()):
     current_user = Authorize_user(Authorize, db)
     check_Staff_Authority(db, current_user, staff_id)
-    return upload_raw_face_feature(db, staff_id, feature)
 
+
+    result = upload_raw_face_feature(db, staff_id, feature)
+
+    # 打一隻ＡＰＩ
+    Headers = {"Authorization": "Bearer "+Authorize._token}
+    r = requests.post(COMPUTE_URL+"/face_recongnition/update",
+                      headers=Headers,
+                      verify=False)
+    # print(r.status_code)
+    print(r.json())
+    return result
 
 # 員工ID 下載員工Feature (HRAccess)
 @router.get("/staffs/{staff_id}/raw_face_features", response_model=FaceFeatureViewModel)
@@ -151,3 +161,18 @@ def Download_Face_Feature(staff_id: int, db: Session = Depends(get_db),
 @router.get("/get-default-staff", response_model=StaffViewModel)
 def GetDefaultStaff(db: Session = Depends(get_db)):
     return get_default_staff_id(db)
+
+
+# # 員工ID 上傳員工照片 上傳檔案 & 刪除舊的資料 (HRAccess)
+# @router.post("/staffs/{staff_id}/faces", response_model=FaceViewModel)
+# def AddStaffFaceImagesAsync(staff_id: int, Image_file: UploadFile = File(...), db: Session = Depends(get_db),
+#                             Authorize: AuthJWT = Depends()):
+#     current_user = Authorize_user(Authorize, db)
+#     check_Staff_Authority(db, current_user, staff_id)
+#     # 刪除舊的資料
+#     delete_staff_all_image(db, staff_id)
+#     # 打一隻ＡＰＩ
+#
+#     r = requests.get( "http://127.0.0.1:8050/"+"face_recongnition/update/group/"+str(current_user.group_id), verify=False)
+#     print(r.status_code)
+#     return upload_face_file(db, staff_id, Image_file)

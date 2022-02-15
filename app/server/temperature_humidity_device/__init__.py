@@ -7,8 +7,7 @@ from app.db.database import get_db
 from app.server.device.crud import get_device_by_group_id_and_device_model_id
 from app.server.device_model import DeviceType
 from app.server.group.crud import get_All_groups
-from app.server.observation.crud import Create_temperature_humidity_Observation, \
-    get_Observations_by_group_and_device_model_id_and_timespan
+from app.server.observation.crud import Create_temperature_humidity_Observation
 from app.server.send_email import send_email_device_alert, send_email_async, conf
 from app.server.temperature_humidity_device.crud import create_temperature_humidity_devices, \
     get_temperature_humidity_devices_by_serial_number

@@ -149,12 +149,13 @@ def get_Lastest_Observation_by_device_id(db: Session, group_id: int, device_mode
     return observation_list
 
 
-def get_Observations_by_group_and_device_model_id_and_timespan(db: Session, group_id: int, device_model_id: int,
+def get_THObservations_by_group_and_and_timespan(db: Session, group_id: int,
                                                                status_in: int,
                                                                start_timestamp: datetime,
                                                                end_timestamp: datetime,
                                                                select_device_id: Optional[int] = -1,
                                                                area: Optional[str] = ""):
+    device_model_id = DeviceType.temperature_humidity.value
     if status_in == -1:
         if select_device_id == -1:
             data_list = db.query(observation).filter(observation.group_id == group_id,
@@ -185,7 +186,6 @@ def get_Observations_by_group_and_device_model_id_and_timespan(db: Session, grou
                        observation.info["alarm_temperature"].astext.cast(Boolean) == False,
                        observation.info["alarm_humidity"].astext.cast(Boolean) == False). \
                 order_by(-observation.id).all()
-
     else:
         if select_device_id == -1:
             data_list = db.query(observation).filter(observation.group_id == group_id,
@@ -204,6 +204,86 @@ def get_Observations_by_group_and_device_model_id_and_timespan(db: Session, grou
                 filter(or_(observation.info["status"].astext.cast(Integer) != 0,
                            observation.info["alarm_temperature"].astext.cast(Boolean) == True,
                            observation.info["alarm_humidity"].astext.cast(Boolean) == True)). \
+                order_by(-observation.id).all()
+
+    if area == "" or area == None:
+        return data_list
+    else:
+        filter_list = list(filter(lambda each_observation: each_observation.info["area"] == area, data_list))
+        return filter_list
+
+
+def get_NitrogenObservations_by_group_and_timespan(db: Session, group_id: int,
+                                                               status_in: int,
+                                                               start_timestamp: datetime,
+                                                               end_timestamp: datetime,
+                                                               select_device_id: Optional[int] = -1,
+                                                               area: Optional[str] = ""):
+    device_model_id = DeviceType.Nitrogen.value
+    if status_in == -1:
+        if select_device_id == -1:
+            data_list = db.query(observation).filter(observation.group_id == group_id,
+                                                     observation.device_model_id == device_model_id).filter(
+                observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
+                order_by(-observation.id).all()
+        else:
+            data_list = db.query(observation).filter(observation.group_id == group_id,
+                                                     observation.device_model_id == device_model_id,
+                                                     observation.device_id == select_device_id).filter(
+                observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
+                order_by(-observation.id).all()
+    elif status_in == 0:
+        if select_device_id == -1:
+            data_list = db.query(observation).filter(observation.group_id == group_id,
+                                                     observation.device_model_id == device_model_id).filter(
+                observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
+                filter(observation.info["oxygen_height"].astext.cast(Integer) == 0,
+                       observation.info["air_press_low"].astext.cast(Integer) == 0,
+                       observation.info["freeze_drier"].astext.cast(Integer) == 0,
+                       observation.info["air_system"].astext.cast(Integer) == 0,
+                       observation.info["nitrogen_press_height"].astext.cast(Integer) == 0,
+                       observation.info["nitrogen_press_low"].astext.cast(Integer) == 0,
+                       observation.info["maintain_status"].astext.cast(Integer) == 0). \
+                order_by(-observation.id).all()
+        else:
+            data_list = db.query(observation).filter(observation.group_id == group_id,
+                                                     observation.device_model_id == device_model_id,
+                                                     observation.device_id == select_device_id).filter(
+                observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
+                filter(observation.info["oxygen_height"].astext.cast(Integer) == 0,
+                       observation.info["air_press_low"].astext.cast(Integer) == 0,
+                       observation.info["freeze_drier"].astext.cast(Integer) == 0,
+                       observation.info["air_system"].astext.cast(Integer) == 0,
+                       observation.info["nitrogen_press_height"].astext.cast(Integer) == 0,
+                       observation.info["nitrogen_press_low"].astext.cast(Integer) == 0,
+                       observation.info["maintain_status"].astext.cast(Integer) == 0). \
+                order_by(-observation.id).all()
+    else:
+        if select_device_id == -1:
+            data_list = db.query(observation).filter(observation.group_id == group_id,
+                                                     observation.device_model_id == device_model_id).filter(
+                observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
+                filter(or_(observation.info["oxygen_height"].astext.cast(Integer) == 1,
+                           observation.info["air_press_low"].astext.cast(Integer) == 1,
+                           observation.info["freeze_drier"].astext.cast(Integer) == 1,
+                           observation.info["air_system"].astext.cast(Integer) == 1,
+                           observation.info["nitrogen_press_height"].astext.cast(Integer) == 1,
+                           observation.info["nitrogen_press_low"].astext.cast(Integer) == 1,
+                           observation.info["maintain_status"].astext.cast(Integer) == 1)). \
+                order_by(-observation.id).all()
+            return data_list
+        else:
+            data_list = db.query(observation).filter(observation.group_id == group_id,
+                                                     observation.device_model_id == device_model_id,
+                                                     observation.device_id == select_device_id).filter(
+                observation.created_at >= start_timestamp, observation.created_at <= end_timestamp). \
+                filter(or_(observation.info["oxygen_height"].astext.cast(Integer) == 1,
+                           observation.info["air_press_low"].astext.cast(Integer) == 1,
+                           observation.info["freeze_drier"].astext.cast(Integer) == 1,
+                           observation.info["air_system"].astext.cast(Integer) == 1,
+                           observation.info["nitrogen_press_height"].astext.cast(Integer) == 1,
+                           observation.info["nitrogen_press_low"].astext.cast(Integer) == 1,
+                           observation.info["maintain_status"].astext.cast(Integer) == 1)). \
                 order_by(-observation.id).all()
 
     if area == "" or area == None:

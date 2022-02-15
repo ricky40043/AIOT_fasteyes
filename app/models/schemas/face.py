@@ -36,3 +36,8 @@ class FaceFeatureViewModel(Base):
     raw_face_feature: str
     face_uuid: str
     staff_id: int
+
+
+class faceRecongnitionModel(Base):
+    name: str
+    score: float

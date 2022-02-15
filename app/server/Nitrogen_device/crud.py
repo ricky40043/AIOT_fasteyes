@@ -12,7 +12,7 @@ from app.models.schemas.Nitrogen_device import NitrogenDevicePostModel, \
 from app.server.device.crud import check_name_repeate, check_serial_number_repeate, \
     get_device_by_group_id_and_device_model_id, get_device_by_name
 from app.server.device_model import DeviceType
-from app.server.observation.crud import get_Observations_by_group_and_device_model_id_and_timespan
+from app.server.observation.crud import get_NitrogenObservations_by_group_and_timespan
 
 
 def get_Nitrogen_devices(db: Session, group_id: int, area: Optional[str] = ""):
@@ -105,17 +105,16 @@ def delete_Nitrogen_devices(db: Session, group_id: int, device_id: int):
 
 
 def get_Nitrogen_observation_csv(db: Session, group_id, device_model_id, status, start_timestamp, end_timestamp, select_device:Optional[int]=-1, area: Optional[str]= ""):
-    observation_data_list = get_Observations_by_group_and_device_model_id_and_timespan(db, group_id,
-                                                                                       device_model_id,
-                                                                                       status, start_timestamp,
-                                                                                       end_timestamp, select_device, area)
+    observation_data_list = get_NitrogenObservations_by_group_and_timespan(db, group_id,
+                                                                           status, start_timestamp,
+                                                                           end_timestamp, select_device, area)
 
     # device_db_list = get_device_by_group_id_and_device_model_id(db, group_id, device_model_id)
     # device_name_dict = {device_db.__dict__["id"]: device_db.__dict__["name"] for device_db in device_db_list}
     # device_area_dict = {device_db.__dict__["id"]: device_db.__dict__["area"] for device_db in device_db_list}
     # device_serial_number_dict = {device_db.__dict__["id"]: device_db.__dict__["serial_number"] for device_db in
     #                              device_db_list}
-    outputdata = [["裝置名稱", "裝置編號", "裝置位置", "測量時間", "氮氣壓力(Mpag)", "空氣壓力(Nm3/h)", "氮氣流量(Mpag)",
+    outputdata = [["裝置名稱", "裝置編號", "裝置位置", "測量時間", "氮氣壓力(MPa)", "空氣壓力(MPa)", "氮氣流量(Nm3/h)",
                    "氮氣含氧量(ppm)", "氮氣氧含量高报警", "儀表空氣壓力低报警", "冷乾機故障", "空氣系統報警",
                    "氮氣壓力高", "氮氣壓力低", "運行信號", "停機信號", "系統待機", "維護提示"]]
 
@@ -150,73 +149,72 @@ def get_Nitrogen_observation_csv(db: Session, group_id, device_model_id, status,
             temp.append("無資料")
         else:
             temp.append(each_data_dict["info"]["oxygen_content"])
-
-        if each_data_dict["info"]["oxygen_height"] == 1:
+        if each_data_dict["info"]["oxygen_height"] == "1":
             temp.append("異常")
-        elif each_data_dict["info"]["oxygen_height"] == 0:
+        elif each_data_dict["info"]["oxygen_height"] == "0":
             temp.append("正常")
         else:
             temp.append("無資料")
 
-        if each_data_dict["info"]["air_press_low"] == 1:
+        if each_data_dict["info"]["air_press_low"] == "1":
             temp.append("異常")
-        elif each_data_dict["info"]["air_press_low"] == 0:
+        elif each_data_dict["info"]["air_press_low"] == "0":
             temp.append("正常")
         else:
             temp.append("無資料")
 
-        if each_data_dict["info"]["freeze_drier"] == 1:
+        if each_data_dict["info"]["freeze_drier"] == "1":
             temp.append("異常")
-        elif each_data_dict["info"]["freeze_drier"] == 0:
+        elif each_data_dict["info"]["freeze_drier"] == "0":
             temp.append("正常")
         else:
             temp.append("無資料")
 
-        if each_data_dict["info"]["air_system"] == 1:
+        if each_data_dict["info"]["air_system"] == "1":
             temp.append("異常")
-        elif each_data_dict["info"]["air_system"] == 0:
+        elif each_data_dict["info"]["air_system"] == "0":
             temp.append("正常")
         else:
             temp.append("無資料")
 
-        if each_data_dict["info"]["nitrogen_press_height"] == 1:
+        if each_data_dict["info"]["nitrogen_press_height"] == "1":
             temp.append("壓力高")
-        elif each_data_dict["info"]["nitrogen_press_height"] == 0:
+        elif each_data_dict["info"]["nitrogen_press_height"] == "0":
             temp.append("正常")
         else:
             temp.append("無資料")
 
-        if each_data_dict["info"]["nitrogen_press_low"] == 1:
+        if each_data_dict["info"]["nitrogen_press_low"] == "1":
             temp.append("壓力低")
-        elif each_data_dict["info"]["nitrogen_press_low"] == 0:
+        elif each_data_dict["info"]["nitrogen_press_low"] == "0":
             temp.append("正常")
         else:
             temp.append("無資料")
 
-        if each_data_dict["info"]["run_status"] == 1:
+        if each_data_dict["info"]["run_status"] == "1":
             temp.append("運轉中")
-        elif each_data_dict["info"]["run_status"] == 0:
+        elif each_data_dict["info"]["run_status"] == "0":
             temp.append("無運轉")
         else:
             temp.append("無資料")
 
-        if each_data_dict["info"]["stop_status"] == 1:
+        if each_data_dict["info"]["stop_status"] == "1":
             temp.append("停機")
-        elif each_data_dict["info"]["stop_status"] == 0:
+        elif each_data_dict["info"]["stop_status"] == "0":
             temp.append("未停機")
         else:
             temp.append("無資料")
 
-        if each_data_dict["info"]["standby_status"] == 1:
+        if each_data_dict["info"]["standby_status"] == "1":
             temp.append("待機中")
-        elif each_data_dict["info"]["standby_status"] == 0:
+        elif each_data_dict["info"]["standby_status"] == "0":
             temp.append("非待機狀態")
         else:
             temp.append("無資料")
 
-        if each_data_dict["info"]["maintain_status"] == 1:
+        if each_data_dict["info"]["maintain_status"] == "1":
             temp.append("維護提示")
-        elif each_data_dict["info"]["maintain_status"] == 0:
+        elif each_data_dict["info"]["maintain_status"] == "0":
             temp.append("無提示")
         else:
             temp.append("無資料")

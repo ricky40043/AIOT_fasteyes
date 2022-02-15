@@ -88,52 +88,21 @@ def delete_staff_all_image(db: Session, staff_id: int):
     return "Delete All Image Done"
 
 
-def delete_feature(db: Session, staff_id: int):
-    db.begin()
-    try:
-        staff_db = db.query(staff).filter(staff.id == staff_id).first()
-        face_db = db.query(face).filter(face.staff_id == staff_id).first()
-        if face_db:
-            face_db.updated_at = datetime.now()
-            if os.path.exists(FILE_PATH + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id)):
-                os.remove(FILE_PATH + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id) + "/" + "face_feature" + ".txt")
-        db.commit()
-    except Exception as e:
-        db.rollback()
-        print(str(e))
-        raise UnicornException(name=delete_feature.__name__, description=str(e), status_code=500)
-    return "Delete feature Done"
-
-
 def upload_raw_face_feature(db: Session, staff_id, raw_face_feature: str):
     db.begin()
     try:
         staff_db = db.query(staff).filter(staff.id == staff_id).first()
         face_db = db.query(face).filter(face.staff_id == staff_id).first()
         face_db.updated_at = datetime.now()
-        # 寫檔案
-        if not os.path.exists(FILE_PATH + "face/"):
-            os.mkdir(FILE_PATH + "face/")
-        if not os.path.exists(FILE_PATH + "face/group" + str(staff_db.group_id)):
-            os.mkdir(FILE_PATH + "face/group" + str(staff_db.group_id))
-        if not os.path.exists(FILE_PATH + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id)):
-            os.mkdir(FILE_PATH + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id))
-        if not os.path.exists(FILE_PATH + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id)):
-            os.mkdir(FILE_PATH + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id))
-
-        path = FILE_PATH + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id) + "/" + "face_feature" + ".txt"
-
-        f = open(path, 'wb')
-
-        f.write(raw_face_feature.encode())
-        f.close()
+        temp_info = staff_db.info.copy()
+        temp_info["face_feature"] = raw_face_feature
+        staff_db.info = temp_info
         db.commit()
-
     except Exception as e:
         db.rollback()
         print(str(e))
         raise UnicornException(name=upload_raw_face_feature.__name__, description=str(e), status_code=500)
-    return "Done"
+    return staff_db
 
 
 def download_raw_face_feature(db: Session, staff_id):
@@ -141,24 +110,6 @@ def download_raw_face_feature(db: Session, staff_id):
     try:
         staff_db = db.query(staff).filter(staff.id == staff_id).first()
 
-        # 寫檔案
-        if not os.path.exists(FILE_PATH):
-            os.mkdir(FILE_PATH)
-        if not os.path.exists(FILE_PATH + "face/"):
-            os.mkdir(FILE_PATH + "face/")
-        if not os.path.exists(FILE_PATH + "face/group" + str(staff_db.group_id)):
-            os.mkdir(FILE_PATH + "face/group" + str(staff_db.group_id))
-        if not os.path.exists(FILE_PATH + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id)):
-            os.mkdir(FILE_PATH + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id))
-        if not os.path.exists(FILE_PATH + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id)):
-            os.mkdir(FILE_PATH + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id))
-
-        path = FILE_PATH + "face/group" + str(staff_db.group_id) + "/staff" + str(staff_id) + "/" + "face_feature" + ".txt"
-
-        f = open(path, 'rb')
-        raw_face_feature = f.read()
-
-        f.close()
         face_db = db.query(face).filter(face.staff_id == staff_id).first()
 
         raw_face_feature_data = {
@@ -167,7 +118,7 @@ def download_raw_face_feature(db: Session, staff_id):
             "updated_at": face_db.updated_at,
             "created_at": face_db.created_at,
             "staff_id": face_db.staff_id,
-            "raw_face_feature": raw_face_feature
+            "raw_face_feature": staff_db.info["face_feature"]
         }
 
     except Exception as e:

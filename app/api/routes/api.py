@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 
 from app.api.routes import user, authentication, fasteyes_device, fasteyes_uuid, staff, fasteyes_observation, department, \
-    bulletin, device, device_model, group, observation, area
+    bulletin, device, device_model, group, observation, area, face_recognition
 
 router = APIRouter()
 #
@@ -18,3 +18,4 @@ router.include_router(device.router, tags=["Device"])
 router.include_router(device_model.router, tags=["Device_model"])
 router.include_router(bulletin.router, tags=["bulletin"])
 router.include_router(area.router, tags=["area"])
+router.include_router(face_recognition.router, tags=["face_recognition"])
